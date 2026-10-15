@@ -1,0 +1,17 @@
+{
+  "provider": "Open Food Facts",
+  "retrievedAt": "2026-10-15T13:54:02.309Z",
+  "sources": [
+    {
+      "url": "https://static.openfoodfacts.org/data/taxonomies/additives.json",
+      "records": 764,
+      "sha256": "3241eb41d7c703decdeab99c0b457c52cd78ed3da6fed75992c7345a522e733b"
+    },
+    {
+      "url": "https://static.openfoodfacts.org/data/taxonomies/ingredients.json",
+      "records": 6654,
+      "sha256": "240e57a124d90d2c633f58021300502b510b3bc17d067aacdf3980871dfc8e1b"
+    }
+  ],
+  "imported": 7351
+}

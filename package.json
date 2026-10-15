@@ -1,0 +1,50 @@
+{
+  "name": "bongkar-label",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:integration": "node --import tsx --test tests/integration/*.test.ts",
+    "db:seed": "node --env-file-if-exists=.env --import tsx src/core/db/seed.ts",
+    "data:import": "node --import tsx scripts/import-off.ts",
+    "data:dictionary": "node --import tsx scripts/import-dictionary.ts",
+    "data:prices": "node --import tsx scripts/import-prices.ts",
+    "test:browser": "playwright test",
+    "test:api": "node --import tsx --test tests/api/*.test.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@tanstack/react-query": "^5.90.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.0",
+    "lucide-react": "^0.468.0",
+    "mongodb": "^6.20.0",
+    "next": "15.5.28",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^3.0.0",
+    "tailwind-merge": "^3.3.0",
+    "tsx": "^4.20.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.5.30",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "postcss": "$postcss"
+  }
+}

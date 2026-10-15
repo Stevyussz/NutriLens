@@ -1,0 +1,56 @@
+services:
+  mongodb:
+    image: mongo:8.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: bongkar
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-local-development-only}
+    volumes:
+      - mongodb_data:/data/db
+    networks: [database]
+    healthcheck:
+      test: [CMD, mongosh, --quiet, --eval, "quit(db.adminCommand('ping').ok ? 0 : 1)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  seeder:
+    build:
+      context: .
+      target: seeder
+    environment:
+      MONGODB_URI: mongodb://bongkar:${MONGO_ROOT_PASSWORD:-local-development-only}@mongodb:27017/?authSource=admin
+      MONGODB_DB: bongkar_label
+      INITIAL_USER_EMAIL: ${INITIAL_USER_EMAIL:-}
+      INITIAL_USER_PASSWORD: ${INITIAL_USER_PASSWORD:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks: [database]
+    restart: "no"
+  app:
+    build:
+      context: .
+      target: runner
+    environment:
+      MONGODB_URI: mongodb://bongkar:${MONGO_ROOT_PASSWORD:-local-development-only}@mongodb:27017/?authSource=admin
+      MONGODB_DB: bongkar_label
+      APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash}
+      SESSION_SECURE: ${SESSION_SECURE:-false}
+      TRUST_PROXY: ${TRUST_PROXY:-false}
+    ports: ["127.0.0.1:${APP_PORT:-3000}:3000"]
+    depends_on:
+      seeder:
+        condition: service_completed_successfully
+    networks: [database, outbound]
+    restart: unless-stopped
+    init: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+networks:
+  database:
+    internal: true
+  outbound: {}
+volumes:
+  mongodb_data:

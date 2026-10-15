@@ -1,0 +1,5162 @@
+[
+  {
+    "barcode": "8998009010613",
+    "name": "Ultra Milk Full Cream",
+    "brand": "Ultra Jaya",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 10,
+      "proteinGrams": 8,
+      "sodiumMg": 55,
+      "saturatedFatGrams": 3.5,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Fresh Milk (100%).",
+        "canonicalChemicalName": "fresh milk ().",
+        "explicitPercentage": 100,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009010613",
+      "retrievedAt": "2026-10-15T13:34:51.737Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686010947",
+    "name": "Indomie Mi Goreng Original",
+    "brand": "indomie, Indofood",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 85,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 410.00000000000034,
+      "sugarGrams": 5.900000000000003,
+      "proteinGrams": 7.999999999999997,
+      "sodiumMg": 868.9999999999994,
+      "saturatedFatGrams": 7.600000000000005,
+      "fiberGrams": 2.0000000000000018
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "NOODLE: Wheat flour",
+        "canonicalChemicalName": "noodle: wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "vegetable oil",
+        "canonicalChemicalName": "vegetable oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "tapioca starch",
+        "canonicalChemicalName": "tapioca starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "i [500] [acidity regulator]",
+        "canonicalChemicalName": "i",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "i [501] [acidity regulator]",
+        "canonicalChemicalName": "i",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "i [452] [stabilizer]",
+        "canonicalChemicalName": "i",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "412 [stabilizer]",
+        "canonicalChemicalName": "412",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "antioxidant (319) and colouring (102).\nSEASONING POWDER: Sugar",
+        "canonicalChemicalName": "antioxidant (319) and colouring (102).\nseasoning powder: sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "621 [flavor enhancer]",
+        "canonicalChemicalName": "621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "garlic powder",
+        "canonicalChemicalName": "garlic powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "onion powder",
+        "canonicalChemicalName": "onion powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "631 [contain flavor enhancer] [synthetic chicken flavor]",
+        "canonicalChemicalName": "631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "627 [contain flavor enhancer] [synthetic chicken flavor]",
+        "canonicalChemicalName": "627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "pepper powder.\nSEASONING OIL: Vegetable oil and onion.\nSWEET SOY SAUCE: Sugar",
+        "canonicalChemicalName": "pepper powder.\nseasoning oil: vegetable oil and onion.\nsweet soy sauce: sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "soybean",
+        "canonicalChemicalName": "soybean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "wheat",
+        "canonicalChemicalName": "wheat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "sesame oil.\nCHILI SAUCE: Chili",
+        "canonicalChemicalName": "sesame oil.\nchili sauce: chili",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "thickener",
+        "canonicalChemicalName": "thickener",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 24,
+        "rawName": "acidity regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 25,
+        "rawName": "621 [flavor enhancer]",
+        "canonicalChemicalName": "621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 26,
+        "rawName": "631 [flavor enhancer]",
+        "canonicalChemicalName": "631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 27,
+        "rawName": "627 [flavor enhancer]",
+        "canonicalChemicalName": "627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 28,
+        "rawName": "synthetic flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 29,
+        "rawName": "preservatives (211, 223).\nFRIED ONION (contain antioxidant (319)).\nCONTAINS: Gluten",
+        "canonicalChemicalName": "preservatives (211, 223).\nfried onion (contain antioxidant (319)).\ncontains: gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 30,
+        "rawName": "egg",
+        "canonicalChemicalName": "egg",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 31,
+        "rawName": "dairy",
+        "canonicalChemicalName": "dairy",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 32,
+        "rawName": "soybean",
+        "canonicalChemicalName": "soybean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 33,
+        "rawName": "sulphite",
+        "canonicalChemicalName": "sulphite",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 34,
+        "rawName": "celery and sesame.\nMay Contain: Peanuts",
+        "canonicalChemicalName": "celery and sesame.\nmay contain: peanuts",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 35,
+        "rawName": "crustacean",
+        "canonicalChemicalName": "crustacean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 36,
+        "rawName": "fish",
+        "canonicalChemicalName": "fish",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 37,
+        "rawName": "tree nuts and mustard.",
+        "canonicalChemicalName": "tree nuts and mustard.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686010947",
+      "retrievedAt": "2026-10-15T13:34:51.740Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686041705",
+    "name": "Indomie - Mi Goreng Jumbo",
+    "brand": "indomie, Indofood",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 129,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "kentang",
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 621.78,
+      "sugarGrams": 10.32,
+      "proteinGrams": 12.9,
+      "sodiumMg": 1186.8000000000002,
+      "saturatedFatGrams": 11.61,
+      "fiberGrams": 12.9
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "62% [noodles : wheat flour]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "contains antioxidant 319 [refined palm oil]",
+        "canonicalChemicalName": "contains antioxidant 319",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "451 [acidity regulators]",
+        "canonicalChemicalName": "451",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "501 [acidity regulators]",
+        "canonicalChemicalName": "501",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "500 [acidity regulators]",
+        "canonicalChemicalName": "500",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "412 [thickener]",
+        "canonicalChemicalName": "412",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "101 [colour]",
+        "canonicalChemicalName": "101",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "seasoning powder: salt",
+        "canonicalChemicalName": "seasoning powder: salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "621 [flavour enhancers]",
+        "canonicalChemicalName": "621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "631 [flavour enhancers]",
+        "canonicalChemicalName": "631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "627 [flavour enhancers]",
+        "canonicalChemicalName": "627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "garlic powder",
+        "canonicalChemicalName": "garlic powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "onion powder",
+        "canonicalChemicalName": "onion powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "yeast extract",
+        "canonicalChemicalName": "yeast extract",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "artificial flavour",
+        "canonicalChemicalName": "artificial flavour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "pepper",
+        "canonicalChemicalName": "pepper",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "551 [anticaking agent]",
+        "canonicalChemicalName": "551",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "contains antioxidant 319 [seasoning oil: refined palm oil]",
+        "canonicalChemicalName": "contains antioxidant 319",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "onion",
+        "canonicalChemicalName": "onion",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "sweet soy sauce: sugar",
+        "canonicalChemicalName": "sweet soy sauce: sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 24,
+        "rawName": "wheat",
+        "canonicalChemicalName": "wheat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 25,
+        "rawName": "soy bean",
+        "canonicalChemicalName": "soy bean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 26,
+        "rawName": "spices",
+        "canonicalChemicalName": "spices",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 27,
+        "rawName": "sesame oil",
+        "canonicalChemicalName": "sesame oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 28,
+        "rawName": "chilli sauce: chilli",
+        "canonicalChemicalName": "chilli sauce: chilli",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 29,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 30,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 31,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 32,
+        "rawName": "tapioca starch",
+        "canonicalChemicalName": "tapioca starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 33,
+        "rawName": "260 [acidity regulators]",
+        "canonicalChemicalName": "260",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 34,
+        "rawName": "330 [acidity regulators]",
+        "canonicalChemicalName": "330",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 35,
+        "rawName": "herbs",
+        "canonicalChemicalName": "herbs",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 36,
+        "rawName": "621 [flavour enhancers]",
+        "canonicalChemicalName": "621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 37,
+        "rawName": "627 [flavour enhancers]",
+        "canonicalChemicalName": "627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 38,
+        "rawName": "e631 [flavour enhancers]",
+        "canonicalChemicalName": "e631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 39,
+        "rawName": "flavours",
+        "canonicalChemicalName": "flavours",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 40,
+        "rawName": "211 [preservatives]",
+        "canonicalChemicalName": "211",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 41,
+        "rawName": "223 [preservatives]",
+        "canonicalChemicalName": "223",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 42,
+        "rawName": "fried onion: onion",
+        "canonicalChemicalName": "fried onion: onion",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 43,
+        "rawName": "contains antioxidant 319 [refined palm oil]",
+        "canonicalChemicalName": "contains antioxidant 319",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 44,
+        "rawName": "allergen:\r\n\r\ncontains wheat",
+        "canonicalChemicalName": "allergen:\r\n\r\ncontains wheat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 45,
+        "rawName": "contains sesame",
+        "canonicalChemicalName": "contains sesame",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 46,
+        "rawName": "contains soy",
+        "canonicalChemicalName": "contains soy",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686041705",
+      "retrievedAt": "2026-10-15T13:34:51.741Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8991002122017",
+    "name": "Abc Kopi Susu",
+    "brand": "ABC",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "kopi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 120,
+      "sugarGrams": 14,
+      "proteinGrams": 1,
+      "sodiumMg": 56.00000000000001,
+      "saturatedFatGrams": 2.5,
+      "fiberGrams": 4
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH-30",
+        "canonicalChemicalName": "rh-30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8991002122017",
+      "retrievedAt": "2026-10-15T13:34:51.742Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992752112013",
+    "name": "mizone activ lychee lemon",
+    "brand": "mizone",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 87.5,
+      "sugarGrams": 20,
+      "proteinGrams": 0,
+      "sodiumMg": 65,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Air",
+        "canonicalChemicalName": "air",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Pengatur Keasaman",
+        "canonicalChemicalName": "pengatur keasaman",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Perisa Sintetik",
+        "canonicalChemicalName": "perisa sintetik",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Natrium Klorida",
+        "canonicalChemicalName": "natrium klorida",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Kalium Karbonat",
+        "canonicalChemicalName": "kalium karbonat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Natrium Benzoat [Pengawet]",
+        "canonicalChemicalName": "natrium benzoat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Kalium Sorbat [Pengawet]",
+        "canonicalChemicalName": "kalium sorbat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Asesulfam-K [Pemanis Buatan]",
+        "canonicalChemicalName": "asesulfam-k",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Sukralosa [Pemanis Buatan]",
+        "canonicalChemicalName": "sukralosa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Penstabil Nabati",
+        "canonicalChemicalName": "penstabil nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Sekuestran",
+        "canonicalChemicalName": "sekuestran",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Premiks Vitamin (B1, B3, B6, B12) Mengandung pemanis buatan",
+        "canonicalChemicalName": "premiks vitamin (b1, b3, b6, b12) mengandung pemanis buatan",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "disarankan tidak dikonsumsi oleh anak di bawah 5 (lima) tahun",
+        "canonicalChemicalName": "disarankan tidak dikonsumsi oleh anak di bawah 5 (lima) tahun",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "ibu hamil",
+        "canonicalChemicalName": "ibu hamil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "dan ibu menyusuiיו",
+        "canonicalChemicalName": "dan ibu menyusuiיו",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992752112013",
+      "retrievedAt": "2026-10-15T13:34:51.743Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8996001440124",
+    "name": "Rasa Vanila",
+    "brand": "Energen",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 40,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 72,
+      "sugarGrams": 7.2,
+      "proteinGrams": 0.8,
+      "sodiumMg": 550,
+      "saturatedFatGrams": 1.6,
+      "fiberGrams": 5
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Krimer Nabati",
+        "canonicalChemicalName": "krimer nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "9 [Tepung Terigu]",
+        "canonicalChemicalName": "9",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "63% [Tepung Terigu]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "9 [Susu Bubuk]",
+        "canonicalChemicalName": "9",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "5% [Susu Bubuk]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Jagung",
+        "canonicalChemicalName": "jagung",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "1 [Oat]",
+        "canonicalChemicalName": "1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "88% [Oat]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Kalsium abonat Baram",
+        "canonicalChemicalName": "kalsium abonat baram",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Lesitin Kedelai [Pengemulsi Nabati]",
+        "canonicalChemicalName": "lesitin kedelai",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "A [Premiks Vitamin]",
+        "canonicalChemicalName": "a",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "B1 [Premiks Vitamin]",
+        "canonicalChemicalName": "b1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "B2 [Premiks Vitamin]",
+        "canonicalChemicalName": "b2",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "B6 [Premiks Vitamin]",
+        "canonicalChemicalName": "b6",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Asam Folat [Premiks Vitamin]",
+        "canonicalChemicalName": "asam folat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "B12 [Premiks Vitamin]",
+        "canonicalChemicalName": "b12",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "D [Premiks Vitamin]",
+        "canonicalChemicalName": "d",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "dan E [Premiks Vitamin]",
+        "canonicalChemicalName": "dan e",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "Vitamin C [Natrium Askorbat]",
+        "canonicalChemicalName": "vitamin c",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "0 [Telur Bubuk]",
+        "canonicalChemicalName": "0",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "01% [Telur Bubuk]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "Ekstrak Malt (0,01%).",
+        "canonicalChemicalName": "ekstrak malt ().",
+        "explicitPercentage": 0.01,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8996001440124",
+      "retrievedAt": "2026-10-15T13:34:51.744Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009010224",
+    "name": "Ultra milk full cream",
+    "brand": "Ultrajaya, ultra milk",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 120,
+      "sugarGrams": 8,
+      "proteinGrams": 6,
+      "sodiumMg": 40,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Susu sapi segar 100%",
+        "canonicalChemicalName": "susu sapi segar",
+        "explicitPercentage": 100,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "tanpa pengawet.",
+        "canonicalChemicalName": "tanpa pengawet.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009010224",
+      "retrievedAt": "2026-10-15T13:34:51.744Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8886467100017",
+    "name": "Pringles original",
+    "brand": "Pringles Salt & Seaweed",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 25,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 12,
+      "proteinGrams": 1,
+      "sodiumMg": 50,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH.30",
+        "canonicalChemicalName": "rh.30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8886467100017",
+      "retrievedAt": "2026-10-15T13:34:51.745Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8999999195649",
+    "name": "Sari Wangi 100% Teh Asli",
+    "brand": "Sari Wangi, Unilever",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 1.85,
+    "flavorTags": [
+      "teh"
+    ],
+    "nutrition": {
+      "caloriesKcal": 0,
+      "sugarGrams": 0,
+      "proteinGrams": 0,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "TEH HITAM",
+        "canonicalChemicalName": "teh hitam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8999999195649",
+      "retrievedAt": "2026-10-15T13:34:51.745Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009010637",
+    "name": "Ultra Milk Low Fat",
+    "brand": "Ultra",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 110,
+      "sugarGrams": 11,
+      "proteinGrams": 8,
+      "sodiumMg": 125,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "92.8% [Fresh Milk]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Skim Milk Powder (7%) Vegetable Stabilizer",
+        "canonicalChemicalName": "skim milk powder () vegetable stabilizer",
+        "explicitPercentage": 7,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009010637",
+      "retrievedAt": "2026-10-15T13:34:51.746Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997009510017",
+    "name": "You C1000 Vitamin Lemon",
+    "brand": "You C1000",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 140,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 70,
+      "sugarGrams": 15.999999999999961,
+      "proteinGrams": 0,
+      "sodiumMg": 99.99999999999996,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Fruktosa",
+        "canonicalChemicalName": "fruktosa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Sari Buah Kurang Dari 10% Yang Berasal Dari Jus Buah Lemon Segar",
+        "canonicalChemicalName": "sari buah kurang dari  yang berasal dari jus buah lemon segar",
+        "explicitPercentage": 10,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Ascorbic Acid [Vitamin C]",
+        "canonicalChemicalName": "ascorbic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Sodium Ascorbate [Vitamin C]",
+        "canonicalChemicalName": "sodium ascorbate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Dibenzoil Thiamine HCL [Vitamin B1]",
+        "canonicalChemicalName": "dibenzoil thiamine hcl",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "d-α-tocopherol dari kedelai [Vitamin E]",
+        "canonicalChemicalName": "d-α-tocopherol dari kedelai",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Niacinamide [Niacin]",
+        "canonicalChemicalName": "niacinamide",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Lemon Flavour",
+        "canonicalChemicalName": "lemon flavour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Pengatur Keasaman",
+        "canonicalChemicalName": "pengatur keasaman",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Safflower [Pewarna Kuning Benibana]",
+        "canonicalChemicalName": "safflower",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Air sampai dengan 140 ml",
+        "canonicalChemicalName": "air sampai dengan 140 ml",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997009510017",
+      "retrievedAt": "2026-10-15T13:34:51.746Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998866203531",
+    "name": "Isoplus Coco 350ml",
+    "brand": "Wings Food",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 175,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 50.00000000000006,
+      "sugarGrams": 12.000000000000005,
+      "proteinGrams": 0,
+      "sodiumMg": 37.99999999999998,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "fructose syrup",
+        "canonicalChemicalName": "fructose syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "0.3% [coconut water]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "acidity regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "synthetic flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "vegetable stabilizer",
+        "canonicalChemicalName": "vegetable stabilizer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "potassium chloride",
+        "canonicalChemicalName": "potassium chloride",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "contains tocopherol antioxidant [vegetable emulsifier]",
+        "canonicalChemicalName": "contains tocopherol antioxidant",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "magnesium lactate",
+        "canonicalChemicalName": "magnesium lactate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "calcium lactate",
+        "canonicalChemicalName": "calcium lactate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "ascorbic acid",
+        "canonicalChemicalName": "ascorbic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998866203531",
+      "retrievedAt": "2026-10-15T13:34:51.747Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009010552",
+    "name": "Ultra Milk Full Cream",
+    "brand": "Ultrajaya",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 120,
+      "sugarGrams": 8,
+      "proteinGrams": 6,
+      "sodiumMg": 16,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Cow's Milk-100%",
+        "canonicalChemicalName": "cow's milk-",
+        "explicitPercentage": 100,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009010552",
+      "retrievedAt": "2026-10-15T13:34:51.749Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686598957",
+    "name": "Chitato Rasa Keju",
+    "brand": "Chitato",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 20,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "keju"
+    ],
+    "nutrition": {
+      "caloriesKcal": 110,
+      "sugarGrams": 1,
+      "proteinGrams": 1,
+      "sodiumMg": 32,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "62% [Potatoes]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Palm Olein Oil",
+        "canonicalChemicalName": "palm olein oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "contains Cheese Powder [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "contains cheese powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Salt [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Sugar [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Flavour Enhancer Monosodium Glutamate [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "flavour enhancer monosodium glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Disodium Guanylate [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "disodium guanylate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Disodium Inosinate [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "disodium inosinate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Food Coloring Annatto CI 75120 [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "food coloring annatto ci 75120",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Milk [Cheese Synthetic Flavour]",
+        "canonicalChemicalName": "milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Cheese Powder (0.32%).",
+        "canonicalChemicalName": "cheese powder ().",
+        "explicitPercentage": 0.32,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686598957",
+      "retrievedAt": "2026-10-15T13:34:51.769Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992775913000",
+    "name": "Chocolatos 3in1",
+    "brand": "Garudafood",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 20,
+    "flavorTags": [
+      "cokelat",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 80,
+      "sugarGrams": 12,
+      "proteinGrams": 1,
+      "sodiumMg": 34,
+      "saturatedFatGrams": 1,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Dextrose Monohydrate",
+        "canonicalChemicalName": "dextrose monohydrate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "20% [Cocoa Powder]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Whey Powder",
+        "canonicalChemicalName": "whey powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Non Dairy Creamer",
+        "canonicalChemicalName": "non dairy creamer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Full Cream Milk Powder",
+        "canonicalChemicalName": "full cream milk powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Malt Extract",
+        "canonicalChemicalName": "malt extract",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Vegetable Thickener",
+        "canonicalChemicalName": "vegetable thickener",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Flavour Synthetic (Vanilla, Italian Chocolate) Natural Milk Flavor.",
+        "canonicalChemicalName": "flavour synthetic (vanilla, italian chocolate) natural milk flavor.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992775913000",
+      "retrievedAt": "2026-10-15T13:34:51.770Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993007000239",
+    "name": "Indomilk Kids Chocolate UHT Milk",
+    "brand": "Indomilk",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 115,
+    "flavorTags": [
+      "cokelat",
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 79.99999999999994,
+      "sugarGrams": 11.000000000000002,
+      "proteinGrams": 2.9999999999999964,
+      "sodiumMg": 16.000000000000036,
+      "saturatedFatGrams": 2.0000000000000013,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "water [_Recombined milk_]",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "_skimmed milk powder_-4.2% [_Recombined milk_]",
+        "canonicalChemicalName": "_skimmed milk powder_-",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "_milk fat_ [_Recombined milk_]",
+        "canonicalChemicalName": "_milk fat_",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "_Fresh milk_-30%",
+        "canonicalChemicalName": "_fresh milk_-",
+        "explicitPercentage": 30,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "cocoa powder-0.8%",
+        "canonicalChemicalName": "cocoa powder-",
+        "explicitPercentage": 0.8,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "plant origin stabilizer",
+        "canonicalChemicalName": "plant origin stabilizer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "synthetic flavour",
+        "canonicalChemicalName": "synthetic flavour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993007000239",
+      "retrievedAt": "2026-10-15T13:34:51.771Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993200665006",
+    "name": "Cimory Yog LowFat Stw",
+    "brand": "Cimory",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 240,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 190.00000000000009,
+      "sugarGrams": 25.00000000000008,
+      "proteinGrams": 4.000000000000008,
+      "sodiumMg": 90,
+      "saturatedFatGrams": 1.0000000000000009,
+      "fiberGrams": 4.999999999999992
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "contains milk [Yogurt 80%]",
+        "canonicalChemicalName": "contains milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Streptococcus thermophilus and Lactobacillus delbrueckii subsp. bulgaricus [Yogurt 80%]",
+        "canonicalChemicalName": "streptococcus thermophilus and lactobacillus delbrueckii subsp. bulgaricus",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "maltitol syrup and steviol glycosides [natural sweetener]",
+        "canonicalChemicalName": "maltitol syrup and steviol glycosides",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "vegetable stabilizer",
+        "canonicalChemicalName": "vegetable stabilizer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "synthetic [vors]",
+        "canonicalChemicalName": "synthetic",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "natural [vors]",
+        "canonicalChemicalName": "natural",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "preservative potassium sorbate",
+        "canonicalChemicalName": "preservative potassium sorbate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "natural color carmine CL No. 75470",
+        "canonicalChemicalName": "natural color carmine cl no. 75470",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "contains strawberry 5% and mango 2.5% [mixed fruit powder 0.01%]",
+        "canonicalChemicalName": "contains strawberry  and mango",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "natural * color curcumin Cl. No. 75300. Mengandung alergen",
+        "canonicalChemicalName": "natural * color curcumin cl. no. 75300. mengandung alergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "lihat daftar bahan yang di cetak tebal /May contains allergen",
+        "canonicalChemicalName": "lihat daftar bahan yang di cetak tebal /may contains allergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "see ingredients in bold Konsumsi berlebihan mempunyai efek laksatif Excessive consumption might trigger laxative effect",
+        "canonicalChemicalName": "see ingredients in bold konsumsi berlebihan mempunyai efek laksatif excessive consumption might trigger laxative effect",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993200665006",
+      "retrievedAt": "2026-10-15T13:34:51.771Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993351122427",
+    "name": "Greenfield uht extra vanila",
+    "brand": "Greenfield",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 18,
+      "proteinGrams": 5,
+      "sodiumMg": 55,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "51% [Susu Segar]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Air",
+        "canonicalChemicalName": "air",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Nabati [Susu Skim Bubuk Penstabil]",
+        "canonicalChemicalName": "nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Fosfat [Susu Skim Bubuk Penstabil]",
+        "canonicalChemicalName": "fosfat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Pengemulsi Nabati",
+        "canonicalChemicalName": "pengemulsi nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "0 [Ekstrak Kamomil]",
+        "canonicalChemicalName": "0",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "1% [Ekstrak Kamomil]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Perisa Sintetik",
+        "canonicalChemicalName": "perisa sintetik",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Garam",
+        "canonicalChemicalName": "garam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Premiks Vitamin",
+        "canonicalChemicalName": "premiks vitamin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993351122427",
+      "retrievedAt": "2026-10-15T13:34:51.772Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686060027",
+    "name": "Pop Mie Rasa Ayam",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 60,
+    "flavorTags": [
+      "mi",
+      "gurih"
+    ],
+    "nutrition": {
+      "caloriesKcal": 271.0000000000002,
+      "sugarGrams": 1.999999999999998,
+      "proteinGrams": 4.999999999999998,
+      "sodiumMg": 1038,
+      "saturatedFatGrams": 4.999999999999998,
+      "fiberGrams": 1.999999999999998
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH-30",
+        "canonicalChemicalName": "rh-30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686060027",
+      "retrievedAt": "2026-10-15T13:34:51.773Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686040098",
+    "name": "Indomie Tori Miso",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 86,
+    "flavorTags": [
+      "mi",
+      "gurih"
+    ],
+    "nutrition": {
+      "caloriesKcal": 389.9999999999998,
+      "sugarGrams": 3.0000000000000036,
+      "proteinGrams": 8,
+      "sodiumMg": 564,
+      "saturatedFatGrams": 8,
+      "fiberGrams": 4.999999999999997
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "KOMPOSISI MI: Tepung terigu",
+        "canonicalChemicalName": "komposisi mi: tepung terigu",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "minyak nabati",
+        "canonicalChemicalName": "minyak nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "tepung tapioka",
+        "canonicalChemicalName": "tepung tapioka",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "nabati dan fosfat [penstabil]",
+        "canonicalChemicalName": "nabati dan fosfat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "garam",
+        "canonicalChemicalName": "garam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "pengatur keasaman",
+        "canonicalChemicalName": "pengatur keasaman",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "mengandung susu [antioksidan TBHQ dan pewarna sintetik tartrazin CI 19140. BUMBU: Krimer]",
+        "canonicalChemicalName": "mengandung susu",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "pewarna alami beta-karoten CI 40800 [antioksidan TBHQ dan pewarna sintetik tartrazin CI 19140. BUMBU: Krimer]",
+        "canonicalChemicalName": "pewarna alami beta-karoten ci 40800",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "garam",
+        "canonicalChemicalName": "garam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "mengandung kedelai [perisa sintetik ayam]",
+        "canonicalChemicalName": "mengandung kedelai",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "antioksidan asam askorbat [perisa sintetik ayam]",
+        "canonicalChemicalName": "antioksidan asam askorbat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "alfa tokoferol dan askorbil palmitat [perisa sintetik ayam]",
+        "canonicalChemicalName": "alfa tokoferol dan askorbil palmitat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "mononatrium glutamat [penguat rasa]",
+        "canonicalChemicalName": "mononatrium glutamat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "dinatrium inosinat dan guanilat [penguat rasa]",
+        "canonicalChemicalName": "dinatrium inosinat dan guanilat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "mengandung antioksidan tokoferol campuran pekat [rempah]",
+        "canonicalChemicalName": "mengandung antioksidan tokoferol campuran pekat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "pati termodifikasi",
+        "canonicalChemicalName": "pati termodifikasi",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "0.3% [rumput laut kering]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "0.2% [wijen]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "kuning telur bubuk",
+        "canonicalChemicalName": "kuning telur bubuk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "daun bawang",
+        "canonicalChemicalName": "daun bawang",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "pewama alami karamel I",
+        "canonicalChemicalName": "pewama alami karamel i",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "antikempal silikon dioksida dan vitamin (A, B1, B6, B12, Niasin, Asam Folat dan Pantotenat). MINYAK: Minyak nabati dan perisa sintetik ramen (mengandung antioksidan alfa tokoferol dan penguat rasa asam L-glutamat, dinatrium inosinat dan guanilat). Mengandung alergen",
+        "canonicalChemicalName": "antikempal silikon dioksida dan vitamin (a, b1, b6, b12, niasin, asam folat dan pantotenat). minyak: minyak nabati dan perisa sintetik ramen (mengandung antioksidan alfa tokoferol dan penguat rasa asam l-glutamat, dinatrium inosinat dan guanilat). mengandung alergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "lihat daftar bahan yang dicetak tebal. Mungkin mengandung kacang tanah",
+        "canonicalChemicalName": "lihat daftar bahan yang dicetak tebal. mungkin mengandung kacang tanah",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 24,
+        "rawName": "udang",
+        "canonicalChemicalName": "udang",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 25,
+        "rawName": "ikan dan moluska",
+        "canonicalChemicalName": "ikan dan moluska",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686040098",
+      "retrievedAt": "2026-10-15T13:34:51.773Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8994171101289",
+    "name": "Luwak white coffee rtg",
+    "brand": "luwak",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 20,
+    "flavorTags": [
+      "kopi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 90,
+      "sugarGrams": 12,
+      "proteinGrams": 1,
+      "sodiumMg": 15,
+      "saturatedFatGrams": 1.5,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Contains Milk Protein [Non Dairy Creamer]",
+        "canonicalChemicalName": "contains milk protein",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Instant Coffee 15%",
+        "canonicalChemicalName": "instant coffee",
+        "explicitPercentage": 15,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8994171101289",
+      "retrievedAt": "2026-10-15T13:34:51.774Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8991002101630",
+    "name": "ABC kopi susu",
+    "brand": "ABC",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 30,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "kopi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 129.9999999999999,
+      "sugarGrams": 20.00000000000001,
+      "proteinGrams": 0.999999999999999,
+      "sodiumMg": 3.99999999999999,
+      "saturatedFatGrams": 2.000000000000001,
+      "fiberGrams": 2.000000000000001
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "mengandung susu [krimer nabati]",
+        "canonicalChemicalName": "mengandung susu",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "16 [kopi bubuk]",
+        "canonicalChemicalName": "16",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "49 % [kopi bubuk]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Susu bubuk",
+        "canonicalChemicalName": "susu bubuk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8991002101630",
+      "retrievedAt": "2026-10-15T13:34:51.774Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992696428287",
+    "name": "Milo cup imp",
+    "brand": "Nestlé",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 32,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "sereal"
+    ],
+    "nutrition": {
+      "caloriesKcal": 80,
+      "sugarGrams": 5,
+      "proteinGrams": 2,
+      "sodiumMg": 37.519999999999996,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 30",
+        "canonicalChemicalName": "rh 30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992696428287",
+      "retrievedAt": "2026-10-15T13:34:51.774Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993175535250",
+    "name": "Nabati Bites Cheese Cream Wafer",
+    "brand": "Nabati",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 15,
+    "flavorTags": [
+      "keju"
+    ],
+    "nutrition": {
+      "caloriesKcal": 70.00000000000006,
+      "sugarGrams": 4.999999999999995,
+      "proteinGrams": 1.0000000000000004,
+      "sodiumMg": 25.999999999999954,
+      "saturatedFatGrams": 1.0000000000000004,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "_Wheat Flour_",
+        "canonicalChemicalName": "_wheat flour_",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "contains Antioxidant TBHQ [Vegetable Oil]",
+        "canonicalChemicalName": "contains antioxidant tbhq",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "_Whey Powder_",
+        "canonicalChemicalName": "_whey powder_",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "contains Flavour Enhancer Monosodium Glutamate and Disodium-5'ribonucleotides [_Cheese Powder_-3%]",
+        "canonicalChemicalName": "contains flavour enhancer monosodium glutamate and disodium-5'ribonucleotides",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Ponceau 4R CI 16255 and Sunset Yellow FCF CI 15985 [Synthetic Colour] [_Cheese Powder_-3%]",
+        "canonicalChemicalName": "ponceau 4r ci 16255 and sunset yellow fcf ci 15985",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Corn Starch",
+        "canonicalChemicalName": "corn starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Emulsifier Soy Lecithin",
+        "canonicalChemicalName": "emulsifier soy lecithin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Raising Agent",
+        "canonicalChemicalName": "raising agent",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Flavour Enchancer Monosodium Glutamate",
+        "canonicalChemicalName": "flavour enchancer monosodium glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "A [Vitamin]",
+        "canonicalChemicalName": "a",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "B1 [Vitamin]",
+        "canonicalChemicalName": "b1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "B2 [Vitamin]",
+        "canonicalChemicalName": "b2",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "B6 [Vitamin]",
+        "canonicalChemicalName": "b6",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "B12 [Vitamin]",
+        "canonicalChemicalName": "b12",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "Synthetic Colour Sunset Yellow FCF CI 15985",
+        "canonicalChemicalName": "synthetic colour sunset yellow fcf ci 15985",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993175535250",
+      "retrievedAt": "2026-10-15T13:34:51.788Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997035600546",
+    "name": "Ion Supply Drink 900ml",
+    "brand": "Pocari",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 35,
+      "proteinGrams": 0,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Air",
+        "canonicalChemicalName": "air",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "pengatur keasaman",
+        "canonicalChemicalName": "pengatur keasaman",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "natrium klorida",
+        "canonicalChemicalName": "natrium klorida",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "kalium klorida",
+        "canonicalChemicalName": "kalium klorida",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "kalsium laktat",
+        "canonicalChemicalName": "kalsium laktat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "magnesium karbonat",
+        "canonicalChemicalName": "magnesium karbonat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "antioksidan asam askorbat",
+        "canonicalChemicalName": "antioksidan asam askorbat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "perisa sintetik dan perisa alami sitrus.",
+        "canonicalChemicalName": "perisa sintetik dan perisa alami sitrus.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997035600546",
+      "retrievedAt": "2026-10-15T13:34:51.788Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997025911058",
+    "name": "See Hong Puff",
+    "brand": "Hatari",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 16,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 70,
+      "sugarGrams": 2,
+      "proteinGrams": 1,
+      "sodiumMg": 32,
+      "saturatedFatGrams": 1,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "58% [Tepung Terigu]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Mengandung Antioksidan BHA [Minyak Nabati]",
+        "canonicalChemicalName": "mengandung antioksidan bha",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "3.2% [Kelapa Parut]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Amonium Bikarbonat [Pengembang]",
+        "canonicalChemicalName": "amonium bikarbonat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Tepung Tapioka Garam",
+        "canonicalChemicalName": "tepung tapioka garam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Ragi",
+        "canonicalChemicalName": "ragi",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Perisa Sintetik Kelapa.\nDiproduksi menggunakan peralatan yang juga memproses Kacang tanah",
+        "canonicalChemicalName": "perisa sintetik kelapa.\ndiproduksi menggunakan peralatan yang juga memproses kacang tanah",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "susu",
+        "canonicalChemicalName": "susu",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "telur",
+        "canonicalChemicalName": "telur",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "kedelai",
+        "canonicalChemicalName": "kedelai",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997025911058",
+      "retrievedAt": "2026-10-15T13:34:51.789Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "5010477346032",
+    "name": "Crunchy Oat Granola Tropical Fruits",
+    "brand": "Jordans",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 100,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 426,
+      "sugarGrams": 22,
+      "proteinGrams": 10,
+      "sodiumMg": 20,
+      "saturatedFatGrams": 4.4,
+      "fiberGrams": 6.2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Wholegrain _Oat_ Flakes 69%",
+        "canonicalChemicalName": "wholegrain _oat_ flakes",
+        "explicitPercentage": 69,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Papaya [Dried Papaya] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "papaya",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Cane Sugar [Dried Papaya] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "cane sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Coconut Chips [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "coconut chips",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Pineapple [Dried Pineapple Chunks] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "pineapple",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Cane Sugar [Dried Pineapple Chunks] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "cane sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Pineapple Juice [Dried Pineapple Chunks] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "pineapple juice",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Citric Acid [Acidity Regulator] [Dried Pineapple Chunks] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "citric acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Banana [Dried Banana Chips] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "banana",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Coconut Oil [Dried Banana Chips] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "coconut oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Sugar [Dried Banana Chips] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Natural Flavouring [Dried Banana Chips] [Dried Tropical Fruits 15%]",
+        "canonicalChemicalName": "natural flavouring",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "Rapeseed and sunflower oil in varying proportions [Vegetable Oils]",
+        "canonicalChemicalName": "rapeseed and sunflower oil in varying proportions",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "Honey 1%",
+        "canonicalChemicalName": "honey",
+        "explicitPercentage": 1,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Sunflower Seeds",
+        "canonicalChemicalName": "sunflower seeds",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "Gluten [Natural Flavouring. Advice\r\nWheat]",
+        "canonicalChemicalName": "gluten [natural flavouring. advice\r\nwheat]",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "Gluten [Barley]",
+        "canonicalChemicalName": "gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "Gluten [Rye]",
+        "canonicalChemicalName": "gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "Nuts.",
+        "canonicalChemicalName": "nuts.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/5010477346032",
+      "retrievedAt": "2026-10-15T13:34:51.790Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8994171101081",
+    "name": "Luwak kopi+gula",
+    "brand": "",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 23,
+    "flavorTags": [
+      "kopi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 90,
+      "sugarGrams": 15.99999999999999,
+      "proteinGrams": 0.9999999999999996,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 4.000000000000003
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "30% [Coffee Powder]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8994171101081",
+      "retrievedAt": "2026-10-15T13:34:51.791Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009050053",
+    "name": "Ultra sari kacang hijau",
+    "brand": "",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 110,
+      "sugarGrams": 20,
+      "proteinGrams": 2,
+      "sodiumMg": 24,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 7
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 90",
+        "canonicalChemicalName": "rh 90",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009050053",
+      "retrievedAt": "2026-10-15T13:34:51.794Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992735210095",
+    "name": "Bumbu Nasi Goreng Indonesiia",
+    "brand": "Bamboe",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 10,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 35,
+      "sugarGrams": 1,
+      "proteinGrams": 1,
+      "sodiumMg": 160,
+      "saturatedFatGrams": 1,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "shallots-37.3%",
+        "canonicalChemicalName": "shallots-",
+        "explicitPercentage": 37.3,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "vegetable oil",
+        "canonicalChemicalName": "vegetable oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "tomato-14.1%",
+        "canonicalChemicalName": "tomato-",
+        "explicitPercentage": 14.1,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "garlic-12.9%",
+        "canonicalChemicalName": "garlic-",
+        "explicitPercentage": 12.9,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "chili-9%.",
+        "canonicalChemicalName": "chili-.",
+        "explicitPercentage": 9,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992735210095",
+      "retrievedAt": "2026-10-15T13:34:51.794Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997240600256",
+    "name": "Oat Side Full Cream",
+    "brand": "Oatside",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 6,
+      "proteinGrams": 1,
+      "sodiumMg": 95,
+      "saturatedFatGrams": 0.5,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Water [Oat M⭑Ik Ingredients: Oat Base]",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "10% [Oat] [Oat M⭑Ik Ingredients: Oat Base]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Canola Oil",
+        "canonicalChemicalName": "canola oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Dipotassium Phosphate [Acidity Regulator]",
+        "canonicalChemicalName": "dipotassium phosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Calcium Carbonate",
+        "canonicalChemicalName": "calcium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Sea Salt",
+        "canonicalChemicalName": "sea salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997240600256",
+      "retrievedAt": "2026-10-15T13:34:51.795Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009011696",
+    "name": "ultra mimi kids full cream",
+    "brand": "",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "mi",
+      "gurih",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 70,
+      "sugarGrams": 6,
+      "proteinGrams": 4,
+      "sodiumMg": 24,
+      "saturatedFatGrams": 2.5,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "fresh milk",
+        "canonicalChemicalName": "fresh milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009011696",
+      "retrievedAt": "2026-10-15T13:34:51.815Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0011747233033",
+    "name": "Kacang Dua Kelinci",
+    "brand": "Dua Kelincii",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 25,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 0,
+      "proteinGrams": 8,
+      "sodiumMg": 135,
+      "saturatedFatGrams": 2.5,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "96% [Kacang Tanah]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0011747233033",
+      "retrievedAt": "2026-10-15T13:34:51.815Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0749921050120",
+    "name": "L-men gain mass choco 225g",
+    "brand": "L-Men",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 75,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 300,
+      "sugarGrams": 20.000000000000025,
+      "proteinGrams": 21.99999999999998,
+      "sodiumMg": 80.00000000000026,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 90",
+        "canonicalChemicalName": "rh 90",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0749921050120",
+      "retrievedAt": "2026-10-15T13:34:51.815Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8999269481014",
+    "name": "S-26® PROCAL GOLD® MULTIEXCEL αLipids System",
+    "brand": "Wyeth Nutrition",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 42,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 180.00000000000017,
+      "sugarGrams": 23.000000000000018,
+      "proteinGrams": 4.999999999999997,
+      "sodiumMg": 44.0000000000001,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0.9999999999999996
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "lactose",
+        "canonicalChemicalName": "lactose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "nonfat powdered milk",
+        "canonicalChemicalName": "nonfat powdered milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "soybean [vegetable oils]",
+        "canonicalChemicalName": "soybean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "sunflower oleic [vegetable oils]",
+        "canonicalChemicalName": "sunflower oleic",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "palm [vegetable oils]",
+        "canonicalChemicalName": "palm",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "contains antioxidants",
+        "canonicalChemicalName": "contains antioxidants",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "whey protein concentrate",
+        "canonicalChemicalName": "whey protein concentrate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "maltodextrin",
+        "canonicalChemicalName": "maltodextrin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "oligofructose",
+        "canonicalChemicalName": "oligofructose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "14 minerals",
+        "canonicalChemicalName": "14 minerals",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "emulsifiers",
+        "canonicalChemicalName": "emulsifiers",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "vitamin",
+        "canonicalChemicalName": "vitamin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "long chain polyunsaturated fatty acids come from single cells",
+        "canonicalChemicalName": "long chain polyunsaturated fatty acids come from single cells",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "arachidonic acid",
+        "canonicalChemicalName": "arachidonic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "taurine",
+        "canonicalChemicalName": "taurine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "artificial flavors",
+        "canonicalChemicalName": "artificial flavors",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "acidity regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "5 nucleotides",
+        "canonicalChemicalName": "5 nucleotides",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "antioxidant.",
+        "canonicalChemicalName": "antioxidant.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8999269481014",
+      "retrievedAt": "2026-10-15T13:34:51.816Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992952956288",
+    "name": "Crunchy cashew nut",
+    "brand": "Indomaret",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 30,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 180,
+      "sugarGrams": 3.9999990000000003,
+      "proteinGrams": 5.000001,
+      "sodiumMg": 90,
+      "saturatedFatGrams": 3.495,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Cashew Nuts (86.38%). Granulated Sugar (Contains Sulphite Preservatives). Palm Oil",
+        "canonicalChemicalName": "cashew nuts (). granulated sugar (contains sulphite preservatives). palm oil",
+        "explicitPercentage": 86.38,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Flavor",
+        "canonicalChemicalName": "flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Enhancer Monosodium Glutamate",
+        "canonicalChemicalName": "enhancer monosodium glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Garlic",
+        "canonicalChemicalName": "garlic",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Coriander Powder",
+        "canonicalChemicalName": "coriander powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "0.18% [Honey]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Modified Tapioca Starch. Mengandung alergen",
+        "canonicalChemicalName": "modified tapioca starch. mengandung alergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "lihat daftar bahan yang dicetak tebal / Contain allergens",
+        "canonicalChemicalName": "lihat daftar bahan yang dicetak tebal / contain allergens",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "see the ingredients in bold.",
+        "canonicalChemicalName": "see the ingredients in bold.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992952956288",
+      "retrievedAt": "2026-10-15T13:34:51.817Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8998009017810",
+    "name": "Ultra Full Cream 125ml",
+    "brand": "UltraMilk",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "creamy",
+      "susu"
+    ],
+    "nutrition": {
+      "caloriesKcal": 70,
+      "sugarGrams": 5,
+      "proteinGrams": 4,
+      "sodiumMg": 25,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Susu sapi segar",
+        "canonicalChemicalName": "susu sapi segar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8998009017810",
+      "retrievedAt": "2026-10-15T13:34:51.817Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8999898299035",
+    "name": "Diamond Fresh Milk",
+    "brand": "Diamond",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 7,
+      "proteinGrams": 7,
+      "sodiumMg": 36,
+      "saturatedFatGrams": 4.5,
+      "fiberGrams": 9
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Fresh milk",
+        "canonicalChemicalName": "fresh milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8999898299035",
+      "retrievedAt": "2026-10-15T13:34:51.817Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992858527308",
+    "name": "Hydro Coco - Original 250ml",
+    "brand": "Kalbe",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 60,
+      "sugarGrams": 7,
+      "proteinGrams": 0,
+      "sodiumMg": 41.00000000000001,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 8
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 60",
+        "canonicalChemicalName": "rh 60",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992858527308",
+      "retrievedAt": "2026-10-15T13:34:51.818Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8991002121010",
+    "name": "good day funtastic Mocachino",
+    "brand": "kapal api group",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "kopi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 22,
+      "proteinGrams": 1,
+      "sodiumMg": 32,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Air",
+        "canonicalChemicalName": "air",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "mengandung susu [krimer nabati]",
+        "canonicalChemicalName": "mengandung susu",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "1.05% [Kopi instan]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "susu bubuk skim",
+        "canonicalChemicalName": "susu bubuk skim",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "penstabil nabati",
+        "canonicalChemicalName": "penstabil nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "perisa sintetik moka",
+        "canonicalChemicalName": "perisa sintetik moka",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "kakao bubuk",
+        "canonicalChemicalName": "kakao bubuk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8991002121010",
+      "retrievedAt": "2026-10-15T13:34:51.818Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0661706051149",
+    "name": "puck",
+    "brand": "Puck",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 15,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "keju"
+    ],
+    "nutrition": {
+      "caloriesKcal": 45,
+      "sugarGrams": 0,
+      "proteinGrams": 1.0000000000000004,
+      "sodiumMg": 135,
+      "saturatedFatGrams": 2.5000000000000053,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 90",
+        "canonicalChemicalName": "rh 90",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0661706051149",
+      "retrievedAt": "2026-10-15T13:34:51.819Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8999099920769",
+    "name": "SGM Eksplor 3+ Cokelat",
+    "brand": "SGM",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 40,
+    "flavorTags": [
+      "cokelat",
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 170,
+      "sugarGrams": 17,
+      "proteinGrams": 5,
+      "sodiumMg": 36,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "_Milk Powder-42%_",
+        "canonicalChemicalName": "_milk powder-_",
+        "explicitPercentage": 42,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Maltodextrin",
+        "canonicalChemicalName": "maltodextrin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Sucrose",
+        "canonicalChemicalName": "sucrose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "contains antioxidants dl-a-tocopherol and ascorbyl palmitate [Vegetable Oil Blend]",
+        "canonicalChemicalName": "contains antioxidants dl-a-tocopherol and ascorbyl palmitate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Cocoa Powder-4.5%",
+        "canonicalChemicalName": "cocoa powder-",
+        "explicitPercentage": 4.5,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Dietary Fiber-3%",
+        "canonicalChemicalName": "dietary fiber-",
+        "explicitPercentage": 3,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "6 Minerals",
+        "canonicalChemicalName": "6 minerals",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Synthetic Chocolate Flavor",
+        "canonicalChemicalName": "synthetic chocolate flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Soy Lecithin Emulsifier",
+        "canonicalChemicalName": "soy lecithin emulsifier",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Vitamin Premix",
+        "canonicalChemicalName": "vitamin premix",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Synthetic Vanilla Flavor",
+        "canonicalChemicalName": "synthetic vanilla flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "contains antioxidants tocopherol [DHA Derived from Fish Oil-0.02%]",
+        "canonicalChemicalName": "contains antioxidants tocopherol",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "ascorbyl palmitate [DHA Derived from Fish Oil-0.02%]",
+        "canonicalChemicalName": "ascorbyl palmitate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "citric acid [DHA Derived from Fish Oil-0.02%]",
+        "canonicalChemicalName": "citric acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "and sodium ascorbate [DHA Derived from Fish Oil-0.02%]",
+        "canonicalChemicalName": "and sodium ascorbate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8999099920769",
+      "retrievedAt": "2026-10-15T13:34:51.819Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686010527",
+    "name": "Indomie Kari Ayam",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 72,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "kentang",
+      "sereal"
+    ],
+    "nutrition": {
+      "caloriesKcal": 329.9999999999997,
+      "sugarGrams": 2.0000000000000013,
+      "proteinGrams": 6.999999999999997,
+      "sodiumMg": 1219.9999999999966,
+      "saturatedFatGrams": 6.999999999999997,
+      "fiberGrams": 3.000000000000002
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 60",
+        "canonicalChemicalName": "rh 60",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686010527",
+      "retrievedAt": "2026-10-15T13:34:51.829Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993351120201",
+    "name": "Mango Yogurts Greenfields",
+    "brand": "Mango Yogurts Greenfields",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 12,
+      "proteinGrams": 4,
+      "sodiumMg": 30,
+      "saturatedFatGrams": 2.5,
+      "fiberGrams": 4
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Fresh Milk",
+        "canonicalChemicalName": "fresh milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "7.0% [Slice Mango Fruit]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Polydextrose",
+        "canonicalChemicalName": "polydextrose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "S Vegetable Thickener",
+        "canonicalChemicalName": "s vegetable thickener",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Animal Stabiliser",
+        "canonicalChemicalName": "animal stabiliser",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Mango Synthetic Flavor",
+        "canonicalChemicalName": "mango synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "contains antexidant tocopherol and ascorbic acid [Vegetable Stabilise]",
+        "canonicalChemicalName": "contains antexidant tocopherol and ascorbic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Acidity Regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Lactobacillus delbrueckii subsp. bulgaricus [Preservative Pa]",
+        "canonicalChemicalName": "lactobacillus delbrueckii subsp. bulgaricus",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Streptococcus thermophilus [Preservative Pa]",
+        "canonicalChemicalName": "streptococcus thermophilus",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993351120201",
+      "retrievedAt": "2026-10-15T13:34:51.829Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8691216090446",
+    "name": "Haribo happy cola",
+    "brand": "Haribo",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 30,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 110.00000000000011,
+      "sugarGrams": 14.000000000000009,
+      "proteinGrams": 2.000000000000001,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0.999999999999999
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "sirup glukosa",
+        "canonicalChemicalName": "sirup glukosa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "gelatin kulit sapi",
+        "canonicalChemicalName": "gelatin kulit sapi",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "dekstrosa",
+        "canonicalChemicalName": "dekstrosa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "asam sitrat",
+        "canonicalChemicalName": "asam sitrat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "sirup gula karamel",
+        "canonicalChemicalName": "sirup gula karamel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "perisa identik alami",
+        "canonicalChemicalName": "perisa identik alami",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "minyak nabati",
+        "canonicalChemicalName": "minyak nabati",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "lilin karnauba",
+        "canonicalChemicalName": "lilin karnauba",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "malam",
+        "canonicalChemicalName": "malam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8691216090446",
+      "retrievedAt": "2026-10-15T13:34:51.830Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997225200051",
+    "name": "Greensand lime apple",
+    "brand": "green sands",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 90,
+      "sugarGrams": 21,
+      "proteinGrams": 0,
+      "sodiumMg": 4,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "air berkarbonasi \r\ngula \r\nperisa alami malt (mengandung pewarna alami karamel kelas IV)\r\nSARI BUAH jeruk nipis (0,56%)\r\nsari buah apel (0,43%)\r\nperisa sintetik apel jeruk nipis",
+        "canonicalChemicalName": "air berkarbonasi \r\ngula \r\nperisa alami malt (mengandung pewarna alami karamel kelas iv)\r\nsari buah jeruk nipis ()\r\nsari buah apel ()\r\nperisa sintetik apel jeruk nipis",
+        "explicitPercentage": 0.56,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997225200051",
+      "retrievedAt": "2026-10-15T13:34:51.830Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3096898072233",
+    "name": "Greek Yogurt, Plain",
+    "brand": "",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 80,
+    "flavorTags": [
+      "creamy",
+      "susu"
+    ],
+    "nutrition": {
+      "caloriesKcal": 84.8,
+      "sugarGrams": 2.4,
+      "proteinGrams": 4,
+      "sodiumMg": 19.2,
+      "saturatedFatGrams": 3.2,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Yogurt",
+        "canonicalChemicalName": "yogurt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3096898072233",
+      "retrievedAt": "2026-10-15T13:34:51.830Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997209920050",
+    "name": "Granola Creation",
+    "brand": "Hundred Seeds",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 20,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "sereal"
+    ],
+    "nutrition": {
+      "caloriesKcal": 100,
+      "sugarGrams": 3,
+      "proteinGrams": 2,
+      "sodiumMg": 4,
+      "saturatedFatGrams": 3,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Rolled oats",
+        "canonicalChemicalName": "rolled oats",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "coconut sugar",
+        "canonicalChemicalName": "coconut sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "5.2% [raisin]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "contains sulfite [sugar cane]",
+        "canonicalChemicalName": "contains sulfite",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "coconut oil",
+        "canonicalChemicalName": "coconut oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "cashew",
+        "canonicalChemicalName": "cashew",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "3.7% [dried banana]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "dried coconut",
+        "canonicalChemicalName": "dried coconut",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "2.6% [pumpkin seeds]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "sunflower seeds",
+        "canonicalChemicalName": "sunflower seeds",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "sesame seeds",
+        "canonicalChemicalName": "sesame seeds",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "0.7% [dried mango]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "sea salt.",
+        "canonicalChemicalName": "sea salt.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997209920050",
+      "retrievedAt": "2026-10-15T13:34:51.845Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8851019210124",
+    "name": "Pocky strawberry",
+    "brand": "Pocky, Glico, กูลิโกะ, ป๊อกกี้",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 45,
+    "flavorTags": [
+      "stroberi",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 235.35,
+      "sugarGrams": 16.425,
+      "proteinGrams": 4.275,
+      "sodiumMg": 30.6,
+      "saturatedFatGrams": 6.66,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "45 ge",
+        "canonicalChemicalName": "45 ge",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8851019210124",
+      "retrievedAt": "2026-10-15T13:34:51.845Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686043433",
+    "name": "Indomie Mi Goreng Rasa Ayam Geprek",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 85,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "kentang",
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 348.5,
+      "sugarGrams": 5.1,
+      "proteinGrams": 7.65,
+      "sodiumMg": 306,
+      "saturatedFatGrams": 7.65,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 30",
+        "canonicalChemicalName": "rh 30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686043433",
+      "retrievedAt": "2026-10-15T13:34:51.845Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993351121307",
+    "name": "GreenFields Full Cream Milk",
+    "brand": "Greenfields",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 9,
+      "proteinGrams": 6,
+      "sodiumMg": 70,
+      "saturatedFatGrams": 4,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "100% Susu Sapi Segar \r\nMengandung alergen",
+        "canonicalChemicalName": "susu sapi segar \r\nmengandung alergen",
+        "explicitPercentage": 100,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "lihat daftar bahan yang dicetak tebo.",
+        "canonicalChemicalName": "lihat daftar bahan yang dicetak tebo.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993351121307",
+      "retrievedAt": "2026-10-15T13:34:51.846Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8993200666935",
+    "name": "Cimory Squeeze Original",
+    "brand": "Cimory Squeeze Original",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 100,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 100,
+      "sugarGrams": 10,
+      "proteinGrams": 3,
+      "sodiumMg": 75,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "full cream powder",
+        "canonicalChemicalName": "full cream powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "skim milk powder",
+        "canonicalChemicalName": "skim milk powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "animal vegetable base [stabilizer]",
+        "canonicalChemicalName": "animal vegetable base",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Streptococcus thermophilus Lactobacillus delbrueckii subsp. bulgaricus preservative potassium sorbate.",
+        "canonicalChemicalName": "streptococcus thermophilus lactobacillus delbrueckii subsp. bulgaricus preservative potassium sorbate.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8993200666935",
+      "retrievedAt": "2026-10-15T13:34:51.846Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8852756303056",
+    "name": "Kelloggs Corn Flakes E-1B",
+    "brand": "Kellogg's, เคลล็อกส์",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 30,
+    "flavorTags": [
+      "kentang",
+      "gurih",
+      "sereal"
+    ],
+    "nutrition": {
+      "caloriesKcal": 109.5,
+      "sugarGrams": 2.7,
+      "proteinGrams": 2.1,
+      "sodiumMg": 200.10000000000002,
+      "saturatedFatGrams": 0.06,
+      "fiberGrams": 0.78
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "90% [Corn]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Malt Extract",
+        "canonicalChemicalName": "malt extract",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "lodized Salt",
+        "canonicalChemicalName": "lodized salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Vitamin C [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin c",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Reduced Iron [Iron] [Vitamins & Minerals]",
+        "canonicalChemicalName": "reduced iron",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Iron Salt [Iron] [Vitamins & Minerals]",
+        "canonicalChemicalName": "iron salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Vitamin B3 [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin b3",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Zinc Oxide [Vitamins & Minerals]",
+        "canonicalChemicalName": "zinc oxide",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Vitamin A [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin a",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Vitamin B6 [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin b6",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Vitamin B12 [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin b12",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Vitamin B2 [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin b2",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "Vitamin B1 [Vitamins & Minerals]",
+        "canonicalChemicalName": "vitamin b1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "Folic Acid [Vitamins & Minerals]",
+        "canonicalChemicalName": "folic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Antioxidant (Mixed Tocopherol). Contains gluten and soybean. May contain traces of peanuts",
+        "canonicalChemicalName": "antioxidant (mixed tocopherol). contains gluten and soybean. may contain traces of peanuts",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "tree nuts and milk.",
+        "canonicalChemicalName": "tree nuts and milk.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8852756303056",
+      "retrievedAt": "2026-10-15T13:34:51.847Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8886451002860",
+    "name": "Pediasure Vanilla",
+    "brand": "Pediasure",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 39,
+    "flavorTags": [
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 180.00000000000017,
+      "sugarGrams": 14,
+      "proteinGrams": 25,
+      "sodiumMg": 28.000000000000004,
+      "saturatedFatGrams": 2.000000000000001,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Concentrated Corn Syrup",
+        "canonicalChemicalName": "concentrated corn syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sucrose",
+        "canonicalChemicalName": "sucrose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Soybean Oil [Vegetable Oil]",
+        "canonicalChemicalName": "soybean oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "High Oleic Sunflower Oil [Vegetable Oil]",
+        "canonicalChemicalName": "high oleic sunflower oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "MCT Oil [Vegetable Oil]",
+        "canonicalChemicalName": "mct oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "11.3% [Milk Protein Concentrate]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "2.6% [Whey Protein Concentrate]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Sodium Chloride [15 MINERALS]",
+        "canonicalChemicalName": "sodium chloride",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Iron Sulfate [15 MINERALS]",
+        "canonicalChemicalName": "iron sulfate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Zinc Sulfate [15 MINERALS]",
+        "canonicalChemicalName": "zinc sulfate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Manganese Sulfate [15 MINERALS]",
+        "canonicalChemicalName": "manganese sulfate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Copper Sulfate [15 MINERALS]",
+        "canonicalChemicalName": "copper sulfate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Potassium Iodide [15 MINERALS]",
+        "canonicalChemicalName": "potassium iodide",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "Chromium Chloride [15 MINERALS]",
+        "canonicalChemicalName": "chromium chloride",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "Sodium Selenite [15 MINERALS]",
+        "canonicalChemicalName": "sodium selenite",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Sodium Molybdate [15 MINERALS]",
+        "canonicalChemicalName": "sodium molybdate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "Oligofructose",
+        "canonicalChemicalName": "oligofructose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "2.3% [Soy Protein Isolate]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "Synthetic Flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "Choline Chloride [16 VITAMINS]",
+        "canonicalChemicalName": "choline chloride",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "Mixed [16 VITAMINS]",
+        "canonicalChemicalName": "mixed",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "dl-Alpha Tocopheryl Acetate [16 VITAMINS]",
+        "canonicalChemicalName": "dl-alpha tocopheryl acetate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "d-Calcium Pantothenate [16 VITAMINS]",
+        "canonicalChemicalName": "d-calcium pantothenate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "Pyridoxine HCl [16 VITAMINS]",
+        "canonicalChemicalName": "pyridoxine hcl",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 24,
+        "rawName": "Thiamine HCl [16 VITAMINS]",
+        "canonicalChemicalName": "thiamine hcl",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 25,
+        "rawName": "Vitamin A Palmitate [16 VITAMINS]",
+        "canonicalChemicalName": "vitamin a palmitate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 26,
+        "rawName": "Folic Acid [16 VITAMINS]",
+        "canonicalChemicalName": "folic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 27,
+        "rawName": "Phylloquinone [16 VITAMINS]",
+        "canonicalChemicalName": "phylloquinone",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 28,
+        "rawName": "Biotin [16 VITAMINS]",
+        "canonicalChemicalName": "biotin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 29,
+        "rawName": "Vitamin D3 [16 VITAMINS]",
+        "canonicalChemicalName": "vitamin d3",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 30,
+        "rawName": "Cyanocobalamin [16 VITAMINS]",
+        "canonicalChemicalName": "cyanocobalamin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 31,
+        "rawName": "DHA [Docosahexaenoic Acid]",
+        "canonicalChemicalName": "dha",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 32,
+        "rawName": "AA [Arachidonic Acid]",
+        "canonicalChemicalName": "aa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 33,
+        "rawName": "Taurine",
+        "canonicalChemicalName": "taurine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 34,
+        "rawName": "M-Inositol",
+        "canonicalChemicalName": "m-inositol",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 35,
+        "rawName": "Lactobacillus acidophilus",
+        "canonicalChemicalName": "lactobacillus acidophilus",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 36,
+        "rawName": "Bifidobacterium lactis",
+        "canonicalChemicalName": "bifidobacterium lactis",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 37,
+        "rawName": "L-Carnitine.",
+        "canonicalChemicalName": "l-carnitine.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8886451002860",
+      "retrievedAt": "2026-10-15T13:34:51.848Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992753033720",
+    "name": "Frisian Flag uht Swiss Chocolate ktk 225ml",
+    "brand": "Frisian Flag",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 225,
+    "flavorTags": [
+      "cokelat",
+      "creamy",
+      "susu",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 159.99999999999997,
+      "sugarGrams": 18.99999999999999,
+      "proteinGrams": 4.999999999999996,
+      "sodiumMg": 49.99999999999995,
+      "saturatedFatGrams": 2.9999999999999925,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH 30",
+        "canonicalChemicalName": "rh 30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992753033720",
+      "retrievedAt": "2026-10-15T13:34:51.849Z",
+      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  }
+]
