@@ -174,10 +174,14 @@ Impor harga massal: `npm run data:prices`. Snapshot observasi, bukti, tanggal da
 
 `/login` dan `/register` menyediakan akun umum yang opsional. Daftar memakai nama, email dan kata sandi minimal 12 karakter; profil tamu aktif dipertahankan ketika diubah menjadi akun. Login memakai sesi acak dengan hash di database, kedaluwarsa eksplisit, dan cookie HttpOnly. Email unik, validasi Zod, pemeriksaan Origin dan pembatasan percobaan berlaku pada pendaftaran dan login. Profil tersimpan tersedia kembali sesudah login dari perangkat lain. Profil saya dapat mencabut akses perangkat lain atau perangkat saat ini.
 
-Di ponsel, Periksa label, Kamus bahan dan Profil saya berada di navigasi bawah dengan ruang aman untuk indikator perangkat. Halaman masuk/daftar memiliki tombol kembali dan pilihan tetap memeriksa tanpa akun. Pengalihan setelah autentikasi hanya menerima halaman aplikasi yang diizinkan.
+Di ponsel, Scan label, Kamus bahan, Riwayat dan Profil saya berada di navigasi bawah dengan ruang aman untuk indikator perangkat. Halaman masuk/daftar memiliki tombol kembali dan pilihan tetap memeriksa tanpa akun. Pengalihan setelah autentikasi hanya menerima halaman aplikasi yang diizinkan.
 
 Setelah daftar dari scanner atau kamus, `/welcome` menawarkan pengaturan profil yang dapat dilewati. Menyimpan atau melewati langkah ini mengembalikan pengguna ke tujuan awal. Pendaftaran untuk menyimpan profil tamu langsung kembali ke profil tersebut. Login langsung kembali ke halaman yang dituju. Formulir ponsel tampil tanpa pengantar panjang; hasil scanner mendapat fokus setelah selesai dan menyediakan tautan kembali ke input.
 
 ## Pembaruan sumber otomatis
 
 Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang satu jam setelah kegagalan, validasi sebelum seed, serta status sumber/tanggal di scanner dan kamus. Sumber katalog bundel historis adalah staging penyedia; pembaruan otomatis hanya menerima produksi dan tidak menandai snapshot lama sebagai baru ketika akses gagal. AI memakai fakta database, bukan penelusuran web langsung atau pengetahuan yang dijamin terbaru. Lihat [DATA_REFRESH.md](DATA_REFRESH.md).
+
+## QA alur pengguna
+
+[QA_FLOW.md](QA_FLOW.md) memetakan 16 skenario dari akses tamu/akun hingga kamera, OCR, tinjau, hasil, riwayat dan keluar. [QA_REPORT.md](QA_REPORT.md) mencatat temuan, koreksi, pengujian ulang dan batas bukti. Uji browser menggunakan fixture yang disertakan di tests/fixtures; respons gagal terkontrol dipisahkan dari pemeriksaan AI nyata.

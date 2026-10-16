@@ -171,11 +171,11 @@ test("gallery adds to captured selection and rejects excess or oversized files w
     .click();
   await page.waitForURL("**/scanner");
   const input = page.getByLabel("Foto komposisi dan informasi gizi");
-  await input.setInputFiles("artifacts/vision-fixtures/per-serving.png");
+  await input.setInputFiles("tests/fixtures/per-serving.png");
   await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
   await input.setInputFiles([
-    "artifacts/vision-fixtures/per-serving.png",
-    "artifacts/vision-fixtures/per-100-comma.png",
+    "tests/fixtures/per-serving.png",
+    "tests/fixtures/per-100-comma.png",
   ]);
   await expect(
     page.getByRole("alert").filter({ hasText: "Maksimal dua foto" }),
@@ -190,7 +190,7 @@ test("gallery adds to captured selection and rejects excess or oversized files w
     page.getByRole("alert").filter({ hasText: "maksimal 5 MB" }),
   ).toBeVisible();
   await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
-  await input.setInputFiles("artifacts/vision-fixtures/per-100-comma.png");
+  await input.setInputFiles("tests/fixtures/per-100-comma.png");
   await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(2);
   await expect(
     page.locator('.scanner-entry .error-text[role="alert"]'),
@@ -222,7 +222,7 @@ test("denied camera permission has a useful gallery fallback", async ({
   await page
     .getByRole("button", { name: "Pilih foto dari galeri", exact: true })
     .click();
-  await (await chooser).setFiles("artifacts/vision-fixtures/per-serving.png");
+  await (await chooser).setFiles("tests/fixtures/per-serving.png");
   await expect(page.getByRole("img", { name: "Foto pilihan 1" })).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Baca foto label", exact: true }),

@@ -31,6 +31,15 @@ const nutrientLabels = [
   ["saturatedFatGrams", "Lemak jenuh (g)"],
   ["fiberGrams", "Serat (g)"],
 ] as const;
+const resultDetails = {
+  "#hasil-ringkas": "overview",
+  "#komposisi": "ingredients",
+  "#sumber-gula": "sugar",
+  "#pilihan-pengganti": "swaps",
+} as const;
+function detailFromHash(hash: string) {
+  return resultDetails[hash as keyof typeof resultDetails];
+}
 export function ScannerConsole({ historyId }: { historyId?: string }) {
   const queryClient = useQueryClient();
   const history = useQuery({
@@ -60,6 +69,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [photoError, setPhotoError] = useState("");
   const photoInput = useRef<HTMLInputElement>(null);
+  const photoFailure = useRef<HTMLParagraphElement>(null);
   const selectedFiles = photos.map((file) => file.name);
   const [activeCase, setActiveCase] = useState("");
   const [formError, setFormError] = useState("");
@@ -86,6 +96,10 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
       queryClient.invalidateQueries({ queryKey: ["history"] });
       setWorkspace("result");
       setDetail("overview");
+      const url = new URL(window.location.href);
+      url.searchParams.delete("history");
+      url.hash = "hasil-ringkas";
+      window.history.replaceState(window.history.state, "", url);
     },
     mutationFn: (body: object | FormData) =>
       requestApi("/api/scan", analysisSchema, {
@@ -142,6 +156,14 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
     },
   });
   const busy = scan.isPending || extraction.isPending;
+  useEffect(() => {
+    if (!extraction.error || workspace !== "entry" || mode !== "photo") return;
+    const frame = requestAnimationFrame(() => {
+      photoFailure.current?.focus({ preventScroll: true });
+      photoFailure.current?.scrollIntoView({ block: "center" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [extraction.error, workspace, mode]);
   function addGalleryPhotos(input: HTMLInputElement) {
     const incoming = Array.from(input.files ?? []);
     input.value = "";
@@ -291,7 +313,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   useEffect(() => {
     if (history.data) {
       setWorkspace("result");
-      setDetail("overview");
+      setDetail(detailFromHash(window.location.hash) ?? "overview");
     }
   }, [history.data]);
   const resultHeading = useRef<HTMLHeadingElement>(null);
@@ -313,16 +335,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   useEffect(() => {
     const change = () => {
       const hash = location.hash;
-      const value =
-        hash === "#hasil-ringkas"
-          ? "overview"
-          : hash === "#komposisi"
-            ? "ingredients"
-            : hash === "#sumber-gula"
-              ? "sugar"
-              : hash === "#pilihan-pengganti"
-                ? "swaps"
-                : null;
+      const value = hash === "" ? "overview" : detailFromHash(hash);
       if (value) {
         setWorkspace("result");
         setDetail(value);
@@ -771,7 +784,12 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           </p>
         )}
         {extraction.error && (
-          <p className="error-text mt-4" role="alert">
+          <p
+            ref={photoFailure}
+            tabIndex={-1}
+            className="error-text mt-4"
+            role="alert"
+          >
             {extraction.error.message}
           </p>
         )}

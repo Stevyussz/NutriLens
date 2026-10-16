@@ -10,6 +10,8 @@ Research: the Appllama MCP is unavailable. Official Yuka and Cronometer product 
 
 Photo inspection refinement: existing photos open in a focus-trapped dialog so users can compare small print without opening another browser tab. The bounded oat image area can scroll when enlarged; the document itself must not overflow. Closing restores focus to the selected photo. Opening a captured photo stops the live camera to avoid an unnecessary camera session while reading. Thumbnail labels describe inspection, while a separate remove control preserves an explicit destructive action. Gallery selection appends only within the two-photo limit and keeps existing captures on validation errors. History uses one labelled name-search field and explicit submit/reset actions because retrieving a saved label is its primary repeat-use task; an unsuccessful search is distinct from having no history. Palette, self-hosted type, ENERGY 3 / RHYTHM 3 / MOTION 1 and navigation destinations remain as defined above.
 
+QA flow correction: result tabs follow the URL on Back/Forward and history reload so navigation shows the requested information. A new scan returns to its own summary and drops an obsolete history identifier. A failed photo read receives focus and scrolls into view so a mobile user can see the failure and retry with the retained photo; this is task feedback rather than decorative motion. Palette, layout and navigation destinations are unchanged.
+
 ---
 
 Historical directions, superseded where they conflict with the current direction:

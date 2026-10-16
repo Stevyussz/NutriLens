@@ -1,5 +1,7 @@
 # Current delivery — photo-first Label studio, 16 October 2026
 
+Latest flow QA: PASS within the stated web scope. [QA_REPORT.md](QA_REPORT.md) records three corrected user-flow defects, the full scoped antislop gate, 17 passing production browser tests and a fresh uncached live AI journey. [QA_FLOW.md](QA_FLOW.md) maps the end-to-end journey and failure branches into 16 QA scenarios.
+
 Latest photo/history refinement: PASS. The complete rule-by-rule gate and recorded controls are in [the scoped delivery report](anti-slop/delivery-photo-history-2026-10-16.md). Production build, typecheck, 28 unit tests and 14 browser tests pass; enlarged-photo and history layouts pass 320/390/768/1440 px checks, with zero page errors in the additional recorded flow.
 
 This section supersedes all earlier light-only, navy/cobalt, equal-method-priority and stacked-result descriptions below. The owner now excludes blue/navy and requests a more elegant hero and shorter authenticated pages. The implemented palette uses warm charcoal navigation (#2c2825), oat gradients, cream reading surfaces and vermilion actions (#a83e28). The hero pairs a Manrope heading with a restrained Georgia italic accent and an explicitly illustrative printed ingredient label. Manrope is self-hosted with its OFL licence.

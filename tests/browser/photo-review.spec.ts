@@ -42,7 +42,7 @@ test("photo transcription requires corrections and confirmation before analysis"
   await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
   await page
     .getByLabel("Foto komposisi dan informasi gizi")
-    .setInputFiles("artifacts/vision-fixtures/per-serving.png");
+    .setInputFiles("tests/fixtures/per-serving.png");
   await page
     .getByRole("button", { name: "Baca foto label", exact: true })
     .click();
@@ -56,7 +56,7 @@ test("photo transcription requires corrections and confirmation before analysis"
   await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
   await page
     .getByLabel("Foto komposisi dan informasi gizi")
-    .setInputFiles("artifacts/vision-fixtures/per-100-comma.png");
+    .setInputFiles("tests/fixtures/per-100-comma.png");
   await page
     .getByRole("button", { name: "Label lengkap", exact: true })
     .click();

@@ -33,7 +33,7 @@ test("input drafts survive method switches and mobile results precede examples",
   await page.getByLabel("Foto komposisi dan informasi gizi").setInputFiles({
     name: "label-check.png",
     mimeType: "image/png",
-    buffer: await readFile("artifacts/vision-fixtures/per-serving.png"),
+    buffer: await readFile("tests/fixtures/per-serving.png"),
   });
   await page
     .getByRole("button", { name: "Label lengkap", exact: true })
