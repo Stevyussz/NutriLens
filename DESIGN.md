@@ -8,6 +8,8 @@ The public page introduces photo reading with an asymmetric oat hero with a seri
 
 Research: the Appllama MCP is unavailable. Official Yuka and Cronometer product flows informed scan-first entry and overview-before-detail hierarchy; no 20-screen catalogue study or native simulator/FPS certification is claimed. Validation uses real web-browser flows, mobile/desktop screenshots and recordings. Source provenance and mandatory OCR review remain intact.
 
+Photo inspection refinement: existing photos open in a focus-trapped dialog so users can compare small print without opening another browser tab. The bounded oat image area can scroll when enlarged; the document itself must not overflow. Closing restores focus to the selected photo. Opening a captured photo stops the live camera to avoid an unnecessary camera session while reading. Thumbnail labels describe inspection, while a separate remove control preserves an explicit destructive action. Gallery selection appends only within the two-photo limit and keeps existing captures on validation errors. History uses one labelled name-search field and explicit submit/reset actions because retrieving a saved label is its primary repeat-use task; an unsuccessful search is distinct from having no history. Palette, self-hosted type, ENERGY 3 / RHYTHM 3 / MOTION 1 and navigation destinations remain as defined above.
+
 ---
 
 Historical directions, superseded where they conflict with the current direction:

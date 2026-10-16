@@ -9,11 +9,17 @@ import { decimal } from "@/core/utils";
 import { Button } from "./ui/button";
 export function HistoryExplorer() {
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [draft, setDraft] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
   const client = useQueryClient();
   const history = useQuery({
-    queryKey: ["history", page],
-    queryFn: () => requestApi(`/api/history?page=${page}`, historyListSchema),
+    queryKey: ["history", page, search],
+    queryFn: () =>
+      requestApi(
+        `/api/history?page=${page}&q=${encodeURIComponent(search)}`,
+        historyListSchema,
+      ),
   });
   const remove = useMutation({
     mutationFn: (id: string) =>
@@ -25,6 +31,42 @@ export function HistoryExplorer() {
   });
   return (
     <section className="history-content">
+      <form
+        className="history-search"
+        role="search"
+        aria-label="Cari di riwayat"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setPage(1);
+          setSearch(draft.trim());
+          setDeleting(null);
+          remove.reset();
+        }}
+      >
+        <label className="field">
+          Cari nama label di riwayat
+          <input
+            type="search"
+            value={draft}
+            maxLength={120}
+            onChange={(event) => setDraft(event.target.value)}
+          />
+        </label>
+        <Button type="submit">Cari riwayat</Button>
+        {search && (
+          <Button
+            variant="ghost"
+            onClick={() => {
+              setDraft("");
+              setSearch("");
+              setPage(1);
+              setDeleting(null);
+            }}
+          >
+            Tampilkan semua
+          </Button>
+        )}
+      </form>
       {history.isPending ? (
         <p role="status">Memuat riwayat Anda…</p>
       ) : history.error ? (
@@ -36,20 +78,26 @@ export function HistoryExplorer() {
         </div>
       ) : !history.data?.items.length ? (
         <div className="history-empty">
-          <h2>Belum ada hasil tersimpan</h2>
+          <h2>
+            {search ? "Label tidak ditemukan" : "Belum ada hasil tersimpan"}
+          </h2>
           <p>
-            Hasil analisis yang selesai akan tersimpan di sini. Foto kemasan
-            tidak disimpan.
+            {search
+              ? `Tidak ada nama label yang cocok dengan “${search}”. Coba nama lain atau tampilkan semua riwayat.`
+              : "Hasil analisis yang selesai akan tersimpan di sini. Foto kemasan tidak disimpan."}
           </p>
-          <Link className="button button-primary" href="/scanner">
-            Scan label pertama
-          </Link>
+          {!search && (
+            <Link className="button button-primary" href="/scanner">
+              Scan label pertama
+            </Link>
+          )}
         </div>
       ) : (
         <>
           <p className="muted text-sm">
-            {history.data.total} hasil tersimpan · hingga 100 hasil terbaru.
-            Mengulang label dan profil yang sama memperbarui hasil sebelumnya.
+            {search
+              ? `${history.data.total} hasil untuk “${search}”.`
+              : `${history.data.total} hasil tersimpan · hingga 100 hasil terbaru. Mengulang label dan profil yang sama memperbarui hasil sebelumnya.`}
           </p>
           <div className="history-list">
             {history.data.items.map((item) => (

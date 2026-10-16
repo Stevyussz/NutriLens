@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { readFile } from "node:fs/promises";
 
 test("input drafts survive method switches and mobile results precede examples", async ({
   page,
@@ -32,7 +33,7 @@ test("input drafts survive method switches and mobile results precede examples",
   await page.getByLabel("Foto komposisi dan informasi gizi").setInputFiles({
     name: "label-check.png",
     mimeType: "image/png",
-    buffer: Buffer.from("selection retained without uploading"),
+    buffer: await readFile("artifacts/vision-fixtures/per-serving.png"),
   });
   await page
     .getByRole("button", { name: "Label lengkap", exact: true })
@@ -45,11 +46,10 @@ test("input drafts survive method switches and mobile results precede examples",
     page.getByLabel("Salin nama, komposisi dan seluruh informasi gizi"),
   ).toHaveValue("Komposisi kemasan yang sedang saya salin.");
   await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
-  expect(
-    await page
-      .getByLabel("Foto komposisi dan informasi gizi")
-      .evaluate((el) => (el as HTMLInputElement).files?.[0]?.name),
-  ).toBe("label-check.png");
+  await expect(page.locator(".selected-files")).toContainText(
+    "label-check.png",
+  );
+  await expect(page.getByRole("img", { name: "Foto pilihan 1" })).toBeVisible();
   await page
     .getByRole("button", { name: "Contoh analisis", exact: true })
     .click();

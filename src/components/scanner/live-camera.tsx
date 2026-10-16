@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Camera, ScanLine, SwitchCamera, X, ImagePlus } from "lucide-react";
 import { Button } from "../ui/button";
+import { PhotoInspector } from "./photo-inspector";
 type Props = {
   active: boolean;
   files: File[];
@@ -125,6 +126,7 @@ export function LiveCamera({
       return;
     setCapturing(true);
     setError("");
+    const current = ticket.current;
     try {
       const canvas = document.createElement("canvas");
       const scale = Math.min(
@@ -143,7 +145,7 @@ export function LiveCamera({
           0.94,
         ),
       );
-      if (!activeRef.current) return;
+      if (!activeRef.current || current !== ticket.current) return;
       if (blob.size > 5 * 1024 * 1024) throw Error("Image too large");
       onCapture(
         new File([blob], `label-kamera-${Date.now()}.jpg`, {
@@ -247,10 +249,15 @@ export function LiveCamera({
         <div className="camera-selections" aria-label="Foto yang akan dibaca">
           {previews.map((url, index) => (
             <div key={url}>
-              <img src={url} alt={`Foto pilihan ${index + 1}`} />
-              <span>Foto {index + 1}</span>
+              <PhotoInspector
+                url={url}
+                index={index}
+                alt={`Foto pilihan ${index + 1}`}
+                onInspect={stop}
+              />
               <button
                 type="button"
+                className="camera-remove"
                 aria-label={`Buang foto ${index + 1}`}
                 disabled={!active}
                 onClick={() => onRemove(index)}

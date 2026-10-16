@@ -1,5 +1,6 @@
 "use client";
 import { LiveCamera } from "./live-camera";
+import { PhotoInspector } from "./photo-inspector";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileText, Camera, ClipboardList, ScanLine } from "lucide-react";
@@ -57,6 +58,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   );
   const [photos, setPhotos] = useState<File[]>([]);
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [photoError, setPhotoError] = useState("");
   const photoInput = useRef<HTMLInputElement>(null);
   const selectedFiles = photos.map((file) => file.name);
   const [activeCase, setActiveCase] = useState("");
@@ -140,6 +142,24 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
     },
   });
   const busy = scan.isPending || extraction.isPending;
+  function addGalleryPhotos(input: HTMLInputElement) {
+    const incoming = Array.from(input.files ?? []);
+    input.value = "";
+    if (!incoming.length) return;
+    const error =
+      photos.length + incoming.length > 2
+        ? "Maksimal dua foto. Buang salah satu foto pilihan sebelum menambahkan foto lain."
+        : incoming.some(
+              (file) =>
+                !["image/jpeg", "image/png", "image/webp"].includes(file.type),
+            )
+          ? "Gunakan foto JPEG, PNG, atau WEBP. Foto pilihan sebelumnya tetap tersimpan."
+          : incoming.some((file) => !file.size || file.size > 5 * 1024 * 1024)
+            ? "Ukuran setiap foto harus lebih dari 0 dan maksimal 5 MB. Foto pilihan sebelumnya tetap tersimpan."
+            : "";
+    setPhotoError(error);
+    if (!error) setPhotos((current) => [...current, ...incoming]);
+  }
   function chooseCatalogue(draft: CatalogueProduct) {
     const form = formRef.current;
     if (!form) return;
@@ -438,13 +458,12 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
             </p>
             <div className="photo-previews">
               {photoPreviews.map((url, index) => (
-                <a key={url} href={url} target="_blank" rel="noreferrer">
-                  <img
-                    src={url}
-                    alt={`Foto label ${index + 1} yang diunggah`}
-                  />
-                  <span>Buka foto {index + 1}</span>
-                </a>
+                <PhotoInspector
+                  key={url}
+                  url={url}
+                  index={index}
+                  alt={`Foto label ${index + 1} yang diunggah`}
+                />
               ))}
             </div>
             {review.issues.length > 0 && (
@@ -497,7 +516,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
               {catalogueDraft.missingFields.length
                 ? `${catalogueDraft.missingFields.length} bagian belum tersedia pada data sumber.`
                 : "Komposisi dan gizi tersedia; pastikan varian dan ukuran sajiannya sama."}{" "}
-              Harga per sajian perlu Anda masukkan.
+              Harga per sajian boleh dikosongkan.
             </p>
             <a
               className="text-link"
@@ -653,11 +672,13 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
             <LiveCamera
               active={mode === "photo" && workspace === "entry" && !busy}
               files={photos}
-              onCapture={(file) =>
-                setPhotos((current) => [...current, file].slice(0, 2))
-              }
+              onCapture={(file) => {
+                setPhotos((current) => [...current, file].slice(0, 2));
+                setPhotoError("");
+              }}
               onRemove={(index) => {
                 setPhotos((current) => current.filter((_, i) => i !== index));
+                setPhotoError("");
                 if (photoInput.current) photoInput.current.value = "";
               }}
               onGallery={() => {
@@ -679,9 +700,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                   accept="image/jpeg,image/png,image/webp"
                   name="image"
                   multiple
-                  onChange={(event) =>
-                    setPhotos(Array.from(event.target.files ?? []))
-                  }
+                  onChange={(event) => addGalleryPhotos(event.currentTarget)}
                 />
                 {selectedFiles.length > 0 && (
                   <span className="selected-files">
@@ -696,6 +715,11 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                 </span>
               </label>
             </details>
+            {photoError && (
+              <p role="alert" className="error-text">
+                {photoError}
+              </p>
+            )}
           </fieldset>
           {mode === "text" && !presets.data?.aiAvailable && (
             <p className="notice mt-4">

@@ -35,7 +35,7 @@ MongoDB lokal default: `mongodb://localhost:27017`. Compose menggunakan URI inte
 
 ## Alur penggunaan
 
-1. Pilih **Scan label**, nyalakan kamera, lalu ambil satu atau dua foto komposisi dan tabel gizi. Galeri tersedia sebagai cadangan. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, tab disembunyikan, atau foto mulai diproses.
+1. Pilih **Scan label**, nyalakan kamera, lalu ambil satu atau dua foto komposisi dan tabel gizi. Galeri tersedia sebagai cadangan dan menambahkan foto tanpa mengganti pilihan yang ada. Jumlah, format, dan ukuran diperiksa sebelum pengiriman. Tekan **Periksa foto** untuk memperbesar tulisan tanpa keluar dari halaman. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, foto diperiksa, tab disembunyikan, atau foto mulai diproses.
 2. Pilih **Baca foto label**, lalu cocokkan hasil pembacaan dengan foto. Bagian yang belum terbaca tetap kosong dan perlu dilengkapi; harga opsional. Konfirmasi sebelum analisis.
 3. Bagian teratas hasil menampilkan ringkasan singkat, kontribusi gula/natrium terhadap batas profil, dan langkah berikutnya. Tidak ada aturan terpicu bukan jaminan keamanan medis.
 4. Buka tab Komposisi, Sumber gula, atau Pilihan pengganti untuk detail. Perbandingan biaya ditunda jika harga belum diisi.

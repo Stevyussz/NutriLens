@@ -1,5 +1,7 @@
 # Current release verification — 16 October 2026
 
+Latest refinement: production build and typecheck pass, 28 unit tests pass, and the final browser suite passes 14 tests in 1.0 minute. Photo inspection supports enlargement, keyboard panning, Escape and focus restoration; gallery rejects excessive/oversized selections without losing existing photos. History supports bounded, literal name search scoped to its owner, with no-match/reset behavior. Additional loading/error/retry checks pass, with zero page errors and no overflow at 320/390/768/1440 px. Four dialog text samples measure at least 5.35:1. The complete scoped antislop gate is in anti-slop/delivery-photo-history-2026-10-16.md; local evidence is in artifacts/photo-history-refinement.json and its screenshots/recording.
+
 This record supersedes historical palette, layout and provider claims below. The production application at localhost:3001 uses warm charcoal/oat/vermilion without blue or navy. Live camera is the primary input; gallery is secondary. Results begin with a short deterministic summary, followed by detail tabs and disclosures. Private history stores results and the health profile used for each scan, without photographs.
 
 | Check                          | Result                                                                                                                     |
@@ -8,13 +10,13 @@ This record supersedes historical palette, layout and provider claims below. The
 | Strict TypeScript              | Passed                                                                                                                     |
 | Unit tests                     | 28 passed, 0 failed                                                                                                        |
 | MongoDB integration tests      | 3 passed, 0 failed; includes history cap, deduplication and cache independence                                             |
-| Final production browser suite | 13 passed, 0 failed in 1.2 minutes                                                                                         |
+| Final production browser suite | 14 passed, 0 failed in 1.0 minute                                                                                          |
 | Camera regression              | Real JPEG capture, retained files, stopped tracks, permission fallback, 320 px overflow and reachable mobile submit passed |
 | 9Router Docker vision          | 5/5 controlled checks passed through private Unix socket; four accepted labels use ROUTER_CROSSCHECKED                     |
 | Real camera-to-AI flow         | Virtual-camera JPEG through production OCR, mandatory review and ROUTER_AI analysis passed; no mocked responses            |
 | Source safety                  | Live RAG preserved deterministic allergy avoidance and accepted no invented candidate IDs                                  |
 | Sampled text contrast          | 7 pairs, minimum 5.03:1; not a full accessibility audit                                                                    |
-| Configured-secret scan         | 155 tracked/unignored deliverable files checked; no configured secret values matched                                       |
+| Configured-secret scan         | 157 tracked/unignored deliverable files checked; no configured secret values matched                                       |
 | Git diff whitespace validation | Passed                                                                                                                     |
 
 Evidence is stored locally in artifacts/browser-results.json, vision-router-docker-benchmark.json, router-rag-live.json, camera-ai-end-to-end.json, studio-layout-review.json and studio-contrast.json. The exact temporary account created by browser tests was removed. App, MongoDB and private router helper are healthy. Docker transport opens no additional TCP router listener; the helper listens only on a restricted filesystem socket.

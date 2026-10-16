@@ -63,6 +63,44 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and en
     path: "artifacts/camera-live-mobile.png",
     fullPage: true,
   });
+  await page
+    .getByRole("button", { name: "Periksa foto 1", exact: true })
+    .click();
+  await expect(
+    page.getByRole("dialog", { name: "Foto label 1" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { cameraTrack: MediaStreamTrack }).cameraTrack
+            .readyState,
+      ),
+    )
+    .toBe("ended");
+  await page.setViewportSize({ width: 320, height: 780 });
+  await page
+    .getByRole("button", { name: "Perbesar foto", exact: true })
+    .click();
+  await expect(page.locator(".photo-inspector-image")).toHaveClass(/is-zoomed/);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.locator(".photo-inspector-image").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect
+    .poll(() =>
+      page.locator(".photo-inspector-image").evaluate((el) => el.scrollLeft),
+    )
+    .toBeGreaterThan(0);
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).toBeHidden();
+  await expect(
+    page.getByRole("button", { name: "Periksa foto 1", exact: true }),
+  ).toBeFocused();
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Teks label", exact: true }).click();
   await expect
     .poll(() =>
@@ -122,6 +160,41 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and en
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+test("gallery adds to captured selection and rejects excess or oversized files without losing photos", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Scan label", exact: true })
+    .first()
+    .click();
+  await page.waitForURL("**/scanner");
+  const input = page.getByLabel("Foto komposisi dan informasi gizi");
+  await input.setInputFiles("artifacts/vision-fixtures/per-serving.png");
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
+  await input.setInputFiles([
+    "artifacts/vision-fixtures/per-serving.png",
+    "artifacts/vision-fixtures/per-100-comma.png",
+  ]);
+  await expect(
+    page.getByRole("alert").filter({ hasText: "Maksimal dua foto" }),
+  ).toBeVisible();
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
+  await input.setInputFiles({
+    name: "besar.jpg",
+    mimeType: "image/jpeg",
+    buffer: Buffer.alloc(5 * 1024 * 1024 + 1),
+  });
+  await expect(
+    page.getByRole("alert").filter({ hasText: "maksimal 5 MB" }),
+  ).toBeVisible();
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
+  await input.setInputFiles("artifacts/vision-fixtures/per-100-comma.png");
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(2);
+  await expect(
+    page.locator('.scanner-entry .error-text[role="alert"]'),
+  ).toHaveCount(0);
 });
 test("denied camera permission has a useful gallery fallback", async ({
   page,

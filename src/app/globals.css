@@ -344,7 +344,7 @@ h3 {
   gap: 12px;
   margin-block: 16px;
 }
-.photo-previews a {
+.photo-previews .photo-inspect-trigger {
   flex: 1;
   min-width: 0;
   font-size: 14px;
@@ -3655,7 +3655,7 @@ body:has(.scan-results:not([hidden])) .scanner-context {
   font-size: 10px;
   padding: 5px 8px;
 }
-.camera-selections button {
+.camera-selections .camera-remove {
   position: absolute;
   right: 0;
   top: 0;
@@ -3667,6 +3667,62 @@ body:has(.scan-results:not([hidden])) .scanner-context {
   border: 0;
   color: white;
   cursor: pointer;
+}
+.photo-inspect-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.photo-inspect-trigger > span {
+  display: block;
+  min-height: 44px;
+  padding: 8px;
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dialog-content.photo-inspector {
+  width: min(900px, calc(100vw - 24px));
+}
+.photo-inspector-image {
+  overflow: auto;
+  overscroll-behavior: contain;
+  max-height: 52dvh;
+  margin-block: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #eee6d9;
+}
+.photo-inspector-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 52dvh;
+  object-fit: contain;
+}
+.photo-inspector-image.is-zoomed img {
+  width: 200%;
+  max-width: none;
+  max-height: none;
+}
+.history-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.history-search .field {
+  flex: 1 1 210px;
+  margin: 0;
+  min-width: 0;
 }
 .camera-error {
   padding: 12px;
