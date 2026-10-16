@@ -93,6 +93,8 @@ test("data error states provide working retries and dictionary clears to an actu
     }),
   );
   await page.getByRole("link", { name: "Profil saya", exact: true }).click();
+  // A fresh document exercises a failed request instead of the scanner's fresh profile cache.
+  await page.reload();
   await expect(
     page.getByRole("alert").filter({ hasText: "Koneksi profil terputus" }),
   ).toBeVisible();

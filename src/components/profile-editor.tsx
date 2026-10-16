@@ -123,25 +123,31 @@ export function ProfileEditor({
                 key={profile.data.profileVersion}
                 onChange={() => setSaved(false)}
               >
-                <fieldset className="mb-6">
-                  <legend className="mb-3">
-                    Kondisi yang ingin diperhatikan
-                  </legend>
-                  {(["GERD", "HIPERTENSI", "DIABETES"] as const).map((c) => (
-                    <label key={c} className="flex items-center gap-3 min-h-11">
-                      <input
-                        className="w-5 h-5"
-                        type="checkbox"
-                        name="conditions"
-                        value={c}
-                        defaultChecked={profile.data?.healthProfile.conditions.includes(
-                          c,
-                        )}
-                      />
-                      {c}
-                    </label>
-                  ))}
-                </fieldset>
+                <details className="profile-conditions">
+                  <summary>Kondisi tertentu (opsional)</summary>
+                  <fieldset className="mb-6">
+                    <legend className="mb-3">
+                      Kondisi yang ingin diperhatikan
+                    </legend>
+                    {(["GERD", "HIPERTENSI", "DIABETES"] as const).map((c) => (
+                      <label
+                        key={c}
+                        className="flex items-center gap-3 min-h-11"
+                      >
+                        <input
+                          className="w-5 h-5"
+                          type="checkbox"
+                          name="conditions"
+                          value={c}
+                          defaultChecked={profile.data?.healthProfile.conditions.includes(
+                            c,
+                          )}
+                        />
+                        {c}
+                      </label>
+                    ))}
+                  </fieldset>
+                </details>
                 <div className="grid gap-4">
                   <label className="field">
                     Alergi, pisahkan dengan koma

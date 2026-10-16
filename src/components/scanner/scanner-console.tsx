@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ScanLine, FileText, Camera, ClipboardList } from "lucide-react";
+import { FileText, Camera, ClipboardList } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { requestApi } from "@/core/browser-api";
 import { presetOutputSchema } from "@/core/api-schemas";
@@ -102,262 +102,239 @@ export function ScannerConsole() {
     if (result) resultHeading.current?.focus();
   }, [result]);
   return (
-    <>
-      <div className="workbench">
-        <section className="panel" id="label-entry" tabIndex={-1}>
-          <p className="eyebrow">01 · Pilih cara memasukkan label</p>
-          <h2>Masukkan label Anda</h2>
-          <div className="tab-switch" aria-label="Cara memasukkan label">
-            {[
-              {
-                id: "label" as const,
-                label: "Label lengkap",
-                Icon: ClipboardList,
-              },
-              { id: "text" as const, label: "Teks bebas", Icon: FileText },
-              { id: "photo" as const, label: "Foto kemasan", Icon: Camera },
-            ].map(({ id, label, Icon }) => (
-              <Button
-                key={id}
-                variant="ghost"
-                aria-pressed={mode === id}
-                onClick={() => {
-                  setMode(id);
-                  if (id === "label") setLabelExpanded(true);
-                  setFormError("");
-                }}
-              >
-                <Icon size={18} aria-hidden />
-                {label}
-              </Button>
-            ))}
-          </div>
-          {mode === "label" && !labelExpanded ? (
-            <div className="entry-start">
-              <ClipboardList size={30} aria-hidden />
-              <h3>Punya kemasan di tangan?</h3>
-              <p className="muted">
-                Salin komposisi dan informasi gizi per sajian. Kami bantu
-                membacanya, satu bahan pada satu waktu.
-              </p>
-              <Button onClick={() => setLabelExpanded(true)}>
-                Isi informasi kemasan
-              </Button>
-              <p className="muted text-sm mt-4 mb-0">
-                Belum punya label? Pilih salah satu contoh analisis di sebelah.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={submit} key={mode}>
-              <div className="form-grid">
-                {mode === "label" ? (
-                  <>
-                    <label className="field full">
-                      Nama produk
-                      <input name="name" required maxLength={250} />
-                    </label>
-                    <label className="field">
-                      Merek
-                      <input name="brand" maxLength={150} />
-                    </label>
-                    <label className="field">
-                      Kategori
-                      <select name="category">
-                        {categorySchema.options.map((c) => (
-                          <option key={c} value={c}>
-                            {c.replaceAll("_", " ").toLowerCase()}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="field">
-                      Harga per sajian (Rp)
-                      <input
-                        type="number"
-                        name="price"
-                        min={1}
-                        max={10000000}
-                        required
-                      />
-                    </label>
-                    <label className="field">
-                      Ukuran sajian (g/ml)
-                      <input
-                        type="number"
-                        name="serving"
-                        min={0.1}
-                        max={10000}
-                        step="any"
-                        required
-                      />
-                    </label>
-                    <label className="field full">
-                      Komposisi sesuai urutan, pisahkan dengan koma
-                      <textarea
-                        name="ingredients"
-                        rows={3}
-                        required
-                        maxLength={15000}
-                      />
-                    </label>
-                    {nutrientLabels.map(([key, label]) => (
-                      <label key={key} className="field">
-                        {label}, per sajian
-                        <input
-                          type="number"
-                          name={key}
-                          min={0}
-                          max={
-                            key === "sodiumMg"
-                              ? 100000
-                              : key === "caloriesKcal"
-                                ? 10000
-                                : 1000
-                          }
-                          step="any"
-                          required
-                        />
-                      </label>
-                    ))}
-                    <label className="field full">
-                      Rasa atau fungsi, pisahkan dengan koma
-                      <input name="tags" maxLength={500} />
-                    </label>
-                    <label className="field full">
-                      Klaim kemasan (opsional), pisahkan dengan titik koma
-                      <input name="claims" maxLength={1000} />
-                    </label>
-                  </>
-                ) : mode === "text" ? (
-                  <label className="field full">
-                    Salin nama, komposisi dan seluruh informasi gizi
-                    <textarea
-                      name="text"
-                      required
-                      minLength={20}
-                      maxLength={20000}
-                      rows={8}
-                    />
-                    <span className="muted">
-                      Teks bebas diproses Gemini. Mode lokal menerima format
-                      satu field per baris. Jangan sertakan data pribadi.
-                    </span>
-                  </label>
-                ) : (
-                  <label className="field full">
-                    Foto komposisi dan informasi gizi
-                    <input
-                      type="file"
-                      accept="image/jpeg,image/png,image/webp"
-                      name="image"
-                      required
-                    />
-                    <span className="muted">
-                      JPEG, PNG, WEBP, maksimal 5 MB. Isi file diperiksa sebelum
-                      diproses.
-                    </span>
-                  </label>
-                )}
-              </div>
-              {mode !== "label" && !presets.data?.aiAvailable && (
-                <p className="notice mt-4">
-                  Gemini belum diaktifkan. Gunakan Label lengkap, studi kasus,
-                  atau teks dengan baris Nama, Kategori, Harga, Sajian, Energi,
-                  Gula, Protein, Natrium, Lemak jenuh, Serat dan Komposisi.
-                  Pisahkan nama field dan nilainya dengan tanda titik dua.
-                </p>
-              )}
-              <Button className="mt-6" type="submit" disabled={scan.isPending}>
-                {scan.isPending ? "Memeriksa komposisi…" : "Periksa label ini"}
-              </Button>
-              {formError && (
-                <p role="alert" className="error-text mt-3">
-                  {formError}
-                </p>
-              )}
-            </form>
-          )}
-          {scan.isPending && (
-            <p className="notice mt-6 mb-0" role="status">
-              Memeriksa komposisi dan mencari pembanding. Hasil akan tampil di
-              bawah.
-            </p>
-          )}
-          {scan.error && (
-            <p className="error-text mt-4 mb-0" role="alert">
-              {scan.error.message}
-            </p>
-          )}
-        </section>
-        <aside className="panel">
-          <h2>Coba contoh analisis</h2>
-          <p className="muted text-sm">
-            Pilih contoh untuk melihat cara kerja pemeriksaan. Resep dan gizi
-            bersifat ilustratif, bukan klaim tentang merek riil.
-          </p>
-          {presets.isPending ? (
-            <p role="status">Memuat studi kasus…</p>
-          ) : presets.error ? (
-            <div>
-              <p role="alert" className="error-text">
-                {presets.error.message}
-              </p>
-              <Button variant="secondary" onClick={() => presets.refetch()}>
-                Muat ulang studi kasus
-              </Button>
-            </div>
-          ) : !presets.data?.presets.length ? (
+    <div className={`scanner-layout${result ? " has-result" : ""}`}>
+      <section className="panel scanner-entry" id="label-entry" tabIndex={-1}>
+        <p className="eyebrow">Mulai dari kemasan Anda</p>
+        <h2>Masukkan label Anda</h2>
+        <div className="tab-switch" aria-label="Cara memasukkan label">
+          {[
+            {
+              id: "label" as const,
+              label: "Label lengkap",
+              Icon: ClipboardList,
+              hint: "Salin angka gizi",
+            },
+            {
+              id: "text" as const,
+              label: "Teks bebas",
+              Icon: FileText,
+              hint: "Tempel isi label",
+            },
+            {
+              id: "photo" as const,
+              label: "Foto kemasan",
+              Icon: Camera,
+              hint: "Unggah foto",
+            },
+          ].map(({ id, label, Icon, hint }) => (
+            <Button
+              key={id}
+              variant="ghost"
+              aria-pressed={mode === id}
+              aria-label={label}
+              disabled={scan.isPending}
+              onClick={() => {
+                setMode(id);
+                if (id === "label") setLabelExpanded(true);
+                setFormError("");
+                setActiveCase("");
+                scan.reset();
+              }}
+            >
+              <Icon size={18} aria-hidden />
+              <span>
+                <strong>{label}</strong>
+                <small aria-hidden>{hint}</small>
+              </span>
+            </Button>
+          ))}
+        </div>
+        {mode === "label" && !labelExpanded && (
+          <div className="entry-start">
+            <h3>Label pertama Anda menunggu</h3>
             <p className="muted">
-              Studi kasus belum tersedia di database. Jalankan seeder.
+              Salin komposisi dan gizi per sajian dari kemasan Anda.
             </p>
-          ) : (
-            <div className="preset-list">
-              {presets.data.presets.map((p, i) => (
-                <button
-                  key={p.id}
-                  className="preset-button"
-                  disabled={scan.isPending}
-                  aria-pressed={activeCase === p.id}
-                  onClick={() => {
-                    setActiveCase(p.id);
-                    setFormError("");
-                    scan.mutate({ presetId: p.id });
-                  }}
-                >
-                  <span className="preset-number">0{i + 1}</span>
-                  <span>{p.name}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </aside>
-      </div>
-      {scan.isPending && (
-        <div className="notice my-6" role="status">
-          <p className="mb-1">Mencocokkan komposisi dan mencari pembanding…</p>
-          <div className="scan-progress">
-            <motion.div
-              animate={reducedMotion ? { x: 0 } : { x: ["-100%", "300%"] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
-            />
+            <Button onClick={() => setLabelExpanded(true)}>
+              Isi informasi kemasan
+            </Button>
+            <p className="muted text-sm mt-4 mb-0">
+              Belum punya kemasan? Coba contoh analisis di halaman ini.
+            </p>
           </div>
-          <p className="muted text-sm mb-0">
-            Hasil sebelumnya akan diperbarui setelah pemeriksaan selesai.
+        )}
+        <form
+          onSubmit={submit}
+          hidden={mode === "label" && !labelExpanded}
+          aria-busy={scan.isPending}
+        >
+          <fieldset
+            className="form-grid"
+            hidden={mode !== "label"}
+            disabled={mode !== "label" || scan.isPending}
+          >
+            <legend className="form-section-title">
+              Identitas dan isi kemasan
+            </legend>
+            <label className="field full">
+              Nama produk
+              <input name="name" required maxLength={250} />
+            </label>
+            <label className="field">
+              Merek
+              <input name="brand" maxLength={150} />
+            </label>
+            <label className="field">
+              Kategori
+              <select name="category">
+                {categorySchema.options.map((c) => (
+                  <option key={c} value={c}>
+                    {c.replaceAll("_", " ").toLowerCase()}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="field">
+              Harga per sajian (Rp)
+              <input
+                type="number"
+                name="price"
+                min={1}
+                max={10000000}
+                required
+              />
+            </label>
+            <label className="field">
+              Ukuran sajian (g/ml)
+              <input
+                type="number"
+                name="serving"
+                min={0.1}
+                max={10000}
+                step="any"
+                required
+              />
+            </label>
+            <label className="field full">
+              Komposisi sesuai urutan, pisahkan dengan koma
+              <textarea
+                name="ingredients"
+                rows={3}
+                required
+                maxLength={15000}
+              />
+            </label>
+            <p className="form-section-title full">Informasi gizi per sajian</p>
+            {nutrientLabels.map(([key, label]) => (
+              <label key={key} className="field">
+                {label}, per sajian
+                <input
+                  type="number"
+                  name={key}
+                  min={0}
+                  max={
+                    key === "sodiumMg"
+                      ? 100000
+                      : key === "caloriesKcal"
+                        ? 10000
+                        : 1000
+                  }
+                  step="any"
+                  required
+                />
+              </label>
+            ))}
+            <label className="field full">
+              Rasa atau fungsi, pisahkan dengan koma
+              <input name="tags" maxLength={500} />
+            </label>
+            <label className="field full">
+              Klaim kemasan (opsional), pisahkan dengan titik koma
+              <input name="claims" maxLength={1000} />
+            </label>
+          </fieldset>
+          <fieldset
+            hidden={mode !== "text"}
+            disabled={mode !== "text" || scan.isPending}
+          >
+            <label className="field full">
+              Salin nama, komposisi dan seluruh informasi gizi
+              <textarea
+                name="text"
+                required
+                minLength={20}
+                maxLength={20000}
+                rows={8}
+              />
+              <span className="muted">
+                Teks bebas diproses Gemini. Mode lokal menerima format satu
+                field per baris. Jangan sertakan data pribadi.
+              </span>
+            </label>
+          </fieldset>
+          <fieldset
+            hidden={mode !== "photo"}
+            disabled={mode !== "photo" || scan.isPending}
+          >
+            <label className="field full">
+              Foto komposisi dan informasi gizi
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                name="image"
+                required
+              />
+              <span className="muted">
+                JPEG, PNG, WEBP, maksimal 5 MB. Isi file diperiksa sebelum
+                diproses.
+              </span>
+            </label>
+          </fieldset>
+          {mode !== "label" && !presets.data?.aiAvailable && (
+            <p className="notice mt-4">
+              Gemini belum diaktifkan. Gunakan Label lengkap, studi kasus, atau
+              teks dengan baris Nama, Kategori, Harga, Sajian, Energi, Gula,
+              Protein, Natrium, Lemak jenuh, Serat dan Komposisi. Pisahkan nama
+              field dan nilainya dengan tanda titik dua.
+            </p>
+          )}
+          <Button className="mt-6" type="submit" disabled={scan.isPending}>
+            {scan.isPending ? "Memeriksa komposisi…" : "Periksa label ini"}
+          </Button>
+          {formError && (
+            <p role="alert" className="error-text mt-3">
+              {formError}
+            </p>
+          )}
+        </form>
+        {scan.isPending && (
+          <div className="notice mt-6 mb-0" role="status">
+            Memeriksa komposisi dan mencari pembanding. Hasil akan tampil di
+            bawah.
+            <div className="scan-progress">
+              <motion.div
+                animate={reducedMotion ? { x: 0 } : { x: ["-100%", "300%"] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {scan.error && (
+          <p className="error-text mt-4 mb-0" role="alert">
+            {scan.error.message}
           </p>
-        </div>
-      )}
-      {!result && !scan.isPending && (
-        <div className="empty-state mt-8">
-          <ScanLine size={32} aria-hidden />
-          <h2>Label pertama Anda menunggu</h2>
-          <p className="muted mb-0">
-            Isi data kemasan atau pilih satu studi kasus untuk melihat analisis
-            lengkap.
-          </p>
-        </div>
-      )}
+        )}
+      </section>
       {result && (
-        <div aria-live="polite" aria-busy={scan.isPending}>
+        <div
+          className="scan-results"
+          aria-live="polite"
+          aria-busy={scan.isPending}
+        >
           <section className="result-header">
             <p className={`status status-${result.aiVerdict.medicalStatus}`}>
               {profileStatusLabels[result.aiVerdict.medicalStatus]}
@@ -366,9 +343,14 @@ export function ScannerConsole() {
               <h2 ref={resultHeading} tabIndex={-1}>
                 {result.extractedProductData.name}
               </h2>
-              <a className="button button-secondary" href="#label-entry">
-                Periksa label lain
-              </a>
+              <div className="result-actions">
+                <a className="button button-secondary" href="#label-entry">
+                  Periksa label lain
+                </a>
+                <a className="button button-ghost" href="#contoh-analisis">
+                  Contoh lainnya
+                </a>
+              </div>
             </div>
             <nav
               className="result-navigation"
@@ -468,6 +450,50 @@ export function ScannerConsole() {
           <ParetoSwapMatrix analysis={result} />
         </div>
       )}
-    </>
+      <aside className="panel sample-panel" id="contoh-analisis" tabIndex={-1}>
+        <p className="eyebrow">Belajar dari contoh</p>
+        <h2>Coba contoh analisis</h2>
+        <p className="muted text-sm">
+          Pilih contoh untuk melihat cara kerja pemeriksaan. Resep dan gizi
+          bersifat ilustratif, bukan klaim tentang merek riil.
+        </p>
+        {presets.isPending ? (
+          <p role="status">Memuat studi kasus…</p>
+        ) : presets.error ? (
+          <div>
+            <p role="alert" className="error-text">
+              {presets.error.message}
+            </p>
+            <Button variant="secondary" onClick={() => presets.refetch()}>
+              Muat ulang studi kasus
+            </Button>
+          </div>
+        ) : !presets.data?.presets.length ? (
+          <p className="muted">
+            Contoh analisis belum tersedia. Anda tetap dapat memasukkan label
+            sendiri.
+          </p>
+        ) : (
+          <div className="preset-list">
+            {presets.data.presets.map((p, i) => (
+              <button
+                key={p.id}
+                className="preset-button"
+                disabled={scan.isPending}
+                aria-pressed={activeCase === p.id}
+                onClick={() => {
+                  setActiveCase(p.id);
+                  setFormError("");
+                  scan.mutate({ presetId: p.id });
+                }}
+              >
+                <span className="preset-number">0{i + 1}</span>
+                <span>{p.name}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </aside>
+    </div>
   );
 }

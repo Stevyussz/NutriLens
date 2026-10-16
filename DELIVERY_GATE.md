@@ -1,5 +1,15 @@
 # BongkarLabel UI delivery gate
 
+## Latest scanner and data revision — 16 October 2026
+
+This revision supersedes the earlier peach-dominant foundation. The canvas is mineral blue (#e4ebed), with a bounded blue/sand/apricot gradient, warm reading surfaces and terracotta actions. Six sampled text pairs pass 4.5:1 (minimum 5.29:1; primary action 6.85:1). Results use a distinct reading surface and the input methods have equal-width targets.
+
+Six production browser flows passed in 51.5 seconds, with zero failures or flaky tests. The new flow verifies retained manual/text drafts and selected filenames across methods, result focus, visual and DOM order of results before examples on mobile, return-to-input/examples anchors, and a functioning data-coverage disclosure. The error-injection test explicitly reloads the profile document so the fresh scanner profile cache does not bypass its simulated failed request; its actual error and retry assertions remain intact.
+
+Four additional production layout checks at 320/390/768/1440 px pass without horizontal overflow, including equal-width method controls under dark system preference. Final scanner and expanded data-coverage screenshots were inspected. The duplicate scanner empty panel is removed; inactive fieldsets are hidden and disabled, preserving browser-held inputs without hidden required-field validation. Labels/photos are not written to browser storage. Optional profile conditions use native disclosure. Snapshot observations are distinguished from live database counts and estimated serving prices.
+
+The production build and typecheck pass, app and MongoDB are healthy, and the exact generated browser account/sessions were removed. Evidence: artifacts/browser-results.json, scanner-responsive-final.json, scanner-contrast.json, dataset-coverage.json, scanner-refined-*.png, coverage-refined-*.png, and scanner-journey.webm. Recording is retained and sampled frames inspected; native simulator/frame-rate measurements are not claimed. DATA_COVERAGE.md records known data gaps rather than claiming a complete datasheet. No new generated assets or catalogue-screen research are claimed.
+
 ## Current revision — 16 October 2026
 
 This record supersedes earlier palette/auth-layout measurements below. Antislop DURING; responsive web scope. Direction and rationale are in the current section of DESIGN.md.

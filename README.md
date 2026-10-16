@@ -122,6 +122,8 @@ Bracketed text describes required user input, not seeded data. All six nutrients
 
 ## Data and limits
 
+Audit cakupan aktual dan bagian yang belum tersedia dicatat di [DATA_COVERAGE.md](DATA_COVERAGE.md). Dataset belum mencakup seluruh bahan kimia, produk Indonesia atau harga ritel. Kamus bahan menyediakan panel sumber/cakupan yang membaca jumlah entri dan label referensi langsung dari MongoDB.
+
 Snapshot: **55 source-linked community food labels** across five categories, plus a bulk glossary derived from **764 additive nodes and 6,654 ingredient nodes** supplied by Open Food Facts. The importer deduplicates multilingual aliases and the seeder overlays 69 local interpretation rules. Raw source counts/checksums and the import timestamp live in `data/dictionary.manifest.json`; per-record provider IDs and URLs are retained. Five illustrative presets remain separate from real product labels. See [data/README.md](data/README.md).
 
 Run `npm run data:dictionary` to refresh the full provider taxonomy, then `npm run db:seed` to import it into MongoDB in batches. `npm run data:import` refreshes product labels. No one-at-a-time lookup is needed. Startup uses the bundled snapshots and works without internet after image/dependency downloads.

@@ -1,5 +1,9 @@
 # BongkarLabel
 
+Latest scanner/data revision: a mineral-blue page base (#e4ebed) with a bounded blue/sand/apricot gradient replaces the dominant peach foundation. Warm reading panels and terracotta actions preserve contrast and continuity. Scanner methods are three equal choices, with descriptions on larger screens. All three fieldsets remain mounted; inactive methods are hidden and disabled, so drafts and selected files survive switches without hidden required inputs blocking submission. Drafts stay in page memory only. On phones, results precede examples in both visual and DOM order; explicit anchors return to input or examples. The duplicate lower empty state is removed. A compact live profile summary exposes the limits used by analysis. Optional conditions are disclosed on demand in the profile.
+
+The dictionary exposes live coverage counts in a native disclosure, alongside snapshot price coverage and source links. DATA_COVERAGE.md records the audit and known gaps. Reference-label totals exclude manual scans and illustrative cases. Taxonomy breadth is not presented as complete chemical, clinical, regulatory, local-product or retail-price coverage.
+
 ## Current revision — 16 October 2026
 
 This section supersedes the palette and auth composition below. The owner rejected the previous beige treatment as well as sage dominance. Terracotta (#9e3924) now identifies actions; peach welcomes, mineral blue separates navigation/supporting information, and warm off-white supports prolonged reading. A bounded blue-to-sand-to-peach page gradient ends in solid peach rather than repeating a fixed viewport background. Green remains a labelled semantic result state. ENERGY 2 / RHYTHM 2 / MOTION 1 remain unchanged.

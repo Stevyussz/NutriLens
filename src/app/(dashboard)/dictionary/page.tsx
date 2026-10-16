@@ -1,4 +1,5 @@
 import { DictionaryExplorer } from "@/components/dictionary-explorer";
+import { DataCoverage } from "@/components/data-coverage";
 export default function Dictionary() {
   return (
     <>
@@ -10,6 +11,7 @@ export default function Dictionary() {
           identitas bahan, bukan bukti bahwa bahan tersebut berbahaya.
         </p>
       </header>
+      <DataCoverage />
       <DictionaryExplorer />
     </>
   );

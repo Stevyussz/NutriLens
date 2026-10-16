@@ -1,0 +1,40 @@
+"use client";
+import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { UserRound } from "lucide-react";
+import { requestApi } from "@/core/browser-api";
+import { profileOutputSchema } from "@/core/api-schemas";
+import { decimal, rupiah } from "@/core/utils";
+
+export function ProfileContext() {
+  const profile = useQuery({
+    queryKey: ["profile"],
+    queryFn: () => requestApi("/api/profile", profileOutputSchema),
+  });
+  return (
+    <div className="scanner-context">
+      <UserRound size={20} aria-hidden />
+      <div>
+        <p className="font-semibold mb-1">Pemeriksaan mengikuti profil Anda</p>
+        {profile.data ? (
+          <p className="muted text-sm mb-0">
+            Gula {decimal(profile.data.healthProfile.dailySugarLimitGrams)}{" "}
+            g/hari · Natrium{" "}
+            {decimal(profile.data.healthProfile.dailySodiumLimitMg)} mg/hari ·
+            Anggaran {rupiah(profile.data.healthProfile.maxSnackBudgetIdr)}
+            /camilan
+          </p>
+        ) : (
+          <p className="muted text-sm mb-0">
+            {profile.isPending
+              ? "Memuat batas konsumsi Anda…"
+              : "Buka profil untuk memeriksa batas dan alergi yang digunakan."}
+          </p>
+        )}
+      </div>
+      <Link href="/security-profile" className="text-link">
+        Ubah profil
+      </Link>
+    </div>
+  );
+}

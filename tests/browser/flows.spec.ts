@@ -27,7 +27,7 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(239, 222, 210)");
+  ).toBe("rgb(228, 235, 237)");
   await page.getByRole("button", { name: "Data & privasi" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
@@ -189,7 +189,7 @@ test("mobile layout, keyboard focus, light dialogs and session revocation", asyn
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(239, 222, 210)");
+  ).toBe("rgb(228, 235, 237)");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
