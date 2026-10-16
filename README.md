@@ -16,7 +16,7 @@ Untuk mengaktifkan Gemini, salin `.env.example` ke `.env`, isi `GEMINI_API_KEY` 
 
 Port host dapat diubah dengan `APP_PORT`; sesuaikan juga `APP_ORIGIN` dengan alamat yang dibuka browser. `APP_ORIGIN` harus sama persis dengan origin pengguna, termasuk port. Workspace pengujian ini memakai port 3001 karena port 3000 sudah digunakan layanan lain.
 
-Katalog menyediakan 7.898 produk untuk pasar Indonesia, 89 referensi lengkap, dan 7.279 entri kamus. Data yang kurang tetap kosong; cakupan regulasi, datasheet dan harga dijelaskan di [DATA_COVERAGE.md](DATA_COVERAGE.md).
+Katalog menyediakan 7.899 produk untuk pasar Indonesia, 89 referensi lengkap, dan 7.279 entri kamus. Data yang kurang tetap kosong; cakupan regulasi, datasheet dan harga dijelaskan di [DATA_COVERAGE.md](DATA_COVERAGE.md).
 
 ## Pengembangan
 
@@ -128,7 +128,7 @@ Audit cakupan aktual dan bagian yang belum tersedia dicatat di [DATA_COVERAGE.md
 
 Snapshot: **55 source-linked community food labels** across five categories, plus a bulk glossary derived from **764 additive nodes and 6,654 ingredient nodes** supplied by Open Food Facts. The importer deduplicates multilingual aliases and the seeder overlays 69 local interpretation rules. Raw source counts/checksums and the import timestamp live in `data/dictionary.manifest.json`; per-record provider IDs and URLs are retained. Five illustrative presets remain separate from real product labels. See [data/README.md](data/README.md).
 
-Run `npm run data:dictionary` to refresh the full provider taxonomy, then `npm run db:seed` to import it into MongoDB in batches. `npm run data:import` refreshes product labels. No one-at-a-time lookup is needed. Startup uses the bundled snapshots and works without internet after image/dependency downloads.
+Run `npm run data:dictionary` to refresh the full provider taxonomy, then `npm run db:seed` to import it into MongoDB in batches. `npm run data:catalogue` refreshes product labels from the production export. No one-at-a-time lookup is needed. Startup uses the bundled snapshots and works without internet after image/dependency downloads.
 
 Seeding refreshes provider product records, preserves user profiles, clears derived scan caches and rebuilds the five default-profile example results. This prevents results from an older dataset from surviving a data refresh. Treat retailer-price corrections as source data in the snapshot so subsequent seeds retain them.
 
@@ -175,3 +175,7 @@ Impor harga massal: `npm run data:prices`. Snapshot observasi, bukti, tanggal da
 Di ponsel, Periksa label, Kamus bahan dan Profil saya berada di navigasi bawah dengan ruang aman untuk indikator perangkat. Halaman masuk/daftar memiliki tombol kembali dan pilihan tetap memeriksa tanpa akun. Pengalihan setelah autentikasi hanya menerima halaman aplikasi yang diizinkan.
 
 Setelah daftar dari scanner atau kamus, `/welcome` menawarkan pengaturan profil yang dapat dilewati. Menyimpan atau melewati langkah ini mengembalikan pengguna ke tujuan awal. Pendaftaran untuk menyimpan profil tamu langsung kembali ke profil tersebut. Login langsung kembali ke halaman yang dituju. Formulir ponsel tampil tanpa pengantar panjang; hasil scanner mendapat fokus setelah selesai dan menyediakan tautan kembali ke input.
+
+## Pembaruan sumber otomatis
+
+Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang satu jam setelah kegagalan, validasi sebelum seed, serta status sumber/tanggal di scanner dan kamus. Sumber katalog bundel historis adalah staging penyedia; pembaruan otomatis hanya menerima produksi dan tidak menandai snapshot lama sebagai baru ketika akses gagal. AI memakai fakta database, bukan penelusuran web langsung atau pengetahuan yang dijamin terbaru. Lihat [DATA_REFRESH.md](DATA_REFRESH.md).

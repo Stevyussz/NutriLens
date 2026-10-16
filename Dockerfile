@@ -12,12 +12,17 @@ COPY . .
 RUN npm run build && rm -rf .next/cache
 
 FROM deps AS seeder
+RUN mkdir -p /var/lib/bongkar-data && chown node:node /var/lib/bongkar-data
 ENV NODE_ENV=production
 COPY tsconfig.json ./
 COPY src ./src
 COPY data ./data
 USER node
 CMD ["npm", "run", "db:seed"]
+
+FROM seeder AS updater
+COPY scripts ./scripts
+CMD ["node", "--import", "tsx", "scripts/refresh-data.ts"]
 
 FROM ocr-runtime AS runner
 WORKDIR /app

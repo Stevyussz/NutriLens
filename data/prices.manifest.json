@@ -1,5 +1,5 @@
 {
-  "marketCatalogueProducts": 7898,
+  "marketCatalogueProducts": 7899,
   "matchedMarketCatalogueProducts": 11,
   "provider": "Open Prices / Open Food Facts",
   "endpoint": "https://prices.openfoodfacts.org/api/v1/prices?currency=IDR&size=100",

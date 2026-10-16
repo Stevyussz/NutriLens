@@ -165,6 +165,7 @@ export const defaultHealth: HealthProfile = {
 /** Creates five collection index sets, including token TTL. O(k) index commands, k is fixed. */
 export async function ensureIndexes(db: Db): Promise<void> {
   await Promise.all([
+    db.collection("dataset_state").createIndex({ key: 1 }, { unique: true }),
     db
       .collection("product_catalogue")
       .createIndex({ providerCode: 1 }, { unique: true }),

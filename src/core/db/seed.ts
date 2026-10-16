@@ -1,13 +1,9 @@
-import { pathToFileURL } from "node:url";
-import { readFile } from "node:fs/promises";
+import { loadDataBundle } from "./data-quality";
+import { access } from "node:fs/promises";
+import { join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { MongoClient, ObjectId } from "mongodb";
-import {
-  productSchema,
-  ensureIndexes,
-  defaultHealth,
-  chemicalSchema,
-  type User,
-} from "./collections";
+import { ensureIndexes, defaultHealth, type User } from "./collections";
 import { dictionaryData, mergeDictionaryData } from "./dictionary-data";
 import { presetProducts, presetIds } from "./presets";
 import {
@@ -17,58 +13,61 @@ import {
 } from "../scan-engine";
 import { classifyNovaGroup } from "../algorithms/nova-classifier";
 import { hashPassword } from "../security/session";
-import { z } from "zod";
-import { catalogueSchema } from "./catalogue";
 /** Idempotent source-labelled seed with five precomputed default-profile analyses.
  * Unique upserts refresh source facts and clear derived caches. O(d+a+p*i+c) work for dictionary rows,
  * aliases, products/ingredients and old caches, plus five aggregation evaluations. Run one seed job.
  */
-export async function seed() {
+export async function seed(directory?: string) {
+  const explicitDirectory = Boolean(directory);
+  if (!directory) {
+    const persisted = join(
+      process.env.DATA_RUNTIME_DIRECTORY || "/var/lib/bongkar-data",
+      "current",
+    );
+    directory = await access(persisted)
+      .then(() => persisted)
+      .catch(() => fileURLToPath(new URL("../../../data", import.meta.url)));
+  }
+  const bundle = await loadDataBundle(directory);
   const client = await new MongoClient(
     process.env.MONGODB_URI ?? "mongodb://localhost:27017",
   ).connect();
   try {
     const db = client.db(process.env.MONGODB_DB ?? "bongkar_label");
     await ensureIndexes(db);
-    const catalogue = z
-      .array(catalogueSchema)
-      .parse(
-        JSON.parse(
-          await readFile(
-            new URL("../../../data/catalogue.snapshot.json", import.meta.url),
-            "utf8",
-          ),
-        ),
+    const active = await db
+      .collection("dataset_state")
+      .findOne({ key: "active" });
+    if (
+      !explicitDirectory &&
+      Object.entries(bundle.manifests).some(
+        ([key, manifest]) =>
+          typeof active?.sources?.[key]?.retrievedAt === "string" &&
+          Date.parse(active.sources[key].retrievedAt) >
+            Date.parse(manifest.retrievedAt),
+      )
+    ) {
+      console.log(
+        JSON.stringify({ event: "seed", status: "PRESERVED_NEWER_DATABASE" }),
       );
-    if (!catalogue.length) throw Error("Catalogue snapshot is empty");
+      return;
+    }
+    const catalogue = bundle.catalogue;
     for (let offset = 0; offset < catalogue.length; offset += 500)
       await db.collection("product_catalogue").bulkWrite(
-        catalogue
-          .slice(offset, offset + 500)
-          .map((row) => ({
-            updateOne: {
-              filter: { providerCode: row.providerCode },
-              update: { $set: row },
-              upsert: true,
-            },
-          })),
+        catalogue.slice(offset, offset + 500).map((row) => ({
+          updateOne: {
+            filter: { providerCode: row.providerCode },
+            update: { $set: row },
+            upsert: true,
+          },
+        })),
         { ordered: false },
       );
-    await db
-      .collection("product_catalogue")
-      .deleteMany({
-        providerCode: { $nin: catalogue.map((row) => row.providerCode) },
-      });
-    const provider = z
-      .array(chemicalSchema)
-      .parse(
-        JSON.parse(
-          await readFile(
-            new URL("../../../data/dictionary.snapshot.json", import.meta.url),
-            "utf8",
-          ),
-        ),
-      );
+    await db.collection("product_catalogue").deleteMany({
+      providerCode: { $nin: catalogue.map((row) => row.providerCode) },
+    });
+    const provider = bundle.dictionary;
     const dictionary = mergeDictionaryData(provider, dictionaryData());
     for (let offset = 0; offset < dictionary.length; offset += 500) {
       await db.collection("chemical_dictionary").bulkWrite(
@@ -82,16 +81,7 @@ export async function seed() {
         { ordered: false },
       );
     }
-    const products = z
-      .array(productSchema)
-      .parse(
-        JSON.parse(
-          await readFile(
-            new URL("../../../data/products.snapshot.json", import.meta.url),
-            "utf8",
-          ),
-        ),
-      );
+    const products = bundle.products;
     const chemicalIndex = new Map(
       dictionary.flatMap((chemical) =>
         [chemical.canonicalName, ...chemical.aliases].map(
@@ -183,6 +173,19 @@ export async function seed() {
         { upsert: true },
       );
     }
+    await db.collection("dataset_state").updateOne(
+      { key: "active" },
+      {
+        $set: {
+          key: "active",
+          appliedAt: new Date(),
+          sources: bundle.manifests,
+          priceBarcodes: bundle.prices.map((p) => p.barcode),
+          priceObservations: bundle.prices.length,
+        },
+      },
+      { upsert: true },
+    );
     console.log(
       JSON.stringify({
         chemicals: await db.collection("chemical_dictionary").countDocuments(),

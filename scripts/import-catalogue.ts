@@ -5,10 +5,14 @@ import {
   parseDelimited,
   type CatalogueProduct,
 } from "../src/core/db/catalogue";
-import { productSchema, type Product } from "../src/core/db/collections";
+import {
+  productSchema,
+  nutritionSchema,
+  type Product,
+} from "../src/core/db/collections";
 import { parseIngredients } from "../src/core/ai/local-parser";
 const url =
-  "https://world.openfoodfacts.net/cgi/search.pl?action=process&tagtype_0=countries&tag_contains_0=contains&tag_0=indonesia&download=on";
+  "https://world.openfoodfacts.org/cgi/search.pl?action=process&tagtype_0=countries&tag_contains_0=contains&tag_0=indonesia&download=on";
 const tags = (s: string | undefined) =>
   (s ?? "")
     .split(",")
@@ -113,6 +117,15 @@ function normalize(
           else if (unit === "g") value *= key === "sodiumMg" ? 1000 : 1;
           else return [key, null];
           value = Math.round(value * factor * 1e6) / 1e6;
+          if (
+            !nutritionSchema.shape[
+              key as keyof typeof nutritionSchema.shape
+            ].safeParse(value).success ||
+            (serving?.unit === "g" &&
+              key !== "caloriesKcal" &&
+              value / (key === "sodiumMg" ? 1000 : 1) > serving.value * 1.05)
+          )
+            value = null;
           return [key, value];
         }),
       );
@@ -158,6 +171,16 @@ function normalize(
   return result.success ? result.data : null;
 }
 async function main() {
+  const sourceUrl = process.argv[2] ? process.argv[3] : url;
+  if (
+    !sourceUrl ||
+    !/^https:\/\/world\.openfoodfacts\.(org|net)\/cgi\/search\.pl\?/.test(
+      sourceUrl,
+    )
+  )
+    throw Error(
+      "Offline import requires the original export URL as third argument",
+    );
   const retrievedAt = process.argv[2]
     ? (await stat(process.argv[2])).mtime.toISOString()
     : new Date().toISOString();
@@ -247,12 +270,16 @@ async function main() {
     throw Error("No valid catalogue/reference records; snapshots retained");
   const manifest = {
     provider: "Open Food Facts",
-    sourceUrl: url,
+    sourceUrl,
+    environment:
+      new URL(sourceUrl).hostname === "world.openfoodfacts.org"
+        ? "PRODUCTION"
+        : "STAGING",
     retrievedAt,
     sha256: createHash("sha256").update(text).digest("hex"),
     exportRows: raw.length,
     catalogueRecords: entries.length,
-    completeFreshReferences: freshReferences,
+    completeExportReferences: freshReferences,
     totalReferences: references.size,
     retainedEarlierReferences: [...references.values()].filter(
       (p) => p.source.retrievedAt !== retrievedAt,

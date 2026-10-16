@@ -10416,6 +10416,42 @@
     "retrievedAt": "2026-10-16T06:39:22.568Z"
   },
   {
+    "providerCode": "8997236238203",
+    "name": "Cuerpo Vanila",
+    "brand": "cuerpo",
+    "category": "SUSU_OLAHAN",
+    "servingSizeGrams": 96,
+    "servingUnit": "g",
+    "ingredientsText": "KOMPOSISI / INGREDIENTS Bubuk Susu Full Cream, Krimer Minuman, Tepung Oat, Bubuk Susu Skim, Whey Protein Konsentrate, Inulin, Isomaltulosa, Maltodekstrin, Perisa Sintetik Vanila, Ekstrak Temulawak, Premiks Vitamin, Premiks Mineral, Antikempal Silikon Dioksida, Pemanis Alami Glikosida Steviol. Mengandung alergen, lihat bahan yang dicetak tebal",
+    "nutrition": {
+      "caloriesKcal": 450,
+      "sugarGrams": 20,
+      "proteinGrams": 15,
+      "sodiumMg": null,
+      "saturatedFatGrams": 4,
+      "fiberGrams": 4
+    },
+    "nutritionBasis": "PER_SERVING",
+    "countries": [
+      "en:indonesia"
+    ],
+    "origins": [],
+    "manufacturingPlaces": [],
+    "allergens": [
+      "en:milk"
+    ],
+    "labels": [
+      "en:halal"
+    ],
+    "additives": [],
+    "missingFields": [
+      "sodiumMg"
+    ],
+    "referenceEligible": false,
+    "sourceUrl": "https://world.openfoodfacts.org/product/8997236238203",
+    "retrievedAt": "2026-10-16T06:39:22.568Z"
+  },
+  {
     "providerCode": "8923636676505",
     "name": "Sakatonik ABC Tabs Kids Curcuma Madu",
     "brand": "",
@@ -40185,7 +40221,7 @@
       "caloriesKcal": 30,
       "sugarGrams": 1.25,
       "proteinGrams": 0.75,
-      "sodiumMg": 30000,
+      "sodiumMg": null,
       "saturatedFatGrams": 0.25,
       "fiberGrams": null
     },
@@ -40199,6 +40235,7 @@
     "labels": [],
     "additives": [],
     "missingFields": [
+      "sodiumMg",
       "fiberGrams"
     ],
     "referenceEligible": false,
@@ -50954,7 +50991,7 @@
       "caloriesKcal": 20,
       "sugarGrams": 0,
       "proteinGrams": 0.4,
-      "sodiumMg": 23000,
+      "sodiumMg": null,
       "saturatedFatGrams": 0.5,
       "fiberGrams": null
     },
@@ -50975,6 +51012,7 @@
     "additives": [],
     "missingFields": [
       "category",
+      "sodiumMg",
       "fiberGrams"
     ],
     "referenceEligible": false,

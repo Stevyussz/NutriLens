@@ -1,13 +1,14 @@
 {
   "provider": "Open Food Facts",
   "sourceUrl": "https://world.openfoodfacts.net/cgi/search.pl?action=process&tagtype_0=countries&tag_contains_0=contains&tag_0=indonesia&download=on",
+  "environment": "STAGING",
   "retrievedAt": "2026-10-16T06:39:22.568Z",
   "sha256": "8be7df55ce52c8c6c818d83028ff9631e0be717d172ae47c81257064d1a29af1",
   "exportRows": 8290,
-  "catalogueRecords": 7898,
-  "completeFreshReferences": 52,
+  "catalogueRecords": 7899,
+  "completeExportReferences": 52,
   "totalReferences": 89,
   "retainedEarlierReferences": 37,
-  "excludedNamelessObsoleteOrInvalid": 392,
+  "excludedNamelessObsoleteOrInvalid": 391,
   "notes": "All named valid exported records retained, including incomplete labels. Missing nutrients remain null. Only complete supported-category labels enter reference analysis. Earlier source-attributed references retain their original dates; no silent field merging across label versions."
 }

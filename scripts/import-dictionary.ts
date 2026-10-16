@@ -55,14 +55,17 @@ async function main() {
     (Object.keys(urls) as (keyof typeof urls)[]).map(async (key) => {
       const bytes = process.argv[2]
         ? await readFile(`${process.argv[2]}/bongkar-${key}.json`, "utf8")
-        : await (
-            await fetch(urls[key], {
+        : await (async () => {
+            const response = await fetch(urls[key], {
               signal: AbortSignal.timeout(90000),
               headers: {
-                "User-Agent": "BongkarLabel/1.0 educational taxonomy importer",
+                "User-Agent":
+                  "BongkarLabel/1.0 (https://github.com/Stevyussz/NutriLens)",
               },
-            })
-          ).text();
+            });
+            if (!response.ok) throw Error(`Provider HTTP ${response.status}`);
+            return response.text();
+          })();
       return {
         key,
         taxonomy: taxonomySchema.parse(JSON.parse(bytes)),

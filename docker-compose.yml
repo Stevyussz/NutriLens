@@ -8,7 +8,14 @@ services:
       - mongodb_data:/data/db
     networks: [database]
     healthcheck:
-      test: [CMD, mongosh, --quiet, --eval, "quit(db.adminCommand('ping').ok ? 0 : 1)"]
+      test:
+        [
+          CMD,
+          mongosh,
+          --quiet,
+          --eval,
+          "quit(db.adminCommand('ping').ok ? 0 : 1)",
+        ]
       interval: 5s
       timeout: 5s
       retries: 20
@@ -25,8 +32,25 @@ services:
     depends_on:
       mongodb:
         condition: service_healthy
+    volumes: ["dataset_snapshots:/var/lib/bongkar-data:ro"]
     networks: [database]
     restart: "no"
+  updater:
+    build:
+      context: .
+      target: updater
+    environment:
+      MONGODB_URI: mongodb://bongkar:${MONGO_ROOT_PASSWORD:-local-development-only}@mongodb:27017/?authSource=admin
+      MONGODB_DB: bongkar_label
+    depends_on:
+      seeder:
+        condition: service_completed_successfully
+    volumes: ["dataset_snapshots:/var/lib/bongkar-data"]
+    networks: [database, outbound]
+    restart: unless-stopped
+    init: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
   app:
     build:
       context: .
@@ -54,3 +78,4 @@ networks:
   outbound: {}
 volumes:
   mongodb_data:
+  dataset_snapshots:

@@ -1574,3 +1574,24 @@ input[type="checkbox"] {
     display: none;
   }
 }
+.freshness-body {
+  display: block;
+}
+.freshness-body dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 8px 16px;
+  font-size: 14px;
+}
+.freshness-body dd {
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .freshness-body dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+  .freshness-body dd {
+    margin-bottom: 8px;
+  }
+}

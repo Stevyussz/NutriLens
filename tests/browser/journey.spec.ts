@@ -77,8 +77,10 @@ test("input drafts survive method switches and mobile results precede examples",
   ).toBe(true);
   await page.getByRole("link", { name: "Kamus bahan", exact: true }).click();
   await page.getByText("Sumber dan cakupan data", { exact: true }).click();
-  await expect(page.locator(".coverage-body")).toContainText(
-    "Cakupan produk lokal masih terbatas",
-  );
-  await expect(page.locator(".coverage-body")).toContainText("estimasi");
+  await expect(
+    page.locator(".coverage-body").filter({ hasText: "Produk dan harga" }),
+  ).toContainText("Cakupan produk lokal masih terbatas");
+  await expect(
+    page.locator(".coverage-body").filter({ hasText: "Produk dan harga" }),
+  ).toContainText("estimasi");
 });

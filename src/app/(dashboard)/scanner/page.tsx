@@ -1,3 +1,4 @@
+import { DataFreshness } from "@/components/data-freshness";
 import { ScannerConsole } from "@/components/scanner/scanner-console";
 import { ProfileContext } from "@/components/scanner/profile-context";
 export default function Scanner() {
@@ -11,6 +12,7 @@ export default function Scanner() {
         </p>
       </header>
       <ProfileContext />
+      <DataFreshness compact />
       <ScannerConsole />
     </>
   );
