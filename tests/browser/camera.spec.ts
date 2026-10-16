@@ -1,0 +1,157 @@
+import { test, expect } from "@playwright/test";
+import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
+test.setTimeout(60000);
+test.use({
+  launchOptions: {
+    args: [
+      "--use-fake-ui-for-media-stream",
+      "--use-fake-device-for-media-stream",
+    ],
+  },
+});
+test("live camera captures real JPEG frames, retains photos, stops tracks and enters OCR review", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Scan label", exact: true })
+    .first()
+    .click();
+  await page.waitForURL("**/scanner");
+  await expect(
+    page.getByRole("heading", { name: "Foto langsung dari kamera." }),
+  ).toBeVisible();
+  await expect(
+    page.getByLabel("Foto komposisi dan informasi gizi"),
+  ).not.toBeVisible();
+  await page.setViewportSize({ width: 320, height: 844 });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page
+    .getByRole("button", { name: "Nyalakan kamera", exact: true })
+    .click();
+  await expect(page.getByLabel("Pratinjau kamera langsung")).toBeVisible();
+  await expect
+    .poll(() =>
+      page.locator("video").evaluate((v) => (v as HTMLVideoElement).videoWidth),
+    )
+    .toBeGreaterThan(0);
+  await page.evaluate(() => {
+    (window as unknown as { cameraTrack: MediaStreamTrack }).cameraTrack = (
+      document.querySelector("video")!.srcObject as MediaStream
+    ).getVideoTracks()[0];
+  });
+  await page
+    .getByRole("button", { name: "Ambil foto label", exact: true })
+    .click();
+  await expect(page.getByRole("img", { name: "Foto pilihan 1" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Baca foto label", exact: true }),
+  ).toBeInViewport();
+  await page
+    .getByRole("button", { name: "Ambil foto label", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Ambil foto label", exact: true }),
+  ).toBeDisabled();
+  await page.screenshot({
+    path: "artifacts/camera-live-mobile.png",
+    fullPage: true,
+  });
+  await page.getByRole("button", { name: "Teks label", exact: true }).click();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { cameraTrack: MediaStreamTrack }).cameraTrack
+            .readyState,
+      ),
+    )
+    .toBe("ended");
+  await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Nyalakan kamera", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(2);
+  await page.getByRole("button", { name: "Buang foto 2", exact: true }).click();
+  const review = normalizePhotoTranscription(
+    {
+      productName: "Label kamera uji",
+      brand: "",
+      category: "CAMILAN_BISKUIT",
+      servingText: "30 g",
+      basis: "PER_SERVING",
+      basisText: "Per sajian",
+      nutritionText: {
+        caloriesKcal: "140 kkal",
+        sugarGrams: "12 g",
+        proteinGrams: "3 g",
+        sodiumMg: "90 mg",
+        saturatedFatGrams: "2 g",
+        fiberGrams: "1 g",
+      },
+      ingredientsText: "tepung gandum, gula, kakao",
+      unreadableFields: [],
+    },
+    [{ width: 1920, height: 1440 }],
+  );
+  let jpeg = false;
+  await page.route("**/api/extract", (route) => {
+    jpeg = Boolean(
+      route
+        .request()
+        .postDataBuffer()
+        ?.includes(Buffer.from([0xff, 0xd8, 0xff])),
+    );
+    return route.fulfill({ json: review });
+  });
+  await page
+    .getByRole("button", { name: "Baca foto label", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Cocokkan dengan foto Anda" }),
+  ).toBeVisible();
+  expect(jpeg).toBe(true);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});
+test("denied camera permission has a useful gallery fallback", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator.mediaDevices, "getUserMedia", {
+      value: async () => {
+        throw new DOMException("Denied for test", "NotAllowedError");
+      },
+    });
+  });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Scan label", exact: true })
+    .first()
+    .click();
+  await page.waitForURL("**/scanner");
+  await page
+    .getByRole("button", { name: "Nyalakan kamera", exact: true })
+    .click();
+  await expect(
+    page.getByRole("alert").filter({ hasText: "Kamera belum diizinkan" }),
+  ).toBeVisible();
+  const chooser = page.waitForEvent("filechooser");
+  await page
+    .getByRole("button", { name: "Pilih foto dari galeri", exact: true })
+    .click();
+  await (await chooser).setFiles("artifacts/vision-fixtures/per-serving.png");
+  await expect(page.getByRole("img", { name: "Foto pilihan 1" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Baca foto label", exact: true }),
+  ).toBeEnabled();
+});

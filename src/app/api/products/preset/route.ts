@@ -1,3 +1,4 @@
+import { aiAvailable } from "@/core/ai/provider";
 import { NextResponse } from "next/server";
 import { getDb } from "@/core/db/client";
 import { requireUser } from "@/core/security/session";
@@ -18,7 +19,7 @@ export async function GET() {
           const p = products.find((p) => p.barcode === `case-${id}`);
           return p ? [{ id, name: p.name, description: p.source.note }] : [];
         }),
-        aiAvailable: Boolean(process.env.GEMINI_API_KEY),
+        aiAvailable: aiAvailable(),
       }),
     );
   } catch (e) {

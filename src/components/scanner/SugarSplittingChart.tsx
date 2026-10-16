@@ -49,7 +49,7 @@ export function SugarSplittingChart({ analysis }: { analysis: Analysis }) {
               tick={{ fill: "#484850", fontSize: 12 }}
             />
             <Tooltip
-              cursor={{ fill: "#e4e9eb" }}
+              cursor={{ fill: "#e9e4dc" }}
               contentStyle={{
                 background: "#fff9f0",
                 borderColor: "#8d887f",

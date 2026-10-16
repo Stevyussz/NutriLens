@@ -5,7 +5,7 @@ import {
   extractPhotoForReview,
   prepareLabelImage,
 } from "../src/core/ai/photo-extraction";
-import { geminiModel } from "../src/core/ai/model";
+import { aiIdentity, usesRouter } from "../src/core/ai/provider";
 const baseline = {
   caloriesKcal: 140,
   sugarGrams: 12,
@@ -145,7 +145,7 @@ async function main() {
   });
   const report = {
     checkedAt: new Date().toISOString(),
-    model: geminiModel(),
+    model: aiIdentity(),
     passed: results.length === 5 && results.every((r) => r.passed === true),
     cases: results,
     scope:
@@ -154,7 +154,9 @@ async function main() {
   await writeFile(
     process.env.PHOTO_OCR_ENGINE === "local"
       ? "artifacts/vision-local-benchmark.json"
-      : "artifacts/vision-benchmark.json",
+      : usesRouter()
+        ? "artifacts/vision-router-benchmark.json"
+        : "artifacts/vision-benchmark.json",
     JSON.stringify(report, null, 2),
   );
   console.log(

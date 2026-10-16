@@ -1,19 +1,24 @@
 import { DataFreshness } from "@/components/data-freshness";
 import { ScannerConsole } from "@/components/scanner/scanner-console";
 import { ProfileContext } from "@/components/scanner/profile-context";
-export default function Scanner() {
+export default async function Scanner({
+  searchParams,
+}: {
+  searchParams: Promise<{ history?: string }>;
+}) {
+  const historyId = (await searchParams).history;
   return (
     <>
       <header className="page-header scanner-page-header">
-        <p className="eyebrow mb-0">Untuk pilihan makan sehari-hari</p>
-        <h1>Baca label Anda.</h1>
+        <p className="eyebrow mb-0">Ruang pemeriksaan</p>
+        <h1>Mulai dari satu foto.</h1>
         <p className="muted">
-          Komposisi dan gizi, dibaca sesuai kebutuhan Anda.
+          Baca komposisi, periksa angka, lalu sesuaikan dengan kebutuhan Anda.
         </p>
       </header>
       <ProfileContext />
+      <ScannerConsole historyId={historyId} />
       <DataFreshness compact />
-      <ScannerConsole />
     </>
   );
 }

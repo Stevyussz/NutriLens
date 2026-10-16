@@ -14,7 +14,7 @@ test("photo API checks auth, origin, actual image decoding and low-resolution in
   expect(unauthed.status()).toBe(401);
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

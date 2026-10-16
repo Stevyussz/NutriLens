@@ -4,9 +4,19 @@ import { HttpError } from "./errors";
 export { HttpError } from "./errors";
 /** Rejects cross-site state changes; forwarded hosts are never trusted implicitly. O(1). */
 export function assertOrigin(request: Request): void {
-  const expected = new URL(process.env.APP_ORIGIN ?? "http://localhost:3000")
-    .origin;
-  if (request.headers.get("origin") !== expected)
+  const allowed = (process.env.APP_ORIGIN ?? "http://localhost:3000")
+    .split(",")
+    .map((entry) => {
+      try {
+        return new URL(entry.trim()).origin;
+      } catch {
+        return null;
+      }
+    })
+    .filter((o): o is string => Boolean(o));
+
+  const origin = request.headers.get("origin");
+  if (!origin || !allowed.includes(origin))
     throw new HttpError(
       403,
       "Asal permintaan tidak diizinkan. Muat ulang dari alamat aplikasi.",

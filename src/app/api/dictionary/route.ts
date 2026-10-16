@@ -34,8 +34,8 @@ export async function GET(request: Request) {
       collection
         .find(filter, { projection: { _id: 0 } })
         .sort({ canonicalName: 1 })
-        .skip((page - 1) * 12)
-        .limit(12)
+        .skip((page - 1) * 6)
+        .limit(6)
         .toArray(),
       collection.countDocuments(filter),
     ]);
@@ -44,7 +44,7 @@ export async function GET(request: Request) {
         entries,
         total,
         page,
-        pages: Math.ceil(total / 12),
+        pages: Math.ceil(total / 6),
       }),
     );
   } catch (e) {

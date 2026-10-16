@@ -19,7 +19,12 @@ import {
 } from "./ai/contextual-reranker";
 import { analysisSchema, type Analysis } from "./analysis-schema";
 import { z } from "zod";
-import { geminiModel } from "./ai/model";
+import {
+  aiAvailable,
+  aiIdentity,
+  aiProviderLabel,
+  usesRouter,
+} from "./ai/provider";
 
 /** Normalizes Indonesian spelling for exact indexed alias lookup. O(n) text length. */
 export function normalizeIngredient(value: string): string {
@@ -40,8 +45,8 @@ export function scanCacheKey(
   return createHash("sha256")
     .update(payload)
     .update(JSON.stringify(health))
-    .update(process.env.GEMINI_API_KEY ? `gemini:${geminiModel()}` : "local")
-    .update(`engine-v4:${revision}`)
+    .update(aiAvailable() ? aiIdentity() : "local")
+    .update(`engine-v5:${revision}`)
     .digest("hex");
 }
 /** Executes the symbolic engine and validates its complete output. O(n + indexed DB pipeline costs).
@@ -103,7 +108,7 @@ export async function analyzeProduct(
   let mode: Analysis["mode"] = "LOCAL_DETERMINISTIC";
   let notice =
     "Analisis label selesai. Klaim pemasaran yang memerlukan bukti tambahan ditandai belum terverifikasi. Periksa kembali komposisi dan ukuran sajian pada kemasan.";
-  if (useAi && process.env.GEMINI_API_KEY) {
+  if (useAi && aiAvailable()) {
     try {
       aiVerdict = await contextualRerank(
         product,
@@ -112,12 +117,10 @@ export async function analyzeProduct(
         paretoSwaps,
         { splittingAnalysis, percentiles },
       );
-      mode = "GEMINI";
-      notice =
-        "Penjelasan Gemini dipagari kalkulasi deterministik. Verifikasi kembali label. Saran di luar database adalah estimasi, bukan data toko terverifikasi.";
+      mode = usesRouter() ? "ROUTER_AI" : "GEMINI";
+      notice = `Penjelasan ${aiProviderLabel()} dipagari kalkulasi deterministik. Saran di luar database adalah estimasi, bukan data toko terverifikasi.`;
     } catch {
-      notice =
-        "Gemini tidak merespons atau hasilnya tidak valid. Analisis deterministik tetap tersedia; penilaian klaim belum diverifikasi.";
+      notice = `${aiProviderLabel()} tidak merespons atau hasilnya tidak valid. Analisis deterministik tetap tersedia; penilaian klaim belum diverifikasi.`;
     }
   }
   const result = analysisSchema.parse({

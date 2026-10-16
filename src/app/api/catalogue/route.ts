@@ -34,8 +34,8 @@ export async function GET(request: Request) {
       collection
         .find(filter, { projection: { _id: 0 } })
         .sort({ referenceEligible: -1, name: 1 })
-        .skip((page - 1) * 8)
-        .limit(8)
+        .skip((page - 1) * 4)
+        .limit(4)
         .toArray(),
       collection.countDocuments(filter),
     ]);
@@ -44,7 +44,7 @@ export async function GET(request: Request) {
         entries,
         total,
         page,
-        pages: Math.ceil(total / 8),
+        pages: Math.ceil(total / 4),
       }),
       { headers: { "Cache-Control": "private, no-store" } },
     );

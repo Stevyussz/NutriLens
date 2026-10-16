@@ -16,7 +16,7 @@ export function scoreNutrition(product: Product, chemicals: Chemical[]) {
         ? null
         : Math.round(averageGi * product.nutrition.sugarGrams) / 100,
     costPerGramProteinIdr:
-      product.nutrition.proteinGrams > 0
+      product.priceIdr !== null && product.nutrition.proteinGrams > 0
         ? Math.round(product.priceIdr / product.nutrition.proteinGrams)
         : null,
     valueScore: Math.max(

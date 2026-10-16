@@ -189,7 +189,10 @@ export function crossCheckPhoto(
             ...issues,
             "Ukuran sajian dua pembaca belum sepakat; cocokkan dengan foto.",
           ],
-    engine: "GEMINI_CROSSCHECKED",
+    engine:
+      review.engine === "ROUTER_VISION"
+        ? "ROUTER_CROSSCHECKED"
+        : "GEMINI_CROSSCHECKED",
     rawText,
   };
 }

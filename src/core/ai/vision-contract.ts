@@ -29,7 +29,13 @@ export const photoTranscriptionSchema = z
 export const photoReviewSchema = z
   .object({
     engine: z
-      .enum(["GEMINI", "GEMINI_CROSSCHECKED", "LOCAL_OCR"])
+      .enum([
+        "GEMINI",
+        "GEMINI_CROSSCHECKED",
+        "ROUTER_VISION",
+        "ROUTER_CROSSCHECKED",
+        "LOCAL_OCR",
+      ])
       .default("GEMINI"),
     rawText: z.string().max(30000).default(""),
     providerNotice: z.string().nullable().optional(),

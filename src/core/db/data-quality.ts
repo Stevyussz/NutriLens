@@ -50,6 +50,8 @@ export async function loadDataBundle(directory: string) {
         .parse(v),
     ),
   ]);
+  if (products.some((p) => p.priceIdr === null))
+    throw Error("Reference product price missing");
   if (
     new Set(catalogue.map((p) => p.providerCode)).size !== catalogue.length ||
     new Set(products.map((p) => p.barcode)).size !== products.length ||

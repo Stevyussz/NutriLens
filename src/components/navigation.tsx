@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ScanLine, BookOpen, UserRound, LogOut } from "lucide-react";
+import { ScanLine, BookOpen, UserRound, LogOut, History } from "lucide-react";
 import { Button } from "./ui/button";
 import { requestApi, successSchema } from "@/core/browser-api";
 export function Navigation({ isGuest = true }: { isGuest?: boolean }) {
@@ -19,7 +19,7 @@ export function Navigation({ isGuest = true }: { isGuest?: boolean }) {
     },
   });
   return (
-    <>
+    <aside className="app-navigation">
       <header className="app-header">
         <Link href="/" className="wordmark">
           Bongkar<span>Label</span>
@@ -52,8 +52,9 @@ export function Navigation({ isGuest = true }: { isGuest?: boolean }) {
       </header>
       <nav className="app-tabs" aria-label="Navigasi aplikasi">
         {[
-          { href: "/scanner", label: "Periksa label", Icon: ScanLine },
+          { href: "/scanner", label: "Scan label", Icon: ScanLine },
           { href: "/dictionary", label: "Kamus bahan", Icon: BookOpen },
+          { href: "/history", label: "Riwayat", Icon: History },
           {
             href: "/security-profile",
             label: "Profil saya",
@@ -76,6 +77,6 @@ export function Navigation({ isGuest = true }: { isGuest?: boolean }) {
           {logout.error.message}
         </p>
       )}
-    </>
+    </aside>
   );
 }

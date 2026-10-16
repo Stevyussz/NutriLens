@@ -5,7 +5,7 @@ test("source status exposes origin and collection dates without claiming live AI
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -20,6 +20,7 @@ test("source status exposes origin and collection dates without claiming live AI
     page.getByText("Katalog diambil", { exact: true }),
   ).toBeVisible();
   await page.getByRole("link", { name: "Kamus bahan", exact: true }).click();
+  await page.getByText("Status pembaruan data", { exact: true }).click();
   await expect(page.getByText("Kamus diambil", { exact: true })).toBeVisible();
   await expect(
     page.getByText("Observasi harga diambil", { exact: true }),

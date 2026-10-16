@@ -12,10 +12,11 @@ export function ProfileContext() {
     queryFn: () => requestApi("/api/profile", profileOutputSchema),
   });
   return (
-    <div className="scanner-context">
-      <UserRound size={20} aria-hidden />
+    <details className="scanner-context">
+      <summary>
+        <UserRound size={16} aria-hidden /> Mengikuti profil Anda
+      </summary>
       <div>
-        <p className="font-semibold mb-1">Pemeriksaan mengikuti profil Anda</p>
         {profile.data ? (
           <p className="muted text-sm mb-0">
             Gula {decimal(profile.data.healthProfile.dailySugarLimitGrams)}{" "}
@@ -35,6 +36,6 @@ export function ProfileContext() {
       <Link href="/security-profile" className="text-link">
         Ubah profil
       </Link>
-    </div>
+    </details>
   );
 }

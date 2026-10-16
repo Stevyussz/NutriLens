@@ -35,3 +35,10 @@ USER app
 EXPOSE 3000
 HEALTHCHECK --interval=20s --timeout=5s --start-period=20s CMD node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 CMD ["node", "server.js"]
+
+# Optional Linux host-loopback access through an exclusive filesystem socket.
+FROM node:22-bookworm-slim AS router-socket
+RUN mkdir -p /run/router /bridge && chown -R 1001:1001 /run/router /bridge
+COPY --chown=1001:1001 scripts/router-socket.mjs /bridge/router-socket.mjs
+USER 1001:1001
+CMD ["node", "/bridge/router-socket.mjs"]

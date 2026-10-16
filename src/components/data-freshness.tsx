@@ -15,11 +15,8 @@ export async function DataFreshness({
   return (
     <details
       className="data-coverage"
-      open={
-        !compact &&
-        (!status.production ||
-          status.stale ||
-          status.refreshStatus === "FAILED")
+      data-attention={
+        !status.production || status.stale || status.refreshStatus === "FAILED"
       }
     >
       <summary>

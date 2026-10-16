@@ -56,7 +56,7 @@ export const analysisSchema = z
         limitation: z.string(),
       })
       .strict(),
-    mode: z.enum(["GEMINI", "LOCAL_DETERMINISTIC"]),
+    mode: z.enum(["GEMINI", "ROUTER_AI", "LOCAL_DETERMINISTIC"]),
     notice: z.string(),
     executionTimeMs: z.number(),
     cacheHit: z.boolean(),

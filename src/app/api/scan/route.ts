@@ -1,3 +1,5 @@
+import { saveScanHistory } from "@/core/db/history";
+import { aiAvailable } from "@/core/ai/provider";
 import { NextResponse } from "next/server";
 import { createHash } from "node:crypto";
 import { z } from "zod";
@@ -126,12 +128,13 @@ export async function POST(request: Request) {
       const result = analysisSchema.parse(cached.result);
       result.cacheHit = true;
       result.executionTimeMs = performance.now() - started;
+      await saveScanHistory(db, user._id, key, result, user.healthProfile);
       return NextResponse.json(result, {
         headers: { "Cache-Control": "private, no-store" },
       });
     }
     if (!product) {
-      if (!process.env.GEMINI_API_KEY) {
+      if (!aiAvailable()) {
         if (text)
           product = parseLocalLabelText(text, `text-${key.slice(0, 32)}`);
         else
@@ -171,6 +174,7 @@ export async function POST(request: Request) {
       },
       { upsert: true },
     );
+    await saveScanHistory(db, user._id, key, result, user.healthProfile);
     return NextResponse.json(analysisSchema.parse(result), {
       headers: { "Cache-Control": "private, no-store" },
     });

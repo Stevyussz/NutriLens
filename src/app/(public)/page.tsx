@@ -47,14 +47,13 @@ export default async function Home() {
               Baca di balik kemasan
             </p>
             <h1>
-              Kenali isinya.
+              Foto labelnya.
               <br />
-              <span>Pilih yang sesuai.</span>
+              <span>Kenali isinya.</span>
             </h1>
             <p className="intro">
-              Gula dengan nama berbeda. Kode bahan yang asing. BongkarLabel
-              membantu Anda memahami komposisi dan membandingkan pilihan untuk
-              kebutuhan sehari-hari.
+              Foto komposisi dan tabel gizinya. Pahami nama lain gula, bahan
+              yang asing, dan pilihan yang lebih sesuai dengan kebutuhan Anda.
             </p>
             <div className="hero-actions">
               <StartAnalysis />
@@ -67,6 +66,57 @@ export default async function Home() {
               Langsung periksa, tanpa membuat akun.
             </p>
           </div>
+          <aside
+            className="hero-label-art"
+            aria-label="Ilustrasi pembacaan label"
+          >
+            <div className="label-art-caption">
+              <ScanLine size={18} aria-hidden /> Lihat lebih dekat
+            </div>
+            <div className="label-paper">
+              <span className="label-paper-kicker">CONTOH KOMPOSISI</span>
+              <h2>
+                Di balik
+                <br />
+                satu kemasan.
+              </h2>
+              <div className="label-paper-rule" />
+              <div className="label-paper-row">
+                <span>01</span>
+                <strong>Gandum utuh</strong>
+                <span>Bahan utama</span>
+              </div>
+              <div className="label-paper-row sugar">
+                <span>02</span>
+                <strong>Gula</strong>
+                <span>Sumber gula</span>
+              </div>
+              <div className="label-paper-row sugar">
+                <span>03</span>
+                <strong>Dekstrosa</strong>
+                <span>Sumber gula</span>
+              </div>
+              <div className="label-paper-row sugar">
+                <span>04</span>
+                <strong>Madu</strong>
+                <span>Sumber gula</span>
+              </div>
+              <div className="label-paper-bottom">
+                <span>
+                  Nama berbeda.
+                  <br />
+                  <strong>Perannya berkaitan.</strong>
+                </span>
+                <div className="label-barcode" aria-hidden />
+              </div>
+              <p className="label-paper-note">
+                Ilustrasi cara membaca. Bukan hasil pindai produk riil.
+              </p>
+            </div>
+            <p className="label-art-footnote">
+              Baca komposisi. Putuskan sendiri.
+            </p>
+          </aside>
         </section>
         <section
           className="label-example"
@@ -161,7 +211,7 @@ export default async function Home() {
           <div>
             <h2>Mulai dari makanan yang ada di tangan Anda.</h2>
             <p className="muted mb-0">
-              Isi label kemasan atau gunakan contoh analisis untuk mengenal cara
+              Foto label kemasan atau coba contoh analisis untuk mengenal cara
               kerjanya.
             </p>
           </div>

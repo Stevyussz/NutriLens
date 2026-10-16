@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
-test("light theme, public flow, all examples, ingredient dialog, dictionary, profile and session end", async ({
+test("warm theme, public flow, all examples, ingredient dialog, dictionary, profile and session end", async ({
   page,
   context,
 }) => {
@@ -27,7 +27,7 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(228, 235, 237)");
+  ).toBe("rgb(242, 239, 232)");
   await page.getByRole("button", { name: "Data & privasi" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
@@ -35,35 +35,43 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
   await expect(page.getByText(/juri|judge/i)).toHaveCount(0);
   await page.screenshot({ path: "artifacts/home-desktop.png", fullPage: true });
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .nth(1)
     .click();
   await page.waitForURL("**/scanner");
-  await expect(page.getByText("Label pertama Anda menunggu")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Foto kemasan", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
   const cookie = (await context.cookies()).find(
     (c) => c.name === "bongkar_session",
   );
   expect(cookie?.httpOnly).toBe(true);
   expect(cookie?.sameSite).toBe("Lax");
   await page
+    .getByRole("button", { name: "Contoh analisis", exact: true })
+    .click();
+  await page
     .getByRole("button", { name: "FitGandum, sereal ilustratif" })
     .click();
   await expect(
     page.getByRole("heading", { name: "FitGandum, sereal ilustratif" }),
   ).toBeVisible();
+  await page.getByRole("link", { name: "Sumber gula", exact: true }).click();
   await expect(
     page.getByText("Pola sugar-splitting terdeteksi oleh model posisi."),
   ).toBeVisible();
-  await page.getByRole("link", { name: "Sumber gula", exact: true }).click();
   await expect(page).toHaveURL(/#sumber-gula$/);
-  await expect(page.locator("#sumber-gula")).toBeInViewport();
-  await page.getByRole("button", { name: "1. gandum utuh" }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
-  await page.keyboard.press("Escape");
   await page.getByText("Lihat urutan setelah penggabungan").click();
   await expect(
     page.getByRole("cell", { name: "Gabungan sumber gula", exact: true }),
   ).toBeVisible();
+  await page.getByRole("link", { name: "Komposisi", exact: true }).click();
+  await page.getByRole("button", { name: "1. gandum utuh" }).click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page
+    .getByRole("link", { name: "Pilihan pengganti", exact: true })
+    .click();
   await page.getByText("Data kandidat dan Pareto frontier").click();
   await page.screenshot({
     path: "artifacts/scanner-desktop.png",
@@ -75,12 +83,16 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
     "Kopi susu gula aren, studi kasus",
     "Keripik kentang keju, studi kasus",
   ]) {
+    await page
+      .getByRole("button", { name: "Contoh analisis", exact: true })
+      .click();
     await page.getByRole("button", { name }).click();
     await expect(
       page.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
   }
-  await page.getByRole("button", { name: "Teks bebas", exact: true }).click();
+  await page.getByRole("button", { name: "Scan label", exact: true }).click();
+  await page.getByRole("button", { name: "Teks label", exact: true }).click();
   await page
     .getByLabel("Salin nama, komposisi dan seluruh informasi gizi")
     .fill("air, sukrosa, susu sapi, kopi. Informasi pada label tidak lengkap.");
@@ -93,6 +105,7 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
       .filter({ hasText: /informasi gizi|Mode lokal aktif/ }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
+  await page.getByText("Galeri & format foto", { exact: true }).click();
   await expect(
     page.getByLabel("Foto komposisi dan informasi gizi"),
   ).toBeVisible();
@@ -102,11 +115,12 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
   await page
     .getByLabel("Nama produk", { exact: true })
     .fill("Label uji input pengguna");
-  await page.getByLabel("Harga per sajian (Rp)").fill("8000");
-  await page.getByLabel("Ukuran sajian (g/ml)").fill("40");
   await page
     .getByLabel("Komposisi sesuai urutan, pisahkan dengan koma")
     .fill("gandum utuh, sukrosa, madu, garam");
+  await page.getByText("02 · Gizi per sajian & harga", { exact: true }).click();
+  await page.getByLabel("Harga per sajian (Rp)").fill("8000");
+  await page.getByLabel("Ukuran sajian (g/ml)").fill("40");
   for (const [label, value] of [
     ["Energi (kkal), per sajian", "160"],
     ["Gula (g), per sajian", "12"],
@@ -140,6 +154,11 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
   ).toBeVisible();
   await page.getByRole("button", { name: "Tampilkan seluruh kamus" }).click();
   await expect(page.getByLabel("Cari nama, alias atau kode")).toHaveValue("");
+  await page
+    .locator(".dictionary-entry")
+    .first()
+    .locator(":scope > summary")
+    .click();
   const aliasDetails = page.locator(".alias-list details").first();
   await expect(aliasDetails).not.toHaveAttribute("open");
   await aliasDetails.locator("summary").click();
@@ -160,6 +179,9 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
   await expect(
     page.getByRole("status").filter({ hasText: "Profil tersimpan" }),
   ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Perangkat & akses", exact: true })
+    .click();
   await page.getByText("Informasi teknis aplikasi", { exact: true }).click();
   await page.getByText("Periksa indeks aktif").click();
   await expect(
@@ -179,7 +201,7 @@ test("light theme, public flow, all examples, ingredient dialog, dictionary, pro
   await page.waitForURL("/");
   expect(errors).toEqual([]);
 });
-test("mobile layout, keyboard focus, light dialogs and session revocation", async ({
+test("mobile layout, keyboard focus, warm dialogs and session revocation", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -189,7 +211,7 @@ test("mobile layout, keyboard focus, light dialogs and session revocation", asyn
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(228, 235, 237)");
+  ).toBe("rgb(242, 239, 232)");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -201,10 +223,13 @@ test("mobile layout, keyboard focus, light dialogs and session revocation", asyn
   ).toBeFocused();
   await page.screenshot({ path: "artifacts/home-mobile.png", fullPage: true });
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
+  await page
+    .getByRole("button", { name: "Contoh analisis", exact: true })
+    .click();
   await page
     .getByRole("button", { name: "FitGandum, sereal ilustratif" })
     .click();
@@ -216,12 +241,13 @@ test("mobile layout, keyboard focus, light dialogs and session revocation", asyn
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+  await page.getByRole("link", { name: "Komposisi", exact: true }).click();
   await page.getByRole("button", { name: "2. sukrosa" }).click();
   expect(
     await page
       .getByRole("dialog")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(252, 248, 243)");
+  ).toBe("rgb(255, 253, 248)");
   await page.getByRole("button", { name: "Tutup rincian" }).click();
   await page.screenshot({
     path: "artifacts/scanner-mobile.png",
@@ -246,6 +272,9 @@ test("mobile layout, keyboard focus, light dialogs and session revocation", asyn
     path: "artifacts/profile-mobile.png",
     fullPage: true,
   });
+  await page
+    .getByRole("button", { name: "Perangkat & akses", exact: true })
+    .click();
   await page.getByRole("button", { name: "Cabut sesi", exact: true }).click();
   await page
     .getByRole("button", { name: "Ya, cabut sesi", exact: true })

@@ -109,12 +109,14 @@ export function DictionaryExplorer() {
           </p>
           <div className="dictionary-list">
             {dictionary.data.entries.map((c) => (
-              <article className="dictionary-entry" key={c.canonicalName}>
-                <p className="muted text-sm mb-2">
-                  {ingredientFunctionLabels[c.functionalCategory]}
-                  {c.insOrECode ? ` · ${c.insOrECode}` : ""}
-                </p>
-                <h2 className="capitalize">{c.canonicalName}</h2>
+              <details className="dictionary-entry" key={c.canonicalName}>
+                <summary>
+                  <p className="muted text-sm mb-2">
+                    {ingredientFunctionLabels[c.functionalCategory]}
+                    {c.insOrECode ? ` · ${c.insOrECode}` : ""}
+                  </p>
+                  <h2 className="capitalize">{c.canonicalName}</h2>
+                </summary>
                 <p>{c.plainExplanation}</p>
                 <IngredientAliases
                   aliases={c.aliases}
@@ -136,7 +138,7 @@ export function DictionaryExplorer() {
                     Baca referensi
                   </a>
                 </div>
-              </article>
+              </details>
             ))}
           </div>
           <div className="pagination">

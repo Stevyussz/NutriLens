@@ -15,7 +15,7 @@ export const registrationSchema = z
 
 export function authDestination(value: unknown): string {
   return typeof value === "string" &&
-    ["/scanner", "/dictionary", "/security-profile"].includes(value)
+    ["/scanner", "/dictionary", "/security-profile", "/history"].includes(value)
     ? value
     : "/scanner";
 }

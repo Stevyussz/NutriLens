@@ -2,6 +2,7 @@ import type { Db, Document } from "mongodb";
 import { productSchema, type Product } from "./collections";
 import { z } from "zod";
 export const swapSchema = productSchema.extend({
+  priceIdr: z.number().positive(),
   id: z.string(),
   jaccardFlavorSimilarity: z.number(),
   moneySavedIdr: z.number(),
@@ -22,7 +23,7 @@ export function buildSwapPipeline(
     category: product.category,
     barcode: { $ne: product.barcode },
     "source.kind": { $in: ["OPEN_FOOD_FACTS", "LABEL"] },
-    priceIdr: { $lte: Math.min(product.priceIdr, budget) },
+    priceIdr: { $lte: Math.min(product.priceIdr ?? 0, budget) },
     "nutrition.sugarGrams": { $lte: product.nutrition.sugarGrams * 0.75 },
     "nutrition.proteinGrams": { $gte: product.nutrition.proteinGrams },
   };
@@ -159,6 +160,7 @@ export async function findSmartCandidateSwapsMongo(
   product: Product,
   budget: number,
 ): Promise<Swap[]> {
+  if (product.priceIdr === null) return [];
   return z
     .array(swapSchema)
     .parse(

@@ -1,3 +1,15 @@
+# Current delivery — photo-first Label studio, 16 October 2026
+
+This section supersedes all earlier light-only, navy/cobalt, equal-method-priority and stacked-result descriptions below. The owner now excludes blue/navy and requests a more elegant hero and shorter authenticated pages. The implemented palette uses warm charcoal navigation (#2c2825), oat gradients, cream reading surfaces and vermilion actions (#a83e28). The hero pairs a Manrope heading with a restrained Georgia italic accent and an explicitly illustrative printed ingredient label. Manrope is self-hosted with its OFL licence.
+
+Live camera preview is the default scan method, with explicit browser permission, rear-camera preference, a shutter, camera switching and up to two local JPEG captures. Gallery upload is secondary and precedes catalogue search. Tracks stop on mode changes, processing, hidden tabs and unmount; permission failures expose the gallery fallback. Text/manual entry remains a correction or fallback path. Input, examples and the last result use separate workspace views while preserving drafts and files in page memory. Result overview, ingredients, sugar sources and alternatives are separate views. Profile preferences and device controls are separate panels. Dictionary entries expand on demand, with six rows per page. Source freshness and the profile summary start collapsed. Required OCR corrections and confirmation remain enforced; the focused field follows the open correction panel, and invalid fields reopen their section.
+
+The seven measured text pairs pass 4.5:1, with a minimum of 5.03:1. These are sampled pairs, not a claim of a complete accessibility audit. Official Yuka and Cronometer public flows informed the hierarchy; Appllama MCP was unavailable. Verification is responsive web scope; no native simulator/FPS certification is claimed. The shared AI provider now supports 9Router vision and contextual ranking. Docker reaches the existing host-local router through a restricted Unix socket with no new TCP listener. Deterministic safety rules remain authoritative. Private history retains analysis and profile snapshots, without photos. Unknown prices remain null and do not create financial comparisons. Source, quota and accuracy limitations still apply.
+
+Final verification results are recorded in VERIFICATION.md. Evidence includes artifacts/browser-results.json, studio-layout-review.json, studio-contrast.json and studio-*.png. Earlier records follow.
+
+---
+
 # BongkarLabel UI delivery gate
 
 ## Latest scanner and data revision — 16 October 2026

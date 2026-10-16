@@ -89,7 +89,6 @@ export function parseLocalLabelText(text: string, barcode: string): Product {
   const required = [
     "nama",
     "kategori",
-    "harga",
     "sajian",
     "energi",
     "gula",
@@ -121,7 +120,7 @@ export function parseLocalLabelText(text: string, barcode: string): Product {
     name: fields.get("nama"),
     brand: fields.get("merek") ?? "",
     category: fields.get("kategori")?.toUpperCase(),
-    priceIdr: numeric("harga"),
+    priceIdr: fields.get("harga") ? numeric("harga") : null,
     servingSizeGrams: numeric("sajian"),
     flavorTags: (fields.get("rasa") ?? "")
       .split(",")

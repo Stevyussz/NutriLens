@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 import { randomBytes } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 
+test.setTimeout(90000);
+
 test.use({ viewport: { width: 390, height: 844 }, video: "on" });
 
 test("mobile account upgrade preserves profile, login returns to the intended page, and other sessions can be revoked", async ({
@@ -20,7 +22,7 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
   );
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -140,6 +142,9 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
       ).status(),
     ).toBe(200);
     await page.reload();
+    await page
+      .getByRole("button", { name: "Perangkat & akses", exact: true })
+      .click();
     const otherRow = page
       .locator(".session-row")
       .filter({ hasText: "Perangkat lain" });

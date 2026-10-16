@@ -63,7 +63,7 @@ export const productSchema = z
     name: z.string().min(1).max(250),
     brand: z.string().max(150),
     category: categorySchema,
-    priceIdr: z.number().positive().max(10000000),
+    priceIdr: z.number().positive().max(10000000).nullable(),
     servingSizeGrams: z.number().positive().max(10000),
     flavorTags: z.array(z.string().min(1).max(80)).max(30),
     nutrition: nutritionSchema,
@@ -173,6 +173,10 @@ export async function ensureIndexes(db: Db): Promise<void> {
       .collection("product_catalogue")
       .createIndex({ referenceEligible: -1, name: 1 }),
     db.collection("users").createIndex({ email: 1 }, { unique: true }),
+    db
+      .collection("scan_history")
+      .createIndex({ userId: 1, cacheKey: 1 }, { unique: true }),
+    db.collection("scan_history").createIndex({ userId: 1, createdAt: -1 }),
     db.collection("sessions").createIndex({ tokenHash: 1 }, { unique: true }),
     db.collection("sessions").createIndex({ userId: 1 }),
     db

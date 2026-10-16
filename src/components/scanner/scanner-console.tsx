@@ -1,10 +1,15 @@
 "use client";
+import { LiveCamera } from "./live-camera";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { FileText, Camera, ClipboardList } from "lucide-react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { FileText, Camera, ClipboardList, ScanLine } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { requestApi } from "@/core/browser-api";
 import { presetOutputSchema } from "@/core/api-schemas";
+import { QuickVerdict } from "./quick-verdict";
+import Link from "next/link";
+import { historyDetailSchema } from "@/core/history-schema";
+import { profileOutputSchema } from "@/core/api-schemas";
 import { analysisSchema } from "@/core/analysis-schema";
 import { photoReviewSchema, type PhotoReview } from "@/core/ai/vision-contract";
 import type { CatalogueProduct } from "@/core/db/catalogue";
@@ -25,8 +30,35 @@ const nutrientLabels = [
   ["saturatedFatGrams", "Lemak jenuh (g)"],
   ["fiberGrams", "Serat (g)"],
 ] as const;
-export function ScannerConsole() {
-  const [mode, setMode] = useState<"label" | "text" | "photo">("label");
+export function ScannerConsole({ historyId }: { historyId?: string }) {
+  const queryClient = useQueryClient();
+  const history = useQuery({
+    queryKey: ["history-detail", historyId],
+    queryFn: () =>
+      requestApi(
+        `/api/history/${encodeURIComponent(historyId!)}`,
+        historyDetailSchema,
+      ),
+    enabled: Boolean(historyId),
+  });
+  const profile = useQuery({
+    queryKey: ["profile"],
+    queryFn: () => requestApi("/api/profile", profileOutputSchema),
+  });
+  const [mode, setMode] = useState<"label" | "text" | "photo">("photo");
+  const [workspace, setWorkspace] = useState<"entry" | "examples" | "result">(
+    "entry",
+  );
+  const [detail, setDetail] = useState<
+    "overview" | "ingredients" | "sugar" | "swaps"
+  >("overview");
+  const [editorSection, setEditorSection] = useState<"identity" | "nutrition">(
+    "identity",
+  );
+  const [photos, setPhotos] = useState<File[]>([]);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const photoInput = useRef<HTMLInputElement>(null);
+  const selectedFiles = photos.map((file) => file.name);
   const [activeCase, setActiveCase] = useState("");
   const [formError, setFormError] = useState("");
   const [labelExpanded, setLabelExpanded] = useState(false);
@@ -48,6 +80,11 @@ export function ScannerConsole() {
     queryFn: () => requestApi("/api/products/preset", presetOutputSchema),
   });
   const scan = useMutation({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["history"] });
+      setWorkspace("result");
+      setDetail("overview");
+    },
     mutationFn: (body: object | FormData) =>
       requestApi("/api/scan", analysisSchema, {
         method: "POST",
@@ -83,6 +120,8 @@ export function ScannerConsole() {
       setPhotoPreviews(
         submittedPhotos.current.map((file) => URL.createObjectURL(file)),
       );
+      setWorkspace("entry");
+      setEditorSection(draft.name ? "nutrition" : "identity");
       setReview(draft);
       setCatalogueDraft(null);
       setReviewConfirmed(false);
@@ -90,7 +129,13 @@ export function ScannerConsole() {
       setLabelExpanded(true);
       scan.reset();
       requestAnimationFrame(() =>
-        form.querySelector<HTMLInputElement>('[name="name"]')?.focus(),
+        form
+          .querySelector<HTMLInputElement>(
+            draft.name
+              ? `[name="${draft.servingSizeGrams === null ? "serving" : (nutrientLabels.find(([key]) => draft.nutrition[key] === null)?.[0] ?? "caloriesKcal")}"]`
+              : '[name="name"]',
+          )
+          ?.focus(),
       );
     },
   });
@@ -118,6 +163,7 @@ export function ScannerConsole() {
       )
         element.value = value === null ? "" : String(value);
     }
+    setEditorSection("nutrition");
     setCatalogueDraft(draft);
     setReview(null);
     setReviewConfirmed(false);
@@ -126,7 +172,7 @@ export function ScannerConsole() {
     scan.reset();
     setFormError("");
     requestAnimationFrame(() =>
-      form.querySelector<HTMLInputElement>('[name="name"]')?.focus(),
+      form.querySelector<HTMLInputElement>('[name="price"]')?.focus(),
     );
   }
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -137,7 +183,7 @@ export function ScannerConsole() {
     try {
       if (mode === "photo") {
         const body = new FormData();
-        const files = form.getAll("image");
+        const files = photos;
         if (
           !files.length ||
           files.length > 2 ||
@@ -148,6 +194,27 @@ export function ScannerConsole() {
         submittedPhotos.current = files as File[];
         extraction.mutate(body);
         return;
+      }
+      if (mode === "label") {
+        const invalid = event.currentTarget.querySelector<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >(
+          "input:not(:disabled):invalid,textarea:not(:disabled):invalid,select:not(:disabled):invalid",
+        );
+        if (invalid) {
+          const disclosure = invalid.closest("details");
+          const section = invalid
+            .closest("details")
+            ?.getAttribute("data-editor");
+          if (section === "identity" || section === "nutrition")
+            setEditorSection(section);
+          requestAnimationFrame(() => {
+            if (disclosure) disclosure.open = true;
+            invalid.focus();
+            invalid.reportValidity();
+          });
+          return;
+        }
       }
       if (mode === "label" && (review || catalogueDraft) && !reviewConfirmed)
         throw new Error(
@@ -162,7 +229,9 @@ export function ScannerConsole() {
         name: String(form.get("name")),
         brand: String(form.get("brand")),
         category: form.get("category"),
-        priceIdr: Number(form.get("price")),
+        priceIdr: String(form.get("price") ?? "").trim()
+          ? Number(form.get("price"))
+          : null,
         servingSizeGrams: Number(form.get("serving")),
         flavorTags: String(form.get("tags"))
           .split(",")
@@ -195,36 +264,102 @@ export function ScannerConsole() {
       );
     }
   }
-  const result = scan.data;
+  const result = scan.data ?? history.data?.result;
+  const summaryHealth = scan.data
+    ? profile.data?.healthProfile
+    : (history.data?.healthProfile ?? profile.data?.healthProfile);
+  useEffect(() => {
+    if (history.data) {
+      setWorkspace("result");
+      setDetail("overview");
+    }
+  }, [history.data]);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    if (result) resultHeading.current?.focus();
-  }, [result]);
+    if (result && workspace === "result") resultHeading.current?.focus();
+  }, [result, workspace]);
+  function showEntry() {
+    setWorkspace("entry");
+    requestAnimationFrame(() =>
+      document.getElementById("label-entry")?.focus(),
+    );
+  }
+  function showExamples() {
+    setWorkspace("examples");
+    requestAnimationFrame(() =>
+      document.getElementById("contoh-analisis")?.focus(),
+    );
+  }
+  useEffect(() => {
+    const change = () => {
+      const hash = location.hash;
+      const value =
+        hash === "#hasil-ringkas"
+          ? "overview"
+          : hash === "#komposisi"
+            ? "ingredients"
+            : hash === "#sumber-gula"
+              ? "sugar"
+              : hash === "#pilihan-pengganti"
+                ? "swaps"
+                : null;
+      if (value) {
+        setWorkspace("result");
+        setDetail(value);
+      }
+    };
+    window.addEventListener("hashchange", change);
+    return () => window.removeEventListener("hashchange", change);
+  }, []);
   return (
     <div className={`scanner-layout${result ? " has-result" : ""}`}>
-      <section className="panel scanner-entry" id="label-entry" tabIndex={-1}>
-        <p className="eyebrow">Mulai dari kemasan Anda</p>
-        <h2>Masukkan label Anda</h2>
-        <CatalogueSearch onChoose={chooseCatalogue} />
+      <nav className="workspace-switch" aria-label="Ruang pemeriksaan">
+        <button aria-pressed={workspace === "entry"} onClick={showEntry}>
+          <Camera size={18} aria-hidden />
+          Scan label
+        </button>
+        <button aria-pressed={workspace === "examples"} onClick={showExamples}>
+          Contoh analisis
+        </button>
+        <button
+          aria-pressed={workspace === "result"}
+          disabled={!result}
+          onClick={() => setWorkspace("result")}
+        >
+          Hasil{result && <span className="result-ready" />}
+        </button>
+      </nav>
+      <section
+        className="panel scanner-entry"
+        id="label-entry"
+        tabIndex={-1}
+        hidden={workspace !== "entry"}
+      >
+        <p className="eyebrow">Baca label dari foto</p>
+        <h2>
+          {review && mode === "label"
+            ? "Periksa hasil bacaan."
+            : "Arahkan ke labelnya."}
+        </h2>
         <div className="tab-switch" aria-label="Cara memasukkan label">
           {[
-            {
-              id: "label" as const,
-              label: "Label lengkap",
-              Icon: ClipboardList,
-              hint: "Salin angka gizi",
-            },
-            {
-              id: "text" as const,
-              label: "Teks bebas",
-              Icon: FileText,
-              hint: "Tempel isi label",
-            },
             {
               id: "photo" as const,
               label: "Foto kemasan",
               Icon: Camera,
-              hint: "Unggah foto",
+              hint: "Fitur utama",
+            },
+            {
+              id: "label" as const,
+              label: "Label lengkap",
+              Icon: ClipboardList,
+              hint: "Isi atau koreksi",
+            },
+            {
+              id: "text" as const,
+              label: "Teks label",
+              Icon: FileText,
+              hint: "Tempel tulisan",
             },
           ].map(({ id, label, Icon, hint }) => (
             <Button
@@ -239,7 +374,6 @@ export function ScannerConsole() {
                 setFormError("");
                 extraction.reset();
                 setActiveCase("");
-                scan.reset();
               }}
             >
               <Icon size={18} aria-hidden />
@@ -260,7 +394,7 @@ export function ScannerConsole() {
               Isi informasi kemasan
             </Button>
             <p className="muted text-sm mt-4 mb-0">
-              Belum punya kemasan? Coba contoh analisis di halaman ini.
+              Belum punya kemasan? Buka tab Contoh analisis.
             </p>
           </div>
         )}
@@ -270,18 +404,37 @@ export function ScannerConsole() {
             aria-label="Tinjau hasil pembacaan foto"
           >
             <h3>Cocokkan dengan foto Anda</h3>
+            <div className="draft-brief">
+              <strong>Terbaca dari foto, belum dikonfirmasi</strong>
+              <p>
+                Gula{" "}
+                {review.nutrition.sugarGrams === null
+                  ? "belum terbaca"
+                  : `${decimal(review.nutrition.sugarGrams)} g`}{" "}
+                · Natrium{" "}
+                {review.nutrition.sodiumMg === null
+                  ? "belum terbaca"
+                  : `${decimal(review.nutrition.sodiumMg)} mg`}{" "}
+                / sajian.
+              </p>
+            </div>
             <p className="muted text-sm">
               Pembaca:{" "}
               {review.engine === "LOCAL_OCR"
                 ? "OCR lokal"
-                : review.engine === "GEMINI_CROSSCHECKED"
-                  ? "Gemini dengan pemeriksaan OCR lokal"
-                  : "Gemini"}
+                : ["GEMINI_CROSSCHECKED", "ROUTER_CROSSCHECKED"].includes(
+                      review.engine,
+                    )
+                  ? `${review.engine.startsWith("ROUTER") ? "Vision 9Router" : "Gemini"} dengan pemeriksaan OCR lokal`
+                  : review.engine === "ROUTER_VISION"
+                    ? "Vision 9Router"
+                    : "Gemini"}
               . {review.providerNotice}
             </p>
             <p>
               Periksa nama, kolom gizi, ukuran sajian dan urutan komposisi. Isi
-              bagian kosong dan harga per sajian sebelum menganalisis.
+              bagian gizi yang kosong sebelum menganalisis. Harga bersifat
+              opsional.
             </p>
             <div className="photo-previews">
               {photoPreviews.map((url, index) => (
@@ -359,6 +512,7 @@ export function ScannerConsole() {
         <form
           ref={formRef}
           onSubmit={submit}
+          noValidate={mode === "label"}
           hidden={mode === "label" && !labelExpanded}
           aria-busy={busy}
           onChange={(event) => {
@@ -375,85 +529,104 @@ export function ScannerConsole() {
             hidden={mode !== "label"}
             disabled={mode !== "label" || busy}
           >
-            <legend className="form-section-title">
-              Identitas dan isi kemasan
-            </legend>
-            <label className="field full">
-              Nama produk
-              <input name="name" required maxLength={250} />
-            </label>
-            <label className="field">
-              Merek
-              <input name="brand" maxLength={150} />
-            </label>
-            <label className="field">
-              Kategori
-              <select name="category">
-                {categorySchema.options.map((c) => (
-                  <option key={c} value={c}>
-                    {c.replaceAll("_", " ").toLowerCase()}
-                  </option>
+            <legend className="sr-only">Informasi label untuk diperiksa</legend>
+            <details
+              className="label-form-section full"
+              data-editor="identity"
+              open={editorSection === "identity"}
+              onToggle={(e) => {
+                if (e.currentTarget.open) setEditorSection("identity");
+              }}
+            >
+              <summary>01 · Identitas & komposisi</summary>
+              <div className="form-grid">
+                <label className="field full">
+                  Nama produk
+                  <input name="name" required maxLength={250} />
+                </label>
+                <label className="field">
+                  Merek
+                  <input name="brand" maxLength={150} />
+                </label>
+                <label className="field">
+                  Kategori
+                  <select name="category">
+                    {categorySchema.options.map((c) => (
+                      <option key={c} value={c}>
+                        {c.replaceAll("_", " ").toLowerCase()}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="field full">
+                  Komposisi sesuai urutan, pisahkan dengan koma
+                  <textarea
+                    name="ingredients"
+                    rows={3}
+                    required
+                    maxLength={15000}
+                  />
+                </label>
+              </div>
+            </details>
+            <details
+              className="label-form-section full"
+              data-editor="nutrition"
+              open={editorSection === "nutrition"}
+              onToggle={(e) => {
+                if (e.currentTarget.open) setEditorSection("nutrition");
+              }}
+            >
+              <summary>02 · Gizi per sajian & harga</summary>
+              <div className="form-grid nutrition-fields">
+                <label className="field">
+                  Harga per sajian (Rp)
+                  <input type="number" name="price" min={1} max={10000000} />
+                </label>
+                <label className="field">
+                  Ukuran sajian (g/ml)
+                  <input
+                    type="number"
+                    name="serving"
+                    min={0.1}
+                    max={10000}
+                    step="any"
+                    required
+                  />
+                </label>
+
+                {nutrientLabels.map(([key, label]) => (
+                  <label key={key} className="field">
+                    {label}, per sajian
+                    <input
+                      type="number"
+                      name={key}
+                      min={0}
+                      max={
+                        key === "sodiumMg"
+                          ? 100000
+                          : key === "caloriesKcal"
+                            ? 10000
+                            : 1000
+                      }
+                      step="any"
+                      required
+                    />
+                  </label>
                 ))}
-              </select>
-            </label>
-            <label className="field">
-              Harga per sajian (Rp)
-              <input
-                type="number"
-                name="price"
-                min={1}
-                max={10000000}
-                required
-              />
-            </label>
-            <label className="field">
-              Ukuran sajian (g/ml)
-              <input
-                type="number"
-                name="serving"
-                min={0.1}
-                max={10000}
-                step="any"
-                required
-              />
-            </label>
-            <label className="field full">
-              Komposisi sesuai urutan, pisahkan dengan koma
-              <textarea
-                name="ingredients"
-                rows={3}
-                required
-                maxLength={15000}
-              />
-            </label>
-            <p className="form-section-title full">Informasi gizi per sajian</p>
-            {nutrientLabels.map(([key, label]) => (
-              <label key={key} className="field">
-                {label}, per sajian
-                <input
-                  type="number"
-                  name={key}
-                  min={0}
-                  max={
-                    key === "sodiumMg"
-                      ? 100000
-                      : key === "caloriesKcal"
-                        ? 10000
-                        : 1000
-                  }
-                  step="any"
-                  required
-                />
-              </label>
-            ))}
-            <label className="field full">
-              Rasa atau fungsi, pisahkan dengan koma
-              <input name="tags" maxLength={500} />
-            </label>
-            <label className="field full">
-              Klaim kemasan (opsional), pisahkan dengan titik koma
-              <input name="claims" maxLength={1000} />
-            </label>
+                <details className="full optional-label-fields">
+                  <summary>Tambahkan rasa atau klaim kemasan</summary>
+                  <label className="field full">
+                    Rasa atau fungsi, pisahkan dengan koma
+                    <input name="tags" maxLength={500} />
+                  </label>
+                  <label className="field full">
+                    Klaim kemasan (opsional), pisahkan dengan titik koma
+                    <input name="claims" maxLength={1000} />
+                  </label>
+                </details>
+              </div>
+            </details>
           </fieldset>
           <fieldset hidden={mode !== "text"} disabled={mode !== "text" || busy}>
             <label className="field full">
@@ -466,37 +639,70 @@ export function ScannerConsole() {
                 rows={8}
               />
               <span className="muted">
-                Teks bebas diproses Gemini. Mode lokal menerima format satu
-                field per baris. Jangan sertakan data pribadi.
+                Teks label diproses pembaca AI yang terhubung. Mode lokal
+                menerima format satu field per baris. Jangan sertakan data
+                pribadi.
               </span>
             </label>
           </fieldset>
           <fieldset
+            className="photo-entry"
             hidden={mode !== "photo"}
             disabled={mode !== "photo" || busy}
           >
-            <label className="field full">
-              Foto komposisi dan informasi gizi
-              <input
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                name="image"
-                multiple
-                required
-              />
-              <span className="muted">
-                Pilih satu atau dua foto produk yang sama: komposisi dan gizi.
-                JPEG, PNG, WEBP, maksimal 5 MB per foto. Hasilnya diperiksa
-                dahulu sebelum analisis.
-              </span>
-            </label>
+            <LiveCamera
+              active={mode === "photo" && workspace === "entry" && !busy}
+              files={photos}
+              onCapture={(file) =>
+                setPhotos((current) => [...current, file].slice(0, 2))
+              }
+              onRemove={(index) => {
+                setPhotos((current) => current.filter((_, i) => i !== index));
+                if (photoInput.current) photoInput.current.value = "";
+              }}
+              onGallery={() => {
+                setGalleryOpen(true);
+                photoInput.current?.click();
+              }}
+            />
+            <details
+              className="gallery-picker"
+              open={galleryOpen}
+              onToggle={(event) => setGalleryOpen(event.currentTarget.open)}
+            >
+              <summary>Galeri & format foto</summary>
+              <label className="field full photo-picker">
+                Foto komposisi dan informasi gizi
+                <input
+                  ref={photoInput}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  name="image"
+                  multiple
+                  onChange={(event) =>
+                    setPhotos(Array.from(event.target.files ?? []))
+                  }
+                />
+                {selectedFiles.length > 0 && (
+                  <span className="selected-files">
+                    {selectedFiles.length} foto dipilih ·{" "}
+                    {selectedFiles.join(", ")}
+                  </span>
+                )}
+                <span className="muted">
+                  Pilih satu atau dua foto produk yang sama: komposisi dan gizi.
+                  JPEG, PNG, WEBP, maksimal 5 MB per foto. Hasilnya diperiksa
+                  dahulu sebelum analisis.
+                </span>
+              </label>
+            </details>
           </fieldset>
           {mode === "text" && !presets.data?.aiAvailable && (
             <p className="notice mt-4">
-              Gemini belum diaktifkan. Gunakan Label lengkap, studi kasus, atau
-              teks dengan baris Nama, Kategori, Harga, Sajian, Energi, Gula,
-              Protein, Natrium, Lemak jenuh, Serat dan Komposisi. Pisahkan nama
-              field dan nilainya dengan tanda titik dua.
+              Pembaca AI belum terhubung. Gunakan Label lengkap, studi kasus,
+              atau teks dengan baris Nama, Kategori, Harga, Sajian, Energi,
+              Gula, Protein, Natrium, Lemak jenuh, Serat dan Komposisi. Pisahkan
+              nama field dan nilainya dengan tanda titik dua.
             </p>
           )}
           {(review || catalogueDraft) && mode === "label" && (
@@ -512,7 +718,11 @@ export function ScannerConsole() {
               atau foto.
             </label>
           )}
-          <Button className="mt-6" type="submit" disabled={busy}>
+          <Button
+            className={`mt-6 ${mode === "photo" && photos.length > 0 ? "camera-submit-ready" : ""}`}
+            type="submit"
+            disabled={busy || (mode === "photo" && photos.length === 0)}
+          >
             {extraction.isPending
               ? "Membaca foto…"
               : scan.isPending
@@ -529,6 +739,7 @@ export function ScannerConsole() {
             </p>
           )}
         </form>
+        <CatalogueSearch onChoose={chooseCatalogue} />
         {extraction.isPending && (
           <p className="notice mt-4" role="status">
             Membaca teks pada foto. Tahap berikutnya adalah memeriksa hasil dan
@@ -562,104 +773,209 @@ export function ScannerConsole() {
           </p>
         )}
       </section>
+      {historyId && history.isPending && (
+        <p role="status">Memuat hasil tersimpan…</p>
+      )}
+      {history.error && (
+        <div>
+          <p role="alert" className="error-text">
+            {history.error.message}
+          </p>
+          <Button onClick={() => history.refetch()}>Muat ulang riwayat</Button>
+        </div>
+      )}
       {result && (
         <div
           className="scan-results"
           aria-live="polite"
           aria-busy={scan.isPending}
+          hidden={workspace !== "result"}
         >
           <section className="result-header">
             <p className={`status status-${result.aiVerdict.medicalStatus}`}>
               {profileStatusLabels[result.aiVerdict.medicalStatus]}
             </p>
             <div className="result-heading-row">
-              <h2 ref={resultHeading} tabIndex={-1}>
+              <h1 ref={resultHeading} tabIndex={-1}>
                 {result.extractedProductData.name}
-              </h2>
-              <div className="result-actions">
-                <a className="button button-secondary" href="#label-entry">
-                  Periksa label lain
-                </a>
-                <a className="button button-ghost" href="#contoh-analisis">
-                  Contoh lainnya
-                </a>
-              </div>
+              </h1>
             </div>
+            {!scan.data && history.data && (
+              <p className="history-restored">
+                Hasil tersimpan ·{" "}
+                {new Date(history.data.createdAt).toLocaleDateString("id-ID")} ·
+                memakai profil saat itu.{" "}
+                <Link href="/history">Kembali ke riwayat</Link>
+              </p>
+            )}
+            {detail === "overview" && summaryHealth && (
+              <QuickVerdict
+                result={result}
+                health={summaryHealth}
+                onSwaps={() => setDetail("swaps")}
+              />
+            )}
             <nav
               className="result-navigation"
               aria-label="Telusuri hasil analisis"
             >
-              <a href="#komposisi">Komposisi</a>
-              <a href="#sumber-gula">Sumber gula</a>
-              <a href="#pilihan-pengganti">Pilihan pengganti</a>
-            </nav>
-            <p>{result.aiVerdict.explanation}</p>
-            <p className="muted text-sm">
-              {result.extractedProductData.source.note}
-            </p>
-            {result.extractedProductData.source.url && (
               <a
-                href={result.extractedProductData.source.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-link text-sm"
+                href="#hasil-ringkas"
+                aria-current={detail === "overview" ? "page" : undefined}
+                onClick={() => setDetail("overview")}
               >
-                Sumber label produk
+                Ringkasan
               </a>
-            )}
-            <dl className="metric-strip">
-              <div>
-                <dt>Gula / sajian</dt>
-                <dd>
-                  {decimal(result.extractedProductData.nutrition.sugarGrams)}{" "}
-                  <span className="text-base">g</span>
-                </dd>
-              </div>
-              <div>
-                <dt>Natrium / sajian</dt>
-                <dd>
-                  {decimal(result.extractedProductData.nutrition.sodiumMg)}{" "}
-                  <span className="text-base">mg</span>
-                </dd>
-              </div>
-              <div>
-                <dt>Protein / sajian</dt>
-                <dd>
-                  {decimal(result.extractedProductData.nutrition.proteinGrams)}{" "}
-                  <span className="text-base">g</span>
-                </dd>
-              </div>
-              <div>
-                <dt>
-                  Harga / sajian{" "}
-                  {result.extractedProductData.priceSource === "ESTIMATE"
-                    ? "(estimasi)"
-                    : ""}
-                </dt>
-                <dd className="!text-2xl">
-                  {rupiah(result.extractedProductData.priceIdr)}
-                </dd>
-              </div>
-            </dl>
-            <div className="notice">
-              {result.notice}
-              <details className="mt-2">
-                <summary>Rincian analisis</summary>
-                <p className="muted text-sm mb-0">
-                  {result.cacheHit ? "Cache sesuai profil" : "Analisis baru"} ·{" "}
-                  {decimal(result.executionTimeMs)} ms · NOVA{" "}
-                  {result.extractedProductData.novaGroup} (heuristik) · Klaim:{" "}
-                  {claimStatusLabels[result.aiVerdict.claimStatus]}
-                </p>
-              </details>
+              <a
+                href="#komposisi"
+                aria-current={detail === "ingredients" ? "page" : undefined}
+                onClick={() => setDetail("ingredients")}
+              >
+                Komposisi
+              </a>
+              <a
+                href="#sumber-gula"
+                aria-current={detail === "sugar" ? "page" : undefined}
+                onClick={() => setDetail("sugar")}
+              >
+                Sumber gula
+              </a>
+              <a
+                href="#pilihan-pengganti"
+                aria-current={detail === "swaps" ? "page" : undefined}
+                onClick={() => setDetail("swaps")}
+              >
+                Pilihan pengganti
+              </a>
+            </nav>
+            <div className="result-actions">
+              <a
+                className="button button-secondary"
+                href="#label-entry"
+                onClick={showEntry}
+              >
+                Periksa label lain
+              </a>
+              <a
+                className="button button-ghost"
+                href="#contoh-analisis"
+                onClick={showExamples}
+              >
+                Contoh lainnya
+              </a>
             </div>
+            <details className="result-more" hidden={detail !== "overview"}>
+              <summary>Gizi lengkap, sumber & penjelasan</summary>
+              <details
+                className="result-verdict"
+                hidden={detail !== "overview"}
+              >
+                <summary>Penjelasan lebih rinci</summary>
+                <p>{result.aiVerdict.explanation}</p>
+              </details>
+              <details className="result-provenance">
+                <summary>Asal label dan batas pembacaan</summary>
+                <p className="muted text-sm">
+                  {result.extractedProductData.source.note}
+                </p>
+                {result.extractedProductData.source.url && (
+                  <a
+                    href={result.extractedProductData.source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-link text-sm"
+                  >
+                    Sumber label produk
+                  </a>
+                )}
+              </details>
+              <details
+                className="nutrition-detail"
+                hidden={detail !== "overview"}
+              >
+                <summary>Angka gizi & harga lainnya</summary>
+                <dl className="metric-strip">
+                  {(
+                    [
+                      ["caloriesKcal", "Energi / sajian", "kkal"],
+                      ["saturatedFatGrams", "Lemak jenuh / sajian", "g"],
+                      ["fiberGrams", "Serat / sajian", "g"],
+                    ] as const
+                  ).map(([key, label, unit]) => (
+                    <div key={key}>
+                      <dt>{label}</dt>
+                      <dd>
+                        {decimal(result.extractedProductData.nutrition[key])}{" "}
+                        <span className="text-base">{unit}</span>
+                      </dd>
+                    </div>
+                  ))}
+
+                  <div>
+                    <dt>Gula / sajian</dt>
+                    <dd>
+                      {decimal(
+                        result.extractedProductData.nutrition.sugarGrams,
+                      )}{" "}
+                      <span className="text-base">g</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Natrium / sajian</dt>
+                    <dd>
+                      {decimal(result.extractedProductData.nutrition.sodiumMg)}{" "}
+                      <span className="text-base">mg</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Protein / sajian</dt>
+                    <dd>
+                      {decimal(
+                        result.extractedProductData.nutrition.proteinGrams,
+                      )}{" "}
+                      <span className="text-base">g</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>
+                      Harga / sajian{" "}
+                      {result.extractedProductData.priceIdr !== null &&
+                      result.extractedProductData.priceSource === "ESTIMATE"
+                        ? "(estimasi)"
+                        : ""}
+                    </dt>
+                    <dd className="!text-2xl">
+                      {rupiah(result.extractedProductData.priceIdr)}
+                    </dd>
+                  </div>
+                </dl>
+              </details>
+              <details className="notice" hidden={detail !== "overview"}>
+                <summary>Sumber analisis & keterbatasan</summary>
+                <p>{result.notice}</p>
+                <details className="mt-2">
+                  <summary>Rincian analisis</summary>
+                  <p className="muted text-sm mb-0">
+                    {result.cacheHit ? "Cache sesuai profil" : "Analisis baru"}{" "}
+                    · {decimal(result.executionTimeMs)} ms · NOVA{" "}
+                    {result.extractedProductData.novaGroup} (heuristik) · Klaim:{" "}
+                    {claimStatusLabels[result.aiVerdict.claimStatus]}
+                  </p>
+                </details>
+              </details>
+            </details>
           </section>
-          <div className="result-grid">
+          <div className="result-detail" hidden={detail !== "ingredients"}>
             <XRayIngredientCard analysis={result} />
+          </div>
+          <div className="result-detail" hidden={detail !== "sugar"}>
             <SugarSplittingChart analysis={result} />
           </div>
-          <section className="panel">
-            <h2>Konteks populasi pembanding</h2>
+          <details
+            className="panel population-detail"
+            hidden={detail !== "overview"}
+          >
+            <summary>Konteks populasi pembanding</summary>
             <p>
               Persentil gula:{" "}
               {result.percentiles.sugarPercentileRank ?? "belum tersedia"} ·
@@ -671,7 +987,7 @@ export function ScannerConsole() {
             <p className="muted text-sm mb-0">
               Biaya per gram protein:{" "}
               {result.nutritionScore.costPerGramProteinIdr === null
-                ? "Tidak dihitung, protein nol"
+                ? "Tidak dihitung, harga belum diisi atau protein nol"
                 : rupiah(result.nutritionScore.costPerGramProteinIdr)}
               . Proksi GL gula:{" "}
               {result.nutritionScore.sugarOnlyGlycemicLoadProxy === null
@@ -679,11 +995,28 @@ export function ScannerConsole() {
                 : decimal(result.nutritionScore.sugarOnlyGlycemicLoadProxy)}
               .
             </p>
-          </section>
-          <ParetoSwapMatrix analysis={result} />
+          </details>
+          <div className="result-detail" hidden={detail !== "swaps"}>
+            <ParetoSwapMatrix analysis={result} />
+          </div>
         </div>
       )}
-      <aside className="panel sample-panel" id="contoh-analisis" tabIndex={-1}>
+      <aside
+        className="panel sample-panel"
+        id="contoh-analisis"
+        tabIndex={-1}
+        hidden={workspace !== "examples"}
+      >
+        {scan.isPending && (
+          <p className="notice" role="status">
+            Memeriksa contoh dan mencari pembanding…
+          </p>
+        )}
+        {scan.error && (
+          <p className="error-text" role="alert">
+            {scan.error.message}
+          </p>
+        )}
         <p className="eyebrow">Belajar dari contoh</p>
         <h2>Coba contoh analisis</h2>
         <p className="muted text-sm">

@@ -6,7 +6,7 @@ test("photo transcription requires corrections and confirmation before analysis"
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -75,7 +75,6 @@ test("photo transcription requires corrections and confirmation before analysis"
     page.getByLabel("Harga per sajian (Rp)", { exact: true }),
   ).toHaveValue("");
   await page.getByLabel("Serat (g), per sajian", { exact: true }).fill("1");
-  await page.getByLabel("Harga per sajian (Rp)", { exact: true }).fill("3000");
   const confirmation = page.getByRole("checkbox", {
     name: /Saya sudah mencocokkan/,
   });
@@ -86,6 +85,9 @@ test("photo transcription requires corrections and confirmation before analysis"
   expect(scans).toBe(0);
   await confirmation.check();
   await page
+    .locator(".ocr-review")
+    .screenshot({ path: "artifacts/photo-review-desktop.png" });
+  await page
     .getByRole("button", {
       name: "Analisis label yang sudah diperiksa",
       exact: true,
@@ -95,9 +97,11 @@ test("photo transcription requires corrections and confirmation before analysis"
     page.getByRole("heading", { name: "Biskuit uji browser", exact: true }),
   ).toBeVisible({ timeout: 30000 });
   expect(scans).toBe(1);
-  await page
-    .locator(".ocr-review")
-    .screenshot({ path: "artifacts/photo-review-desktop.png" });
+  const saved = await (await page.request.get("/api/history")).json();
+  const detail = await (
+    await page.request.get(`/api/history/${saved.items[0].id}`)
+  ).json();
+  expect(detail.result.extractedProductData.priceIdr).toBeNull();
   await page.setViewportSize({ width: 320, height: 780 });
   expect(
     await page.evaluate(
@@ -111,7 +115,7 @@ test("catalogue search provides real source labels without inventing a price", a
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

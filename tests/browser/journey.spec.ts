@@ -10,12 +10,21 @@ test("input drafts survive method switches and mobile results precede examples",
   });
   await page.goto("/scanner");
   await page
-    .getByRole("button", { name: "Isi informasi kemasan", exact: true })
+    .getByRole("button", { name: "Label lengkap", exact: true })
     .click();
   await page
     .getByLabel("Nama produk", { exact: true })
     .fill("Catatan kemasan saya");
-  await page.getByRole("button", { name: "Teks bebas", exact: true }).click();
+  await page.getByText("02 · Gizi per sajian & harga", { exact: true }).click();
+  await page
+    .getByRole("button", { name: "Periksa label ini", exact: true })
+    .click();
+  await expect(
+    page.getByLabel("Komposisi sesuai urutan, pisahkan dengan koma", {
+      exact: true,
+    }),
+  ).toBeFocused();
+  await page.getByRole("button", { name: "Teks label", exact: true }).click();
   await page
     .getByLabel("Salin nama, komposisi dan seluruh informasi gizi")
     .fill("Komposisi kemasan yang sedang saya salin.");
@@ -31,7 +40,7 @@ test("input drafts survive method switches and mobile results precede examples",
   await expect(page.getByLabel("Nama produk", { exact: true })).toHaveValue(
     "Catatan kemasan saya",
   );
-  await page.getByRole("button", { name: "Teks bebas", exact: true }).click();
+  await page.getByRole("button", { name: "Teks label", exact: true }).click();
   await expect(
     page.getByLabel("Salin nama, komposisi dan seluruh informasi gizi"),
   ).toHaveValue("Komposisi kemasan yang sedang saya salin.");
@@ -42,6 +51,9 @@ test("input drafts survive method switches and mobile results precede examples",
       .evaluate((el) => (el as HTMLInputElement).files?.[0]?.name),
   ).toBe("label-check.png");
   await page
+    .getByRole("button", { name: "Contoh analisis", exact: true })
+    .click();
+  await page
     .getByRole("button", { name: "FitGandum, sereal ilustratif" })
     .click();
   await expect(
@@ -50,25 +62,15 @@ test("input drafts survive method switches and mobile results precede examples",
       exact: true,
     }),
   ).toBeFocused();
-  const result = await page.locator(".scan-results").boundingBox();
-  const examples = await page.locator("#contoh-analisis").boundingBox();
-  expect(examples!.y).toBeGreaterThanOrEqual(result!.y + result!.height);
+  await expect(page.locator("#label-entry")).toBeHidden();
+  await expect(page.locator("#contoh-analisis")).toBeHidden();
+  await expect(page.locator(".scan-results")).toBeVisible();
   expect(
-    await page.evaluate(() =>
-      Boolean(
-        document
-          .querySelector(".scan-results")!
-          .compareDocumentPosition(
-            document.querySelector("#contoh-analisis")!,
-          ) & Node.DOCUMENT_POSITION_FOLLOWING,
-      ),
-    ),
-  ).toBe(true);
+    await page.evaluate(() => document.documentElement.scrollHeight),
+  ).toBeLessThan(1500);
   await page.getByRole("link", { name: "Contoh lainnya", exact: true }).click();
   await expect(page.locator("#contoh-analisis")).toBeInViewport();
-  await page
-    .getByRole("link", { name: "Periksa label lain", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Scan label", exact: true }).click();
   await expect(page.locator("#label-entry")).toBeInViewport();
   expect(
     await page.evaluate(

@@ -9,7 +9,7 @@ test("all public entry points reuse the same private session without assumed con
     .click();
   await expect(page).toHaveURL(/#cara-baca$/);
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .last()
     .click();
   await page.waitForURL("**/scanner");
@@ -21,7 +21,7 @@ test("all public entry points reuse the same private session without assumed con
   expect((await profile.json()).healthProfile.conditions).toEqual([]);
   await page.getByRole("link", { name: "Bongkar Label", exact: true }).click();
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -29,7 +29,7 @@ test("all public entry points reuse the same private session without assumed con
     (await context.cookies()).find((c) => c.name === "bongkar_session")?.value,
   ).toBe(token);
   await page
-    .getByRole("button", { name: "Isi informasi kemasan", exact: true })
+    .getByRole("button", { name: "Label lengkap", exact: true })
     .click();
   await page
     .getByRole("button", { name: "Periksa label ini", exact: true })
@@ -53,7 +53,7 @@ test("data error states provide working retries and dictionary clears to an actu
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Periksa label", exact: true })
+    .getByRole("button", { name: "Scan label", exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -91,6 +91,7 @@ test("data error states provide working retries and dictionary clears to an actu
     }),
   );
   await page.getByRole("link", { name: "Profil saya", exact: true }).click();
+  await page.waitForURL("**/security-profile");
   // A fresh document exercises a failed request instead of the scanner's fresh profile cache.
   await page.reload();
   await expect(

@@ -61,17 +61,50 @@ services:
       APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash}
+      NINE_ROUTER_BASE_URL: ${NINE_ROUTER_BASE_URL:-}
+      NINE_ROUTER_API_KEY: ${NINE_ROUTER_API_KEY:-}
+      NINE_ROUTER_SOCKET_PATH: ${NINE_ROUTER_SOCKET_PATH:-}
+      NINE_ROUTER_MODEL: ${NINE_ROUTER_MODEL:-ag/gemini-3.8-flash-low}
       SESSION_SECURE: ${SESSION_SECURE:-false}
       TRUST_PROXY: ${TRUST_PROXY:-false}
-    ports: ["127.0.0.1:${APP_PORT:-3000}:3000"]
+    ports: ["${APP_BIND:-0.0.0.0}:${APP_PORT:-3000}:3000"]
     depends_on:
       seeder:
         condition: service_completed_successfully
+      router-socket:
+        condition: service_healthy
+        required: false
+    volumes: ["router_socket:/run/router:ro"]
     networks: [database, outbound]
     restart: unless-stopped
     init: true
     security_opt: [no-new-privileges:true]
     cap_drop: [ALL]
+
+  router-socket:
+    build:
+      context: .
+      target: router-socket
+    profiles: [local-router-socket]
+    network_mode: host
+    volumes: ["router_socket:/run/router"]
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "const fs=require('node:fs'); process.exit(fs.existsSync('/run/router/9router.sock') ? 0 : 1)",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    read_only: true
+    restart: unless-stopped
+    init: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+
 networks:
   database:
     internal: true
@@ -79,3 +112,4 @@ networks:
 volumes:
   mongodb_data:
   dataset_snapshots:
+  router_socket:

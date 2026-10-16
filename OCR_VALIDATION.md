@@ -2,6 +2,14 @@
 
 16 Oktober 2026. Pembacaan foto menghasilkan draf yang wajib diperiksa pengguna sebelum analisis. Tidak ada klaim akurasi 100% untuk seluruh foto atau kemasan.
 
+## Pembaruan 9Router dan kamera langsung
+
+Kamera langsung menjadi jalur utama, dengan galeri sebagai cadangan. Foto hanya dikirim saat pengguna menekan Baca foto label. Provider 9Router menggunakan model vision yang tersedia pada router lokal; OCR Tesseract tetap menjadi pemeriksaan tambahan. Saat router dipilih, foto dikirim ke penyedia upstream yang dikonfigurasi di 9Router.
+
+Pemeriksaan Docker melalui socket privat lulus 5/5: label per sajian, per 100 g dengan desimal, rotasi, nilai serat yang hilang tetap null, serta penolakan foto terlalu kecil. Empat ekstraksi yang diterima memakai ROUTER_CROSSCHECKED. Bukti lokal: `artifacts/vision-router-docker-benchmark.json`.
+
+Alur kamera virtual yang memotret fixture label terkontrol kemudian menjalankan endpoint produksi OCR dan analisis AI nyata juga lulus, tanpa respons tiruan. Enam nutrien cocok, harga tetap null, dan hasil tampil dalam ringkasan. Bukti lokal: `artifacts/camera-ai-end-to-end.json`. Kamera virtual dan label sintetis tidak membuktikan akurasi seluruh kamera fisik, kemasan Indonesia atau kondisi pencahayaan.
+
 ## Alur yang diterapkan
 
 1. Validasi signature, ukuran maksimal 5 MB per foto, dekode nyata, batas 24 megapiksel, penolakan animasi dan foto terlalu kecil. Terima satu atau dua foto dari produk yang sama.

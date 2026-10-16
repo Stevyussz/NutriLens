@@ -22,6 +22,20 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
     price: s.priceIdr,
     score: scoreNutrition(s, []).valueScore,
   }));
+  if (product.priceIdr === null)
+    return (
+      <section className="result-section" id="pilihan-pengganti">
+        <h2>Bandingkan pilihan berikutnya</h2>
+        <p>
+          Harga belum diisi. Analisis gizi tetap tersedia; perbandingan biaya
+          dan penghematan belum dihitung.
+        </p>
+        <p className="muted">
+          Saat membandingkan label lain, gunakan ukuran sajian yang sama dan
+          perhatikan gula, natrium, serta alergi Anda.
+        </p>
+      </section>
+    );
   return (
     <section
       className="mt-8 result-section"

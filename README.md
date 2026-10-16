@@ -1,6 +1,6 @@
 # BongkarLabel
 
-Aplikasi Next.js 15 / React 19 untuk membedah komposisi pangan, mendeteksi pola pemisahan sumber gula, dan membandingkan pilihan berdasarkan harga, protein, gula, profil, serta rasa. **Seluruh web memakai tema terang**, sesuai instruksi pemilik terbaru yang menggantikan arahan dark mode dalam blueprint.
+Aplikasi Next.js 15 / React 19 untuk membedah komposisi pangan, mendeteksi pola pemisahan sumber gula, dan membandingkan pilihan berdasarkan harga, protein, gula, profil, serta rasa. Tema terbaru memakai charcoal hangat, gradasi oat, permukaan krem dan aksen vermilion, tanpa biru/navy. Scan foto menjadi pintu masuk utama.
 
 ## Jalankan
 
@@ -8,11 +8,13 @@ Aplikasi Next.js 15 / React 19 untuk membedah komposisi pangan, mendeteksi pola 
 docker compose up --build
 ```
 
-Buka [http://localhost:3000](http://localhost:3000), pilih **Periksa label**, lalu isi kemasan atau pilih salah satu contoh analisis. Tidak perlu membuat akun. MongoDB 8 diperiksa kesehatannya; service seeder mengisi data secara idempoten sebelum aplikasi menerima koneksi. Database tidak mengekspos port ke host. Pengunduhan image dan dependensi pertama kali memerlukan internet; snapshot label dan kamus sudah disertakan.
+Buka [http://localhost:3000](http://localhost:3000), pilih **Scan label**, nyalakan kamera, lalu foto komposisi dan tabel gizi dari produk yang sama. Galeri tetap tersedia sebagai cadangan. Tidak perlu membuat akun. MongoDB 8 diperiksa kesehatannya; service seeder mengisi data secara idempoten sebelum aplikasi menerima koneksi. Database tidak mengekspos port ke host. Pengunduhan image dan dependensi pertama kali memerlukan internet; snapshot label dan kamus sudah disertakan.
 
-Gemini opsional. Tanpa kunci, preset, formulir label lengkap, parser teks terstruktur, algoritma, pencarian MongoDB, grafik, profil dan sesi tetap berfungsi. Foto dapat dibaca OCR lokal Tesseract Indonesia/Inggris; Gemini opsional menambah pembacaan dengan pemeriksaan silang. Draf foto wajib diperiksa dan dikonfirmasi sebelum analisis. Lihat [validasi OCR](OCR_VALIDATION.md).
+AI opsional. Tanpa kunci, preset, formulir label lengkap, parser teks terstruktur, algoritma, pencarian MongoDB, grafik, profil dan sesi tetap berfungsi. Foto dapat dibaca OCR lokal Tesseract Indonesia/Inggris; Gemini opsional menambah pembacaan dengan pemeriksaan silang. Draf foto wajib diperiksa dan dikonfirmasi sebelum analisis. Lihat [validasi OCR](OCR_VALIDATION.md).
 
-Untuk mengaktifkan Gemini, salin `.env.example` ke `.env`, isi `GEMINI_API_KEY` dan pilih `GEMINI_MODEL` yang tersedia untuk akun Anda, kemudian jalankan ulang Compose. Gambar/teks dikirim ke Google saat layanan aktif. Jangan unggah foto yang memuat data pribadi. Berkas gambar tidak disimpan di database; file sementara OCR lokal dihapus setelah pekerjaan selesai.
+Provider 9Router dapat dipilih dengan `NINE_ROUTER_BASE_URL` (endpoint kompatibel OpenAI berakhiran `/v1`), `NINE_ROUTER_API_KEY`, dan `NINE_ROUTER_MODEL`. Model lokal yang diuji adalah `ag/gemini-3.8-flash-low`. Endpoint harus dapat diakses dari lingkungan aplikasi; alamat loopback host berbeda dari loopback container. Jika konfigurasi 9Router diisi, base URL dan kunci keduanya diperlukan. Konfigurasi yang belum lengkap memakai OCR/analisis lokal; kegagalan 9Router dilaporkan melalui fallback lokal/deterministik, tanpa berpindah diam-diam ke akun Gemini lain. Untuk 9Router pada host Linux (`127.0.0.1:20128`), gunakan `NINE_ROUTER_SOCKET_PATH=/run/router/9router.sock` dan `COMPOSE_PROFILES=local-router-socket`. Helper memakai volume Unix socket privat mode 0600 bersama aplikasi, tanpa listener TCP tambahan atau port router pada LAN/docker0. Untuk endpoint eksternal yang sudah bisa dijangkau Docker, kosongkan socket path dan profil tersebut.
+
+Untuk mengaktifkan Gemini langsung, kosongkan base URL dan kunci 9Router, salin `.env.example` ke `.env`, isi `GEMINI_API_KEY` dan pilih `GEMINI_MODEL` yang tersedia untuk akun Anda, kemudian jalankan ulang Compose. Gambar/teks dikirim ke provider yang dikonfigurasi saat AI aktif. Jangan unggah foto yang memuat data pribadi. Berkas gambar tidak disimpan di database; file sementara OCR lokal dihapus setelah pekerjaan selesai.
 
 Port host dapat diubah dengan `APP_PORT`; sesuaikan juga `APP_ORIGIN` dengan alamat yang dibuka browser. `APP_ORIGIN` harus sama persis dengan origin pengguna, termasuk port. Workspace pengujian ini memakai port 3001 karena port 3000 sudah digunakan layanan lain.
 
@@ -33,26 +35,26 @@ MongoDB lokal default: `mongodb://localhost:27017`. Compose menggunakan URI inte
 
 ## Alur penggunaan
 
-1. Pilih Periksa label. Profil pribadi dimulai tanpa kondisi medis, dengan batas awal gula 50 g, natrium 2.000 mg dan anggaran Rp10.000 yang dapat disesuaikan.
-2. Pilih FitGandum, buka detail bahan dan urutan setelah sumber gula digabung.
-3. Uji cokelat malt, mi pedas, kopi aren, dan keripik keju untuk melihat gizi, konteks profil serta kode aditif.
-4. Cari `INS 621` atau `E951` di Kamus bahan. Pencarian dan pagination membaca MongoDB.
-5. Ubah batas konsumsi/anggaran pada Profil saya, simpan, lalu pindai ulang. Cache mencakup seluruh profil.
-6. Periksa indeks dan cabut sesi. Mencabut sesi saat ini langsung mengeluarkan pengguna.
+1. Pilih **Scan label**, nyalakan kamera, lalu ambil satu atau dua foto komposisi dan tabel gizi. Galeri tersedia sebagai cadangan. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, tab disembunyikan, atau foto mulai diproses.
+2. Pilih **Baca foto label**, lalu cocokkan hasil pembacaan dengan foto. Bagian yang belum terbaca tetap kosong dan perlu dilengkapi; harga opsional. Konfirmasi sebelum analisis.
+3. Bagian teratas hasil menampilkan ringkasan singkat, kontribusi gula/natrium terhadap batas profil, dan langkah berikutnya. Tidak ada aturan terpicu bukan jaminan keamanan medis.
+4. Buka tab Komposisi, Sumber gula, atau Pilihan pengganti untuk detail. Perbandingan biaya ditunda jika harga belum diisi.
+5. Buka **Riwayat** untuk membaca ulang hasil dengan profil saat analisis dilakukan, atau menghapus hasil. Hingga 100 kombinasi label/profil terbaru disimpan per pengguna; mengulang kombinasi yang sama memperbarui hasil sebelumnya. Foto tidak disimpan dalam riwayat. Akun mempertahankan riwayat setelah sesi sementara berakhir.
+6. Kamus bahan dan Profil saya tetap dapat diakses langsung. Contoh analisis bersifat opsional untuk mengenal aplikasi.
 
 Lima preset adalah **skenario ilustratif** dari brief, bukan klaim tentang merek riil. Persentil natrium ke-96 tidak dipaksakan: hasil dihitung dari populasi kategori yang tersedia.
 
 ## Arsitektur
 
 ```text
-Browser (tema terang)
+Browser (scan foto + ringkasan + riwayat)
   | HttpOnly cookie, Origin check, bounded request body
   v
 Next.js Route Handlers
   | SHA-256(payload + profile + model mode + engine version)
   +--> MongoDB scan_caches --> validated personalized response
   |
-  +--> Configured Gemini extraction (responseSchema + Zod)
+  +--> Configured 9Router/Gemini extraction (JSON contract + Zod)
   |       or local explicit-label parser
   v
 Dictionary $in lookup --> enriched ordered ingredients
@@ -101,7 +103,7 @@ Unique email, barcode, dictionary name, token hash and cache hash indexes protec
 
 ### AI boundary and fallback
 
-The official `@google/genai` SDK uses `GEMINI_MODEL` (default `gemini-2.5-flash`), JSON MIME, response schemas and Zod. The owner approved `gemini-3.8-flash` for this deployment after Google rejected 2.5 Flash for new users (HTTP 404). Model identity is included in the cache key. Label contents are untrusted data. Reranking IDs must exist among supplied candidates. Gemini cannot downgrade the deterministic safety envelope. Outside-catalogue suggestions are separate estimates with no verified stock claims; they are suppressed for profiles with declared allergies.
+9Router uses the server-only OpenAI-compatible chat endpoint, bounded timeouts and the same Zod output validation. The direct Gemini option uses the official `@google/genai` SDK and `GEMINI_MODEL` (default `gemini-2.5-flash`), JSON MIME, response schemas and Zod. The owner approved `gemini-3.8-flash` for this deployment after Google rejected 2.5 Flash for new users (HTTP 404). Model identity is included in the cache key. Label contents are untrusted data. Reranking IDs must exist among supplied candidates. Gemini cannot downgrade the deterministic safety envelope. Outside-catalogue suggestions are separate estimates with no verified stock claims; they are suppressed for profiles with declared allergies.
 
 Timeouts/malformed JSON have explicit fallback behavior. Incomplete nutrition is never silently replaced with zeros. Local mode accepts the complete form, presets or one-field-per-line text:
 
@@ -156,7 +158,7 @@ Host-side database/API integration tests need a MongoDB URI reachable from the h
 
 ## Public deployment
 
-Default Compose settings bind to localhost. Public deployment requires HTTPS, exact `APP_ORIGIN`, `SESSION_SECURE=true`, and a strong URL-safe MongoDB bootstrap password configured before initializing the production volume. Public users start with private temporary sessions. Use a TLS reverse proxy. Enable `TRUST_PROXY` only when it overwrites forwarded-IP headers; otherwise pre-auth rate limiting deliberately uses a shared bucket instead of trusting spoofed addresses.
+Compose uses `APP_BIND` to control the listening interface (default `0.0.0.0`); set `APP_BIND=127.0.0.1` for host-local access. Public deployment requires HTTPS, exact `APP_ORIGIN`, `SESSION_SECURE=true`, and a strong URL-safe MongoDB bootstrap password configured before initializing the production volume. Public users start with private temporary sessions. Use a TLS reverse proxy. Enable `TRUST_PROXY` only when it overwrites forwarded-IP headers; otherwise pre-auth rate limiting deliberately uses a shared bucket instead of trusting spoofed addresses.
 
 The bounded exact sliding-window limiter is process-local: deploy **one app replica**. A distributed limiter is needed before horizontal scaling. Back up the persistent MongoDB volume; normal Compose shutdown preserves it.
 

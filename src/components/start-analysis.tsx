@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { authDestination } from "@/core/security/auth-input";
 export function StartAnalysis({
   compact = false,
-  label = "Periksa label",
+  label = "Scan label",
   destination = "/scanner",
 }: {
   compact?: boolean;
