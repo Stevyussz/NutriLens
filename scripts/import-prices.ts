@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { normalizePriceObservations } from "../src/core/db/price-observations";
@@ -51,7 +51,9 @@ async function main() {
     hashes.push(createHash("sha256").update(text).digest("hex"));
   }
   if (rows.length !== expected) throw new Error("Incomplete provider export");
-  const retrievedAt = new Date().toISOString();
+  const retrievedAt = process.argv[2]
+    ? (await stat(process.argv[2])).mtime.toISOString()
+    : new Date().toISOString();
   const observations = normalizePriceObservations(
     rows,
     retrievedAt.slice(0, 10),
@@ -63,7 +65,17 @@ async function main() {
   const matched = new Set(
     observations.filter((p) => barcodes.has(p.barcode)).map((p) => p.barcode),
   );
+  const marketProducts = JSON.parse(
+    await readFile("data/catalogue.snapshot.json", "utf8"),
+  ) as { providerCode: string }[];
+  const marketCodes = new Set(marketProducts.map((p) => p.providerCode));
   const manifest = {
+    marketCatalogueProducts: marketProducts.length,
+    matchedMarketCatalogueProducts: new Set(
+      observations
+        .filter((p) => marketCodes.has(p.barcode))
+        .map((p) => p.barcode),
+    ).size,
     provider: "Open Prices / Open Food Facts",
     endpoint,
     retrievedAt,

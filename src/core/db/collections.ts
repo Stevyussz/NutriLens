@@ -7,6 +7,12 @@ export const categorySchema = z.enum([
   "MI_INSTAN",
   "SUSU_OLAHAN",
   "CAMILAN_BISKUIT",
+  "BAHAN_POKOK",
+  "BUMBU_SAUS",
+  "ROTI_KUE",
+  "DAGING_IKAN",
+  "MAKANAN_SIAP_SAJI",
+  "LAINNYA",
 ]);
 export const functionalSchema = z.enum([
   "HIDDEN_SUGAR",
@@ -102,6 +108,27 @@ export const chemicalSchema = z
       })
       .strict()
       .optional(),
+    providerDetails: z
+      .object({
+        description: z.string().max(5000).nullable(),
+        functions: z.array(z.string().max(150)).max(40),
+        wikidata: z
+          .string()
+          .regex(/^Q\d+$/)
+          .nullable(),
+        ciqualCode: z.string().max(50).nullable(),
+        usdaFdcCode: z.string().max(50).nullable(),
+        efsa: z
+          .object({
+            title: z.string().max(1000),
+            url: z.string().url(),
+            date: z.string().max(50).nullable(),
+          })
+          .strict()
+          .nullable(),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 export type Product = z.infer<typeof productSchema>;
@@ -138,6 +165,12 @@ export const defaultHealth: HealthProfile = {
 /** Creates five collection index sets, including token TTL. O(k) index commands, k is fixed. */
 export async function ensureIndexes(db: Db): Promise<void> {
   await Promise.all([
+    db
+      .collection("product_catalogue")
+      .createIndex({ providerCode: 1 }, { unique: true }),
+    db
+      .collection("product_catalogue")
+      .createIndex({ referenceEligible: -1, name: 1 }),
     db.collection("users").createIndex({ email: 1 }, { unique: true }),
     db.collection("sessions").createIndex({ tokenHash: 1 }, { unique: true }),
     db.collection("sessions").createIndex({ userId: 1 }),

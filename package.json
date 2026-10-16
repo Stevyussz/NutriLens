@@ -11,6 +11,7 @@
     "test:integration": "node --import tsx --test tests/integration/*.test.ts",
     "db:seed": "node --env-file-if-exists=.env --import tsx src/core/db/seed.ts",
     "data:import": "node --import tsx scripts/import-off.ts",
+    "data:catalogue": "node --import tsx scripts/import-catalogue.ts",
     "data:dictionary": "node --import tsx scripts/import-dictionary.ts",
     "data:prices": "node --import tsx scripts/import-prices.ts",
     "test:browser": "playwright test",
@@ -29,6 +30,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^3.0.0",
+    "sharp": "0.35.5",
     "tailwind-merge": "^3.3.0",
     "tsx": "^4.20.0",
     "zod": "^3.25.0"

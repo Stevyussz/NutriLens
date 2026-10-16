@@ -341,22 +341,20 @@
   {
     "barcode": "0089686041705",
     "name": "Indomie - Mi Goreng Jumbo",
-    "brand": "indomie, Indofood",
+    "brand": "indofood, indomie",
     "category": "MI_INSTAN",
     "priceIdr": 4000,
     "servingSizeGrams": 129,
     "flavorTags": [
       "mi",
       "gurih",
-      "kentang",
-      "sereal",
       "manis"
     ],
     "nutrition": {
       "caloriesKcal": 621.78,
       "sugarGrams": 10.32,
       "proteinGrams": 12.9,
-      "sodiumMg": 1186.8000000000002,
+      "sodiumMg": 1186.8,
       "saturatedFatGrams": 11.61,
       "fiberGrams": 12.9
     },
@@ -696,8 +694,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/0089686041705",
-      "retrievedAt": "2026-10-15T13:34:51.741Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -897,11 +895,11 @@
       "manis"
     ],
     "nutrition": {
-      "caloriesKcal": 72,
-      "sugarGrams": 7.2,
-      "proteinGrams": 0.8,
+      "caloriesKcal": 450,
+      "sugarGrams": 18,
+      "proteinGrams": 5,
       "sodiumMg": 550,
-      "saturatedFatGrams": 1.6,
+      "saturatedFatGrams": 10,
       "fiberGrams": 5
     },
     "novaGroup": 1,
@@ -923,146 +921,118 @@
       },
       {
         "orderIndex": 2,
-        "rawName": "9 [Tepung Terigu]",
-        "canonicalChemicalName": "9",
+        "rawName": "9,63% [Tepung Terigu]",
+        "canonicalChemicalName": "",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 3,
-        "rawName": "63% [Tepung Terigu]",
+        "rawName": "9,5% [Susu Bubuk]",
         "canonicalChemicalName": "",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 4,
-        "rawName": "9 [Susu Bubuk]",
-        "canonicalChemicalName": "9",
-        "explicitPercentage": null,
-        "functionalCategory": "UNKNOWN"
-      },
-      {
-        "orderIndex": 5,
-        "rawName": "5% [Susu Bubuk]",
-        "canonicalChemicalName": "",
-        "explicitPercentage": null,
-        "functionalCategory": "UNKNOWN"
-      },
-      {
-        "orderIndex": 6,
         "rawName": "Jagung",
         "canonicalChemicalName": "jagung",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 7,
-        "rawName": "1 [Oat]",
-        "canonicalChemicalName": "1",
-        "explicitPercentage": null,
-        "functionalCategory": "UNKNOWN"
-      },
-      {
-        "orderIndex": 8,
-        "rawName": "88% [Oat]",
+        "orderIndex": 5,
+        "rawName": "1,88% [Oat]",
         "canonicalChemicalName": "",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 9,
+        "orderIndex": 6,
         "rawName": "Kalsium abonat Baram",
         "canonicalChemicalName": "kalsium abonat baram",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 10,
+        "orderIndex": 7,
         "rawName": "Lesitin Kedelai [Pengemulsi Nabati]",
         "canonicalChemicalName": "lesitin kedelai",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 11,
+        "orderIndex": 8,
         "rawName": "A [Premiks Vitamin]",
         "canonicalChemicalName": "a",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 12,
+        "orderIndex": 9,
         "rawName": "B1 [Premiks Vitamin]",
         "canonicalChemicalName": "b1",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 13,
+        "orderIndex": 10,
         "rawName": "B2 [Premiks Vitamin]",
         "canonicalChemicalName": "b2",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 14,
+        "orderIndex": 11,
         "rawName": "B6 [Premiks Vitamin]",
         "canonicalChemicalName": "b6",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 15,
+        "orderIndex": 12,
         "rawName": "Asam Folat [Premiks Vitamin]",
         "canonicalChemicalName": "asam folat",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 16,
+        "orderIndex": 13,
         "rawName": "B12 [Premiks Vitamin]",
         "canonicalChemicalName": "b12",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 17,
+        "orderIndex": 14,
         "rawName": "D [Premiks Vitamin]",
         "canonicalChemicalName": "d",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 18,
+        "orderIndex": 15,
         "rawName": "dan E [Premiks Vitamin]",
         "canonicalChemicalName": "dan e",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 19,
+        "orderIndex": 16,
         "rawName": "Vitamin C [Natrium Askorbat]",
         "canonicalChemicalName": "vitamin c",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 20,
-        "rawName": "0 [Telur Bubuk]",
-        "canonicalChemicalName": "0",
-        "explicitPercentage": null,
-        "functionalCategory": "UNKNOWN"
-      },
-      {
-        "orderIndex": 21,
-        "rawName": "01% [Telur Bubuk]",
+        "orderIndex": 17,
+        "rawName": "0,01% [Telur Bubuk]",
         "canonicalChemicalName": "",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
-        "orderIndex": 22,
+        "orderIndex": 18,
         "rawName": "Ekstrak Malt (0,01%).",
         "canonicalChemicalName": "ekstrak malt ().",
         "explicitPercentage": 0.01,
@@ -1072,8 +1042,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8996001440124",
-      "retrievedAt": "2026-10-15T13:34:51.744Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -1127,14 +1097,12 @@
   },
   {
     "barcode": "8886467100017",
-    "name": "Pringles original",
-    "brand": "Pringles Salt & Seaweed",
-    "category": "CAMILAN_BISKUIT",
-    "priceIdr": 6000,
+    "name": "Pringles Original 107gr",
+    "brand": "pringles-salt-seaweed",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
     "servingSizeGrams": 25,
     "flavorTags": [
-      "kentang",
-      "gurih",
       "sereal",
       "manis"
     ],
@@ -1160,8 +1128,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8886467100017",
-      "retrievedAt": "2026-10-15T13:34:51.745Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -1169,7 +1137,7 @@
   {
     "barcode": "8999999195649",
     "name": "Sari Wangi 100% Teh Asli",
-    "brand": "Sari Wangi, Unilever",
+    "brand": "sari-wangi, unilever",
     "category": "MINUMAN_KEMASAN",
     "priceIdr": 6000,
     "servingSizeGrams": 1.85,
@@ -1198,8 +1166,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8999999195649",
-      "retrievedAt": "2026-10-15T13:34:51.745Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -1840,22 +1808,20 @@
   {
     "barcode": "8993200665006",
     "name": "Cimory Yog LowFat Stw",
-    "brand": "Cimory",
+    "brand": "cimory",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 240,
     "flavorTags": [
-      "creamy",
-      "susu",
       "manis"
     ],
     "nutrition": {
-      "caloriesKcal": 190.00000000000009,
-      "sugarGrams": 25.00000000000008,
-      "proteinGrams": 4.000000000000008,
+      "caloriesKcal": 190,
+      "sugarGrams": 25,
+      "proteinGrams": 4,
       "sodiumMg": 90,
-      "saturatedFatGrams": 1.0000000000000009,
-      "fiberGrams": 4.999999999999992
+      "saturatedFatGrams": 1,
+      "fiberGrams": 5
     },
     "novaGroup": 1,
     "marketingClaims": [],
@@ -1955,8 +1921,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8993200665006",
-      "retrievedAt": "2026-10-15T13:34:51.771Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -2324,13 +2290,12 @@
   },
   {
     "barcode": "8994171101289",
-    "name": "Luwak white coffee rtg",
+    "name": "Luwak White Koffie Original",
     "brand": "luwak",
     "category": "MINUMAN_KEMASAN",
     "priceIdr": 6000,
     "servingSizeGrams": 20,
     "flavorTags": [
-      "kopi",
       "manis"
     ],
     "nutrition": {
@@ -2346,31 +2311,31 @@
     "orderedIngredients": [
       {
         "orderIndex": 0,
-        "rawName": "Sugar",
-        "canonicalChemicalName": "sugar",
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 1,
-        "rawName": "Contains Milk Protein [Non Dairy Creamer]",
-        "canonicalChemicalName": "contains milk protein",
+        "rawName": "Krimer nabati",
+        "canonicalChemicalName": "krimer nabati",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 2,
-        "rawName": "Instant Coffee 15%",
-        "canonicalChemicalName": "instant coffee",
-        "explicitPercentage": 15,
+        "rawName": "15% [Kopi Instan]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       }
     ],
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8994171101289",
-      "retrievedAt": "2026-10-15T13:34:51.774Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -2452,15 +2417,13 @@
     "priceIdr": 10000,
     "servingSizeGrams": 32,
     "flavorTags": [
-      "kentang",
-      "gurih",
       "sereal"
     ],
     "nutrition": {
       "caloriesKcal": 80,
       "sugarGrams": 5,
       "proteinGrams": 2,
-      "sodiumMg": 37.519999999999996,
+      "sodiumMg": 37.52,
       "saturatedFatGrams": 0,
       "fiberGrams": 0
     },
@@ -2478,8 +2441,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8992696428287",
-      "retrievedAt": "2026-10-15T13:34:51.774Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -2837,13 +2800,11 @@
   {
     "barcode": "5010477346032",
     "name": "Crunchy Oat Granola Tropical Fruits",
-    "brand": "Jordans",
+    "brand": "jordans",
     "category": "SEREAL_SARAPAN",
     "priceIdr": 10000,
     "servingSizeGrams": 100,
     "flavorTags": [
-      "kentang",
-      "gurih",
       "sereal",
       "manis"
     ],
@@ -3002,8 +2963,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/5010477346032",
-      "retrievedAt": "2026-10-15T13:34:51.790Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -3320,7 +3281,7 @@
   {
     "barcode": "0749921050120",
     "name": "L-men gain mass choco 225g",
-    "brand": "L-Men",
+    "brand": "l-men",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 75,
@@ -3329,9 +3290,9 @@
     ],
     "nutrition": {
       "caloriesKcal": 300,
-      "sugarGrams": 20.000000000000025,
-      "proteinGrams": 21.99999999999998,
-      "sodiumMg": 80.00000000000026,
+      "sugarGrams": 20,
+      "proteinGrams": 22,
+      "sodiumMg": 80,
       "saturatedFatGrams": 3,
       "fiberGrams": 0
     },
@@ -3349,8 +3310,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/0749921050120",
-      "retrievedAt": "2026-10-15T13:34:51.815Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -3523,15 +3484,15 @@
   },
   {
     "barcode": "8992952956288",
-    "name": "Crunchy cashew nut",
-    "brand": "Indomaret",
+    "name": "Kacang Mete Rasa Madu",
+    "brand": "indomaret",
     "category": "MINUMAN_KEMASAN",
     "priceIdr": 6000,
     "servingSizeGrams": 30,
     "flavorTags": [],
     "nutrition": {
       "caloriesKcal": 180,
-      "sugarGrams": 3.9999990000000003,
+      "sugarGrams": 3.999999,
       "proteinGrams": 5.000001,
       "sodiumMg": 90,
       "saturatedFatGrams": 3.495,
@@ -3614,8 +3575,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8992952956288",
-      "retrievedAt": "2026-10-15T13:34:51.817Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -3623,14 +3584,11 @@
   {
     "barcode": "8998009017810",
     "name": "Ultra Full Cream 125ml",
-    "brand": "UltraMilk",
+    "brand": "ultramilk",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 125,
-    "flavorTags": [
-      "creamy",
-      "susu"
-    ],
+    "flavorTags": [],
     "nutrition": {
       "caloriesKcal": 70,
       "sugarGrams": 5,
@@ -3653,8 +3611,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8998009017810",
-      "retrievedAt": "2026-10-15T13:34:51.817Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -3702,7 +3660,7 @@
   {
     "barcode": "8992858527308",
     "name": "Hydro Coco - Original 250ml",
-    "brand": "Kalbe",
+    "brand": "kalbe",
     "category": "MINUMAN_KEMASAN",
     "priceIdr": 6000,
     "servingSizeGrams": 250,
@@ -3713,7 +3671,7 @@
       "caloriesKcal": 60,
       "sugarGrams": 7,
       "proteinGrams": 0,
-      "sodiumMg": 41.00000000000001,
+      "sodiumMg": 41,
       "saturatedFatGrams": 0,
       "fiberGrams": 8
     },
@@ -3731,8 +3689,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8992858527308",
-      "retrievedAt": "2026-10-15T13:34:51.818Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -4013,17 +3971,15 @@
     "servingSizeGrams": 72,
     "flavorTags": [
       "mi",
-      "gurih",
-      "kentang",
-      "sereal"
+      "gurih"
     ],
     "nutrition": {
-      "caloriesKcal": 329.9999999999997,
-      "sugarGrams": 2.0000000000000013,
-      "proteinGrams": 6.999999999999997,
-      "sodiumMg": 1219.9999999999966,
-      "saturatedFatGrams": 6.999999999999997,
-      "fiberGrams": 3.000000000000002
+      "caloriesKcal": 330,
+      "sugarGrams": 2,
+      "proteinGrams": 7,
+      "sodiumMg": 1220,
+      "saturatedFatGrams": 7,
+      "fiberGrams": 3
     },
     "novaGroup": 1,
     "marketingClaims": [],
@@ -4039,8 +3995,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/0089686010527",
-      "retrievedAt": "2026-10-15T13:34:51.829Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -4048,13 +4004,11 @@
   {
     "barcode": "8993351120201",
     "name": "Mango Yogurts Greenfields",
-    "brand": "Mango Yogurts Greenfields",
+    "brand": "mango-yogurts-greenfields",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 125,
     "flavorTags": [
-      "creamy",
-      "susu",
       "manis"
     ],
     "nutrition": {
@@ -4156,8 +4110,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8993351120201",
-      "retrievedAt": "2026-10-15T13:34:51.829Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -4467,12 +4421,11 @@
   {
     "barcode": "8851019210124",
     "name": "Pocky strawberry",
-    "brand": "Pocky, Glico, กูลิโกะ, ป๊อกกี้",
+    "brand": "glico, Pocky, กูลิโกะ, ป๊อกกี้",
     "category": "CAMILAN_BISKUIT",
     "priceIdr": 6000,
     "servingSizeGrams": 45,
     "flavorTags": [
-      "stroberi",
       "manis"
     ],
     "nutrition": {
@@ -4497,15 +4450,15 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8851019210124",
-      "retrievedAt": "2026-10-15T13:34:51.845Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
   },
   {
     "barcode": "0089686043433",
-    "name": "Indomie Mi Goreng Rasa Ayam Geprek",
+    "name": "Indomie Goreng Ayam Geprek",
     "brand": "indomie",
     "category": "MI_INSTAN",
     "priceIdr": 4000,
@@ -4513,8 +4466,6 @@
     "flavorTags": [
       "mi",
       "gurih",
-      "kentang",
-      "sereal",
       "manis"
     ],
     "nutrition": {
@@ -4539,8 +4490,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/0089686043433",
-      "retrievedAt": "2026-10-15T13:34:51.845Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -4548,13 +4499,13 @@
   {
     "barcode": "8993351121307",
     "name": "GreenFields Full Cream Milk",
-    "brand": "Greenfields",
+    "brand": "greenfields",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 200,
     "flavorTags": [
-      "creamy",
       "susu",
+      "creamy",
       "manis"
     ],
     "nutrition": {
@@ -4586,8 +4537,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8993351121307",
-      "retrievedAt": "2026-10-15T13:34:51.846Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -4595,13 +4546,11 @@
   {
     "barcode": "8993200666935",
     "name": "Cimory Squeeze Original",
-    "brand": "Cimory Squeeze Original",
+    "brand": "cimory-squeeze-original",
     "category": "SUSU_OLAHAN",
     "priceIdr": 6000,
     "servingSizeGrams": 100,
     "flavorTags": [
-      "creamy",
-      "susu",
       "manis"
     ],
     "nutrition": {
@@ -4617,43 +4566,64 @@
     "orderedIngredients": [
       {
         "orderIndex": 0,
-        "rawName": "Water",
-        "canonicalChemicalName": "water",
+        "rawName": "mengandung susu [Yogurt 99,9%]",
+        "canonicalChemicalName": "mengandung susu",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 1,
-        "rawName": "sugar",
-        "canonicalChemicalName": "sugar",
+        "rawName": "kultur Streptococcus thermophilus dan Lactobacillus delbrueckii subsp. bulgaricus [Yogurt 99,9%]",
+        "canonicalChemicalName": "kultur streptococcus thermophilus dan lactobacillus delbrueckii subsp. bulgaricus",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 2,
-        "rawName": "full cream powder",
-        "canonicalChemicalName": "full cream powder",
+        "rawName": "perisa sintetik",
+        "canonicalChemicalName": "perisa sintetik",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 3,
-        "rawName": "skim milk powder",
-        "canonicalChemicalName": "skim milk powder",
+        "rawName": "pengawet kalium sorbat. *Mengandung alergen",
+        "canonicalChemicalName": "pengawet kalium sorbat. *mengandung alergen",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 4,
-        "rawName": "animal vegetable base [stabilizer]",
-        "canonicalChemicalName": "animal vegetable base",
+        "rawName": "contains milk [lihat daftar bahan yang dicetak tebal INGREDIENTS: Yogurt 99,9%]",
+        "canonicalChemicalName": "contains milk",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       },
       {
         "orderIndex": 5,
-        "rawName": "Streptococcus thermophilus Lactobacillus delbrueckii subsp. bulgaricus preservative potassium sorbate.",
-        "canonicalChemicalName": "streptococcus thermophilus lactobacillus delbrueckii subsp. bulgaricus preservative potassium sorbate.",
+        "rawName": "culture Streptococcus thermophilus and Lactobacillus delbruecki subsp. bulgaricus [lihat daftar bahan yang dicetak tebal INGREDIENTS: Yogurt 99,9%]",
+        "canonicalChemicalName": "culture streptococcus thermophilus and lactobacillus delbruecki subsp. bulgaricus",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "synthetic flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "preservative potassium sorbate. May contains allergen",
+        "canonicalChemicalName": "preservative potassium sorbate. may contains allergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "see ingredients in bold",
+        "canonicalChemicalName": "see ingredients in bold",
         "explicitPercentage": null,
         "functionalCategory": "UNKNOWN"
       }
@@ -4661,8 +4631,8 @@
     "source": {
       "kind": "OPEN_FOOD_FACTS",
       "url": "https://world.openfoodfacts.org/product/8993200666935",
-      "retrievedAt": "2026-10-15T13:34:51.846Z",
-      "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null
@@ -5155,6 +5125,3800 @@
       "url": "https://world.openfoodfacts.org/product/8992753033720",
       "retrievedAt": "2026-10-15T13:34:51.849Z",
       "note": "Ekspor Open Food Facts melalui mirror .net. Kontribusi komunitas belum diverifikasi produsen; gizi dikonversi dari per 100 g/ml ke sajian deklarasi. Harga adalah asumsi simulasi anggaran per sajian, bukan harga toko/kemasan. Lisensi ODbL, Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686870022",
+    "name": "Ichi Ocha Green Tea",
+    "brand": "indofood",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "teh",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 80,
+      "sugarGrams": 20,
+      "proteinGrams": 0,
+      "sodiumMg": 15000,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Green Tea Leaves",
+        "canonicalChemicalName": "green tea leaves",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Acidity Regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Antioxidant",
+        "canonicalChemicalName": "antioxidant",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Synthetic Flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686870022",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8995108509499",
+    "name": "Kuaci Rebo Green Tea",
+    "brand": "rebo",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 10,
+    "flavorTags": [
+      "teh"
+    ],
+    "nutrition": {
+      "caloriesKcal": 60,
+      "sugarGrams": 0,
+      "proteinGrams": 3,
+      "sodiumMg": 46,
+      "saturatedFatGrams": 0.5,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "88.45% [Sunflower Seeds]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Spices",
+        "canonicalChemicalName": "spices",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Synthetic Flavor",
+        "canonicalChemicalName": "synthetic flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Green Tea (0.1%) Allergen Information: Produced on shared equipment that also produces milk.",
+        "canonicalChemicalName": "green tea () allergen information: produced on shared equipment that also produces milk.",
+        "explicitPercentage": 0.1,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8995108509499",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992907000820",
+    "name": "Waffle Original",
+    "brand": "sari-kue",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 35,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 56,
+      "sugarGrams": 2.45,
+      "proteinGrams": 0.7,
+      "sodiumMg": 16.1,
+      "saturatedFatGrams": 1.4,
+      "fiberGrams": 0.35
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "contains gluten [Wheat flour]",
+        "canonicalChemicalName": "contains gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "vegetable oil",
+        "canonicalChemicalName": "vegetable oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "granulated sugar",
+        "canonicalChemicalName": "granulated sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "egg",
+        "canonicalChemicalName": "egg",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "contains milk [vegetable emulsifier]",
+        "canonicalChemicalName": "contains milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "gluten [vegetable emulsifier]",
+        "canonicalChemicalName": "gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "preservative potassium sorbate",
+        "canonicalChemicalName": "preservative potassium sorbate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992907000820",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8852756304145",
+    "name": "Honey Crunch Corn Flakes",
+    "brand": "Kellogg's",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 30,
+    "flavorTags": [
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 119,
+      "sugarGrams": 8.1,
+      "proteinGrams": 1.8,
+      "sodiumMg": 40.5,
+      "saturatedFatGrams": 0.1,
+      "fiberGrams": 0.6
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "69.3% [Corn]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "4.3% [Peanut]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "2.2% [Honey]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "lodized Salt",
+        "canonicalChemicalName": "lodized salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "C [Vitamins]",
+        "canonicalChemicalName": "c",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "B3 [Vitamins]",
+        "canonicalChemicalName": "b3",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "A [Vitamins]",
+        "canonicalChemicalName": "a",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "B6 [Vitamins]",
+        "canonicalChemicalName": "b6",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "B12 [Vitamins]",
+        "canonicalChemicalName": "b12",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "B2 [Vitamins]",
+        "canonicalChemicalName": "b2",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "B1 [Vitamins]",
+        "canonicalChemicalName": "b1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Folic Acid [Vitamins]",
+        "canonicalChemicalName": "folic acid",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "Ferric Phosphate [Minerals]",
+        "canonicalChemicalName": "ferric phosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "Reduced Iron [Minerals]",
+        "canonicalChemicalName": "reduced iron",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Zinc Oxide [Minerals]",
+        "canonicalChemicalName": "zinc oxide",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "Mixed Tocopherol [Antioxidant]",
+        "canonicalChemicalName": "mixed tocopherol",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "Cereal Extract.",
+        "canonicalChemicalName": "cereal extract.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8852756304145",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8994963004101",
+    "name": "Spicy Mushroom Soup Noodle",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 83,
+    "flavorTags": [
+      "mi",
+      "gurih"
+    ],
+    "nutrition": {
+      "caloriesKcal": 297.14,
+      "sugarGrams": 4.565,
+      "proteinGrams": 7.138,
+      "sodiumMg": 1306.337,
+      "saturatedFatGrams": 4.565,
+      "fiberGrams": 2.158
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Noodles: Wheat flour",
+        "canonicalChemicalName": "noodles: wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "refined palm oil",
+        "canonicalChemicalName": "refined palm oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "tapioca starch",
+        "canonicalChemicalName": "tapioca starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "potato starch",
+        "canonicalChemicalName": "potato starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "hydroxypropyl distarch phosphate [modified tapioca starch]",
+        "canonicalChemicalName": "hydroxypropyl distarch phosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "sodium tripolyphosphate [acidity regulators]",
+        "canonicalChemicalName": "sodium tripolyphosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "potassium carbonate [acidity regulators]",
+        "canonicalChemicalName": "potassium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "guar gum [thickener]",
+        "canonicalChemicalName": "guar gum",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "soy lecithin [emulsifier]",
+        "canonicalChemicalName": "soy lecithin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "TBHQ [antioxidant]",
+        "canonicalChemicalName": "tbhq",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "colouring (riboflavin). Seasoning Powder: Salt",
+        "canonicalChemicalName": "colouring (riboflavin). seasoning powder: salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "artificial spicy mushroom soup flavour powder",
+        "canonicalChemicalName": "artificial spicy mushroom soup flavour powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "garlic powder",
+        "canonicalChemicalName": "garlic powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "chilli powder",
+        "canonicalChemicalName": "chilli powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "E621 [monosodium glutamate] [flavour enhancer]",
+        "canonicalChemicalName": "e621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "modified starch",
+        "canonicalChemicalName": "modified starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "creamer",
+        "canonicalChemicalName": "creamer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "xanthan gum [thickener]",
+        "canonicalChemicalName": "xanthan gum",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "refined palm oil",
+        "canonicalChemicalName": "refined palm oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "colouring (caramel). Solid Ingredient: Dried carrot",
+        "canonicalChemicalName": "colouring (caramel). solid ingredient: dried carrot",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "leek. Contain",
+        "canonicalChemicalName": "leek. contain",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8994963004101",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "5060323902561",
+    "name": "Passata",
+    "brand": "Coppola Salerno, Coppola Salerno",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 170,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 49.3,
+      "sugarGrams": 7.48,
+      "proteinGrams": 3.06,
+      "sodiumMg": 272,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 2.04
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "99,7% [Tomatoes]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "0,3% [salt]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/5060323902561",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8996001317020",
+    "name": "BETTER SANDWICH BISCUITS 27G",
+    "brand": "better",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 27,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 140,
+      "sugarGrams": 9,
+      "proteinGrams": 0,
+      "sodiumMg": 75,
+      "saturatedFatGrams": 4,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "26,10% [Tepung Terigu]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "mengandung Antioxidan BHA [Lemak Nabati]",
+        "canonicalChemicalName": "mengandung antioxidan bha",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Gula",
+        "canonicalChemicalName": "gula",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Maltodektrin",
+        "canonicalChemicalName": "maltodektrin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Susu Bubuk",
+        "canonicalChemicalName": "susu bubuk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "3.52% [Kokoa Bubuk]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Ektrak Malt",
+        "canonicalChemicalName": "ektrak malt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Whey Glukosa",
+        "canonicalChemicalName": "whey glukosa",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Garam",
+        "canonicalChemicalName": "garam",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Bahan Pengembang",
+        "canonicalChemicalName": "bahan pengembang",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Lesitin Kedelai [Pengemulsi]",
+        "canonicalChemicalName": "lesitin kedelai",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Perisa Sintetik",
+        "canonicalChemicalName": "perisa sintetik",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Ragi.",
+        "canonicalChemicalName": "ragi.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8996001317020",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790019135",
+    "name": "Elle & vire creme dessert cafe",
+    "brand": "elle-vire, savencia",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 100,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 103,
+      "sugarGrams": 12.3,
+      "proteinGrams": 2.5,
+      "sodiumMg": 64,
+      "saturatedFatGrams": 1.9,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT de vache écrémé 72%",
+        "canonicalChemicalName": "lait de vache écrémé",
+        "explicitPercentage": 72,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "CRÈME 7,5%",
+        "canonicalChemicalName": "crème",
+        "explicitPercentage": 7.5,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "sirop de glucose",
+        "canonicalChemicalName": "sirop de glucose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "extrait de café 1%",
+        "canonicalChemicalName": "extrait de café",
+        "explicitPercentage": 1,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "colorant : caramel ordinaire",
+        "canonicalChemicalName": "colorant : caramel ordinaire",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "épaississant : carraghénanes",
+        "canonicalChemicalName": "épaississant : carraghénanes",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût café [arôme naturel]",
+        "canonicalChemicalName": "goût café",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "sel",
+        "canonicalChemicalName": "sel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790019135",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0899039002761",
+    "name": "Crispy Jalapeño Bites",
+    "brand": "feel-good-foods",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 85,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 250,
+      "sugarGrams": 2,
+      "proteinGrams": 5,
+      "sodiumMg": 550,
+      "saturatedFatGrams": 6,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Cream Cheese",
+        "canonicalChemicalName": "cream cheese",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Milk",
+        "canonicalChemicalName": "milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Jalapenos",
+        "canonicalChemicalName": "jalapenos",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "White Cheddar Cheese",
+        "canonicalChemicalName": "white cheddar cheese",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Cheddar Cheese Powder",
+        "canonicalChemicalName": "cheddar cheese powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Corn Starch",
+        "canonicalChemicalName": "corn starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Vinegar",
+        "canonicalChemicalName": "vinegar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "Black Pepper",
+        "canonicalChemicalName": "black pepper",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "Rice Flour",
+        "canonicalChemicalName": "rice flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "Tapioca Starch",
+        "canonicalChemicalName": "tapioca starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Water",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "Xanthan Gum",
+        "canonicalChemicalName": "xanthan gum",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "Cane Sugar",
+        "canonicalChemicalName": "cane sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "Yeast",
+        "canonicalChemicalName": "yeast",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "Sodium Acid Pyrophosphate",
+        "canonicalChemicalName": "sodium acid pyrophosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "Baking Soda",
+        "canonicalChemicalName": "baking soda",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "Spices",
+        "canonicalChemicalName": "spices",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "Dehydrated Garlic",
+        "canonicalChemicalName": "dehydrated garlic",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "Dehydrated Onion",
+        "canonicalChemicalName": "dehydrated onion",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "Canola Oil",
+        "canonicalChemicalName": "canola oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "Soybean Oil",
+        "canonicalChemicalName": "soybean oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "Sunflower Oil",
+        "canonicalChemicalName": "sunflower oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0899039002761",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790019142",
+    "name": "Elle & vire creme dessert chocolat",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 100,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 111,
+      "sugarGrams": 14.2,
+      "proteinGrams": 3.2,
+      "sodiumMg": 64,
+      "saturatedFatGrams": 2.1,
+      "fiberGrams": 1.2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT de vache écrémé 72%",
+        "canonicalChemicalName": "lait de vache écrémé",
+        "explicitPercentage": 72,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "CRÈME 6%",
+        "canonicalChemicalName": "crème",
+        "explicitPercentage": 6,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "pâte de\n cacao [chocolat 2,7%]",
+        "canonicalChemicalName": "pâte de\n cacao",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "sucre [chocolat 2,7%]",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "cacao maigre [chocolat 2,7%]",
+        "canonicalChemicalName": "cacao maigre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "cacao maigre 1,8%",
+        "canonicalChemicalName": "cacao maigre",
+        "explicitPercentage": 1.8,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "épaississant :\n carraghénanes",
+        "canonicalChemicalName": "épaississant :\n carraghénanes",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "sel.",
+        "canonicalChemicalName": "sel.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790019142",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790019678",
+    "name": "Elle & vire desserts lactes mon grec citron",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 173.75,
+      "sugarGrams": 16.5,
+      "proteinGrams": 5.125,
+      "sodiumMg": 120,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Lait écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "issue de LAIT de vache [crème]",
+        "canonicalChemicalName": "issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "citron 6%",
+        "canonicalChemicalName": "citron",
+        "explicitPercentage": 6,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "protéines de LAIT",
+        "canonicalChemicalName": "protéines de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisant : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisant : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "goût citron [arôme naturel]",
+        "canonicalChemicalName": "goût citron",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790019678",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790019685",
+    "name": "Elle & vire desserts lactes mon grec myrtille",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 175,
+      "sugarGrams": 16.875,
+      "proteinGrams": 5.125,
+      "sodiumMg": 75,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "issue de LAIT de vache [crème]",
+        "canonicalChemicalName": "issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "myrtille\n 5,5%",
+        "canonicalChemicalName": "myrtille",
+        "explicitPercentage": 5.5,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "protéines de LAIT",
+        "canonicalChemicalName": "protéines de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "goût myrtille [arôme naturel]",
+        "canonicalChemicalName": "goût myrtille",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790019685",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8801037075526",
+    "name": "Kanu tiramisu 415g",
+    "brand": "zeesoon",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 17.3,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 80.000001,
+      "sugarGrams": 9,
+      "proteinGrams": 0,
+      "sodiumMg": 45.00076,
+      "saturatedFatGrams": 3.299999,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "hydrogenated vegetable oil [Latte creamer]",
+        "canonicalChemicalName": "hydrogenated vegetable oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "oligosaccharide [Latte creamer]",
+        "canonicalChemicalName": "oligosaccharide",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "non-fat concentrated milk [Latte creamer]",
+        "canonicalChemicalName": "non-fat concentrated milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "lactose [Latte creamer]",
+        "canonicalChemicalName": "lactose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "mixed milk powder [Latte creamer]",
+        "canonicalChemicalName": "mixed milk powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "sugar [vanilla blend]",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "starch syrup [vanilla blend]",
+        "canonicalChemicalName": "starch syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "hydrogenated vegetable oil [vanilla blend]",
+        "canonicalChemicalName": "hydrogenated vegetable oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "mixed milk powder [vanilla blend]",
+        "canonicalChemicalName": "mixed milk powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "lactose [vanilla blend]",
+        "canonicalChemicalName": "lactose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "vanilla extract powder [vanilla blend]",
+        "canonicalChemicalName": "vanilla extract powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "coffee (instant coffee, roasted coffee) *Contains milk",
+        "canonicalChemicalName": "coffee (instant coffee, roasted coffee) *contains milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8801037075526",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790019739",
+    "name": "Elle & vire desserts lactes fruits peche",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 118.75,
+      "sugarGrams": 16,
+      "proteinGrams": 2.75,
+      "sodiumMg": 45,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "5,6% [pêche]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "crème de LAIT de vache",
+        "canonicalChemicalName": "crème de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisant : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisant : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût pêche [arômes naturels]",
+        "canonicalChemicalName": "goût pêche",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790019739",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997240600041",
+    "name": "OATSIDE Oat M*lk",
+    "brand": "oatside",
+    "category": "SEREAL_SARAPAN",
+    "priceIdr": 10000,
+    "servingSizeGrams": 200,
+    "flavorTags": [
+      "sereal",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 127,
+      "sugarGrams": 5.6,
+      "proteinGrams": 1.2,
+      "sodiumMg": 80,
+      "saturatedFatGrams": 0.6,
+      "fiberGrams": 2
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Water [Oat Base 96.7%]",
+        "canonicalChemicalName": "water",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Oats [Oat Base 96.7%]",
+        "canonicalChemicalName": "oats",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Canola Oil",
+        "canonicalChemicalName": "canola oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Dipotassium Phosphate",
+        "canonicalChemicalName": "dipotassium phosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Calcium Carbonate",
+        "canonicalChemicalName": "calcium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "Vitamin E",
+        "canonicalChemicalName": "vitamin e",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "B1",
+        "canonicalChemicalName": "b1",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "B3",
+        "canonicalChemicalName": "b3",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "B6",
+        "canonicalChemicalName": "b6",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "B12",
+        "canonicalChemicalName": "b12",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "Vitamin D",
+        "canonicalChemicalName": "vitamin d",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997240600041",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686386318",
+    "name": "Indofood Racik Bumbu Instan Sayur Sop 20g",
+    "brand": "indofood",
+    "category": "BUMBU_SAUS",
+    "priceIdr": 6000,
+    "servingSizeGrams": 5,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 10,
+      "sugarGrams": 1,
+      "proteinGrams": 0,
+      "sodiumMg": 920,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "monosodium glutamate [flavour enhancers]",
+        "canonicalChemicalName": "monosodium glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "disodium inosinate & guanylate [flavour enhancers]",
+        "canonicalChemicalName": "disodium inosinate & guanylate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "dextrine",
+        "canonicalChemicalName": "dextrine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "contains antioxidant a-Tocopherol [seasoning]",
+        "canonicalChemicalName": "contains antioxidant a-tocopherol",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "milk [seasoning]",
+        "canonicalChemicalName": "milk",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "soybean [seasoning]",
+        "canonicalChemicalName": "soybean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "egg [seasoning]",
+        "canonicalChemicalName": "egg",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "contains gluten [contain garlic 3.5%] [spices]",
+        "canonicalChemicalName": "contains gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "white pepper 1,5% [spices]",
+        "canonicalChemicalName": "white pepper",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "celery 0,5% [spices]",
+        "canonicalChemicalName": "celery",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "synthetic fiavour. Contains allergen",
+        "canonicalChemicalName": "synthetic fiavour. contains allergen",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "see bold printed ingredient list. May contain peanuts",
+        "canonicalChemicalName": "see bold printed ingredient list. may contain peanuts",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "crustaceans",
+        "canonicalChemicalName": "crustaceans",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "fish",
+        "canonicalChemicalName": "fish",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "(tree)nuts",
+        "canonicalChemicalName": "(tree)nuts",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "sesame",
+        "canonicalChemicalName": "sesame",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "mustard. NO PRESERVATIVES. NO SYNTHETIC COLOURING",
+        "canonicalChemicalName": "mustard. no preservatives. no synthetic colouring",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686386318",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8997009781110",
+    "name": "Hydro Coco ori",
+    "brand": "kalbe",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 250,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 150,
+      "sugarGrams": 17.5,
+      "proteinGrams": 0,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 20
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "97% [Coconut Water]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "Cane Sugar",
+        "canonicalChemicalName": "cane sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "Synthetic Flavour",
+        "canonicalChemicalName": "synthetic flavour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "Vegetable Stabilizer",
+        "canonicalChemicalName": "vegetable stabilizer",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "Acidity Regulator",
+        "canonicalChemicalName": "acidity regulator",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8997009781110",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "9556182023258",
+    "name": "Dairy Milk Chocolate",
+    "brand": "cadbury",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 30,
+    "flavorTags": [
+      "cokelat",
+      "susu",
+      "creamy",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 160,
+      "sugarGrams": 17,
+      "proteinGrams": 2,
+      "sodiumMg": 30,
+      "saturatedFatGrams": 5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH-30",
+        "canonicalChemicalName": "rh-30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/9556182023258",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8996001354001",
+    "name": "kalpa",
+    "brand": "kalpa, คาลพา",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 24,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 6,
+      "proteinGrams": 2,
+      "sodiumMg": 25,
+      "saturatedFatGrams": 7,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "ไขมันพืช 18.80%",
+        "canonicalChemicalName": "ไขมันพืช",
+        "explicitPercentage": 18.8,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "เกล็ดมะพร้าว 16.27%",
+        "canonicalChemicalName": "เกล็ดมะพร้าว",
+        "explicitPercentage": 16.27,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "แป้งสาลี 15.63%",
+        "canonicalChemicalName": "แป้งสาลี",
+        "explicitPercentage": 15.63,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "นำ้ตาล11.86%",
+        "canonicalChemicalName": "นำ้ตาล",
+        "explicitPercentage": 11.86,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "นมผง 10.40%",
+        "canonicalChemicalName": "นมผง",
+        "explicitPercentage": 10.4,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "มอลโทเดกซ์ทริน 7.00%",
+        "canonicalChemicalName": "มอลโทเดกซ์ทริน",
+        "explicitPercentage": 7,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "โกโก้ลิเคอร์ 6.29%",
+        "canonicalChemicalName": "โกโก้ลิเคอร์",
+        "explicitPercentage": 6.29,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "เดกซ์ฌโทรส 5.65%",
+        "canonicalChemicalName": "เดกซ์ฌโทรส",
+        "explicitPercentage": 5.65,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "แล็กโตส 3.80%",
+        "canonicalChemicalName": "แล็กโตส",
+        "explicitPercentage": 3.8,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "แต่งกลิ่นสังเคราะห์",
+        "canonicalChemicalName": "แต่งกลิ่นสังเคราะห์",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8996001354001",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992775203422",
+    "name": "GARUDA ROSTA KACANG PANGGANG 95G",
+    "brand": "garuda",
+    "category": "MINUMAN_KEMASAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 25,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 3,
+      "proteinGrams": 4,
+      "sodiumMg": 140,
+      "saturatedFatGrams": 1.5,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "RH-30",
+        "canonicalChemicalName": "rh-30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992775203422",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686120714",
+    "name": "Indomie instant noodles fried noodles",
+    "brand": "-",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 80,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 380,
+      "sugarGrams": 8,
+      "proteinGrams": 7,
+      "sodiumMg": 1040,
+      "saturatedFatGrams": 8.96,
+      "fiberGrams": 4
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "wheat flour",
+        "canonicalChemicalName": "wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "palm [edible vegetable oil]",
+        "canonicalChemicalName": "palm",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "potassium carbonate [acidity regulators]",
+        "canonicalChemicalName": "potassium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "sodium carbonate [acidity regulators]",
+        "canonicalChemicalName": "sodium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "sodium polyphosphate [acidity regulators]",
+        "canonicalChemicalName": "sodium polyphosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "guar gum [thickener]",
+        "canonicalChemicalName": "guar gum",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "riboflavin [colouring]",
+        "canonicalChemicalName": "riboflavin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "antioxidant (TBHQ).\nSeasoning powder:\nsugar",
+        "canonicalChemicalName": "antioxidant (tbhq).\nseasoning powder:\nsugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "monosodium",
+        "canonicalChemicalName": "monosodium",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "glutamate",
+        "canonicalChemicalName": "glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "garlic powder",
+        "canonicalChemicalName": "garlic powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "artificial beef flavour powder",
+        "canonicalChemicalName": "artificial beef flavour powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "onion powder",
+        "canonicalChemicalName": "onion powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "yeast extract",
+        "canonicalChemicalName": "yeast extract",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "palm [caramel.\nSeasoning Oil:\nedible vegetable oil]",
+        "canonicalChemicalName": "palm [caramel.\nseasoning oil:\nedible vegetable oil]",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "onion",
+        "canonicalChemicalName": "onion",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "chili powder.\nsweet soy sauce.\nContains: _Wheat (Gluten)_",
+        "canonicalChemicalName": "chili powder.\nsweet soy sauce.\ncontains: _wheat (gluten)_",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "_soybean_.",
+        "canonicalChemicalName": "_soybean_.",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686120714",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790011856",
+    "name": "Elle & vire desserts lactes mon grec fraise",
+    "brand": "elle-vire, elle-vire-international, savencia",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 175,
+      "sugarGrams": 17.125,
+      "proteinGrams": 5.125,
+      "sodiumMg": 70,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Lait écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "issue de LAIT de vache [crème]",
+        "canonicalChemicalName": "issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "fraise 5,5%",
+        "canonicalChemicalName": "fraise",
+        "explicitPercentage": 5.5,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "protéines de LAIT",
+        "canonicalChemicalName": "protéines de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisant : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisant : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "goût fraise [arôme naturel]",
+        "canonicalChemicalName": "goût fraise",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790011856",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790011917",
+    "name": "Elle & vire desserts lactes mon grec vanille",
+    "brand": "elle-vire, elle-vire-international, savencia",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 165,
+      "sugarGrams": 13.875,
+      "proteinGrams": 5.125,
+      "sodiumMg": 70,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "crème issue de LAIT de vache",
+        "canonicalChemicalName": "crème issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "protéines\r\n de LAIT",
+        "canonicalChemicalName": "protéines\r\n de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "arôme\r\n naturel de vanille",
+        "canonicalChemicalName": "arôme\r\n naturel de vanille",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790011917",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992802063173",
+    "name": "Fitbar",
+    "brand": "kalbe",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 22,
+    "flavorTags": [],
+    "nutrition": {
+      "caloriesKcal": 100,
+      "sugarGrams": 5,
+      "proteinGrams": 2,
+      "sodiumMg": 40,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "30",
+        "canonicalChemicalName": "30",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992802063173",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686170795",
+    "name": "Indomie Instant Mi Goreng Fried Noodles",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 85,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 400,
+      "sugarGrams": 6,
+      "proteinGrams": 8,
+      "sodiumMg": 820,
+      "saturatedFatGrams": 7,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "wheat flour",
+        "canonicalChemicalName": "wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "palm oil",
+        "canonicalChemicalName": "palm oil",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "cornstarch",
+        "canonicalChemicalName": "cornstarch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "sodium tripolyphosphate",
+        "canonicalChemicalName": "sodium tripolyphosphate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "potassium carbonate",
+        "canonicalChemicalName": "potassium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "sodium carbonate",
+        "canonicalChemicalName": "sodium carbonate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "guar gum",
+        "canonicalChemicalName": "guar gum",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "artificial chicken flavor",
+        "canonicalChemicalName": "artificial chicken flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "hydrolyzed soy protein",
+        "canonicalChemicalName": "hydrolyzed soy protein",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "garlic powder",
+        "canonicalChemicalName": "garlic powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "onion powder",
+        "canonicalChemicalName": "onion powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "spices",
+        "canonicalChemicalName": "spices",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "shallot powder",
+        "canonicalChemicalName": "shallot powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "caramel color",
+        "canonicalChemicalName": "caramel color",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "disodium inosinate",
+        "canonicalChemicalName": "disodium inosinate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "disodium guanylate",
+        "canonicalChemicalName": "disodium guanylate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "monosodium glutamate",
+        "canonicalChemicalName": "monosodium glutamate",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "artificial chicken flavor",
+        "canonicalChemicalName": "artificial chicken flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "soy sauce powder",
+        "canonicalChemicalName": "soy sauce powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "wheat",
+        "canonicalChemicalName": "wheat",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "soybean",
+        "canonicalChemicalName": "soybean",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "sesame",
+        "canonicalChemicalName": "sesame",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686170795",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "7622300442507",
+    "name": "Oreo Blueberry Ice Cream",
+    "brand": "mondelez-international, Oreo",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 100,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 471,
+      "sugarGrams": 39.9,
+      "proteinGrams": 4,
+      "sodiumMg": 500,
+      "saturatedFatGrams": 0,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "wheat flour",
+        "canonicalChemicalName": "wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "palm [vegetable oil]",
+        "canonicalChemicalName": "palm",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "3,9% [cocoa powder]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "fructose syrup",
+        "canonicalChemicalName": "fructose syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "ii [e500] [raising agents]",
+        "canonicalChemicalName": "ii",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "ii [e503] [raising agents]",
+        "canonicalChemicalName": "ii",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "corn starch",
+        "canonicalChemicalName": "corn starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "dextrose",
+        "canonicalChemicalName": "dextrose",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "soy lecithin [emulsifier]",
+        "canonicalChemicalName": "soy lecithin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "ice-cream [flavourings]",
+        "canonicalChemicalName": "ice-cream",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "blueberry [flavourings]",
+        "canonicalChemicalName": "blueberry",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "blackcurrant [flavourings]",
+        "canonicalChemicalName": "blackcurrant",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "vanilla [flavourings]",
+        "canonicalChemicalName": "vanilla",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "e120 [colour]",
+        "canonicalChemicalName": "e120",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "e330 [acidity regulator]",
+        "canonicalChemicalName": "e330",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/7622300442507",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992760121014",
+    "name": "OREO Original",
+    "brand": "Oreo",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 27.6,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 133,
+      "sugarGrams": 10.5432,
+      "proteinGrams": 1.2972,
+      "sodiumMg": 0,
+      "saturatedFatGrams": 2.7324,
+      "fiberGrams": 0.552
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "WHEAT FLOUR",
+        "canonicalChemicalName": "wheat flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "SUGAR",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "PALM - CONTAINS ANTIOXIDANT TBHQ [NON HYDROGENATED VEGETABLE OIL]",
+        "canonicalChemicalName": "palm - contains antioxidant tbhq",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "COCOA POWDER",
+        "canonicalChemicalName": "cocoa powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "FRUCTOSE SYRUP",
+        "canonicalChemicalName": "fructose syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "E500ii [SODIUM BICARBONATE] [LEAVENING AGENTS/RAISING AGENTS]",
+        "canonicalChemicalName": "e500ii",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "E503ii [AMMONIUM BICARBONATE] [LEAVENING AGENTS/RAISING AGENTS]",
+        "canonicalChemicalName": "e503ii",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "CORNSTARCH",
+        "canonicalChemicalName": "cornstarch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "SALT",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "E322 [SOY LECITHIN] [EMULSIFIER]",
+        "canonicalChemicalName": "e322",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "VANILLIN [FLAVOR]",
+        "canonicalChemicalName": "vanillin",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992760121014",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790886256",
+    "name": "Elle & vire desserts lactes fruits myrtille",
+    "brand": "elle-vire, elle-vire-international",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 118.75,
+      "sugarGrams": 16,
+      "proteinGrams": 2.75,
+      "sodiumMg": 45,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "6% [myrtille]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "crème de LAIT de vache",
+        "canonicalChemicalName": "crème de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût\n myrtille [arôme naturel]",
+        "canonicalChemicalName": "goût\n myrtille",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790886256",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790188831",
+    "name": "Elle & vire desserts lactes mon grec miel",
+    "brand": "elle-vire, elle-vire-international, savencia",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 178.75,
+      "sugarGrams": 17.5,
+      "proteinGrams": 5.125,
+      "sodiumMg": 70,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "issue de LAIT de vache [crème]",
+        "canonicalChemicalName": "issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "protéines\r\n de LAIT",
+        "canonicalChemicalName": "protéines\r\n de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "2 % [miel]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût miel [fécule\r\n arôme naturel]",
+        "canonicalChemicalName": "goût miel [fécule\r\n arôme naturel]",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790188831",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "8992760221028",
+    "name": "Oreo Original (Vanilla)",
+    "brand": "babymonster-oreo",
+    "category": "CAMILAN_BISKUIT",
+    "priceIdr": 6000,
+    "servingSizeGrams": 27.6,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 11,
+      "proteinGrams": 1,
+      "sodiumMg": 140,
+      "saturatedFatGrams": 2.5,
+      "fiberGrams": 1
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "wheat  flour",
+        "canonicalChemicalName": "wheat  flour",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "sugar",
+        "canonicalChemicalName": "sugar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "palm [non-hydrogenated vegetable oil]",
+        "canonicalChemicalName": "palm",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "cocoa powder",
+        "canonicalChemicalName": "cocoa powder",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "fructose syrup",
+        "canonicalChemicalName": "fructose syrup",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "ins500 [sodium bicarbonate]",
+        "canonicalChemicalName": "ins500",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "ins503 [ammonium bicarbonate]",
+        "canonicalChemicalName": "ins503",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "corn starch",
+        "canonicalChemicalName": "corn starch",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "salt",
+        "canonicalChemicalName": "salt",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "ins322 [soy  lecithin]",
+        "canonicalChemicalName": "ins322",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "vanilla flavor",
+        "canonicalChemicalName": "vanilla flavor",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/8992760221028",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790188718",
+    "name": "Elle & vire desserts lactes mon grec nature",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 130,
+      "sugarGrams": 5.25,
+      "proteinGrams": 5,
+      "sodiumMg": 70,
+      "saturatedFatGrams": 6.5,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "Lait écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "issue de LAIT de vache [crème]",
+        "canonicalChemicalName": "issue de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "protéines de LAIT",
+        "canonicalChemicalName": "protéines de lait",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "additifs alimentaires : stabilisant : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisant : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790188718",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790397868",
+    "name": "Elle & vire desserts lactes fruits cerise",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 95,
+      "sugarGrams": 16,
+      "proteinGrams": 2.75,
+      "sodiumMg": 50,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "6% [cerise]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "crème de LAIT de vache",
+        "canonicalChemicalName": "crème de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût\n cerise [arôme naturel]",
+        "canonicalChemicalName": "goût\n cerise",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790397868",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "0089686170726",
+    "name": "Mi goreng Fried Noodles",
+    "brand": "indomie",
+    "category": "MI_INSTAN",
+    "priceIdr": 4000,
+    "servingSizeGrams": 85,
+    "flavorTags": [
+      "mi",
+      "gurih",
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 400,
+      "sugarGrams": 6,
+      "proteinGrams": 8,
+      "sodiumMg": 220.7,
+      "saturatedFatGrams": 9.5,
+      "fiberGrams": 3
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "62% [NOUILLES {Farine de blé]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "E 319 [contient antioxydant] [huile de palme raffinée]",
+        "canonicalChemicalName": "e 319",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sel",
+        "canonicalChemicalName": "sel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "E 451 [régulateurs d'acidité]",
+        "canonicalChemicalName": "e 451",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "E 501 [régulateurs d'acidité]",
+        "canonicalChemicalName": "e 501",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "E 500 [régulateurs d'acidité]",
+        "canonicalChemicalName": "e 500",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "E 412 [épaississant]",
+        "canonicalChemicalName": "e 412",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "colorant (E 101)}.\r\nPOUDRE D'ASSAISONNEMENT {Sel",
+        "canonicalChemicalName": "colorant (e 101)}.\r\npoudre d'assaisonnement {sel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 9,
+        "rawName": "E 621 [exhausteur de goût]",
+        "canonicalChemicalName": "e 621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 10,
+        "rawName": "E 631 [exhausteur de goût]",
+        "canonicalChemicalName": "e 631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 11,
+        "rawName": "E 627 [exhausteur de goût]",
+        "canonicalChemicalName": "e 627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 12,
+        "rawName": "ail",
+        "canonicalChemicalName": "ail",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 13,
+        "rawName": "soja [saveur de poulet artificiel]",
+        "canonicalChemicalName": "soja",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 14,
+        "rawName": "oignon",
+        "canonicalChemicalName": "oignon",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 15,
+        "rawName": "E 319 [contient antioxydant] [poivre blanc}.\r\nHUILE D'ASSAISONNEMENT {Huile de palme raffinée]",
+        "canonicalChemicalName": "e 319 [poivre blanc}.\r\nhuile d'assaisonnement {huile de palme raffinée]",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 16,
+        "rawName": "échalote}.\r\nSAUCE DE SOJA DOUCE {Sucre",
+        "canonicalChemicalName": "échalote}.\r\nsauce de soja douce {sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 17,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 18,
+        "rawName": "blé",
+        "canonicalChemicalName": "blé",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 19,
+        "rawName": "soja",
+        "canonicalChemicalName": "soja",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 20,
+        "rawName": "sel",
+        "canonicalChemicalName": "sel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 21,
+        "rawName": "épices",
+        "canonicalChemicalName": "épices",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 22,
+        "rawName": "huile de sésame}.\r\nSAUCE AU CHILI {Chili",
+        "canonicalChemicalName": "huile de sésame}.\r\nsauce au chili {chili",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 23,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 24,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 25,
+        "rawName": "sel",
+        "canonicalChemicalName": "sel",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 26,
+        "rawName": "amidon de tapioca",
+        "canonicalChemicalName": "amidon de tapioca",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 27,
+        "rawName": "E 260 [régulateurs d'acidite]",
+        "canonicalChemicalName": "e 260",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 28,
+        "rawName": "E 330 [régulateurs d'acidite]",
+        "canonicalChemicalName": "e 330",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 29,
+        "rawName": "E 621 [exhausteur de goût]",
+        "canonicalChemicalName": "e 621",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 30,
+        "rawName": "E 631 [exhausteur de goût]",
+        "canonicalChemicalName": "e 631",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 31,
+        "rawName": "E 627 [exhausteur de goût]",
+        "canonicalChemicalName": "e 627",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 32,
+        "rawName": "saveur d'ail",
+        "canonicalChemicalName": "saveur d'ail",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 33,
+        "rawName": "préservatifs (E 211, E 223)}.\r\nÉCHALOTE FRITS {Échalote",
+        "canonicalChemicalName": "préservatifs (e 211, e 223)}.\r\néchalote frits {échalote",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 34,
+        "rawName": "huile de palme raffinée}. \r\n\r\nCONTIENT: BLÉ",
+        "canonicalChemicalName": "huile de palme raffinée}. \r\n\r\ncontient: blé",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 35,
+        "rawName": "GLUTEN",
+        "canonicalChemicalName": "gluten",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 36,
+        "rawName": "SOJA",
+        "canonicalChemicalName": "soja",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 37,
+        "rawName": "SESAME",
+        "canonicalChemicalName": "sesame",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/0089686170726",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
+    },
+    "priceSource": "ESTIMATE",
+    "priceSourceUrl": null
+  },
+  {
+    "barcode": "3451790397622",
+    "name": "Elle & vire desserts lactes fruits abricot",
+    "brand": "elle-vire",
+    "category": "SUSU_OLAHAN",
+    "priceIdr": 6000,
+    "servingSizeGrams": 125,
+    "flavorTags": [
+      "manis"
+    ],
+    "nutrition": {
+      "caloriesKcal": 118.75,
+      "sugarGrams": 16.125,
+      "proteinGrams": 2.75,
+      "sodiumMg": 50,
+      "saturatedFatGrams": 2,
+      "fiberGrams": 0
+    },
+    "novaGroup": 1,
+    "marketingClaims": [],
+    "orderedIngredients": [
+      {
+        "orderIndex": 0,
+        "rawName": "LAIT écrémé de vache",
+        "canonicalChemicalName": "lait écrémé de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 1,
+        "rawName": "eau",
+        "canonicalChemicalName": "eau",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 2,
+        "rawName": "sucre",
+        "canonicalChemicalName": "sucre",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 3,
+        "rawName": "6% [abricot]",
+        "canonicalChemicalName": "",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 4,
+        "rawName": "crème de LAIT de vache",
+        "canonicalChemicalName": "crème de lait de vache",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 5,
+        "rawName": "fécule",
+        "canonicalChemicalName": "fécule",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 6,
+        "rawName": "additifs alimentaires : stabilisants : pectine",
+        "canonicalChemicalName": "additifs alimentaires : stabilisants : pectine",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 7,
+        "rawName": "agar-agar",
+        "canonicalChemicalName": "agar-agar",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      },
+      {
+        "orderIndex": 8,
+        "rawName": "goût abricot [arômes naturels]",
+        "canonicalChemicalName": "goût abricot",
+        "explicitPercentage": null,
+        "functionalCategory": "UNKNOWN"
+      }
+    ],
+    "source": {
+      "kind": "OPEN_FOOD_FACTS",
+      "url": "https://world.openfoodfacts.org/product/3451790397622",
+      "retrievedAt": "2026-10-16T06:39:22.568Z",
+      "note": "Ekspor TSV massal pasar Indonesia dari Open Food Facts. Kolom packaging/as_sold saja; bukan estimasi nutrien. Kontribusi komunitas belum diverifikasi produsen. Harga per sajian tetap asumsi berlabel ESTIMATE. ODbL/Database Contents License."
     },
     "priceSource": "ESTIMATE",
     "priceSourceUrl": null

@@ -1,7 +1,7 @@
 import { z } from "zod";
 export async function requestApi<T>(
   path: string,
-  schema: z.ZodType<T>,
+  schema: z.ZodType<T, z.ZodTypeDef, unknown>,
   options?: RequestInit,
 ): Promise<T> {
   const response = await fetch(path, {

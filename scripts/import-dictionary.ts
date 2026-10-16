@@ -9,6 +9,13 @@ const nodeSchema = z
     children: z.array(z.string()).optional(),
     e_number: z.record(z.string()).optional(),
     additives_classes: z.record(z.string()).optional(),
+    description: z.record(z.string()).optional(),
+    wikidata: z.record(z.string()).optional(),
+    ciqual_food_code: z.record(z.string()).optional(),
+    usda_fdc_code: z.record(z.string()).optional(),
+    efsa_evaluation: z.record(z.string()).optional(),
+    efsa_evaluation_url: z.record(z.string()).optional(),
+    efsa_evaluation_date: z.record(z.string()).optional(),
   })
   .passthrough();
 const taxonomySchema = z.record(nodeSchema);
@@ -110,9 +117,9 @@ async function main() {
       ];
       const functionalCategory = sugars.has(id)
         ? "HIDDEN_SUGAR"
-        : key === "additives"
-          ? categoryFor(value.additives_classes?.en ?? "")
-          : "UNKNOWN";
+        : categoryFor(value.additives_classes?.en ?? "");
+      const efsaUrl = value.efsa_evaluation_url?.en;
+      const efsaTitle = value.efsa_evaluation?.en;
       rows.push(
         chemicalSchema.parse({
           canonicalName: name,
@@ -131,6 +138,39 @@ async function main() {
                 : "Entri bahan dan alias multibahasa dari taksonomi Open Food Facts. Kategori fungsi, GI dan pemicu medis belum ditetapkan dalam aturan lokal. Kecocokan nama tidak membuktikan keamanan.",
           sourceUrl: urls[key],
           provider: { id, url: urls[key], retrievedAt },
+          providerDetails: {
+            description:
+              (value.description?.id ?? value.description?.en)?.slice(
+                0,
+                5000,
+              ) ?? null,
+            functions: (value.additives_classes?.en ?? "")
+              .split(",")
+              .map((s) => s.trim().replace(/^en:/, "").replaceAll("-", " "))
+              .filter(Boolean),
+            wikidata:
+              value.wikidata?.en && /^Q\d+$/.test(value.wikidata.en)
+                ? value.wikidata.en
+                : null,
+            ciqualCode:
+              value.ciqual_food_code?.en ?? value.ciqual_food_code?.fr ?? null,
+            usdaFdcCode:
+              value.usda_fdc_code?.en && /^\d+$/.test(value.usda_fdc_code.en)
+                ? value.usda_fdc_code.en
+                : null,
+            efsa:
+              efsaUrl &&
+              efsaTitle &&
+              /^https:\/\/(efsa\.onlinelibrary\.wiley\.com|www\.efsa\.europa\.eu)\//.test(
+                efsaUrl,
+              )
+                ? {
+                    title: efsaTitle.slice(0, 1000),
+                    url: efsaUrl,
+                    date: value.efsa_evaluation_date?.en ?? null,
+                  }
+                : null,
+          },
         }),
       );
     }
@@ -143,7 +183,39 @@ async function main() {
       previous
         ? {
             ...previous,
+            functionalCategory:
+              previous.functionalCategory === "UNKNOWN"
+                ? row.functionalCategory
+                : previous.functionalCategory,
             aliases: [...new Set([...previous.aliases, ...row.aliases])],
+            providerDetails: {
+              description:
+                previous.providerDetails?.description ??
+                row.providerDetails?.description ??
+                null,
+              functions: [
+                ...new Set([
+                  ...(previous.providerDetails?.functions ?? []),
+                  ...(row.providerDetails?.functions ?? []),
+                ]),
+              ],
+              wikidata:
+                previous.providerDetails?.wikidata ??
+                row.providerDetails?.wikidata ??
+                null,
+              ciqualCode:
+                previous.providerDetails?.ciqualCode ??
+                row.providerDetails?.ciqualCode ??
+                null,
+              usdaFdcCode:
+                previous.providerDetails?.usdaFdcCode ??
+                row.providerDetails?.usdaFdcCode ??
+                null,
+              efsa:
+                previous.providerDetails?.efsa ??
+                row.providerDetails?.efsa ??
+                null,
+            },
           }
         : row,
     );

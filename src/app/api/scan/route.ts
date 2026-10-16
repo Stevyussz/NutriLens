@@ -49,6 +49,10 @@ export async function POST(request: Request) {
         throw new HttpError(400, "Pilih file gambar label.");
       payload = new Uint8Array(await file.arrayBuffer());
       image = { bytes: payload, mime: validateImage(payload) };
+      throw new HttpError(
+        422,
+        "Pembacaan foto memerlukan tahap tinjau hasil. Gunakan Foto kemasan, lalu cocokkan dan konfirmasi isian sebelum analisis.",
+      );
     } else {
       const input = inputSchema.parse(await readJson(request));
       if ("presetId" in input) {

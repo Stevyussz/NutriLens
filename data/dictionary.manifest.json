@@ -1,6 +1,6 @@
 {
   "provider": "Open Food Facts",
-  "retrievedAt": "2026-10-15T13:54:02.309Z",
+  "retrievedAt": "2026-10-16T07:03:25.784Z",
   "sources": [
     {
       "url": "https://static.openfoodfacts.org/data/taxonomies/additives.json",

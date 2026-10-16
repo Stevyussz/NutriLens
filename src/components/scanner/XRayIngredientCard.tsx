@@ -4,6 +4,7 @@ import { Dialog, DialogTrigger, DialogContent } from "../ui/dialog";
 import { decimal } from "@/core/utils";
 import { ingredientFunctionLabels } from "@/core/presentation";
 import { IngredientAliases } from "../ingredient-aliases";
+import { ChemicalEvidence } from "../chemical-evidence";
 export function XRayIngredientCard({ analysis }: { analysis: Analysis }) {
   return (
     <section className="panel result-section" id="komposisi" tabIndex={-1}>
@@ -40,6 +41,7 @@ export function XRayIngredientCard({ analysis }: { analysis: Analysis }) {
                     {chemical?.plainExplanation ??
                       "Belum ada entri yang cocok. Tidak ada kesimpulan keamanan yang ditarik dari nama ini saja."}
                   </p>
+                  {chemical && <ChemicalEvidence chemical={chemical} />}
                   <dl className="grid gap-3 my-5">
                     <div>
                       <dt className="muted text-sm">Fungsi</dt>

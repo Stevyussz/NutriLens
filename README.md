@@ -10,11 +10,13 @@ docker compose up --build
 
 Buka [http://localhost:3000](http://localhost:3000), pilih **Periksa label**, lalu isi kemasan atau pilih salah satu contoh analisis. Tidak perlu membuat akun. MongoDB 8 diperiksa kesehatannya; service seeder mengisi data secara idempoten sebelum aplikasi menerima koneksi. Database tidak mengekspos port ke host. Pengunduhan image dan dependensi pertama kali memerlukan internet; snapshot label dan kamus sudah disertakan.
 
-Gemini opsional. Tanpa kunci, preset, formulir label lengkap, parser teks terstruktur, algoritma, pencarian MongoDB, grafik, profil dan sesi tetap berfungsi. Ekstraksi foto memerlukan Gemini; aplikasi menjelaskan keterbatasan tanpa membuat hasil fiktif.
+Gemini opsional. Tanpa kunci, preset, formulir label lengkap, parser teks terstruktur, algoritma, pencarian MongoDB, grafik, profil dan sesi tetap berfungsi. Foto dapat dibaca OCR lokal Tesseract Indonesia/Inggris; Gemini opsional menambah pembacaan dengan pemeriksaan silang. Draf foto wajib diperiksa dan dikonfirmasi sebelum analisis. Lihat [validasi OCR](OCR_VALIDATION.md).
 
-Untuk mengaktifkan Gemini, salin `.env.example` ke `.env`, isi `GEMINI_API_KEY` dan pilih `GEMINI_MODEL` yang tersedia untuk akun Anda, kemudian jalankan ulang Compose. Gambar/teks dikirim ke Google saat layanan aktif. Jangan unggah foto yang memuat data pribadi. Berkas gambar mentah tidak disimpan oleh aplikasi.
+Untuk mengaktifkan Gemini, salin `.env.example` ke `.env`, isi `GEMINI_API_KEY` dan pilih `GEMINI_MODEL` yang tersedia untuk akun Anda, kemudian jalankan ulang Compose. Gambar/teks dikirim ke Google saat layanan aktif. Jangan unggah foto yang memuat data pribadi. Berkas gambar tidak disimpan di database; file sementara OCR lokal dihapus setelah pekerjaan selesai.
 
 Port host dapat diubah dengan `APP_PORT`; sesuaikan juga `APP_ORIGIN` dengan alamat yang dibuka browser. `APP_ORIGIN` harus sama persis dengan origin pengguna, termasuk port. Workspace pengujian ini memakai port 3001 karena port 3000 sudah digunakan layanan lain.
+
+Katalog menyediakan 7.898 produk untuk pasar Indonesia, 89 referensi lengkap, dan 7.279 entri kamus. Data yang kurang tetap kosong; cakupan regulasi, datasheet dan harga dijelaskan di [DATA_COVERAGE.md](DATA_COVERAGE.md).
 
 ## Pengembangan
 

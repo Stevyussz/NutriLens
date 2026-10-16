@@ -250,6 +250,12 @@ export function mergeDictionaryData(
         ]),
       ],
       ...(previous[0]?.provider ? { provider: previous[0].provider } : {}),
+      ...(previous.find((p) => p.providerDetails)?.providerDetails
+        ? {
+            providerDetails: previous.find((p) => p.providerDetails)
+              ?.providerDetails,
+          }
+        : {}),
     });
   }
   return [...rows.values()];

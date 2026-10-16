@@ -6,6 +6,7 @@ import { dictionaryOutputSchema } from "@/core/api-schemas";
 import { Button } from "./ui/button";
 import { IngredientAliases } from "./ingredient-aliases";
 import { ingredientFunctionLabels } from "@/core/presentation";
+import { ChemicalEvidence } from "./chemical-evidence";
 export function DictionaryExplorer() {
   const [query, setQuery] = useState("");
   const [draft, setDraft] = useState("");
@@ -119,6 +120,7 @@ export function DictionaryExplorer() {
                   aliases={c.aliases}
                   canonicalName={c.canonicalName}
                 />
+                <ChemicalEvidence chemical={c} />
                 {c.triggersConditions.length > 0 && (
                   <p className="status status-WASPADA">
                     Perhatikan dalam profil: {c.triggersConditions.join(", ")}

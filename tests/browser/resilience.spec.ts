@@ -36,15 +36,13 @@ test("all public entry points reuse the same private session without assumed con
     .click();
   await expect(page.getByLabel("Nama produk", { exact: true })).toBeFocused();
   await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
+  await page.getByLabel("Foto komposisi dan informasi gizi").setInputFiles({
+    name: "disguised.png",
+    mimeType: "image/png",
+    buffer: Buffer.from("<html>this is not an actual valid PNG image</html>"),
+  });
   await page
-    .getByLabel("Foto komposisi dan informasi gizi")
-    .setInputFiles({
-      name: "disguised.png",
-      mimeType: "image/png",
-      buffer: Buffer.from("<html>this is not an actual valid PNG image</html>"),
-    });
-  await page
-    .getByRole("button", { name: "Periksa label ini", exact: true })
+    .getByRole("button", { name: "Baca foto label", exact: true })
     .click();
   await expect(
     page.getByRole("alert").filter({ hasText: "bukan JPEG, PNG, atau WEBP" }),

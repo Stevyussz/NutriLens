@@ -6,6 +6,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { requestApi } from "@/core/browser-api";
 import { presetOutputSchema } from "@/core/api-schemas";
 import { analysisSchema } from "@/core/analysis-schema";
+import { photoReviewSchema, type PhotoReview } from "@/core/ai/vision-contract";
+import type { CatalogueProduct } from "@/core/db/catalogue";
+import { CatalogueSearch } from "./catalogue-search";
 import { categorySchema, productSchema } from "@/core/db/collections";
 import { parseIngredients } from "@/core/ai/local-parser";
 import { decimal, rupiah } from "@/core/utils";
@@ -27,6 +30,18 @@ export function ScannerConsole() {
   const [activeCase, setActiveCase] = useState("");
   const [formError, setFormError] = useState("");
   const [labelExpanded, setLabelExpanded] = useState(false);
+  const [review, setReview] = useState<PhotoReview | null>(null);
+  const [catalogueDraft, setCatalogueDraft] = useState<CatalogueProduct | null>(
+    null,
+  );
+  const [reviewConfirmed, setReviewConfirmed] = useState(false);
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+  const submittedPhotos = useRef<File[]>([]);
+  useEffect(
+    () => () => photoPreviews.forEach((url) => URL.revokeObjectURL(url)),
+    [photoPreviews],
+  );
   const reducedMotion = useReducedMotion();
   const presets = useQuery({
     queryKey: ["presets"],
@@ -39,6 +54,81 @@ export function ScannerConsole() {
         body: body instanceof FormData ? body : JSON.stringify(body),
       }),
   });
+  const extraction = useMutation({
+    mutationFn: (body: FormData) =>
+      requestApi("/api/extract", photoReviewSchema, { method: "POST", body }),
+    onSuccess: (draft) => {
+      const form = formRef.current;
+      if (!form) return;
+      const values = {
+        name: draft.name,
+        brand: draft.brand,
+        category: draft.category,
+        serving: draft.servingSizeGrams ?? "",
+        price: "",
+        ingredients: draft.ingredientsText,
+        tags: "",
+        claims: "",
+        ...draft.nutrition,
+      };
+      for (const [name, value] of Object.entries(values)) {
+        const input = form.elements.namedItem(name);
+        if (
+          input instanceof HTMLInputElement ||
+          input instanceof HTMLTextAreaElement ||
+          input instanceof HTMLSelectElement
+        )
+          input.value = value === null ? "" : String(value);
+      }
+      setPhotoPreviews(
+        submittedPhotos.current.map((file) => URL.createObjectURL(file)),
+      );
+      setReview(draft);
+      setCatalogueDraft(null);
+      setReviewConfirmed(false);
+      setMode("label");
+      setLabelExpanded(true);
+      scan.reset();
+      requestAnimationFrame(() =>
+        form.querySelector<HTMLInputElement>('[name="name"]')?.focus(),
+      );
+    },
+  });
+  const busy = scan.isPending || extraction.isPending;
+  function chooseCatalogue(draft: CatalogueProduct) {
+    const form = formRef.current;
+    if (!form) return;
+    const values = {
+      name: draft.name,
+      brand: draft.brand,
+      category: draft.category,
+      serving: draft.servingSizeGrams ?? "",
+      price: "",
+      ingredients: draft.ingredientsText,
+      tags: "",
+      claims: "",
+      ...draft.nutrition,
+    };
+    for (const [name, value] of Object.entries(values)) {
+      const element = form.elements.namedItem(name);
+      if (
+        element instanceof HTMLInputElement ||
+        element instanceof HTMLTextAreaElement ||
+        element instanceof HTMLSelectElement
+      )
+        element.value = value === null ? "" : String(value);
+    }
+    setCatalogueDraft(draft);
+    setReview(null);
+    setReviewConfirmed(false);
+    setMode("label");
+    setLabelExpanded(true);
+    scan.reset();
+    setFormError("");
+    requestAnimationFrame(() =>
+      form.querySelector<HTMLInputElement>('[name="name"]')?.focus(),
+    );
+  }
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormError("");
@@ -47,13 +137,22 @@ export function ScannerConsole() {
     try {
       if (mode === "photo") {
         const body = new FormData();
-        const file = form.get("image");
-        if (!(file instanceof File) || !file.size)
+        const files = form.getAll("image");
+        if (
+          !files.length ||
+          files.length > 2 ||
+          files.some((file) => !(file instanceof File) || !file.size)
+        )
           throw new Error("Pilih foto label terlebih dahulu.");
-        body.set("image", file);
-        scan.mutate(body);
+        for (const file of files as File[]) body.append("image", file);
+        submittedPhotos.current = files as File[];
+        extraction.mutate(body);
         return;
       }
+      if (mode === "label" && (review || catalogueDraft) && !reviewConfirmed)
+        throw new Error(
+          "Cocokkan hasil pembacaan dengan foto, lalu centang konfirmasi sebelum analisis.",
+        );
       if (mode === "text") {
         scan.mutate({ text: String(form.get("text")) });
         return;
@@ -106,6 +205,7 @@ export function ScannerConsole() {
       <section className="panel scanner-entry" id="label-entry" tabIndex={-1}>
         <p className="eyebrow">Mulai dari kemasan Anda</p>
         <h2>Masukkan label Anda</h2>
+        <CatalogueSearch onChoose={chooseCatalogue} />
         <div className="tab-switch" aria-label="Cara memasukkan label">
           {[
             {
@@ -132,11 +232,12 @@ export function ScannerConsole() {
               variant="ghost"
               aria-pressed={mode === id}
               aria-label={label}
-              disabled={scan.isPending}
+              disabled={busy}
               onClick={() => {
                 setMode(id);
                 if (id === "label") setLabelExpanded(true);
                 setFormError("");
+                extraction.reset();
                 setActiveCase("");
                 scan.reset();
               }}
@@ -163,15 +264,116 @@ export function ScannerConsole() {
             </p>
           </div>
         )}
+        {review && mode === "label" && (
+          <section
+            className="ocr-review"
+            aria-label="Tinjau hasil pembacaan foto"
+          >
+            <h3>Cocokkan dengan foto Anda</h3>
+            <p className="muted text-sm">
+              Pembaca:{" "}
+              {review.engine === "LOCAL_OCR"
+                ? "OCR lokal"
+                : review.engine === "GEMINI_CROSSCHECKED"
+                  ? "Gemini dengan pemeriksaan OCR lokal"
+                  : "Gemini"}
+              . {review.providerNotice}
+            </p>
+            <p>
+              Periksa nama, kolom gizi, ukuran sajian dan urutan komposisi. Isi
+              bagian kosong dan harga per sajian sebelum menganalisis.
+            </p>
+            <div className="photo-previews">
+              {photoPreviews.map((url, index) => (
+                <a key={url} href={url} target="_blank" rel="noreferrer">
+                  <img
+                    src={url}
+                    alt={`Foto label ${index + 1} yang diunggah`}
+                  />
+                  <span>Buka foto {index + 1}</span>
+                </a>
+              ))}
+            </div>
+            {review.issues.length > 0 && (
+              <details open>
+                <summary>
+                  Bagian yang perlu diperiksa ({review.issues.length})
+                </summary>
+                <ul>
+                  {review.issues.map((issue, i) => (
+                    <li key={i}>{issue}</li>
+                  ))}
+                </ul>
+              </details>
+            )}
+            <details>
+              <summary>Teks terbaca dan konversi satuan</summary>
+              <p>
+                Judul kolom: {review.evidence.basisText ?? "Belum terbaca"}.
+                Sajian: {review.evidence.servingText ?? "Belum terbaca"}.
+              </p>
+              <dl>
+                {nutrientLabels.map(([key, label]) => (
+                  <div key={key}>
+                    <dt>{label}</dt>
+                    <dd>
+                      {review.evidence.nutritionText[key] ?? "Belum terbaca"}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {review.conversions.map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
+            </details>
+            {review.rawText && (
+              <details>
+                <summary>Teks OCR lokal untuk dicocokkan</summary>
+                <pre className="ocr-raw-text">{review.rawText}</pre>
+              </details>
+            )}
+          </section>
+        )}
+        {catalogueDraft && mode === "label" && (
+          <div className="notice mb-6">
+            <p className="font-semibold">
+              Cocokkan data katalog dengan kemasan Anda.
+            </p>
+            <p className="text-sm">
+              {catalogueDraft.name}.{" "}
+              {catalogueDraft.missingFields.length
+                ? `${catalogueDraft.missingFields.length} bagian belum tersedia pada data sumber.`
+                : "Komposisi dan gizi tersedia; pastikan varian dan ukuran sajiannya sama."}{" "}
+              Harga per sajian perlu Anda masukkan.
+            </p>
+            <a
+              className="text-link"
+              href={catalogueDraft.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Buka label sumber
+            </a>
+          </div>
+        )}
         <form
+          ref={formRef}
           onSubmit={submit}
           hidden={mode === "label" && !labelExpanded}
-          aria-busy={scan.isPending}
+          aria-busy={busy}
+          onChange={(event) => {
+            if (
+              event.target instanceof HTMLInputElement &&
+              event.target.name === "ocr-confirmation"
+            )
+              return;
+            setReviewConfirmed(false);
+          }}
         >
           <fieldset
             className="form-grid"
             hidden={mode !== "label"}
-            disabled={mode !== "label" || scan.isPending}
+            disabled={mode !== "label" || busy}
           >
             <legend className="form-section-title">
               Identitas dan isi kemasan
@@ -253,10 +455,7 @@ export function ScannerConsole() {
               <input name="claims" maxLength={1000} />
             </label>
           </fieldset>
-          <fieldset
-            hidden={mode !== "text"}
-            disabled={mode !== "text" || scan.isPending}
-          >
+          <fieldset hidden={mode !== "text"} disabled={mode !== "text" || busy}>
             <label className="field full">
               Salin nama, komposisi dan seluruh informasi gizi
               <textarea
@@ -274,7 +473,7 @@ export function ScannerConsole() {
           </fieldset>
           <fieldset
             hidden={mode !== "photo"}
-            disabled={mode !== "photo" || scan.isPending}
+            disabled={mode !== "photo" || busy}
           >
             <label className="field full">
               Foto komposisi dan informasi gizi
@@ -282,15 +481,17 @@ export function ScannerConsole() {
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
                 name="image"
+                multiple
                 required
               />
               <span className="muted">
-                JPEG, PNG, WEBP, maksimal 5 MB. Isi file diperiksa sebelum
-                diproses.
+                Pilih satu atau dua foto produk yang sama: komposisi dan gizi.
+                JPEG, PNG, WEBP, maksimal 5 MB per foto. Hasilnya diperiksa
+                dahulu sebelum analisis.
               </span>
             </label>
           </fieldset>
-          {mode !== "label" && !presets.data?.aiAvailable && (
+          {mode === "text" && !presets.data?.aiAvailable && (
             <p className="notice mt-4">
               Gemini belum diaktifkan. Gunakan Label lengkap, studi kasus, atau
               teks dengan baris Nama, Kategori, Harga, Sajian, Energi, Gula,
@@ -298,8 +499,29 @@ export function ScannerConsole() {
               field dan nilainya dengan tanda titik dua.
             </p>
           )}
-          <Button className="mt-6" type="submit" disabled={scan.isPending}>
-            {scan.isPending ? "Memeriksa komposisi…" : "Periksa label ini"}
+          {(review || catalogueDraft) && mode === "label" && (
+            <label className="ocr-confirmation">
+              <input
+                name="ocr-confirmation"
+                type="checkbox"
+                required
+                checked={reviewConfirmed}
+                onChange={(event) => setReviewConfirmed(event.target.checked)}
+              />
+              Saya sudah mencocokkan angka, satuan, dan komposisi dengan kemasan
+              atau foto.
+            </label>
+          )}
+          <Button className="mt-6" type="submit" disabled={busy}>
+            {extraction.isPending
+              ? "Membaca foto…"
+              : scan.isPending
+                ? "Memeriksa komposisi…"
+                : mode === "photo"
+                  ? "Baca foto label"
+                  : (review || catalogueDraft) && mode === "label"
+                    ? "Analisis label yang sudah diperiksa"
+                    : "Periksa label ini"}
           </Button>
           {formError && (
             <p role="alert" className="error-text mt-3">
@@ -307,6 +529,17 @@ export function ScannerConsole() {
             </p>
           )}
         </form>
+        {extraction.isPending && (
+          <p className="notice mt-4" role="status">
+            Membaca teks pada foto. Tahap berikutnya adalah memeriksa hasil dan
+            bagian yang belum terbaca.
+          </p>
+        )}
+        {extraction.error && (
+          <p className="error-text mt-4" role="alert">
+            {extraction.error.message}
+          </p>
+        )}
         {scan.isPending && (
           <div className="notice mt-6 mb-0" role="status">
             Memeriksa komposisi dan mencari pembanding. Hasil akan tampil di
@@ -479,7 +712,7 @@ export function ScannerConsole() {
               <button
                 key={p.id}
                 className="preset-button"
-                disabled={scan.isPending}
+                disabled={busy}
                 aria-pressed={activeCase === p.id}
                 onClick={() => {
                   setActiveCase(p.id);

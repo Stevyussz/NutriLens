@@ -316,6 +316,142 @@ h3 {
 .scanner-entry > h2 {
   margin-bottom: 16px;
 }
+.ocr-review {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  margin-bottom: 24px;
+}
+.ocr-review p,
+.ocr-review li {
+  font-size: 14px;
+}
+.ocr-review ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+.ocr-review dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 6px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.photo-previews {
+  display: flex;
+  gap: 12px;
+  margin-block: 16px;
+}
+.photo-previews a {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.photo-previews img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: var(--control);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.ocr-confirmation {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  margin-top: 24px;
+  padding-block: 12px;
+  font-size: 14px;
+}
+.ocr-confirmation input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.catalogue-search {
+  margin-block: 8px 20px;
+  border-block: 1px solid var(--line);
+}
+.catalogue-search > summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9e3924;
+}
+.catalogue-search-form {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  margin-block: 16px;
+}
+.catalogue-search-form label {
+  flex: 1;
+  min-width: 0;
+}
+.catalogue-results {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-block: 16px;
+}
+.catalogue-results article {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+}
+.catalogue-results h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.catalogue-results .text-link {
+  display: flex;
+  margin-top: 8px;
+}
+.catalogue-search .pagination {
+  padding-bottom: 16px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.chemical-evidence {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+}
+.chemical-evidence p {
+  font-size: 14px;
+}
+.ocr-raw-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  font-size: 13px;
+  max-height: 300px;
+  overflow: auto;
+  background: var(--control);
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.chemical-evidence .text-link {
+  display: flex;
+  font-size: 14px;
+}
+@media (max-width: 640px) {
+  .catalogue-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .catalogue-search-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .photo-previews img {
+    height: 140px;
+  }
+}
 .sample-panel {
   grid-area: examples;
 }

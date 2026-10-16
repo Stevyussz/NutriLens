@@ -6,20 +6,38 @@ export async function DataCoverage() {
   const db = await getDb();
   const dictionary = db.collection("chemical_dictionary");
   const reference = { "source.kind": { $in: ["OPEN_FOOD_FACTS", "LABEL"] } };
-  const [total, coded, unknownFunction, withGI, products, matchedPrices] =
-    await Promise.all([
-      dictionary.countDocuments(),
-      dictionary.countDocuments({ insOrECode: { $ne: "" } }),
-      dictionary.countDocuments({ functionalCategory: "UNKNOWN" }),
-      dictionary.countDocuments({ glycemicIndex: { $type: "number" } }),
-      db.collection("products").countDocuments(reference),
-      db
-        .collection("products")
-        .countDocuments({
-          ...reference,
-          barcode: { $in: prices.map((p) => p.barcode) },
-        }),
-    ]);
+  const [
+    total,
+    coded,
+    unknownFunction,
+    withGI,
+    products,
+    matchedPrices,
+    catalogue,
+    described,
+    functions,
+    evaluations,
+  ] = await Promise.all([
+    dictionary.countDocuments(),
+    dictionary.countDocuments({ insOrECode: { $ne: "" } }),
+    dictionary.countDocuments({ functionalCategory: "UNKNOWN" }),
+    dictionary.countDocuments({ glycemicIndex: { $type: "number" } }),
+    db.collection("products").countDocuments(reference),
+    db.collection("products").countDocuments({
+      ...reference,
+      barcode: { $in: prices.map((p) => p.barcode) },
+    }),
+    db.collection("product_catalogue").countDocuments(),
+    dictionary.countDocuments({
+      "providerDetails.description": { $type: "string" },
+    }),
+    dictionary.countDocuments({
+      "providerDetails.functions.0": { $exists: true },
+    }),
+    dictionary.countDocuments({
+      "providerDetails.efsa.url": { $type: "string" },
+    }),
+  ]);
   const number = (value: number) => value.toLocaleString("id-ID");
   return (
     <details className="data-coverage">
@@ -38,6 +56,12 @@ export async function DataCoverage() {
             entri memiliki nilai GI bersumber. Cakupan nama bahan lebih luas
             daripada kelengkapan penjelasannya.
           </p>
+          <p>
+            {number(described)} entri memiliki deskripsi penyedia,{" "}
+            {number(functions)} memiliki daftar fungsi teknologis, dan{" "}
+            {number(evaluations)} memiliki tautan evaluasi EFSA yang dicatat
+            penyedia. Buka datasheet pada entri untuk melihat sumbernya.
+          </p>
           <a
             className="text-link"
             href="https://static.openfoodfacts.org/data/taxonomies/ingredients.json"
@@ -50,9 +74,11 @@ export async function DataCoverage() {
         <div>
           <h2>Produk dan harga</h2>
           <p>
-            {number(products)} label komunitas menjadi referensi pembanding.
-            Katalog mencakup produk untuk pasar Indonesia, termasuk produk
-            impor. Cakupan produk lokal masih terbatas.
+            {number(catalogue)} produk bernama tersedia dalam katalog;{" "}
+            {number(products)} label bergizi lengkap menjadi referensi
+            pembanding. Katalog mencakup produk untuk pasar Indonesia, termasuk
+            produk impor. Cakupan produk lokal masih terbatas pada ekspor
+            penyedia, dan data yang kurang tidak diisi dengan tebakan.
           </p>
           <p>
             {number(prices.length)} observasi harga berbukti tersedia;{" "}

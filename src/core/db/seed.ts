@@ -18,6 +18,7 @@ import {
 import { classifyNovaGroup } from "../algorithms/nova-classifier";
 import { hashPassword } from "../security/session";
 import { z } from "zod";
+import { catalogueSchema } from "./catalogue";
 /** Idempotent source-labelled seed with five precomputed default-profile analyses.
  * Unique upserts refresh source facts and clear derived caches. O(d+a+p*i+c) work for dictionary rows,
  * aliases, products/ingredients and old caches, plus five aggregation evaluations. Run one seed job.
@@ -29,6 +30,35 @@ export async function seed() {
   try {
     const db = client.db(process.env.MONGODB_DB ?? "bongkar_label");
     await ensureIndexes(db);
+    const catalogue = z
+      .array(catalogueSchema)
+      .parse(
+        JSON.parse(
+          await readFile(
+            new URL("../../../data/catalogue.snapshot.json", import.meta.url),
+            "utf8",
+          ),
+        ),
+      );
+    if (!catalogue.length) throw Error("Catalogue snapshot is empty");
+    for (let offset = 0; offset < catalogue.length; offset += 500)
+      await db.collection("product_catalogue").bulkWrite(
+        catalogue
+          .slice(offset, offset + 500)
+          .map((row) => ({
+            updateOne: {
+              filter: { providerCode: row.providerCode },
+              update: { $set: row },
+              upsert: true,
+            },
+          })),
+        { ordered: false },
+      );
+    await db
+      .collection("product_catalogue")
+      .deleteMany({
+        providerCode: { $nin: catalogue.map((row) => row.providerCode) },
+      });
     const provider = z
       .array(chemicalSchema)
       .parse(
@@ -157,6 +187,7 @@ export async function seed() {
       JSON.stringify({
         chemicals: await db.collection("chemical_dictionary").countDocuments(),
         products: await db.collection("products").countDocuments(),
+        catalogue: await db.collection("product_catalogue").countDocuments(),
         cachedCases: 5,
         priceBasis: "explicitly labelled estimates, not retailer quotes",
       }),

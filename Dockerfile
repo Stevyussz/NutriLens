@@ -1,3 +1,6 @@
+FROM node:22-bookworm-slim AS ocr-runtime
+RUN apt-get update && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-ind tesseract-ocr-eng && rm -rf /var/lib/apt/lists/*
+
 FROM node:22-bookworm-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -6,7 +9,7 @@ RUN npm ci --no-audit --no-fund && npm cache clean --force
 FROM deps AS builder
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY . .
-RUN npm run build
+RUN npm run build && rm -rf .next/cache
 
 FROM deps AS seeder
 ENV NODE_ENV=production
@@ -16,7 +19,7 @@ COPY data ./data
 USER node
 CMD ["npm", "run", "db:seed"]
 
-FROM node:22-bookworm-slim AS runner
+FROM ocr-runtime AS runner
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 HOSTNAME=0.0.0.0 PORT=3000
 RUN groupadd --system --gid 1001 app && useradd --system --uid 1001 --gid app app
