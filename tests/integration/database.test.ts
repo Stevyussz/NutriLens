@@ -15,7 +15,9 @@ test("MongoDB 8 pipeline enforces constraints, handles ties, marks domination an
   const client = await new MongoClient(
     process.env.MONGODB_URI ?? "mongodb://localhost:27017",
   ).connect();
-  const db = client.db(`bongkar_test_${Date.now()}`);
+  const testDatabaseName = `bongkar_test_${Date.now()}`;
+  assert.match(testDatabaseName, /^bongkar_test_\d+$/);
+  const db = client.db(testDatabaseName);
   try {
     await ensureIndexes(db);
     const product = presetProducts()[0];
@@ -26,6 +28,8 @@ test("MongoDB 8 pipeline enforces constraints, handles ties, marks domination an
       barcode: "test-a",
       name: "test label A",
       priceIdr: 7000,
+      priceSource: "RETAILER" as const,
+      priceSourceUrl: "https://example.com/retailer-fixture",
       nutrition: { ...product.nutrition, sugarGrams: 10, proteinGrams: 5 },
     };
     const better = {
@@ -50,10 +54,30 @@ test("MongoDB 8 pipeline enforces constraints, handles ties, marks domination an
     await db
       .collection("products")
       .insertMany(
-        structuredClone([product, candidate, better, rejected, dissimilar]),
+        structuredClone([
+          product,
+          candidate,
+          better,
+          rejected,
+          dissimilar,
+          {
+            ...better,
+            barcode: "test-estimate",
+            priceIdr: 1000,
+            priceSource: "ESTIMATE",
+          },
+        ]),
       );
     const swaps = await findSmartCandidateSwapsMongo(db, product, 10000);
-    assert.equal(swaps.length, 2);
+    assert.equal(swaps.length, 3);
+    assert.equal(swaps[0].priceIdr, 6000);
+    const noPrice = await findSmartCandidateSwapsMongo(
+      db,
+      { ...product, priceIdr: null },
+      1,
+    );
+    assert.equal(noPrice.length, 3);
+    assert.equal(noPrice[0].moneySavedIdr, null);
     assert.equal(swaps.find((s) => s.barcode === "test-a")?.dominated, true);
     assert.equal(swaps.find((s) => s.barcode === "test-b")?.dominated, false);
     assert.equal(
@@ -67,7 +91,7 @@ test("MongoDB 8 pipeline enforces constraints, handles ties, marks domination an
       0,
     );
     const ranks = await calculatePercentiles(db, product);
-    assert.equal(ranks.population, 4);
+    assert.equal(ranks.population, 5);
     assert.equal(ranks.sugarPercentileRank, 100);
     const empty = await calculatePercentiles(db, {
       ...product,
@@ -98,6 +122,9 @@ test("MongoDB 8 pipeline enforces constraints, handles ties, marks domination an
       1,
     );
   } finally {
+    assert.equal(db.databaseName, testDatabaseName);
+    assert.match(db.databaseName, /^bongkar_test_\d+$/);
+    assert.notEqual(db.databaseName, process.env.MONGODB_DB ?? "bongkar_label");
     await db.dropDatabase();
     await client.close();
   }

@@ -32,7 +32,7 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
   expect((bounds?.y ?? 0) + (bounds?.height ?? 0)).toBeLessThanOrEqual(845);
   await nav.getByRole("link", { name: "Profil saya" }).click();
   await page.getByLabel("Alergi, pisahkan dengan koma").fill("susu");
-  await page.getByLabel("Anggaran per camilan (Rp)").fill("7800");
+  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveCount(0);
   await page
     .getByRole("button", { name: "Simpan profil", exact: true })
     .click();
@@ -89,9 +89,10 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
   await page.getByRole("link", { name: "Lewati dulu, lanjutkan" }).click();
   await page.waitForURL("**/scanner");
   await nav.getByRole("link", { name: "Profil saya" }).click();
-  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveValue(
-    "7800",
+  await expect(page.getByLabel("Alergi, pisahkan dengan koma")).toHaveValue(
+    "susu",
   );
+  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveCount(0);
   await expect(page.getByLabel("Alergi, pisahkan dengan koma")).toHaveValue(
     "susu",
   );
@@ -128,9 +129,10 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
     .getByRole("button", { name: "Masuk ke akun", exact: true })
     .click();
   await page.waitForURL("**/security-profile");
-  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveValue(
-    "7800",
+  await expect(page.getByLabel("Alergi, pisahkan dengan koma")).toHaveValue(
+    "susu",
   );
+  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveCount(0);
   const other = await browser.newContext({ baseURL: origin });
   try {
     expect(

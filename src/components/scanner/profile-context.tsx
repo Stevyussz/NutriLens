@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { UserRound } from "lucide-react";
 import { requestApi } from "@/core/browser-api";
 import { profileOutputSchema } from "@/core/api-schemas";
-import { decimal, rupiah } from "@/core/utils";
+import { decimal } from "@/core/utils";
 
 export function ProfileContext() {
   const profile = useQuery({
@@ -21,9 +21,8 @@ export function ProfileContext() {
           <p className="muted text-sm mb-0">
             Gula {decimal(profile.data.healthProfile.dailySugarLimitGrams)}{" "}
             g/hari · Natrium{" "}
-            {decimal(profile.data.healthProfile.dailySodiumLimitMg)} mg/hari ·
-            Anggaran {rupiah(profile.data.healthProfile.maxSnackBudgetIdr)}
-            /camilan
+            {decimal(profile.data.healthProfile.dailySodiumLimitMg)} mg/hari.
+            Pilihan pengganti tanpa batas anggaran.
           </p>
         ) : (
           <p className="muted text-sm mb-0">

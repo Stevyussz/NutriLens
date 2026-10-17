@@ -72,10 +72,9 @@ export function ProfileEditor({
         .filter(Boolean),
       dailySugarLimitGrams: Number(data.get("sugar")),
       dailySodiumLimitMg: Number(data.get("sodium")),
-      maxSnackBudgetIdr: Number(data.get("budget")),
     });
     if (!health.success) {
-      setFormError("Periksa batas konsumsi, anggaran dan daftar alergi Anda.");
+      setFormError("Periksa acuan konsumsi dan daftar alergi Anda.");
       return;
     }
     save.mutate(health.data);
@@ -103,7 +102,11 @@ export function ProfileEditor({
           className="panel"
           hidden={!onboarding && section !== "preferences"}
         >
-          <h2>Profil konsumsi</h2>
+          <h2>Label dibaca sesuai kebutuhan Anda.</h2>
+          <p className="muted text-sm">
+            Isi alergi yang perlu diperhatikan. Pengaturan lainnya opsional dan
+            bisa diubah kapan saja.
+          </p>
           {profile.isPending ? (
             <p role="status">Memuat profil…</p>
           ) : profile.error ? (
@@ -185,48 +188,49 @@ export function ProfileEditor({
                         alergen terdeteksi.
                       </span>
                     </label>
-                    <label className="field">
-                      Batas gula harian (g)
-                      <input
-                        name="sugar"
-                        type="number"
-                        min={1}
-                        max={500}
-                        required
-                        step="any"
-                        defaultValue={
-                          profile.data.healthProfile.dailySugarLimitGrams
-                        }
-                      />
-                    </label>
-                    <label className="field">
-                      Batas natrium harian (mg)
-                      <input
-                        name="sodium"
-                        type="number"
-                        min={1}
-                        max={10000}
-                        required
-                        step="any"
-                        defaultValue={
-                          profile.data.healthProfile.dailySodiumLimitMg
-                        }
-                      />
-                    </label>
-                    <label className="field">
-                      Anggaran per camilan (Rp)
-                      <input
-                        name="budget"
-                        type="number"
-                        min={1}
-                        max={1000000}
-                        required
-                        defaultValue={
-                          profile.data.healthProfile.maxSnackBudgetIdr
-                        }
-                      />
-                    </label>
                   </div>
+                  <details className="profile-reference">
+                    <summary>Acuan gula & natrium (opsional)</summary>
+                    <p className="muted text-sm">
+                      Dipakai sebagai pembanding angka label, bukan sisa jatah
+                      makan hari ini.
+                    </p>
+                    <div className="profile-fields">
+                      <label className="field">
+                        Acuan gula harian (g)
+                        <input
+                          name="sugar"
+                          type="number"
+                          min={1}
+                          max={500}
+                          required
+                          step="any"
+                          defaultValue={
+                            profile.data.healthProfile.dailySugarLimitGrams
+                          }
+                        />
+                      </label>
+                      <label className="field">
+                        Acuan natrium harian (mg)
+                        <input
+                          name="sodium"
+                          type="number"
+                          min={1}
+                          max={10000}
+                          required
+                          step="any"
+                          defaultValue={
+                            profile.data.healthProfile.dailySodiumLimitMg
+                          }
+                        />
+                      </label>
+                    </div>
+                  </details>
+                  <p className="profile-shopping-note muted text-sm">
+                    Pilihan pengganti diurutkan dari harga tercatat terendah
+                    setelah kecocokan label diperiksa. Tidak ada anggaran wajib.
+                    Harga dan stok toko dapat berubah.
+                  </p>
                   <div className="profile-actions">
                     <Button
                       className="mt-6"
@@ -251,8 +255,8 @@ export function ProfileEditor({
                   </div>
                   {saved && (
                     <p role="status" className="status status-AMAN mt-4">
-                      Profil tersimpan. Pemindaian berikutnya memakai batas
-                      baru.
+                      Profil tersimpan. Pemindaian berikutnya memakai pengaturan
+                      ini.
                     </p>
                   )}
                   {(formError || save.error) && (

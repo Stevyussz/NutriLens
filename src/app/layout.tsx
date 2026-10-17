@@ -11,7 +11,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "BongkarLabel | Baca di balik kemasan",
   description:
-    "Bedah komposisi pangan, periksa sumber gula dan bandingkan pilihan sesuai profil serta anggaran Anda.",
+    "Bedah komposisi pangan, periksa sumber gula dan bandingkan pilihan sesuai kebutuhan Anda.",
 };
 export default function RootLayout({
   children,

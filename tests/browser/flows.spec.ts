@@ -174,7 +174,7 @@ test("Indeks Belanja identity, public flow, all examples, ingredient dialog, dic
   await expect(page.getByText(/^2 \/ \d+$/)).toBeVisible();
   await page.getByRole("button", { name: "Sebelumnya" }).click();
   await page.getByRole("link", { name: "Profil saya" }).click();
-  await page.getByLabel("Anggaran per camilan (Rp)").fill("9000");
+  await page.getByLabel("Alergi, pisahkan dengan koma").fill("susu");
   await page
     .getByRole("button", { name: "Simpan profil", exact: true })
     .click();
@@ -269,7 +269,8 @@ test("mobile layout, keyboard focus, rose dialogs and session revocation", async
     fullPage: true,
   });
   await page.getByRole("link", { name: "Profil saya" }).click();
-  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toBeVisible();
+  await expect(page.getByLabel("Alergi, pisahkan dengan koma")).toBeVisible();
+  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveCount(0);
   await page.screenshot({
     path: "artifacts/profile-mobile.png",
     fullPage: true,

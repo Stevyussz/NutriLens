@@ -53,7 +53,7 @@ export function naraFacts(
       : "Belum ada kecocokan alergi yang terdeteksi oleh pencocokan teks sistem. Ini bukan bukti bebas alergen: komposisi lengkap, peringatan alergen dan risiko kontaminasi silang belum tentu terbaca. Periksa kemasan jika Anda memiliki alergi.",
     decision: `${decision.title} ${decision.meaning || ""} ${decision.action} Ini bantuan mempertimbangkan pembelian, bukan diagnosis atau jaminan aman untuk kondisi medis.`,
     sources:
-      "Buka bagian Sumber produk di hasil ini untuk melihat tautan, tanggal pemeriksaan, dan batas kecocokan. Merek yang cocok belum membuktikan varian atau formulasi sama. Nara memakai angka foto yang tersimpan; penelusuran internet tidak otomatis menggantinya atau memastikan harga dan stok.",
+      "Buka bagian Sumber produk di hasil ini untuk melihat tautan, tanggal pemeriksaan, dan batas kecocokan. Merek yang cocok belum membuktikan varian atau formulasi sama. Nara memakai angka foto yang tersimpan; penelusuran internet tidak otomatis menggantinya atau memastikan harga dan stok. Pilihan berharga toko diurutkan dari yang terendah setelah kecocokan diperiksa, tanpa anggaran pribadi. Tanpa bukti harga yang sebanding, Nara tidak bisa menyebut produk termurah.",
     limits:
       "Nara hanya menjelaskan label yang sedang dibuka dan aturan profil tersimpan. Nara belum tahu seluruh makanan Anda hari ini, diagnosis, dosis obat, atau data produk lain. Untuk data label yang belum terbaca, foto ulang bagian terkait. Pertanyaan di sini tidak disimpan dalam riwayat percakapan.",
   };
@@ -66,25 +66,26 @@ export function directNaraTopics(question: string): Topic[] {
     )
   )
     return ["limits", "decision"];
-  if (/alerg|allerg|aman.*susu/.test(q)) return ["allergy", "ingredients"];
-  if (
-    /satu (botol|bungkus|kemasan)|habis|seluruh|porsi|sajian|setengah|seperempat/.test(
-      q,
-    )
-  )
-    return ["portion"];
-  if (/batas|persen|%|acuan|harian|jatah|sehari/.test(q)) return ["profile"];
-  if (/gula|manis|sugar/.test(q)) return ["sugar"];
-  if (/natrium|garam|asin|sodium/.test(q)) return ["sodium"];
-  if (/kalori|energi/.test(q)) return ["energy"];
-  if (/lemak/.test(q)) return ["fat"];
-  if (/protein/.test(q)) return ["protein"];
-  if (/serat/.test(q)) return ["fiber"];
-  if (/komposisi|bahan|pengawet|pemanis/.test(q)) return ["ingredients"];
-  if (/sumber|internet|valid|asli|bpom|harga|stok/.test(q)) return ["sources"];
-  if (/beli|sehat|ganti|pilih|rekomendasi/.test(q))
-    return ["decision", "portion"];
-  return [];
+  const topics: Topic[] = [];
+  const add = (pattern: RegExp, ...ids: Topic[]) => {
+    if (pattern.test(q)) topics.push(...ids);
+  };
+  add(/alerg|allerg|aman.*susu/, "allergy", "ingredients");
+  add(
+    /(?:satu|dua|tiga|\d+)\s*(?:botol|bungkus|kemasan)|habis|seluruh|porsi|sajian|setengah|seperempat/,
+    "portion",
+  );
+  add(/batas|persen|%|acuan|harian|jatah|sehari/, "profile");
+  add(/gula|manis|sugar/, "sugar");
+  add(/natrium|garam|asin|sodium/, "sodium");
+  add(/kalori|energi/, "energy");
+  add(/lemak/, "fat");
+  add(/protein/, "protein");
+  add(/serat/, "fiber");
+  add(/komposisi|bahan|pengawet|pemanis/, "ingredients");
+  add(/sumber|internet|valid|asli|bpom|harga|stok|murah|hemat/, "sources");
+  add(/beli|sehat|ganti|pilih|rekomendasi/, "decision");
+  return [...new Set(topics)].slice(0, 3);
 }
 const selectionSchema = z
   .object({ topics: z.array(naraTopicSchema).max(3), relevant: z.boolean() })
@@ -105,14 +106,23 @@ export async function askNara(
       productName: photoDisplayName(review),
     });
   const facts = naraFacts(review, health);
+  const requestedPackages = question
+    .toLowerCase()
+    .match(/\b(\d+(?:[.,]\d+)?|dua|tiga)\s*(?:botol|kemasan|bungkus)\b/);
+  const packageCount = requestedPackages
+    ? ({ dua: 2, tiga: 3 }[requestedPackages[1]] ??
+      Number(requestedPackages[1].replace(",", ".")))
+    : null;
   const part = /setengah\s+(botol|kemasan|bungkus)/i.test(question)
     ? 0.5
     : /seperempat\s+(botol|kemasan|bungkus)/i.test(question)
       ? 0.25
-      : null;
+      : packageCount !== null && packageCount > 0 && packageCount <= 100
+        ? packageCount
+        : null;
   if (part !== null && review.servingsPerContainer !== null) {
     const count = part * review.servingsPerContainer;
-    facts.portion = `Untuk ${part === 0.5 ? "setengah" : "seperempat"} kemasan, porsinya ${decimal(count)} sajian berdasarkan label.${review.nutrition.sugarGrams === null ? " Gulanya belum bisa dihitung." : ` Gulanya ${decimal(count * review.nutrition.sugarGrams)} g.`}${review.nutrition.sodiumMg === null ? "" : ` Natriumnya ${decimal(count * review.nutrition.sodiumMg)} mg.`} Ini perhitungan dari bacaan tersimpan, dengan asumsi isi produk tercampur merata.`;
+    facts.portion = `Untuk ${part === 0.5 ? "setengah" : part === 0.25 ? "seperempat" : decimal(part)} kemasan, porsinya ${decimal(count)} sajian berdasarkan label.${review.nutrition.sugarGrams === null ? " Gulanya belum bisa dihitung." : ` Gulanya ${decimal(count * review.nutrition.sugarGrams)} g.`}${review.nutrition.sodiumMg === null ? "" : ` Natriumnya ${decimal(count * review.nutrition.sodiumMg)} mg.`} Ini perhitungan dari bacaan tersimpan, dengan asumsi isi produk tercampur merata.`;
   }
   let topics = directNaraTopics(question);
   let mode: NaraAnswer["mode"] = "LABEL_FACTS";

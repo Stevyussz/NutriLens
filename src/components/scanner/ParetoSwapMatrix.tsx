@@ -22,30 +22,17 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
     price: s.priceIdr,
     score: scoreNutrition(s, []).valueScore,
   }));
-  if (product.priceIdr === null)
-    return (
-      <section className="result-section" id="pilihan-pengganti">
-        <h2>Bandingkan pilihan berikutnya</h2>
-        <p>
-          Harga belum diisi. Analisis gizi tetap tersedia; perbandingan biaya
-          dan penghematan belum dihitung.
-        </p>
-        <p className="muted">
-          Saat membandingkan label lain, gunakan ukuran sajian yang sama dan
-          perhatikan gula, natrium, serta alergi Anda.
-        </p>
-      </section>
-    );
   return (
     <section
       className="mt-8 result-section"
       id="pilihan-pengganti"
       tabIndex={-1}
     >
-      <h2>Pilihan pengganti dalam anggaran</h2>
+      <h2>Pilihan relevan, harga terendah lebih dulu</h2>
       <p className="muted">
         Kategori sama, gula minimal 25% lebih rendah, protein setara atau lebih
-        tinggi, harga tidak melebihi label asal dan batas Anda.
+        tinggi, ukuran sajian sama. Hanya kandidat dengan sumber harga toko yang
+        masuk perbandingan.
       </p>
       <div className="panel">
         <div
@@ -89,18 +76,20 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
                 }}
               />
               <Legend verticalAlign="top" />
-              <Scatter
-                isAnimationActive={false}
-                name="Label asal"
-                data={[
-                  {
-                    price: product.priceIdr,
-                    score: analysis.nutritionScore.valueScore,
-                  },
-                ]}
-                fill="#9f1239"
-                shape="diamond"
-              />
+              {product.priceIdr !== null && (
+                <Scatter
+                  isAnimationActive={false}
+                  name="Label asal"
+                  data={[
+                    {
+                      price: product.priceIdr,
+                      score: analysis.nutritionScore.valueScore,
+                    },
+                  ]}
+                  fill="#9f1239"
+                  shape="diamond"
+                />
+              )}
               <Scatter
                 isAnimationActive={false}
                 name="Kandidat DB"
@@ -112,8 +101,8 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
         </div>
         <p className="muted text-sm">
           Skor gizi 0–100 merupakan heuristik aplikasi, bukan skor klinis. Harga
-          katalog yang belum didukung bukti toko adalah asumsi simulasi per
-          sajian, bukan harga kemasan.
+          tercatat berasal dari sumber toko, bukan jaminan harga atau stok saat
+          ini. Urutan ini hanya mencakup kandidat dalam database.
         </p>
         <details>
           <summary>Data kandidat dan Pareto frontier</summary>
@@ -147,7 +136,7 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
             </div>
           ) : (
             <p className="muted">
-              Belum ada kandidat yang memenuhi seluruh batas.
+              Belum ada kandidat dengan bukti harga yang memenuhi kecocokan ini.
             </p>
           )}
         </details>
@@ -156,7 +145,11 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
         <div className="swap-grid">
           {selected.map((s) => (
             <article key={s.id} className="swap-card">
-              <p className="saving mb-2">Hemat {rupiah(s.moneySavedIdr)}</p>
+              {s.moneySavedIdr !== null && s.moneySavedIdr > 0 && (
+                <p className="saving mb-2">
+                  Selisih harga tercatat {rupiah(s.moneySavedIdr)}
+                </p>
+              )}
               <h3>{s.name}</h3>
               <p className="muted text-sm">
                 {rupiah(s.priceIdr)} / sajian
@@ -178,6 +171,16 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
                 Ukuran sajian: {decimal(s.servingSizeGrams)} g/ml.{" "}
                 {s.source.note}
               </p>
+              {s.priceSourceUrl && (
+                <a
+                  className="text-link text-sm"
+                  href={s.priceSourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Periksa harga toko
+                </a>
+              )}
               {s.source.url && (
                 <a
                   className="text-link text-sm"
@@ -194,8 +197,8 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
       ) : (
         <div className="notice mt-4">
           Belum ada pilihan yang lolos seluruh batas dan pemeriksaan profil.
-          Anda dapat meninjau anggaran pada Profil saya, atau memeriksa produk
-          lain.
+          Harga toko mungkin belum tersedia. Scan produk lain untuk
+          membandingkan gizinya.
         </div>
       )}
       {analysis.aiVerdict.fallbackSuggestions.length > 0 && (

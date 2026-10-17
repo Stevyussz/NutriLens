@@ -92,7 +92,7 @@ Replacement filtering runs entirely in the database:
 
 - Same category, different barcode; illustrative cases excluded.
 - Only source-backed `OPEN_FOOD_FACTS`/operator-imported `LABEL` records enter the candidate and reference-population pools. Manual and AI extractions remain stored with their original uncertainty, but cannot promote themselves to trusted sources. Manual submissions receive a server-derived barcode and forced `USER_INPUT` provenance, so a submitted barcode cannot overwrite a provider label.
-- Price at most source price and user budget, sugar at most 75% of source, protein at least source.
+- No personal budget or source-price cap. Retailer-sourced positive prices only, same category and serving size, sugar at most 75% of source, protein at least source. Candidates sort by recorded price, then relevance; this is not a live-market cheapest guarantee.
 - Jaccard `|intersection| / |union| >= 0.35` via `$setIntersection`, `$setUnion`, `$size`, guarded `$divide`.
 - Similarity and protein per Rp1.000 descending, maximum six candidates.
 - `$lookup` evaluates strict dominance on price, sugar and protein against all qualifying candidates. Only nondominated, profile-compatible candidate IDs can be recommended.

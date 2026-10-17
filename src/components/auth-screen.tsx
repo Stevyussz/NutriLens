@@ -42,7 +42,7 @@ export async function AuthScreen({
                 : "Lanjutkan dengan kebutuhan Anda."}
             </h2>
             <p className="muted">
-              Simpan batas konsumsi, alergi dan anggaran di akun Anda. Profil
+              Simpan acuan konsumsi dan alergi di akun Anda. Profil
               tersedia kembali saat Anda masuk, termasuk dari perangkat lain.
             </p>
             {registering ? (
@@ -73,7 +73,7 @@ export async function AuthScreen({
               <div className="auth-return-note">
                 <h3>Profil tetap bersama Anda.</h3>
                 <p>
-                  Batas konsumsi, alergi dan anggaran tersedia kembali setelah
+                  Acuan konsumsi dan alergi tersedia kembali setelah
                   Anda masuk. Anda akan kembali ke halaman yang ingin dibuka.
                 </p>
               </div>

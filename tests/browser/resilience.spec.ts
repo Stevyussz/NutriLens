@@ -99,5 +99,6 @@ test("data error states provide working retries and dictionary clears to an actu
   await page
     .getByRole("button", { name: "Muat ulang profil", exact: true })
     .click();
-  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toBeVisible();
+  await expect(page.getByLabel("Alergi, pisahkan dengan koma")).toBeVisible();
+  await expect(page.getByLabel("Anggaran per camilan (Rp)")).toHaveCount(0);
 });

@@ -142,13 +142,13 @@ test("sliding window rejects the first request beyond the budget", () => {
   enforceRateLimit(key, 2);
   assert.throws(() => enforceRateLimit(key, 2), /Terlalu banyak/);
 });
-test("cache differs for allergies, budget, corpus revision and configured AI model", () => {
+test("cache differs for allergies but ignores retired budget, corpus revision and configured AI model", () => {
   const base = scanCacheKey("label", defaultHealth);
   assert.notEqual(
     base,
     scanCacheKey("label", { ...defaultHealth, allergies: ["susu"] }),
   );
-  assert.notEqual(
+  assert.equal(
     base,
     scanCacheKey("label", { ...defaultHealth, maxSnackBudgetIdr: 5000 }),
   );

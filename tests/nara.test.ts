@@ -83,3 +83,19 @@ test("Nara distinguishes an explicit reader conflict from an absent sugar row", 
   assert.match(naraFacts(conflicted, health).sugar, /Dua pembacaan visual/);
   assert.doesNotMatch(naraFacts(conflicted, health).sugar, /Gula totalnya 19/);
 });
+
+test("Nara answers mixed nutrient questions and explicit package quantities", async () => {
+  const mixed = await askNara(review, health, "Gulanya dan natriumnya berapa?");
+  assert.deepEqual(mixed.topics, ["sugar", "sodium"]);
+  assert.match(mixed.paragraphs.join(" "), /19 g/);
+  assert.match(mixed.paragraphs.join(" "), /80 mg/);
+  const two = await askNara(review, health, "Kalau dua botol?");
+  assert.match(two.paragraphs[0], /38 g/);
+  assert.match(two.paragraphs[0], /160 mg/);
+  const unknown = await askNara(
+    { ...review, servingsPerContainer: null },
+    health,
+    "Kalau 2 botol?",
+  );
+  assert.match(unknown.paragraphs[0], /belum dapat menghitung/);
+});

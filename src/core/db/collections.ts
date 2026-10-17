@@ -86,7 +86,8 @@ export const healthSchema = z
     allergies: z.array(z.string().min(1).max(80)).max(30),
     dailySugarLimitGrams: z.number().positive().max(500),
     dailySodiumLimitMg: z.number().positive().max(10000),
-    maxSnackBudgetIdr: z.number().positive().max(1000000),
+    // Legacy clients may send this field; it no longer constrains recommendations.
+    maxSnackBudgetIdr: z.number().positive().max(1000000).optional(),
   })
   .strict();
 export const chemicalSchema = z
@@ -159,7 +160,6 @@ export const defaultHealth: HealthProfile = {
   allergies: [],
   dailySugarLimitGrams: 50,
   dailySodiumLimitMg: 2000,
-  maxSnackBudgetIdr: 10000,
 };
 
 /** Creates five collection index sets, including token TTL. O(k) index commands, k is fixed. */

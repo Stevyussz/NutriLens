@@ -1792,3 +1792,17 @@ body:has(.dashboard-main) .photo-result .quick-action {
   font-weight: 450;
   line-height: 1.65;
 }
+
+.profile-reference {
+  margin-top: 22px;
+  padding-block: 16px;
+  border-block: 1px solid var(--line);
+}
+.profile-reference > summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.profile-reference .profile-fields { margin-top: 16px; }
+.profile-shopping-note { max-width: 65ch; margin-block: 20px 0; line-height: 1.65; }

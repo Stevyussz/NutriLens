@@ -44,9 +44,16 @@ export function scanCacheKey(
 ): string {
   return createHash("sha256")
     .update(payload)
-    .update(JSON.stringify(health))
+    .update(
+      JSON.stringify({
+        conditions: health.conditions,
+        allergies: health.allergies,
+        dailySugarLimitGrams: health.dailySugarLimitGrams,
+        dailySodiumLimitMg: health.dailySodiumLimitMg,
+      }),
+    )
     .update(aiAvailable() ? aiIdentity() : "local")
-    .update(`engine-v5:${revision}`)
+    .update(`engine-v6:${revision}`)
     .digest("hex");
 }
 /** Executes the symbolic engine and validates its complete output. O(n + indexed DB pipeline costs).
@@ -101,7 +108,7 @@ export async function analyzeProduct(
   const splittingAnalysis =
     calculateDeceptionAndSplittingMetrics(orderedIngredients);
   const [paretoSwaps, percentiles] = await Promise.all([
-    findSmartCandidateSwapsMongo(db, product, health.maxSnackBudgetIdr),
+    findSmartCandidateSwapsMongo(db, product),
     calculatePercentiles(db, product),
   ]);
   let aiVerdict = deterministicVerdict(product, health, chemicals, paretoSwaps);

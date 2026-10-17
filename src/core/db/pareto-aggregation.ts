@@ -5,25 +5,28 @@ export const swapSchema = productSchema.extend({
   priceIdr: z.number().positive(),
   id: z.string(),
   jaccardFlavorSimilarity: z.number(),
-  moneySavedIdr: z.number(),
+  moneySavedIdr: z.number().nullable(),
   proteinPerThousandIdr: z.number(),
   dominated: z.boolean(),
 });
 export type Swap = z.infer<typeof swapSchema>;
 
 /** Builds DB-only constrained retrieval, Jaccard scoring and nondominated frontier.
- * @param product Source label. @param budget User spending ceiling.
+ * @param product Source label. Prices must be retailer-sourced; legacy budget arguments are ignored.
  * O(m log m + c*m) worst-case over m category rows and c<=6 shortlisted rows; indexes prune m.
  */
 export function buildSwapPipeline(
   product: Product,
-  budget: number,
+  _legacyBudget?: number,
 ): Document[] {
   const filters = {
     category: product.category,
     barcode: { $ne: product.barcode },
     "source.kind": { $in: ["OPEN_FOOD_FACTS", "LABEL"] },
-    priceIdr: { $lte: Math.min(product.priceIdr ?? 0, budget) },
+    priceIdr: { $gt: 0 },
+    priceSource: "RETAILER",
+    priceSourceUrl: { $type: "string", $regex: "^https?://" },
+    servingSizeGrams: product.servingSizeGrams,
     "nutrition.sugarGrams": { $lte: product.nutrition.sugarGrams * 0.75 },
     "nutrition.proteinGrams": { $gte: product.nutrition.proteinGrams },
   };
@@ -41,7 +44,10 @@ export function buildSwapPipeline(
             $setUnion: ["$flavorTags", { $literal: product.flavorTags }],
           },
         },
-        moneySavedIdr: { $subtract: [product.priceIdr, "$priceIdr"] },
+        moneySavedIdr:
+          product.priceSource === "RETAILER" && product.priceIdr !== null
+            ? { $subtract: [product.priceIdr, "$priceIdr"] }
+            : { $literal: null },
         proteinPerThousandIdr: {
           $cond: [
             { $gt: ["$priceIdr", 0] },
@@ -70,6 +76,7 @@ export function buildSwapPipeline(
     { $match: { jaccardFlavorSimilarity: { $gte: 0.35 } } },
     {
       $sort: {
+        priceIdr: 1,
         jaccardFlavorSimilarity: -1,
         proteinPerThousandIdr: -1,
         barcode: 1,
@@ -158,15 +165,14 @@ export function buildSwapPipeline(
 export async function findSmartCandidateSwapsMongo(
   db: Db,
   product: Product,
-  budget: number,
+  _legacyBudget?: number,
 ): Promise<Swap[]> {
-  if (product.priceIdr === null) return [];
   return z
     .array(swapSchema)
     .parse(
       await db
         .collection("products")
-        .aggregate(buildSwapPipeline(product, budget))
+        .aggregate(buildSwapPipeline(product))
         .toArray(),
     );
 }

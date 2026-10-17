@@ -13,3 +13,6 @@ playwright-report
 .impeccable
 assets/plates
 *.tsbuildinfo
+
+# Local source exports are not application runtime inputs.
+*.zip
