@@ -117,11 +117,19 @@ export function HistoryExplorer() {
                     </Link>
                   </h2>
                   <p className={`status status-${item.status}`}>
-                    {profileStatusLabels[item.status]}
+                    {item.kind === "PHOTO"
+                      ? "Bacaan foto · dapat dikoreksi"
+                      : profileStatusLabels[item.status]}
                   </p>
                   <p className="muted text-sm">
-                    Per sajian: gula {decimal(item.sugarGrams)} g · natrium{" "}
-                    {decimal(item.sodiumMg)} mg
+                    Per sajian: gula{" "}
+                    {item.sugarGrams === null
+                      ? "belum tersedia"
+                      : `${decimal(item.sugarGrams)} g`}{" "}
+                    · natrium{" "}
+                    {item.sodiumMg === null
+                      ? "belum tersedia"
+                      : `${decimal(item.sodiumMg)} mg`}
                   </p>
                 </div>
                 <div className="history-actions">

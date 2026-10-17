@@ -11,6 +11,15 @@ import {
   type PhotoReview,
   type PhotoTranscription,
 } from "./vision-contract";
+const labels: Record<(typeof nutrientKeys)[number], RegExp> = {
+  caloriesKcal: /^(energi|energy)(?!.*(?:dari lemak|from fat))/i,
+  sugarGrams: /^(gula|total\s*sugars?|sugars?)\b/i,
+  proteinGrams: /^protein\b/i,
+  sodiumMg: /^(natrium|sodium)\b|^garam\s*\(\s*(natrium|sodium)\s*\)/i,
+  saturatedFatGrams: /^(lemak\s*jenuh|saturated\s*fat)\b/i,
+  fiberGrams: /^(serat|dietary\s*fib(?:er|re)|fib(?:er|re))\b/i,
+};
+
 const execute = promisify(execFile);
 let active = 0;
 export async function transcribeLocally(
@@ -87,14 +96,6 @@ export function reviewFromLocalText(
         : perServing.length
           ? "PER_SERVING"
           : "UNKNOWN";
-  const labels: Record<(typeof nutrientKeys)[number], RegExp> = {
-    caloriesKcal: /^(energi|energy)(?!.*(?:dari lemak|from fat))/i,
-    sugarGrams: /^(gula|total\s*sugars?|sugars?)\b/i,
-    proteinGrams: /^protein\b/i,
-    sodiumMg: /^(natrium|sodium)\b/i,
-    saturatedFatGrams: /^(lemak\s*jenuh|saturated\s*fat)\b/i,
-    fiberGrams: /^(serat|dietary\s*fib(?:er|re)|fib(?:er|re))\b/i,
-  };
   const nutritionText = Object.fromEntries(
     nutrientKeys.map((key) => {
       const matches = lines
@@ -131,6 +132,10 @@ export function reviewFromLocalText(
       brand: "",
       category: "LAINNYA",
       servingText: quantities.length === 1 ? quantities[0] : null,
+      servingsPerContainerText:
+        lines.find((line) =>
+          /(?:sajian\s*per\s*kemasan|servings?\s*per\s*container)/i.test(line),
+        ) ?? null,
       basis,
       basisText:
         basis === "PER_SERVING"
@@ -156,7 +161,7 @@ export function reviewFromLocalText(
     ],
   };
 }
-/** Independent text agreement is a rejection gate, not a confidence percentage. */
+/** Missing local evidence is not a contradiction. Only two explicit, conflicting readings block a value. */
 export function crossCheckPhoto(
   review: PhotoReview,
   rawText: string,
@@ -165,10 +170,17 @@ export function crossCheckPhoto(
   const nutrition = { ...review.nutrition };
   const issues = [...review.issues];
   for (const key of nutrientKeys) {
+    const censored = rawText
+      .split(/\r?\n/)
+      .some(
+        (line) =>
+          labels[key].test(line.trim()) && /[<>≤≥]|[-−]\s*\d/.test(line),
+      );
     if (
       nutrition[key] !== null &&
-      (local.nutrition[key] === null ||
-        Math.abs(nutrition[key]! - local.nutrition[key]!) > 0.000001)
+      (censored ||
+        (local.nutrition[key] !== null &&
+          Math.abs(nutrition[key]! - local.nutrition[key]!) > 0.000001))
     ) {
       nutrition[key] = null;
       issues.push(
@@ -176,14 +188,22 @@ export function crossCheckPhoto(
       );
     }
   }
+  const servingConflict =
+    local.servingSizeGrams !== null &&
+    review.servingSizeGrams !== null &&
+    local.servingSizeGrams !== review.servingSizeGrams;
+  if (servingConflict && review.evidence.basis !== "PER_SERVING")
+    for (const key of nutrientKeys) nutrition[key] = null;
   return {
     ...review,
     nutrition,
     servingSizeGrams:
+      local.servingSizeGrams === null ||
       local.servingSizeGrams === review.servingSizeGrams
         ? review.servingSizeGrams
         : null,
     issues:
+      local.servingSizeGrams === null ||
       local.servingSizeGrams === review.servingSizeGrams
         ? issues
         : [

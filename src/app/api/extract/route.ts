@@ -8,6 +8,8 @@ import {
 } from "@/core/security/http";
 import { enforceRateLimit } from "@/core/security/rate-limiter";
 import { extractPhotoForReview } from "@/core/ai/photo-extraction";
+import { getDb } from "@/core/db/client";
+import { savePhotoHistory } from "@/core/db/photo-history";
 export const maxDuration = 120;
 
 export async function POST(request: Request) {
@@ -42,9 +44,18 @@ export async function POST(request: Request) {
           ),
         ),
       );
-      return NextResponse.json(review, {
-        headers: { "Cache-Control": "private, no-store" },
-      });
+      const historyId = await savePhotoHistory(
+        await getDb(),
+        user._id,
+        review,
+        user.healthProfile,
+      ).catch(() => undefined);
+      return NextResponse.json(
+        { ...review, historyId },
+        {
+          headers: { "Cache-Control": "private, no-store" },
+        },
+      );
     } catch (error) {
       if (error instanceof HttpError) throw error;
       throw new HttpError(

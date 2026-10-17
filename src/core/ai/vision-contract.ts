@@ -31,6 +31,7 @@ export const photoTranscriptionSchema = z
     brand: z.string().max(150),
     category: categorySchema,
     servingText: z.string().max(100).nullable(),
+    servingsPerContainerText: z.string().max(150).nullable().default(null),
     basis: z.enum(["PER_SERVING", "PER_100_G", "PER_100_ML", "UNKNOWN"]),
     basisText: z.string().max(150).nullable(),
     nutritionText: z
@@ -65,10 +66,19 @@ export const photoReviewSchema = z
     brand: z.string().max(150),
     category: categorySchema,
     servingSizeGrams: z.number().positive().max(10000).nullable(),
+    servingsPerContainer: z
+      .number()
+      .positive()
+      .max(1000)
+      .nullable()
+      .default(null),
     nutrition: z
       .object(
         Object.fromEntries(
-          nutrientKeys.map((key) => [key, z.number().nonnegative().nullable()]),
+          nutrientKeys.map((key) => [
+            key,
+            nutritionSchema.shape[key].nullable(),
+          ]),
         ) as Record<
           keyof typeof nutritionSchema.shape,
           z.ZodNullable<z.ZodNumber>
@@ -83,6 +93,11 @@ export const photoReviewSchema = z
       .array(z.object({ width: z.number(), height: z.number() }))
       .min(1)
       .max(2),
+    userCorrected: z.boolean().optional(),
+    historyId: z
+      .string()
+      .regex(/^[a-f0-9]{24}$/)
+      .optional(),
   })
   .strict();
 export type PhotoReview = z.infer<typeof photoReviewSchema>;
@@ -91,6 +106,7 @@ export type PhotoTranscription = z.infer<typeof photoTranscriptionSchema>;
 function quantity(text: string | null): { value: number; unit: string } | null {
   if (!text) return null;
   const match = text
+    .normalize("NFKC")
     .trim()
     .match(/^(\d+(?:[.,]\d+)?)\s*(kkal|kcal|kj|mg|gram|g|ml)$/i);
   if (!match || /^[1-9]\d*[.,]\d{3}$/.test(match[1])) return null;
@@ -106,6 +122,14 @@ export function normalizePhotoTranscription(
   images: { width: number; height: number }[],
 ): PhotoReview {
   const evidence = photoTranscriptionSchema.parse(input);
+  const countMatch = evidence.servingsPerContainerText?.match(
+    /^(\d+(?:[.,]\d+)?)\s*(?:sajian\s*per\s*kemasan|servings?\s*per\s*container)\b|^(?:sajian\s*per\s*kemasan|servings?\s*per\s*container)\s*:?\s*(\d+(?:[.,]\d+)?)/i,
+  );
+  const count = countMatch
+    ? Number((countMatch[1] ?? countMatch[2]).replace(",", "."))
+    : null;
+  const servingsPerContainer =
+    count !== null && count > 0 && count <= 1000 ? count : null;
   const issues: string[] = [],
     conversions: string[] = [];
   const serving = quantity(evidence.servingText);
@@ -150,7 +174,11 @@ export function normalizePhotoTranscription(
     nutrientKeys.map((key) => {
       const raw = quantity(evidence.nutritionText[key]);
       let value: number | null = null;
-      if (raw && validBasis && servingSizeGrams !== null) {
+      if (
+        raw &&
+        validBasis &&
+        (evidence.basis === "PER_SERVING" || servingSizeGrams !== null)
+      ) {
         if (key === "caloriesKcal") {
           if (["kkal", "kcal"].includes(raw.unit)) value = raw.value * factor;
           else if (raw.unit === "kj") {
@@ -189,9 +217,9 @@ export function normalizePhotoTranscription(
             value = null;
         }
       }
-      if (value === null)
+      if (value === null && evidence.nutritionText[key] !== null)
         issues.push(
-          `${photoFieldLabel(key)}: angka atau satuannya belum pasti; lengkapi dari foto.`,
+          `${photoFieldLabel(key)}: angka atau satuannya belum pasti; foto ulang bagian ini jika ingin memastikannya.`,
         );
       return [key, value];
     }),
@@ -211,6 +239,7 @@ export function normalizePhotoTranscription(
     brand: evidence.brand,
     category: evidence.category,
     servingSizeGrams,
+    servingsPerContainer,
     nutrition,
     ingredientsText: evidence.ingredientsText,
     evidence,

@@ -17,10 +17,16 @@ THESIS: Indeks Belanja makes photographing a label and reading a short decision 
 
 OWN-WORLD: Mulberry navigation, pale rose canvas, white reading surfaces and citron primary actions; Work Sans typography, soft rectangular controls and compact aligned per-serving rows.
 
-STORY: Photograph, check OCR, confirm, then read the decision and open supporting details when needed. History makes later reading easy.
+STORY: Photograph and read an immediate provisional decision from available label facts; correct only a doubtful field if needed. Full composition analysis remains optional and requires explicit review. History makes later reading easy.
 
-FIRST VIEWPORT: Match .impeccable/mocks/decision/indeks-belanja.html: top navigation, concise task heading, camera left and short practical guidance right; on mobile camera and capture action lead above secondary methods. Result begins with decision and two key nutrients. Signature interaction is the camera-to-review handoff, followed by a concise decision readout; state transitions use restrained 160ms fades, respecting reduced motion.
+FIRST VIEWPORT: Match .impeccable/mocks/decision/indeks-belanja.html: top navigation, concise task heading, camera left and short practical guidance right; on mobile camera and capture action lead above secondary methods. Result begins with decision and two key nutrients. Signature interaction is the camera-to-decision handoff, with a concise readout before optional corrections; state transitions use restrained 160ms fades, respecting reduced motion.
 
 FORM: Indeks Belanja, grounded index 3, seed:f2b0cd503f8fe58c. User delegated choice on 17 October 2026; actual board response selected indeks-belanja. Code-led app; public landing separately comp-led.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Real-label flow correction
+
+The user supplied two Golda photos and reported visible sugar/sodium being discarded plus an onerous mandatory form. A missing local OCR row is no longer treated as a conflicting value; explicit disagreements still block only the affected number. Missing fiber, price and ingredients cannot block the initial nutrient summary. Facts remain nullable, not fabricated. Private history stores photo readings separately from complete analyses. Preserve Indeks Belanja identity.
+
+The next user instruction adds automatic product research. Run it after the initial photo decision; sources are attributed and dated, manufacturer-brand matches stay distinct from variant candidates, and web values cannot silently overwrite photo facts. Source lookup failures do not block the decision. AI selects bounded source identifiers; deterministic validation retains authority over nutrition and identity claims.

@@ -16,7 +16,7 @@ Membaca komposisi dan informasi gizi dari foto, menunjukkan konteks sumber gula 
 
 ## Operating Context
 
-Kamera langsung adalah metode utama. Galeri menjadi cadangan, sedangkan teks dan formulir lengkap melayani input atau koreksi. OCR menghasilkan draf yang harus diperiksa dan dikonfirmasi sebelum analisis. Pengguna dapat melanjutkan sebagai tamu atau menggunakan akun umum yang opsional.
+Kamera langsung adalah metode utama. Galeri menjadi cadangan, sedangkan teks dan formulir lengkap melayani input atau koreksi. OCR langsung membuka ringkasan awal dari angka yang tersedia. Koreksi bersifat opsional dan data yang tidak tercantum tetap kosong; analisis komposisi lengkap merupakan jalur lanjutan yang memerlukan pemeriksaan dan konfirmasi. Pengguna dapat melanjutkan sebagai tamu atau menggunakan akun umum yang opsional.
 
 ## Capabilities and Constraints
 
@@ -24,6 +24,7 @@ Kamera langsung adalah metode utama. Galeri menjadi cadangan, sedangkan teks dan
 - Analisis deterministik sumber gula dan profil tetap menjadi dasar; AI vision dan penjelasan menggunakan penyedia yang dikonfigurasi, saat ini 9Router.
 - Ringkasan hasil mendahului tab komposisi, sumber gula dan alternatif. Riwayat menyimpan hasil dan profil saat analisis, bukan foto.
 - Kamus dan katalog memakai data komunitas bersumber, dengan tanggal dan batas cakupan yang dapat diperiksa.
+- Setelah ringkasan foto muncul, pencarian produk berjalan di belakang layar melalui katalog lokal, Open Food Facts langsung, dan direktori produsen WINGS. AI memilih sumber yang relevan dari daftar yang ditemukan; aturan sistem memeriksa merek, nama varian dan kesesuaian satuan. Identitas merek tidak membuktikan barcode atau formulasi sama. Data internet tidak mengisi nilai kosong atau menimpa angka label secara otomatis. Sumber gagal dan tanggal salinan ditampilkan dengan jelas.
 - Harga yang tidak diketahui tetap kosong; jangan mengarang biaya atau penghematan.
 - Hasil OCR perlu dicocokkan dengan kemasan. Aplikasi bukan diagnosis atau jaminan keamanan medis.
 - Navigasi mobile harus nyaman dan halaman aplikasi tidak memerlukan scroll panjang untuk menyelesaikan tugas utama.
@@ -34,7 +35,7 @@ Nama produk: BongkarLabel. Bahasa utama: Indonesia. Tidak ditujukan khusus untuk
 
 ## Evidence on Hand
 
-Fungsi dan alur yang ada: src/app dan src/components. Data dan batas cakupan: DATA_COVERAGE.md, OCR_VALIDATION.md dan DATA_REFRESH.md. Bukti QA sebelumnya: QA_FLOW.md dan QA_REPORT.md. Fixture sintetis yang jelas bertanda label uji: tests/fixtures. Tidak ada testimoni, foto merek produk, angka pengguna atau klaim akurasi populasi yang disediakan untuk promosi.
+Fungsi dan alur yang ada: src/app dan src/components. Data dan batas cakupan: DATA_COVERAGE.md, OCR_VALIDATION.md dan DATA_REFRESH.md. Bukti QA sebelumnya: QA_FLOW.md dan QA_REPORT.md. Fixture sintetis yang jelas bertanda label uji: tests/fixtures. Dua foto Golda dari pengguna tersedia sebagai fixture regresi pembacaan, bukan aset promosi atau bukti akurasi populasi. Tidak ada testimoni atau angka pengguna untuk klaim promosi.
 
 ## Product Principles
 

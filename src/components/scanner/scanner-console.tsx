@@ -1,6 +1,7 @@
 "use client";
 import { LiveCamera } from "./live-camera";
 import { PhotoInspector } from "./photo-inspector";
+import { PhotoResult } from "./photo-result";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileText, Camera, ClipboardList, ScanLine } from "lucide-react";
@@ -75,6 +76,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   const [formError, setFormError] = useState("");
   const [labelExpanded, setLabelExpanded] = useState(false);
   const [review, setReview] = useState<PhotoReview | null>(null);
+  const [fastReview, setFastReview] = useState<PhotoReview | null>(null);
   const [catalogueDraft, setCatalogueDraft] = useState<CatalogueProduct | null>(
     null,
   );
@@ -93,6 +95,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   });
   const scan = useMutation({
     onSuccess: () => {
+      setFastReview(null);
       queryClient.invalidateQueries({ queryKey: ["history"] });
       setWorkspace("result");
       setDetail("overview");
@@ -136,7 +139,14 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
       setPhotoPreviews(
         submittedPhotos.current.map((file) => URL.createObjectURL(file)),
       );
-      setWorkspace("entry");
+      setWorkspace("result");
+      setFastReview(draft);
+      setDetail("overview");
+      queryClient.invalidateQueries({ queryKey: ["history"] });
+      const url = new URL(window.location.href);
+      url.searchParams.delete("history");
+      url.hash = "hasil-ringkas";
+      window.history.replaceState(window.history.state, "", url);
       setEditorSection(draft.name ? "nutrition" : "identity");
       setReview(draft);
       setCatalogueDraft(null);
@@ -144,15 +154,6 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
       setMode("label");
       setLabelExpanded(true);
       scan.reset();
-      requestAnimationFrame(() =>
-        form
-          .querySelector<HTMLInputElement>(
-            draft.name
-              ? `[name="${draft.servingSizeGrams === null ? "serving" : (nutrientLabels.find(([key]) => draft.nutrition[key] === null)?.[0] ?? "caloriesKcal")}"]`
-              : '[name="name"]',
-          )
-          ?.focus(),
-      );
     },
   });
   const busy = scan.isPending || extraction.isPending;
@@ -306,12 +307,15 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
       );
     }
   }
-  const result = scan.data ?? history.data?.result;
+  const photoResult =
+    fastReview ?? (!scan.data ? history.data?.photoResult : undefined);
+  const result = fastReview ? undefined : (scan.data ?? history.data?.result);
   const summaryHealth = scan.data
     ? profile.data?.healthProfile
     : (history.data?.healthProfile ?? profile.data?.healthProfile);
   useEffect(() => {
     if (history.data) {
+      setFastReview(null);
       setWorkspace("result");
       setDetail(detailFromHash(window.location.hash) ?? "overview");
     }
@@ -345,7 +349,9 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
     return () => window.removeEventListener("hashchange", change);
   }, []);
   return (
-    <div className={`scanner-layout${result ? " has-result" : ""}`}>
+    <div
+      className={`scanner-layout${result || photoResult ? " has-result" : ""}`}
+    >
       <nav className="workspace-switch" aria-label="Ruang pemeriksaan">
         <button aria-pressed={workspace === "entry"} onClick={showEntry}>
           <Camera size={18} aria-hidden />
@@ -356,7 +362,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
         </button>
         <button
           aria-pressed={workspace === "result"}
-          disabled={!result}
+          disabled={!result && !photoResult}
           onClick={() => setWorkspace("result")}
         >
           Hasil{result && <span className="result-ready" />}
@@ -809,8 +815,8 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
         <CatalogueSearch onChoose={chooseCatalogue} />
         {extraction.isPending && (
           <p className="notice mt-4" role="status">
-            Membaca teks pada foto. Tahap berikutnya adalah memeriksa hasil dan
-            bagian yang belum terbaca.
+            Membaca angka pada label dan menyiapkan ringkasan. Anda tidak perlu
+            mengisi ulang semua gizi.
           </p>
         )}
         {extraction.error && (
@@ -855,6 +861,56 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           </p>
           <Button onClick={() => history.refetch()}>Muat ulang riwayat</Button>
         </div>
+      )}
+      {photoResult && workspace === "result" && (
+        <PhotoResult
+          review={photoResult}
+          health={summaryHealth}
+          detail={detail}
+          onDetail={setDetail}
+          onUpdate={(draft) => {
+            setFastReview(draft);
+            setReview(draft);
+            queryClient.invalidateQueries({ queryKey: ["history"] });
+          }}
+          onNew={() => {
+            setWorkspace("entry");
+            setMode("photo");
+            setPhotos([]);
+            setPhotoPreviews([]);
+            setReview(null);
+            setFastReview(null);
+            scan.reset();
+            extraction.reset();
+            const url = new URL(location.href);
+            url.searchParams.delete("history");
+            url.hash = "";
+            window.history.replaceState(window.history.state, "", url);
+          }}
+          onEdit={() => {
+            const values = {
+              name: photoResult.name,
+              brand: photoResult.brand,
+              category: photoResult.category,
+              serving: photoResult.servingSizeGrams ?? "",
+              ingredients: photoResult.ingredientsText,
+              ...photoResult.nutrition,
+            };
+            for (const [name, value] of Object.entries(values)) {
+              const input = formRef.current?.elements.namedItem(name);
+              if (
+                input instanceof HTMLInputElement ||
+                input instanceof HTMLTextAreaElement ||
+                input instanceof HTMLSelectElement
+              )
+                input.value = value === null ? "" : String(value);
+            }
+            setReview(photoResult);
+            setMode("label");
+            setLabelExpanded(true);
+            showEntry();
+          }}
+        />
       )}
       {result && (
         <div

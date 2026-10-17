@@ -1,0 +1,360 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { photoReviewSchema, type PhotoReview } from "@/core/ai/vision-contract";
+import type { HealthProfile } from "@/core/db/collections";
+import { photoDecision, photoDisplayName } from "@/core/photo-decision";
+import { requestApi } from "@/core/browser-api";
+import { decimal } from "@/core/utils";
+import { ProductResearchPanel } from "./product-research-panel";
+import { Button } from "../ui/button";
+const fields = [
+  ["sugarGrams", "Gula", "g"],
+  ["sodiumMg", "Natrium", "mg"],
+  ["caloriesKcal", "Energi", "kkal"],
+  ["proteinGrams", "Protein", "g"],
+  ["saturatedFatGrams", "Lemak jenuh", "g"],
+  ["fiberGrams", "Serat", "g"],
+] as const;
+type Detail = "overview" | "ingredients" | "sugar" | "swaps";
+export function PhotoResult({
+  review,
+  health,
+  detail,
+  onDetail,
+  onNew,
+  onEdit,
+  onUpdate,
+}: {
+  review: PhotoReview;
+  health?: HealthProfile;
+  detail: Detail;
+  onDetail: (detail: Detail) => void;
+  onNew: () => void;
+  onEdit: () => void;
+  onUpdate: (review: PhotoReview) => void;
+}) {
+  const decision = photoDecision(review, health);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const [editing, setEditing] = useState(false);
+  useEffect(() => {
+    heading.current?.focus();
+  }, []);
+  const save = useMutation({
+    mutationFn: (draft: PhotoReview) =>
+      requestApi("/api/photo-summary", photoReviewSchema, {
+        method: "POST",
+        body: JSON.stringify(draft),
+      }),
+    onSuccess: (draft) => {
+      onUpdate(draft);
+      setEditing(false);
+    },
+  });
+  const serving =
+    review.servingSizeGrams === null
+      ? "satu sajian (ukuran belum pasti)"
+      : review.evidence.servingText || "satu sajian pada label";
+  const value = (key: (typeof fields)[number][0]) =>
+    review.nutrition[key] === null
+      ? "Tidak tersedia"
+      : `${decimal(review.nutrition[key]!)} ${fields.find((f) => f[0] === key)![2]}`;
+  return (
+    <section
+      id="hasil-ringkas"
+      className="scan-results photo-result"
+      aria-label="Hasil cepat foto label"
+    >
+      <header className="result-header">
+        <h1 ref={heading} tabIndex={-1}>
+          {photoDisplayName(review)}
+        </h1>
+        <p className="photo-result-origin">
+          {review.userCorrected
+            ? "Bacaan dengan koreksi Anda"
+            : "Hasil baca foto"}{" "}
+          · per {serving} · bisa dikoreksi
+        </p>
+        {detail === "overview" && (
+          <section
+            className="quick-verdict"
+            aria-labelledby="photo-decision-title"
+          >
+            <h2 id="photo-decision-title">{decision.title}</h2>
+            <p className="quick-action">{decision.action}</p>
+            <dl className="quick-numbers">
+              <div>
+                <dt>
+                  Gula /{" "}
+                  {review.servingsPerContainer === 1 ? "kemasan" : "sajian"}
+                </dt>
+                <dd>{value("sugarGrams")}</dd>
+                <p>
+                  {review.nutrition.sugarGrams === null
+                    ? "Foto ulang baris gula untuk memastikan."
+                    : decision.sugarPercent === null
+                      ? "Batas profil belum tersedia."
+                      : `${decision.sugarPercent}% batas harian profil Anda`}
+                </p>
+              </div>
+              <div>
+                <dt>Natrium / sajian</dt>
+                <dd>{value("sodiumMg")}</dd>
+                <p>
+                  {review.nutrition.sodiumMg === null
+                    ? "Tidak diartikan sebagai nol."
+                    : decision.sodiumPercent === null
+                      ? "Batas profil belum tersedia."
+                      : `${decision.sodiumPercent}% batas harian profil Anda`}
+                </p>
+              </div>
+            </dl>
+            {review.servingsPerContainer !== null && (
+              <p className="photo-pack">
+                Satu kemasan berisi {decimal(review.servingsPerContainer)}{" "}
+                sajian
+                {review.nutrition.sugarGrams !== null
+                  ? ` · total ${decimal(review.nutrition.sugarGrams * review.servingsPerContainer)} g gula per kemasan.`
+                  : "."}
+              </p>
+            )}
+            <p className="quick-serving">
+              Angka gula total pada label tidak membedakan gula alami dan gula
+              tambahan. Rekomendasi membandingkan batas profil, bukan diagnosis
+              atau cap “sehat”.
+            </p>
+            {!review.ingredientsText && (
+              <p className="photo-result-limit">
+                Komposisi belum terlihat. Alergen dan jenis sumber gula belum
+                dapat diperiksa dari dua foto ini.
+              </p>
+            )}
+            <div className="photo-result-actions">
+              <Button onClick={onNew}>
+                {review.nutrition.sugarGrams === null
+                  ? "Foto ulang baris gula"
+                  : "Scan produk pembanding"}
+              </Button>
+              <Button variant="ghost" onClick={() => setEditing((v) => !v)}>
+                Koreksi angka bila perlu
+              </Button>
+            </div>
+          </section>
+        )}
+        <nav className="result-navigation" aria-label="Telusuri hasil foto">
+          {[
+            ["overview", "Ringkasan", "hasil-ringkas"],
+            ["ingredients", "Komposisi", "komposisi"],
+            ["sugar", "Sumber gula", "sumber-gula"],
+            ["swaps", "Pilihan pengganti", "pilihan-pengganti"],
+          ].map(([id, label, hash]) => (
+            <a
+              key={id}
+              href={`#${hash}`}
+              aria-current={detail === id ? "page" : undefined}
+              onClick={() => onDetail(id as Detail)}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        {detail === "ingredients" && (
+          <section className="photo-detail">
+            <h2>Komposisi yang terlihat</h2>
+            <p>
+              {review.ingredientsText ||
+                "Daftar komposisi belum ada pada foto. Tidak perlu menyalin semuanya untuk membaca ringkasan gula di atas."}
+            </p>
+            <p>
+              Tanpa daftar lengkap, hasil ini belum memeriksa seluruh alergen
+              atau fungsi bahan.
+            </p>
+            <Button variant="secondary" onClick={onNew}>
+              Tambahkan foto komposisi
+            </Button>
+            {review.ingredientsText && (
+              <Button variant="ghost" onClick={onEdit}>
+                Buka analisis komposisi lengkap
+              </Button>
+            )}
+          </section>
+        )}
+        {detail === "sugar" && (
+          <section className="photo-detail">
+            <h2>Berapa gulanya?</h2>
+            <p>
+              {review.nutrition.sugarGrams === null
+                ? "Baris gula belum dapat dipastikan. Foto ulang bagian itu; Anda tidak perlu mengisi semua gizi."
+                : `Label menyebut ${value("sugarGrams")} gula per ${serving}.`}
+            </p>
+            <p>
+              Angka gram gula berasal dari tabel gizi. Jumlah nama seperti gula,
+              sirup, atau madu dalam komposisi bukan ukuran gram gula.
+            </p>
+            <p>
+              {review.ingredientsText
+                ? "Daftar komposisi tersedia di tab Komposisi. Pemetaan sumber gula lebih rinci memerlukan analisis komposisi lengkap."
+                : "Foto komposisi diperlukan untuk mengetahui nama sumber gulanya."}
+            </p>
+          </section>
+        )}
+        {detail === "swaps" && (
+          <section className="photo-detail">
+            <h2>Kalau ingin pilihan lain</h2>
+            <p>
+              {review.category === "MINUMAN_KEMASAN" ||
+              /kopi|coffee|minuman|teh/i.test(review.name)
+                ? "Bandingkan dengan air putih atau minuman tanpa tambahan gula. Untuk kopi, cari pilihan tanpa gula lalu cek kembali labelnya."
+                : "Bandingkan produk sejenis dengan gula dan natrium lebih rendah pada porsi yang sama."}
+            </p>
+            <p>
+              Ini saran jenis pilihan, bukan klaim bahwa merek tertentu lebih
+              sehat. Harga dan kandungan produk lain belum dibandingkan.
+            </p>
+            <Button onClick={onNew}>Scan label pembanding</Button>
+          </section>
+        )}
+        {editing && (
+          <form
+            className="photo-correction"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const data = new FormData(e.currentTarget);
+              const nutrition = { ...review.nutrition };
+              for (const [key] of fields) {
+                const raw = String(data.get(key) ?? "").trim();
+                nutrition[key] = raw ? Number(raw) : null;
+              }
+              save.mutate({
+                ...review,
+                userCorrected: true,
+                name: String(data.get("name") || review.name),
+                nutrition,
+                issues: review.issues.filter(
+                  (i) =>
+                    !fields.some(
+                      ([key, label]) =>
+                        nutrition[key] !== null && i.startsWith(`${label}:`),
+                    ),
+                ),
+              });
+            }}
+          >
+            <h2>Koreksi hanya yang berbeda</h2>
+            <p>
+              Kosong tetap berarti tidak tersedia. Harga, serat, atau komposisi
+              yang tidak tercantum tidak perlu dikarang.
+            </p>
+            <label className="field">
+              Nama produk
+              <input name="name" defaultValue={review.name} maxLength={250} />
+            </label>
+            <div className="form-grid">
+              {fields.map(([key, label, unit]) => (
+                <label className="field" key={key}>
+                  {label} ({unit}), per sajian
+                  <input
+                    type="number"
+                    name={key}
+                    min={0}
+                    max={
+                      key === "sodiumMg"
+                        ? 100000
+                        : key === "caloriesKcal"
+                          ? 10000
+                          : 1000
+                    }
+                    step="any"
+                    defaultValue={review.nutrition[key] ?? ""}
+                  />
+                </label>
+              ))}
+            </div>
+            <Button type="submit" disabled={save.isPending}>
+              {save.isPending ? "Menyimpan…" : "Simpan koreksi"}
+            </Button>
+          </form>
+        )}
+        {save.error && (
+          <p role="alert">Koreksi belum tersimpan. {save.error.message}</p>
+        )}
+        <details className="photo-facts">
+          <summary>Gizi lain & arti istilahnya</summary>
+          <dl>
+            {fields.slice(2).map(([key, label]) => (
+              <div key={key}>
+                <dt>{label}</dt>
+                <dd>{value(key)}</dd>
+              </div>
+            ))}
+          </dl>
+          <p>
+            Natrium adalah komponen garam; angka ini bukan berat garam. Lemak
+            jenuh adalah jenis lemak yang perlu dibatasi dalam pola makan.
+            Energi menunjukkan kalori per sajian.
+          </p>
+          <p>
+            Gizi yang tidak tersedia tidak dianggap nol dan tidak menghalangi
+            ringkasan angka yang terbaca.
+          </p>
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Panduan pola makan WHO
+          </a>
+        </details>
+        <details className="photo-evidence">
+          <summary>Lihat bacaan asli & batas hasil</summary>
+          <p>
+            Kolom: {review.evidence.basisText || "belum pasti"}. Sajian:{" "}
+            {review.evidence.servingText || "belum tersedia"}.
+          </p>
+          {review.issues.length > 0 && (
+            <ul>
+              {review.issues.map((issue, i) => (
+                <li key={i}>{issue}</li>
+              ))}
+            </ul>
+          )}
+          {review.conversions.map((text, i) => (
+            <p key={i}>{text}</p>
+          ))}
+          <dl>
+            {fields.map(([key, label]) => (
+              <div key={key}>
+                <dt>{label}</dt>
+                <dd>
+                  {review.evidence.nutritionText[key] ||
+                    "Tidak tersedia pada bacaan"}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p>
+            {review.providerNotice} Bacaan otomatis dapat salah. Jika satu angka
+            meragukan, foto ulang bagian tersebut atau koreksi hanya angka itu.
+          </p>
+        </details>
+        <ProductResearchPanel review={review} />
+        <p className="photo-history">
+          {review.historyId ? (
+            <Link href="/history">
+              Tersimpan di riwayat pribadi · baca lagi nanti →
+            </Link>
+          ) : (
+            <Button
+              variant="ghost"
+              disabled={save.isPending}
+              onClick={() => save.mutate(review)}
+            >
+              Simpan ke riwayat
+            </Button>
+          )}
+        </p>
+      </header>
+    </section>
+  );
+}

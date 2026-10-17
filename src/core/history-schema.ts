@@ -1,14 +1,16 @@
 import { z } from "zod";
 import { analysisSchema } from "./analysis-schema";
 import { healthSchema } from "./db/collections";
+import { photoReviewSchema } from "./ai/vision-contract";
 export const historyItemSchema = z
   .object({
     id: z.string().regex(/^[a-f0-9]{24}$/),
     name: z.string(),
     createdAt: z.string().datetime(),
     status: z.enum(["AMAN", "WASPADA", "HINDARI"]),
-    sugarGrams: z.number(),
-    sodiumMg: z.number(),
+    sugarGrams: z.number().nullable(),
+    sodiumMg: z.number().nullable(),
+    kind: z.enum(["ANALYSIS", "PHOTO"]).default("ANALYSIS"),
     illustrative: z.boolean(),
   })
   .strict();
@@ -25,6 +27,11 @@ export const historyDetailSchema = z
     id: z.string(),
     createdAt: z.string().datetime(),
     healthProfile: healthSchema,
-    result: analysisSchema,
+    result: analysisSchema.optional(),
+    photoResult: photoReviewSchema.optional(),
   })
-  .strict();
+  .strict()
+  .refine(
+    (value) => Boolean(value.result) !== Boolean(value.photoResult),
+    "Riwayat harus memuat satu jenis hasil.",
+  );

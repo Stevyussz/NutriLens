@@ -84,7 +84,7 @@ test("a saved result deep link and reload preserve the requested detail tab", as
   await expect(page).toHaveURL(/#hasil-ringkas$/);
 });
 
-test("a failed photo request can be retried with the same selection before mandatory review", async ({
+test("a failed photo request can be retried with the same selection before the immediate photo result", async ({
   page,
   baseURL,
 }) => {
@@ -139,11 +139,9 @@ test("a failed photo request can be retried with the same selection before manda
   await expect(page.getByRole("img", { name: "Foto pilihan 1" })).toBeVisible();
   await expect(read).toBeEnabled();
   await read.click();
-  await expect(
-    page.getByRole("heading", { name: "Cocokkan dengan foto Anda" }),
-  ).toBeVisible();
+  await expect(page.locator("#photo-decision-title")).toBeVisible();
   await expect(
     page.getByRole("checkbox", { name: /Saya sudah mencocokkan/ }),
-  ).not.toBeChecked();
+  ).not.toBeVisible();
   expect(calls).toBe(2);
 });

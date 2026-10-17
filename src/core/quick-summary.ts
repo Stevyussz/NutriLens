@@ -26,7 +26,11 @@ export function quickSummary(result: Analysis, health: HealthProfile) {
       ? "Ada batas profil yang terpicu."
       : status === "WASPADA"
         ? "Perhatikan sebelum memilih."
-        : "Tidak ada aturan profil yang terpicu.";
+        : sugarPercent >= 25
+          ? "Bandingkan dengan yang lebih rendah gula."
+          : sodiumPercent >= 25
+            ? "Bandingkan dengan yang lebih rendah natrium."
+            : "Pertimbangkan porsi sebelum membeli.";
   const action = allergies.length
     ? "Pilih produk lain dan periksa daftar alergennya."
     : sugarPercent >= 25

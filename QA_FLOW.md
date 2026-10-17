@@ -14,8 +14,10 @@ flowchart LR
   B --> C[Kamera atau galeri]
   C --> D[Periksa foto]
   D --> E[Baca label]
-  E --> F[Koreksi dan konfirmasi]
-  F --> G[Ringkasan keputusan]
+  E --> G[Ringkasan awal dari fakta tersedia]
+  G --> F[Koreksi opsional satu angka]
+  F --> G
+  G --> J[Pencarian sumber di belakang layar]
   G --> H[Detail lewat tab]
   G --> I[Riwayat pribadi]
   I --> H
@@ -31,7 +33,7 @@ flowchart LR
 | QA-04 | Kamera ditolak → galeri                             | Pesan dapat ditindaklanjuti; galeri dapat dipakai tanpa kehilangan pilihan sebelumnya.                                           |
 | QA-05 | Galeri valid/tidak valid → Baca foto                | Maksimal dua foto, ukuran/format diperiksa; server menolak file palsu dan gambar terlalu kecil.                                  |
 | QA-06 | Pembacaan gagal → ulangi dengan foto yang sama      | Pesan gagal terlihat; tombol aktif kembali; pilihan foto tetap ada; ulangi mencapai tahap tinjau.                                |
-| QA-07 | OCR → koreksi → konfirmasi → analisis               | Nilai yang hilang wajib diisi; perubahan membatalkan konfirmasi; tidak ada analisis sebelum konfirmasi; harga kosong tetap null. |
+| QA-07 | OCR → ringkasan awal → koreksi opsional               | Angka yang tidak tercantum tetap null; ringkasan tidak menunggu semua kolom. Koreksi satu angka tersimpan, sedangkan jalur analisis lengkap tetap memerlukan konfirmasi. |
 | QA-08 | Foto kamera → OCR/AI nyata → hasil                  | Enam nutrien fixture cocok dengan acuan; 9Router benar-benar digunakan; batas pengujian dicatat.                                 |
 | QA-09 | Hasil ringkas → Komposisi → Sumber gula → pengganti | Ringkasan tampil pertama; detail dapat dibuka; alasan, satuan dan batas perbandingan tetap terlihat.                             |
 | QA-10 | Tab hasil → Back/Forward browser                    | URL dan tab yang tampil tetap sinkron; kembali dari detail membuka ringkasan.                                                    |

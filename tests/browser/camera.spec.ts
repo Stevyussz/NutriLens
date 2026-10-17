@@ -9,7 +9,7 @@ test.use({
     ],
   },
 });
-test("live camera captures real JPEG frames, retains photos, stops tracks and enters OCR review", async ({
+test("live camera captures real JPEG frames, retains photos, stops tracks and opens the photo decision", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -151,9 +151,7 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and en
   await page
     .getByRole("button", { name: "Baca foto label", exact: true })
     .click();
-  await expect(
-    page.getByRole("heading", { name: "Cocokkan dengan foto Anda" }),
-  ).toBeVisible();
+  await expect(page.locator("#photo-decision-title")).toBeVisible();
   expect(jpeg).toBe(true);
   expect(
     await page.evaluate(

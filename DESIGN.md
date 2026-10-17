@@ -235,6 +235,17 @@ Desktop navigation combines a mulberry band, light labels and citron selection. 
 ### Quick verdict and nutrient rows
 A short heading, action and reason precede two aligned nutrient readings. Horizontal rules bound the row; a vertical rule separates its values. Figures are tabular, units stay visible and serving context accompanies the comparison. Reuse this hierarchy with actual analysis data.
 
+The provisional photo-result variant reuses this flat verdict panel before optional details and corrections. Its local reading container caps at (980px). The product heading uses `clamp(24px, 3vw, 34px)`; the decision heading uses `clamp(23px, 3vw, 32px)`, line-height (1.2) and tracking (-0.025em). Nutrient readings use `clamp(23px, 4vw, 38px)`. The action paragraph uses (16px), line-height (1.65) and a (68ch) limit. These are local photo-result overrides, not replacements for the established type roles.
+
+Unavailable readings stay in their labelled nutrient position as “Tidak tersedia”, with a short explanation; they do not appear as zero. Origin text distinguishes a photo reading from a user-corrected reading. Serving and package context remain visible. The primary action can request a clearer photo or start a comparison; optional correction uses a quieter ghost action. Actions wrap with a (10px) gap and stack into one column below (520px). Correction fields reuse the existing field pattern and leave blank facts blank.
+
+### Evidence and source disclosures
+Supporting facts and original readings use native disclosures separated by thin line-color rules, with (18px) vertical padding and (14px) text at line-height (1.65). Bold summaries (650) name the detail before expansion. Fact rows align labels and readings with space between them, a (20px) gap and (8px) vertical padding; this pattern also accommodates textual missing-value states.
+
+Product-source research is another open ruled section, not an elevated card. It uses (20px) vertical padding, a (20px) heading, (14px) body copy at line-height (1.65), and paragraphs bounded at (68ch). Expanded source rows use (18px) vertical padding and bottom rules; linked source titles use (16px) type at line-height (1.5). Underlined links, source kind, degree of name/brand match, differences and dated checks make provenance readable. Partial validation warnings reuse caution ink.
+
+Pending and failed research appear as plain status text while the photo readout remains available; failure adds a ghost retry action. A manufacturer-brand match remains distinct from a matching product formulation. Source details retain their own attribution and limits instead of silently replacing the photo facts. These are evidence-state patterns for result surfaces, not a prescribed composition for every page.
+
 ### Motion and overlays
 The public introduction enters over (240ms); a new quick verdict enters over (180ms), using `cubic-bezier(0.16, 1, 0.3, 1)` with only small travel. These animations run only when reduced motion is not requested. Dialogs use the shared white, rounded, elevated treatment and retain visible control focus.
 
@@ -253,4 +264,4 @@ The public introduction enters over (240ms); a new quick verdict enters over (18
 - Don’t add a shadow to every reading panel or repeated row.
 - Don’t treat illustrative ingredient imagery or specimen data as a measured product result.
 
-<!-- Extraction evidence: src/app/globals.css; src/app/application.css; src/app/landing.css; src/components/navigation.tsx; src/components/scanner/quick-verdict.tsx; src/app/(public)/page.tsx; .impeccable/review/production/report.json. Authorized identity replacement and approved public revision are recorded in the surface contracts. -->
+<!-- Extraction evidence: src/app/globals.css; src/app/application.css; src/app/landing.css; src/components/navigation.tsx; src/components/scanner/quick-verdict.tsx; src/components/scanner/photo-result.tsx; src/components/scanner/product-research-panel.tsx; src/app/(public)/page.tsx; .impeccable/review/production/report.json. Authorized identity replacement and approved public revision are recorded in the surface contracts. Extension evidence: .impeccable/review/fast-photo/golda-{320,390,768,1440}.png; golda-sources-390.png; missing-sugar-controlled-{320,390,1440}.png; optional-correction-390.png; corrected-source-failure-390.png; history-controlled-390.png; restored-controlled-390.png. Photo-result and source-disclosure additions preserve the incumbent identity. -->

@@ -2,7 +2,7 @@
 
 Layanan Docker `updater` memeriksa sumber setiap 24 jam setelah pembaruan berhasil. Jika gagal, percobaan berikutnya dijadwalkan satu jam kemudian. Selama komputer/server atau layanan berhenti, tidak ada pembaruan. Model Gemini tetap mengikuti konfigurasi pemilik; sistem tidak mengganti model atau mengklaim model melatih dirinya sendiri.
 
-AI membaca label pengguna, fakta kamus dan kandidat dari MongoDB. Pembaruan sumber yang berhasil mengisi database tersebut dan membatalkan cache analisis lama. Pengetahuan bawaan model bukan feed berita, penelusuran web langsung, verifikasi BPOM, stok toko atau harga ritel terkini. Instruksi AI melarang klaim tersebut dan mewajibkan menyebut informasi yang belum diketahui. Aturan angka, batas profil dan pemilihan kandidat tetap dibatasi kode deterministik.
+AI membaca label pengguna, fakta kamus dan kandidat dari MongoDB. Setelah ringkasan foto muncul, endpoint product-research juga memeriksa katalog Open Food Facts dan indeks merek resmi WINGS; sumber berhasil dicache maksimal enam jam dan tanggal serta kegagalan disertakan pada hasil. Angka foto tidak otomatis diganti oleh data web. Pembaruan sumber yang berhasil mengisi database tersebut dan membatalkan cache analisis lama. Pengetahuan bawaan model bukan feed berita, penelusuran web langsung, verifikasi BPOM, stok toko atau harga ritel terkini. Instruksi AI melarang klaim tersebut dan mewajibkan menyebut informasi yang belum diketahui. Aturan angka, batas profil dan pemilihan kandidat tetap dibatasi kode deterministik.
 
 ## Asal data saat ini
 

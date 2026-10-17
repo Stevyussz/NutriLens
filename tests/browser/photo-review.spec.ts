@@ -1,113 +1,120 @@
 import { test, expect } from "@playwright/test";
 import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
 
-test("photo transcription requires corrections and confirmation before analysis", async ({
+test("photo opens a decision immediately without compulsory nutrition entry; optional correction and private history work", async ({
   page,
+  browser,
+  baseURL,
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
-    .first()
+    .getByRole("button", { name: "Mulai scan label", exact: true })
     .click();
   await page.waitForURL("**/scanner");
   let scans = 0;
-  page.on("request", (request) => {
-    if (request.url().endsWith("/api/scan")) scans++;
+  page.on("request", (r) => {
+    if (r.url().endsWith("/api/scan")) scans++;
   });
-  // A controlled response tests the review UI; OCR accuracy is measured separately.
   const review = normalizePhotoTranscription(
     {
-      productName: "Biskuit uji browser",
-      brand: "",
-      category: "CAMILAN_BISKUIT",
-      servingText: "30 g",
+      productName: "Golda label uji browser",
+      brand: "Golda",
+      category: "MINUMAN_KEMASAN",
+      servingText: "200 ml",
       basis: "PER_SERVING",
-      basisText: "Per sajian",
+      basisText: "JUMLAH PER SAJIAN",
       nutritionText: {
-        caloriesKcal: "140 kkal",
-        sugarGrams: "12 g",
-        proteinGrams: "3 g",
-        sodiumMg: "90 mg",
-        saturatedFatGrams: "2 g",
+        caloriesKcal: "180 kkal",
+        sugarGrams: "19 g",
+        proteinGrams: "2 g",
+        sodiumMg: "80 mg",
+        saturatedFatGrams: "5 g",
         fiberGrams: null,
       },
-      ingredientsText: "tepung gandum, gula, dekstrosa, madu, kakao",
-      unreadableFields: ["serat"],
+      ingredientsText: "",
+      unreadableFields: [],
     },
-    [{ width: 1400, height: 1100 }],
+    [{ width: 398, height: 502 }],
   );
-  await page.route("**/api/extract", (route) =>
-    route.fulfill({ json: review }),
-  );
-  await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
+  await page.route("**/api/extract", (r) => r.fulfill({ json: review }));
   await page
     .getByLabel("Foto komposisi dan informasi gizi")
-    .setInputFiles("tests/fixtures/per-serving.png");
+    .setInputFiles("tests/fixtures/golda-nutrition-user.png");
   await page
     .getByRole("button", { name: "Baca foto label", exact: true })
     .click();
-  await expect(
-    page.getByRole("heading", { name: "Cocokkan dengan foto Anda" }),
-  ).toBeVisible();
-  expect(scans).toBe(0);
-  const originalPhoto = await page
-    .locator(".photo-previews img")
-    .getAttribute("src");
-  await page.getByRole("button", { name: "Foto kemasan", exact: true }).click();
-  await page
-    .getByLabel("Foto komposisi dan informasi gizi")
-    .setInputFiles("tests/fixtures/per-100-comma.png");
-  await page
-    .getByRole("button", { name: "Label lengkap", exact: true })
-    .click();
-  await expect(page.locator(".photo-previews img")).toHaveAttribute(
-    "src",
-    originalPhoto!,
+  await expect(page.locator("#photo-decision-title")).toHaveText(
+    "Bandingkan dengan yang lebih rendah gula.",
   );
-
+  await expect(page.locator(".photo-result .quick-numbers")).toContainText(
+    "19 g",
+  );
+  await expect(page.locator(".photo-result .quick-numbers")).toContainText(
+    "80 mg",
+  );
+  await expect(page.locator(".photo-result .quick-numbers")).toContainText(
+    "38%",
+  );
+  await expect(page.locator(".photo-correction")).toHaveCount(0);
   await expect(
-    page.getByLabel("Gula (g), per sajian", { exact: true }),
-  ).toHaveValue("12");
-  await expect(
-    page.getByLabel("Serat (g), per sajian", { exact: true }),
-  ).toHaveValue("");
-  await expect(
-    page.getByLabel("Harga per sajian (Rp)", { exact: true }),
-  ).toHaveValue("");
-  await page.getByLabel("Serat (g), per sajian", { exact: true }).fill("1");
-  const confirmation = page.getByRole("checkbox", {
-    name: /Saya sudah mencocokkan/,
-  });
-  await expect(confirmation).not.toBeChecked();
-  await confirmation.check();
-  await page.getByLabel("Gula (g), per sajian", { exact: true }).fill("11");
-  await expect(confirmation).not.toBeChecked();
+    page.getByRole("checkbox", { name: /Saya sudah mencocokkan/ }),
+  ).not.toBeVisible();
   expect(scans).toBe(0);
-  await confirmation.check();
-  await page
-    .locator(".ocr-review")
-    .screenshot({ path: "artifacts/photo-review-desktop.png" });
-  await page
-    .getByRole("button", {
-      name: "Analisis label yang sudah diperiksa",
-      exact: true,
-    })
-    .click();
+  await page.getByRole("link", { name: "Komposisi", exact: true }).click();
+  await expect(page.locator(".photo-detail")).toContainText(
+    "Daftar komposisi belum ada pada foto",
+  );
+  await page.getByRole("link", { name: "Ringkasan", exact: true }).click();
+  await page.getByRole("button", { name: "Koreksi angka bila perlu" }).click();
   await expect(
-    page.getByRole("heading", { name: "Biskuit uji browser", exact: true }),
-  ).toBeVisible({ timeout: 30000 });
-  expect(scans).toBe(1);
+    page.getByLabel("Serat (g), per sajian", { exact: true }).last(),
+  ).toHaveValue("");
+  await page.locator(".photo-correction input[name=sugarGrams]").fill("18");
+  await page
+    .getByRole("button", { name: "Simpan koreksi", exact: true })
+    .click();
+  await expect(page.locator(".photo-correction")).toHaveCount(0);
+  await expect(page.locator(".photo-result-origin")).toContainText(
+    "koreksi Anda",
+  );
   const saved = await (await page.request.get("/api/history")).json();
+  const row = saved.items.find(
+    (i: any) => i.name === "Golda label uji browser",
+  );
+  expect(row.kind).toBe("PHOTO");
+  expect(row.sugarGrams).toBe(18);
   const detail = await (
-    await page.request.get(`/api/history/${saved.items[0].id}`)
+    await page.request.get(`/api/history/${row.id}`)
   ).json();
-  expect(detail.result.extractedProductData.priceIdr).toBeNull();
+  expect(detail.photoResult.nutrition.fiberGrams).toBeNull();
+  expect(detail.result).toBeUndefined();
+  await page.goto(`/scanner?history=${row.id}`);
+  await expect(page.locator(".photo-result .quick-numbers")).toContainText(
+    "18 g",
+  );
+  const other = await browser.newContext();
+  const outsider = await other.newPage();
+  await outsider.request.post(`${baseURL}/api/auth/guest`, {
+    headers: { origin: baseURL! },
+  });
+  expect(
+    (await outsider.request.get(`${baseURL}/api/history/${row.id}`)).status(),
+  ).toBe(404);
+  expect(
+    (
+      await outsider.request.delete(`${baseURL}/api/history/${row.id}`, {
+        headers: { origin: baseURL! },
+      })
+    ).status(),
+  ).toBe(404);
+  await other.close();
   await page.setViewportSize({ width: 320, height: 780 });
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+  expect(scans).toBe(0);
 });
 
 test("catalogue search provides real source labels without inventing a price", async ({

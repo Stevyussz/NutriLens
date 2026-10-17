@@ -36,11 +36,12 @@ MongoDB lokal default: `mongodb://localhost:27017`. Compose menggunakan URI inte
 ## Alur penggunaan
 
 1. Pilih **Scan label**, nyalakan kamera, lalu ambil satu atau dua foto komposisi dan tabel gizi. Galeri tersedia sebagai cadangan dan menambahkan foto tanpa mengganti pilihan yang ada. Jumlah, format, dan ukuran diperiksa sebelum pengiriman. Tekan **Periksa foto** untuk memperbesar tulisan tanpa keluar dari halaman. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, foto diperiksa, tab disembunyikan, atau foto mulai diproses.
-2. Pilih **Baca foto label**, lalu cocokkan hasil pembacaan dengan foto. Bagian yang belum terbaca tetap kosong dan perlu dilengkapi; harga opsional. Konfirmasi sebelum analisis.
-3. Bagian teratas hasil menampilkan ringkasan singkat, kontribusi gula/natrium terhadap batas profil, dan langkah berikutnya. Tidak ada aturan terpicu bukan jaminan keamanan medis.
-4. Buka tab Komposisi, Sumber gula, atau Pilihan pengganti untuk detail. Perbandingan biaya ditunda jika harga belum diisi.
-5. Buka **Riwayat** untuk membaca ulang hasil dengan profil saat analisis dilakukan, atau menghapus hasil. Hingga 100 kombinasi label/profil terbaru disimpan per pengguna; mengulang kombinasi yang sama memperbarui hasil sebelumnya. Foto tidak disimpan dalam riwayat. Akun mempertahankan riwayat setelah sesi sementara berakhir.
-6. Kamus bahan dan Profil saya tetap dapat diakses langsung. Contoh analisis bersifat opsional untuk mengenal aplikasi.
+2. Pilih **Baca foto label**. Ringkasan awal langsung menunjukkan angka yang terbaca, konteks batas profil dan saran pertimbangan. Harga, serat atau komposisi yang tidak tercantum tidak menghalangi ringkasan dan tidak dianggap nol. Koreksi satu angka hanya bila perlu. Analisis komposisi lengkap tetap tersedia sebagai jalur lanjutan dengan konfirmasi.
+3. Pencarian sumber produk menyusul di belakang layar: katalog lokal, Open Food Facts langsung, dan indeks merek WINGS. AI memilih ID sumber dari kandidat yang tersedia; aturan merek, varian, porsi dan satuan tetap memeriksa kecocokan. Hasil penelusuran tidak menimpa angka foto atau menentukan barcode secara otomatis.
+4. Bagian teratas hasil menampilkan ringkasan singkat, kontribusi gula/natrium terhadap batas profil, dan langkah berikutnya. Tidak ada aturan terpicu bukan jaminan keamanan medis.
+5. Buka tab Komposisi, Sumber gula, atau Pilihan pengganti untuk detail. Perbandingan biaya ditunda jika harga belum diisi.
+6. Buka **Riwayat** untuk membaca ulang hasil dengan profil saat analisis dilakukan, atau menghapus hasil. Hingga 100 kombinasi label/profil terbaru disimpan per pengguna; mengulang kombinasi yang sama memperbarui hasil sebelumnya. Foto tidak disimpan dalam riwayat. Akun mempertahankan riwayat setelah sesi sementara berakhir.
+7. Kamus bahan dan Profil saya tetap dapat diakses langsung. Contoh analisis bersifat opsional untuk mengenal aplikasi.
 
 Lima preset adalah **skenario ilustratif** dari brief, bukan klaim tentang merek riil. Persentil natrium ke-96 tidak dipaksakan: hasil dihitung dari populasi kategori yang tersedia.
 
@@ -180,7 +181,7 @@ Setelah daftar dari scanner atau kamus, `/welcome` menawarkan pengaturan profil 
 
 ## Pembaruan sumber otomatis
 
-Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang satu jam setelah kegagalan, validasi sebelum seed, serta status sumber/tanggal di scanner dan kamus. Sumber katalog bundel historis adalah staging penyedia; pembaruan otomatis hanya menerima produksi dan tidak menandai snapshot lama sebagai baru ketika akses gagal. AI memakai fakta database, bukan penelusuran web langsung atau pengetahuan yang dijamin terbaru. Lihat [DATA_REFRESH.md](DATA_REFRESH.md).
+Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang satu jam setelah kegagalan, validasi sebelum seed, serta status sumber/tanggal di scanner dan kamus. Sumber katalog bundel historis adalah staging penyedia; pembaruan otomatis hanya menerima produksi dan tidak menandai snapshot lama sebagai baru ketika akses gagal. Analisis lengkap memakai fakta database. Ringkasan foto kini disertai penelusuran sumber produk pada provider yang didukung; respons sukses dicache hingga enam jam, tanggal pengambilan/koleksi ditampilkan, dan kegagalan sumber tidak dianggap sebagai data terbaru. Penelusuran ini tidak menjangkau seluruh situs internet dan tidak menjamin formulasi identik tanpa barcode. Lihat [DATA_REFRESH.md](DATA_REFRESH.md).
 
 ## QA alur pengguna
 

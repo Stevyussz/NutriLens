@@ -47,8 +47,10 @@ test("missing, censored, percentage and ambiguous OCR quantities stay null", () 
       [{ width: 1000, height: 1000 }],
     );
     assert.equal(r.nutrition.sugarGrams, null);
-    assert.ok(r.issues.length);
-    assert.ok(r.issues.some((issue) => issue.startsWith("Gula:")));
+    if (token !== null) {
+      assert.ok(r.issues.length);
+      assert.ok(r.issues.some((issue) => issue.startsWith("Gula:")));
+    }
     assert.ok(r.issues.every((issue) => !issue.includes("sugarGrams")));
   }
   const zero = normalizePhotoTranscription(
@@ -144,4 +146,50 @@ test("local OCR refuses censored values, multiple columns and salt-to-sodium sub
     images,
   );
   assert.ok(Object.values(dual.nutrition).every((value) => value === null));
+});
+
+test("Golda label: missing local OCR rows do not erase explicit vision values; sodium alias is recognised", async () => {
+  const { crossCheckPhoto, reviewFromLocalText } =
+    await import("../src/core/ai/local-ocr");
+  const evidence = {
+    ...complete,
+    productName: "Golda Coffee Cappuccino",
+    category: "MINUMAN_KEMASAN",
+    servingText: "200 ml",
+    basis: "PER_SERVING",
+    basisText: "JUMLAH PER SAJIAN",
+    ingredientsText: "",
+    nutritionText: {
+      caloriesKcal: "180 kkal",
+      sugarGrams: "19 g",
+      proteinGrams: "2 g",
+      sodiumMg: "80 mg",
+      saturatedFatGrams: "5 g",
+      fiberGrams: null,
+    },
+  };
+  const review = normalizePhotoTranscription(evidence, [
+    { width: 398, height: 502 },
+  ]);
+  const checked = crossCheckPhoto(
+    review,
+    "Takaran Saji 200 ml (1 Botol)\nJUMLAH PER SAJIAN\nEnergi Total 180kkal\nProtein 2g\nGaram (Natrium) 80mg 5%\nLemak Jenuh 5g 25%",
+  );
+  assert.equal(checked.nutrition.sugarGrams, 19);
+  assert.equal(checked.nutrition.sodiumMg, 80);
+  assert.equal(checked.nutrition.fiberGrams, null);
+  assert.ok(!checked.issues.some((i) => i.startsWith("Serat:")));
+  assert.equal(
+    reviewFromLocalText(
+      "Takaran Saji 200ml\nPer sajian\nGaram 80mg",
+      review.images,
+    ).nutrition.sodiumMg,
+    null,
+  );
+  const conflict = crossCheckPhoto(
+    review,
+    "Takaran Saji 200ml\nPer sajian\nGula 29g",
+  );
+  assert.equal(conflict.nutrition.sugarGrams, null);
+  assert.equal(conflict.nutrition.sodiumMg, 80);
 });

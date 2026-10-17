@@ -1306,3 +1306,146 @@ body:has(:is(.dashboard-main, .auth-page, .system-state)) {
     transform: translateY(0);
   }
 }
+
+/* Fast photo results keep the decision readable before optional evidence. */
+body:has(.dashboard-main) .photo-result {
+  max-width: 980px;
+  margin-inline: auto;
+  & .result-header > h1 {
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+  & .photo-result-origin {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 10px 0 20px;
+  }
+  & .quick-verdict h2 {
+    font-size: clamp(23px, 3vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  & .quick-action {
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 68ch;
+  }
+  & .quick-numbers dd {
+    font-size: clamp(23px, 4vw, 38px);
+  }
+  & .photo-result-limit {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+  & .photo-result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  & .photo-detail {
+    padding: 22px 0;
+    max-width: 68ch;
+  }
+  & .photo-detail h2,
+  & .photo-correction h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  & .photo-detail p {
+    line-height: 1.7;
+    margin-block: 12px;
+  }
+  & .photo-facts,
+  & .photo-evidence {
+    border-top: 1px solid var(--line);
+    padding: 18px 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  & summary {
+    cursor: pointer;
+    font-weight: 650;
+  }
+  & .photo-facts dl,
+  & .photo-evidence dl {
+    margin-block: 16px;
+  }
+  & dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 8px 0;
+  }
+  & .quick-numbers > div {
+    display: block;
+  }
+  & .photo-history {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  & .photo-correction {
+    padding-block: 24px;
+  }
+  & .photo-correction .field {
+    margin-block: 12px;
+  }
+}
+@media (max-width: 520px) {
+  body:has(.dashboard-main) .photo-result {
+    & .photo-result-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    & .result-header {
+      padding: 18px;
+    }
+    & .quick-serving {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    & .quick-numbers {
+      gap: 16px;
+    }
+  }
+}
+body:has(.dashboard-main) .product-research {
+  border-top: 1px solid var(--line);
+  padding-block: 20px;
+  font-size: 14px;
+  line-height: 1.65;
+  & > h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  & > p {
+    max-width: 68ch;
+    margin-block: 10px;
+  }
+  & > details {
+    margin-top: 16px;
+  }
+  & details > ul {
+    list-style: none;
+    padding: 0;
+  }
+  & details > ul > li {
+    padding-block: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  & h3 {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  & a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  & .research-warning {
+    color: #775616;
+  }
+}

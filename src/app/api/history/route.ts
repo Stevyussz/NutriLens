@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/core/db/client";
 import { requireUser } from "@/core/security/session";
 import { apiError, HttpError } from "@/core/security/http";
+import { photoDisplayName } from "@/core/photo-decision";
 import { historyListSchema } from "@/core/history-schema";
 export async function GET(request: Request) {
   try {
@@ -14,10 +15,26 @@ export async function GET(request: Request) {
     const filter = {
       userId: user._id,
       ...(search && {
-        "result.extractedProductData.name": {
-          $regex: search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-          $options: "i",
-        },
+        $or: [
+          {
+            "result.extractedProductData.name": {
+              $regex: search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+              $options: "i",
+            },
+          },
+          {
+            "photoResult.name": {
+              $regex: search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+              $options: "i",
+            },
+          },
+          {
+            "photoResult.brand": {
+              $regex: search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+              $options: "i",
+            },
+          },
+        ],
       }),
     };
     if (!/^\d{1,3}$/.test(raw) || Number(raw) < 1)
@@ -34,6 +51,9 @@ export async function GET(request: Request) {
           "result.extractedProductData.nutrition": 1,
           "result.extractedProductData.source.kind": 1,
           "result.aiVerdict.medicalStatus": 1,
+          "photoResult.name": 1,
+          "photoResult.brand": 1,
+          "photoResult.nutrition": 1,
         },
       })
       .sort({ createdAt: -1, _id: -1 })
@@ -45,12 +65,19 @@ export async function GET(request: Request) {
         items: rows.map((r) => ({
           id: r._id.toHexString(),
           createdAt: r.createdAt.toISOString(),
-          name: r.result.extractedProductData.name,
-          status: r.result.aiVerdict.medicalStatus,
-          sugarGrams: r.result.extractedProductData.nutrition.sugarGrams,
-          sodiumMg: r.result.extractedProductData.nutrition.sodiumMg,
+          kind: r.photoResult ? "PHOTO" : "ANALYSIS",
+          name: r.photoResult
+            ? photoDisplayName(r.photoResult)
+            : r.result.extractedProductData.name,
+          status: r.photoResult ? "WASPADA" : r.result.aiVerdict.medicalStatus,
+          sugarGrams: r.photoResult
+            ? r.photoResult.nutrition.sugarGrams
+            : r.result.extractedProductData.nutrition.sugarGrams,
+          sodiumMg: r.photoResult
+            ? r.photoResult.nutrition.sodiumMg
+            : r.result.extractedProductData.nutrition.sodiumMg,
           illustrative:
-            r.result.extractedProductData.source.kind === "ILLUSTRATIVE_CASE",
+            r.result?.extractedProductData.source.kind === "ILLUSTRATIVE_CASE",
         })),
         page,
         pages,

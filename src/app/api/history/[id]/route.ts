@@ -26,6 +26,9 @@ export async function GET(_request: Request, context: Context) {
         createdAt: row.createdAt.toISOString(),
         healthProfile: row.healthProfile,
         result: row.result,
+        ...(row.photoResult && {
+          photoResult: { ...row.photoResult, historyId: row._id.toHexString() },
+        }),
       }),
       { headers: { "Cache-Control": "private, no-store" } },
     );
