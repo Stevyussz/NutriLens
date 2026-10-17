@@ -1,4 +1,4 @@
-import { reconcilePhotoReading } from "@/core/ai/local-ocr";
+import { reconcilePhotoReading } from "@/core/ai/vision-policy";
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/core/db/client";

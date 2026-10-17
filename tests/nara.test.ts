@@ -49,8 +49,8 @@ test("Nara retains medical and allergy uncertainty and validates bounded input",
   );
   assert.match(naraFacts(review, health).allergy, /bukan bukti bebas alergen/);
   assert.match(
-    naraFacts(review, health).sugar,
-    /gula alami, tambahan, atau gula bebas/,
+    naraFacts(review, health).profile,
+    /gula alami, tambahan dan gula bebas/,
   );
   assert.equal(
     naraRequestSchema.safeParse({
@@ -80,9 +80,6 @@ test("Nara distinguishes an explicit reader conflict from an absent sugar row", 
       "Gula: dua pembaca belum sepakat; cocokkan angka langsung dengan foto.",
     ],
   };
-  assert.match(
-    naraFacts(conflicted, health).sugar,
-    /pemeriksaan kedua berbeda/,
-  );
+  assert.match(naraFacts(conflicted, health).sugar, /Dua pembacaan visual/);
   assert.doesNotMatch(naraFacts(conflicted, health).sugar, /Gula totalnya 19/);
 });

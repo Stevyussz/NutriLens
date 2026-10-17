@@ -1,6 +1,6 @@
 # Hasil QA BongkarLabel
 
-Pembaruan 17 Oktober 2026: regresi gula yang hilang akibat OCR rusak diperbaiki, ringkasan/riwayat/Nara diselaraskan, dan layout percakapan dibatasi. Sebanyak 39 uji unit serta seluruh 20 uji browser produksi final lulus. Lihat [QA konsistensi OCR dan Nara](QA_OCR_CONSISTENCY.md). Laporan [Nara awal](QA_NARA.md), [hasil foto dan sumber produk](QA_FAST_SCAN.md), [redesign UI/UX](QA_UI_REDESIGN.md) dan arsip berikut mencatat tahap sebelumnya.
+Pembaruan 17 Oktober 2026: foto produksi dibaca dengan vision tanpa fallback OCR, dengan maksimal satu recheck visual untuk nilai kritis yang belum jelas. Ringkasan menjelaskan total kemasan, separuh porsi dan pembanding pada ukuran yang sama; persentase profil berada di detail. Sebanyak46 uji unit dan20 uji browser final lulus. Lihat [QA vision dan ringkasan](QA_VISION_FIRST.md). Laporan sebelumnya menjadi arsip tahap implementasi.
 
 ## Arsip QA alur 16 Oktober 2026
 

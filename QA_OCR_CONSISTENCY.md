@@ -1,5 +1,7 @@
 # QA konsistensi gula dan layout Nara
 
+Arsip tahap perbaikan parser. Kebijakan foto terbaru beralih ke vision tanpa fallback OCR, dicatat pada [QA vision dan ringkasan](QA_VISION_FIRST.md).
+
 17 Oktober 2026, Asia/Jakarta. Scope: regresi nyata pengguna pada pembacaan gula dan penyempurnaan percakapan Nara. Penilaian SHIP tahap sebelumnya tidak dipakai sebagai bukti bahwa regresi baru ini sudah tertangani.
 
 ## Penyebab

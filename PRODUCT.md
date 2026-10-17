@@ -52,3 +52,9 @@ Nara adalah teman baca label BongkarLabel. Gerak garis pemindai menandai proses 
 ### Konsistensi bacaan dan percakapan
 
 Nilai ringkasan, riwayat dan jawaban Nara memakai kebijakan rekonsiliasi yang sama. OCR lokal yang rusak tidak boleh menggugurkan angka vision dengan cara mengambil angka lain dari ujung baris. Konflik angka eksplisit dijelaskan sebagai konflik. Percakapan Nara memiliki area gulir terbatas, dengan composer di luar area itu, saran lanjutan kontekstual dan penjelasan privasi yang dapat dibuka; pertanyaan porsi dijawab tanpa pengulangan paragraf gula.
+
+### Kebijakan aktif: vision dan keputusan yang konkret
+
+Permintaan pengguna terbaru mengganti jalur foto: vision adalah satu-satunya pembaca produksi. OCR lokal dipertahankan sebagai utilitas offline historis, bukan penentu nilai akhir atau fallback otomatis. Jika vision gagal, tampilkan kegagalan yang dapat dicoba ulang. Nilai kritis yang belum terbaca memicu maksimal satu pembacaan visual ulang. Simpan konflik visual dengan asal angka yang jelas.
+
+Ringkasan cepat menjawab total gula/natrium jika kemasan dihabiskan, perkiraan berat gula dalam sendok, dan konsekuensi setengah kemasan. Pembanding harus memakai ukuran yang sama dan angka ambang relatif produk itu, tanpa klaim merek lain atau status kesehatan otomatis. Persentase acuan profil hanya detail pendukung. Riwayat lama tidak boleh mengaku foto telah dibaca ulang jika hanya transkripsi vision yang tersimpan.

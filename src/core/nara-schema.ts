@@ -1,6 +1,7 @@
 import { z } from "zod";
 export const naraTopics = [
   "sugar",
+  "profile",
   "sodium",
   "portion",
   "energy",

@@ -38,3 +38,7 @@ Operate extension: Nara is the named label-reading assistant. The authored motio
 ## Koreksi konsistensi dan percakapan
 
 User evidence outranks the previous ship verdict: readable 19 g was invalidated by a parser scavenging a trailing 7 g from corrupt local OCR. Keep final facts consistent across summary/history/Nara, distinguish actual disagreement from missing data, and preserve original evidence plus user corrections. Bound the opened Nara transcript to its own scroll region, keep the composer outside that region, shorten portion answers and move processing/privacy detail into a disclosure. Preserve the existing identity and optional opening.
+
+## Active refinement: vision and understandable purchase context
+
+User rejects OCR authority and vague threshold-driven purchase sentences. Preserve identity and camera-first flow. Vision reads photos; no automatic local OCR fallback. Headline states whole-package quantity only when count is known. Main readout uses the same package/serving basis for sugar and sodium. Show approximate sugar weight and concrete half-package quantity plus comparable product size. Move profile percentages and source/method detail into a disclosure. Distinguish total sugar from added/free sugar and preserve uncertainty. No new visual world or marketing assets.

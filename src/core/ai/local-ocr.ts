@@ -233,30 +233,5 @@ export function crossCheckPhoto(
   };
 }
 
-/** Re-evaluate old cross-checks from their original evidence, never a catalogue or product-name guess. */
-export function reconcilePhotoReading(review: PhotoReview): PhotoReview {
-  if (
-    review.readingVersion === 2 ||
-    review.userCorrected ||
-    !["ROUTER_CROSSCHECKED", "GEMINI_CROSSCHECKED"].includes(review.engine)
-  )
-    return review;
-  const fresh = normalizePhotoTranscription(review.evidence, review.images);
-  const checked = crossCheckPhoto(
-    {
-      ...fresh,
-      engine:
-        review.engine === "ROUTER_CROSSCHECKED" ? "ROUTER_VISION" : "GEMINI",
-    },
-    review.rawText,
-  );
-  return {
-    ...review,
-    nutrition: checked.nutrition,
-    servingSizeGrams: checked.servingSizeGrams,
-    servingsPerContainer: checked.servingsPerContainer,
-    issues: checked.issues,
-    conversions: checked.conversions,
-    readingVersion: 2,
-  };
-}
+// Retained for compatibility with offline OCR tools; production history uses the vision policy.
+export { reconcilePhotoReading } from "./vision-policy";

@@ -1759,3 +1759,36 @@ body:has(.dashboard-main) .product-research {
     transform: translateY(14px);
   }
 }
+.photo-meaning {
+  max-width: 65ch;
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 10px 0 18px;
+}
+body:has(.dashboard-main) .photo-result .photo-choice-title {
+  font-size: 14px;
+  margin: 20px 0 6px;
+}
+.photo-profile-context {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.photo-profile-context summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 32px;
+}
+.photo-profile-context p {
+  max-width: 70ch;
+  margin: 10px 0;
+}
+
+body:has(.dashboard-main) .photo-result .quick-action {
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.65;
+}

@@ -74,7 +74,9 @@ export function PhotoResult({
         <p className="photo-result-origin">
           {review.userCorrected
             ? "Bacaan dengan koreksi Anda"
-            : "Hasil baca foto"}{" "}
+            : review.engine === "LOCAL_OCR"
+              ? "Bacaan OCR lama"
+              : "Dibaca dengan vision"}{" "}
           · per {serving} · bisa dikoreksi
         </p>
         {detail === "overview" && (
@@ -83,61 +85,80 @@ export function PhotoResult({
             aria-labelledby="photo-decision-title"
           >
             <h2 id="photo-decision-title">{decision.title}</h2>
-            <p className="quick-action">{decision.action}</p>
+            {decision.meaning && (
+              <p className="photo-meaning">{decision.meaning}</p>
+            )}
             <dl className="quick-numbers">
               <div>
-                <dt>
-                  Gula /{" "}
-                  {review.servingsPerContainer === 1 ? "kemasan" : "sajian"}
-                </dt>
-                <dd>{value("sugarGrams")}</dd>
-                <p>
-                  {review.nutrition.sugarGrams === null
-                    ? decision.sugarConflict
-                      ? "Dua bacaan memberikan angka berbeda."
-                      : "Foto ulang baris gula untuk memastikan."
-                    : decision.sugarPercent === null
-                      ? "Batas profil belum tersedia."
-                      : `${decision.sugarPercent}% batas harian profil Anda`}
-                </p>
+                <dt>Gula / {decision.amountBasis}</dt>
+                <dd>
+                  {decision.displaySugar === null
+                    ? "Belum pasti"
+                    : `${decimal(decision.displaySugar)} g`}
+                </dd>
               </div>
               <div>
-                <dt>Natrium / sajian</dt>
-                <dd>{value("sodiumMg")}</dd>
-                <p>
-                  {review.nutrition.sodiumMg === null
-                    ? "Tidak diartikan sebagai nol."
-                    : decision.sodiumPercent === null
-                      ? "Batas profil belum tersedia."
-                      : `${decision.sodiumPercent}% batas harian profil Anda`}
-                </p>
+                <dt>Natrium / {decision.amountBasis}</dt>
+                <dd>
+                  {decision.displaySodium === null
+                    ? "Belum pasti"
+                    : `${decimal(decision.displaySodium)} mg`}
+                </dd>
               </div>
             </dl>
-            {review.servingsPerContainer !== null && (
-              <p className="photo-pack">
-                Satu kemasan berisi {decimal(review.servingsPerContainer)}{" "}
-                sajian
-                {review.nutrition.sugarGrams !== null
-                  ? ` · total ${decimal(review.nutrition.sugarGrams * review.servingsPerContainer)} g gula per kemasan.`
-                  : "."}
-              </p>
-            )}
-            <p className="quick-serving">
-              Angka gula total pada label tidak membedakan gula alami dan gula
-              tambahan. Rekomendasi membandingkan batas profil, bukan diagnosis
-              atau cap “sehat”.
-            </p>
+            <p className="photo-pack">{decision.portionNote}</p>
+            <h3 className="photo-choice-title">Pilihan porsi</h3>
+            <p className="quick-action">{decision.action}</p>
             {!review.ingredientsText && (
               <p className="photo-result-limit">
-                Komposisi belum terlihat. Alergen dan jenis sumber gula belum
-                dapat diperiksa dari dua foto ini.
+                Komposisi belum terlihat. Alergen dan asal gula belum dapat
+                dipastikan.
               </p>
             )}
+            <details className="photo-profile-context">
+              <summary>Dasar penjelasan & acuan profil</summary>
+              <p>
+                Gula pada tabel adalah gula total. Label ini belum memisahkan
+                gula alami, gula tambahan, dan gula bebas.
+              </p>
+              <p>
+                Perbandingan sendok hanya menggambarkan berat gula, memakai
+                perkiraan WHO: 50 g sekitar 12 sendok teh rata. Bukan takaran
+                gula yang pasti ditambahkan ke produk.
+              </p>
+              {health && (
+                <p>
+                  Profil saat scan memakai acuan{" "}
+                  {decimal(health.dailySugarLimitGrams)} g gula dan{" "}
+                  {decimal(health.dailySodiumLimitMg)} mg natrium per hari. Satu
+                  sajian label ini setara{" "}
+                  {decision.sugarPercent === null
+                    ? "gula belum diketahui"
+                    : `${decision.sugarPercent}% acuan gula`}{" "}
+                  dan{" "}
+                  {decision.sodiumPercent === null
+                    ? "natrium belum diketahui"
+                    : `${decision.sodiumPercent}% acuan natrium`}
+                  . Ini bukan perhitungan sisa jatah makan hari ini.
+                </p>
+              )}
+              <a
+                href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Dasar perbandingan gula WHO
+              </a>
+            </details>
             <div className="photo-result-actions">
               <Button onClick={onNew}>
-                {review.nutrition.sugarGrams === null
-                  ? "Foto ulang baris gula"
-                  : "Scan produk pembanding"}
+                {decision.needsVision
+                  ? "Scan ulang dengan vision"
+                  : !decision.hasNutrition
+                    ? "Foto tabel gizi"
+                    : review.nutrition.sugarGrams === null
+                      ? "Foto ulang baris gula"
+                      : "Scan produk pembanding"}
               </Button>
               <Button variant="ghost" onClick={() => setEditing((v) => !v)}>
                 Koreksi angka bila perlu
@@ -315,6 +336,18 @@ export function PhotoResult({
             Kolom: {review.evidence.basisText || "belum pasti"}. Sajian:{" "}
             {review.evidence.servingText || "belum tersedia"}.
           </p>
+          {review.visionReview && (
+            <>
+              <p>{review.visionReview.notice}</p>
+              {review.visionReview.differences.map((d) => (
+                <p key={d.field}>
+                  {fields.find((f) => f[0] === d.field)?.[1]}: bacaan visual
+                  pertama {d.first || "belum terbaca"}; bacaan ulang{" "}
+                  {d.second || "belum terbaca"}. Nilai akhir belum dipilih.
+                </p>
+              ))}
+            </>
+          )}
           {review.issues.length > 0 && (
             <ul>
               {review.issues.map((issue, i) => (

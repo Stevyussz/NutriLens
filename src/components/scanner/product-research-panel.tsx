@@ -26,6 +26,7 @@ export function ProductResearchPanel({ review }: { review: PhotoReview }) {
     staleTime: 600000,
     retry: false,
   });
+  const hasNutrition = Object.values(review.nutrition).some((v) => v !== null);
   const sources = research.data?.sources ?? [];
   const manufacturer = sources.find((s) => s.kind === "MANUFACTURER");
   const variants = sources.filter((s) => s.match === "NAME_VARIANT");
@@ -37,13 +38,16 @@ export function ProductResearchPanel({ review }: { review: PhotoReview }) {
       <h2>Produk ini dikenali dari mana?</h2>
       {research.isPending ? (
         <p role="status">
-          Mencari sumber produk di belakang layar. Ringkasan angka sudah bisa
-          Anda pakai.
+          {hasNutrition
+            ? "Mencari sumber produk di belakang layar. Ringkasan angka sudah bisa Anda pakai."
+            : "Mencari sumber merek. Foto tabel gizi tetap diperlukan; data merek tidak mengisi angka yang belum terbaca."}
         </p>
       ) : research.error ? (
         <>
           <p role="status">
-            Pencarian sumber belum berhasil. Angka pada foto tetap tersedia.
+            {hasNutrition
+              ? "Pencarian sumber belum berhasil. Angka pada foto tetap tersedia."
+              : "Pencarian sumber belum berhasil. Ambil foto tabel gizi; angka tidak ditebak dari merek."}
           </p>
           <Button variant="ghost" onClick={() => research.refetch()}>
             Coba cari sumber lagi

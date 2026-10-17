@@ -1,4 +1,4 @@
-import { reconcilePhotoReading } from "../ai/local-ocr";
+import { reconcilePhotoReading } from "../ai/vision-policy";
 import { createHash } from "node:crypto";
 import type { Db, ObjectId } from "mongodb";
 import { photoReviewSchema, type PhotoReview } from "../ai/vision-contract";

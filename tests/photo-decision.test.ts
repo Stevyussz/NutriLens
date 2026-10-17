@@ -34,10 +34,52 @@ test("decision uses known per-serving sugar, distinguishes missing from zero, an
   const r = review("19 g");
   assert.equal(r.servingsPerContainer, 1);
   assert.equal(photoDecision(r, defaultHealth).sugarPercent, 38);
-  assert.match(photoDecision(r, defaultHealth).title, /rendah gula/);
+  assert.equal(
+    photoDecision(r, defaultHealth).title,
+    "Kalau dihabiskan: 19 g gula.",
+  );
+  assert.match(photoDecision(r, defaultHealth).action, /9,5 g/);
   assert.equal(r.nutrition.fiberGrams, null);
   assert.equal(photoDecision(review(null), defaultHealth).sugarPercent, null);
-  assert.match(photoDecision(review(null), defaultHealth).title, /belum bisa/);
+  assert.match(
+    photoDecision(review(null), defaultHealth).title,
+    /belum terkonfirmasi/,
+  );
   assert.equal(photoDecision(review("0 g"), defaultHealth).sugarPercent, 0);
   assert.equal(review("19 g", null).servingsPerContainer, null);
+});
+
+test("whole-package advice scales all numbers and never treats an arbitrary profile threshold as a verdict", () => {
+  const two = review("19 g", "2 Sajian Per Kemasan");
+  const d = photoDecision(two, defaultHealth);
+  assert.equal(d.displaySugar, 38);
+  assert.equal(d.displaySodium, 160);
+  assert.match(d.title, /38 g/);
+  assert.match(d.action, /19 g/);
+  const noCount = photoDecision(review("19 g", null), defaultHealth);
+  assert.match(noCount.title, /per sajian/);
+  assert.equal(noCount.packageSugar, null);
+  assert.doesNotMatch(noCount.action, /di bawah 19/);
+  assert.equal(
+    photoDecision(review("19 g"), {
+      ...defaultHealth,
+      dailySugarLimitGrams: 25,
+    }).title,
+    photoDecision(review("19 g"), defaultHealth).title,
+  );
+  assert.equal(
+    photoDecision({ ...review("19 g"), engine: "LOCAL_OCR" }, defaultHealth)
+      .needsVision,
+    true,
+  );
+});
+
+test("a photo without any nutrition never claims other numbers are available", () => {
+  const r = review(null);
+  for (const key of Object.keys(r.nutrition) as (keyof typeof r.nutrition)[])
+    r.nutrition[key] = null;
+  const d = photoDecision(r, defaultHealth);
+  assert.equal(d.hasNutrition, false);
+  assert.doesNotMatch(d.action, /Angka lain/);
+  assert.match(d.action, /Informasi Nilai Gizi/);
 });

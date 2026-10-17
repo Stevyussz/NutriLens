@@ -1,4 +1,4 @@
-import { reconcilePhotoReading } from "@/core/ai/local-ocr";
+import { reconcilePhotoReading } from "@/core/ai/vision-policy";
 import { NextResponse } from "next/server";
 import { photoReviewSchema } from "@/core/ai/vision-contract";
 import { requireUser } from "@/core/security/session";

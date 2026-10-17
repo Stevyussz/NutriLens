@@ -53,3 +53,9 @@ Bacaan pengguna menunjukkan vision `19g`, tetapi OCR lokal `Gula 199 "7 g` dipro
 Kebijakan bacaan versi 2 berlaku pada ekstraksi baru. Hasil cross-check lama tanpa penanda versi dihitung ulang dari transkripsi dan teks lokal yang sudah tersimpan saat dibaca melalui daftar/detail riwayat atau Nara. Ini tidak mengambil angka dari merek/katalog, mengubah foto sumber atau menimpa koreksi pengguna. Fixture `golda-corrupt-local-ocr.json` menyimpan bukti kegagalan nyata tanpa data akun.
 
 OCR pendamping vision dibatasi total 8 detik lintas foto, bukan 25 detik untuk setiap halaman. Abort menghentikan proses dan melepaskan slot; bukti halaman pertama yang selesai tidak dibuang jika halaman kedua gagal. Mode OCR lokal tanpa vision memiliki anggaran 30 detik. Batas ini tidak menjamin latensi total layanan AI.
+
+## Kebijakan aktif versi 3: vision saja untuk foto produksi
+
+Jalur ekstraksi foto tidak memanggil Tesseract/crossCheckPhoto dan tidak kembali ke OCR ketika vision gagal. Utilitas OCR serta uji lamanya tetap tersedia sebagai arsip/offline, bukan jalur keputusan produksi. Vision tetap dapat salah: jumlah, satuan, porsi, nilai hilang dan ketidakcocokan dibatasi oleh kontrak. Nilai kritis yang belum terbaca memicu satu recheck visual maksimum; konflik nilai visual ditampilkan dan tidak dipilih diam-diam. Pembacaan ulang dari model yang sama bukan verifikasi independen atau jaminan akurasi sempurna.
+
+Rekonsiliasi riwayat versi3 memvalidasi ulang transkripsi vision tersimpan. Ini tidak membaca kembali foto yang tidak disimpan. Nilai OCR lama tidak dipromosikan menjadi hasil vision. Koreksi pengguna dipertahankan.

@@ -2,7 +2,7 @@ import { mkdir } from "node:fs/promises";
 import { test, expect } from "@playwright/test";
 import sample from "../fixtures/golda-corrupt-local-ocr.json";
 import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
-import { crossCheckPhoto } from "../../src/core/ai/local-ocr";
+import { compareVisionReadings } from "../../src/core/ai/vision-policy";
 test("legacy OCR reconciliation stays consistent across summary, evidence, history and Nara", async ({
   page,
   baseURL,
@@ -44,7 +44,7 @@ test("legacy OCR reconciliation stays consistent across summary, evidence, histo
   await page.goto(`/scanner?history=${review.historyId}`);
   await expect(page.locator(".quick-numbers")).toContainText("19 g");
   await expect(page.locator("#photo-decision-title")).toContainText(
-    "lebih rendah gula",
+    "19 g gula",
   );
   await page.locator(".photo-evidence summary").click();
   await expect(page.locator(".photo-evidence")).toContainText("19g");
@@ -62,7 +62,16 @@ test("legacy OCR reconciliation stays consistent across summary, evidence, histo
     },
   });
   expect((await corrected.json()).nutrition.sugarGrams).toBe(18);
-  const conflict = crossCheckPhoto(current, "Per sajian\nGula 29 g");
+  const conflict = compareVisionReadings(
+    current,
+    normalizePhotoTranscription(
+      {
+        ...sample.evidence,
+        nutritionText: { ...sample.evidence.nutritionText, sugarGrams: "29g" },
+      },
+      current.images,
+    ),
+  );
   const storedConflict = await (
     await page.request.post("/api/photo-summary", {
       headers: { origin },
@@ -71,17 +80,19 @@ test("legacy OCR reconciliation stays consistent across summary, evidence, histo
   ).json();
   await page.goto(`/scanner?history=${storedConflict.historyId}`);
   await expect(page.locator("#photo-decision-title")).toHaveText(
-    "Bacaan gula perlu dicocokkan.",
+    "Angka gula berbeda saat dibaca ulang.",
   );
   await page.getByRole("button", { name: "Tanya Nara", exact: true }).click();
   await page.getByLabel("Pertanyaan tentang label ini").fill("Berapa gula?");
   await page.getByRole("button", { name: "Kirim pertanyaan ke Nara" }).click();
   await expect(page.locator(".nara-answer")).toContainText(
-    "pemeriksaan kedua berbeda",
+    "Dua pembacaan visual",
   );
-  await mkdir(".impeccable/review/reading-fix", {recursive:true});
-  await page.setViewportSize({width:390,height:844});
-  await page.evaluate(() => window.scrollTo({top:0,behavior:"instant"}));
-  await page.screenshot({path:".impeccable/review/reading-fix/real-conflict-controlled-390.png",fullPage:true});
-
+  await mkdir(".impeccable/review/reading-fix", { recursive: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.screenshot({
+    path: ".impeccable/review/reading-fix/real-conflict-controlled-390.png",
+    fullPage: true,
+  });
 });

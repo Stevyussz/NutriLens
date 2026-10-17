@@ -23,9 +23,20 @@ export function naraFacts(
   const basis = review.evidence.servingText || "ukuran sajian belum pasti";
   return {
     sugar: decision.sugarConflict
-      ? `Transkripsi awal menulis gula ${review.evidence.nutritionText.sugarGrams || "dengan angka yang belum pasti"}, tetapi pemeriksaan kedua berbeda. Angka akhir belum dipilih. Buka bacaan asli atau foto ulang baris gula; data yang bertentangan tidak dianggap nol.`
-      : `Gula totalnya ${amount(n.sugarGrams, "g")} per sajian (${basis}). ${n.sugarGrams === null ? "Foto ulang baris gula untuk memastikan, tanpa mengisi semua kolom." : `Itu sekitar ${decision.sugarPercent}% batas gula harian yang disetel di profil Anda. Angka label tidak memisahkan gula alami, tambahan, atau gula bebas; persentase ini adalah perbandingan dengan profil, bukan penilaian seluruh konsumsi hari ini.`}`,
-    sodium: `Natrium adalah komponen garam yang ditulis pada tabel gizi. Label ini menunjukkan ${amount(n.sodiumMg, "mg")} per sajian.${n.sodiumMg === null ? " Belum terbaca tidak berarti nol." : ` Ini sekitar ${decision.sodiumPercent}% batas natrium harian profil Anda. Natrium tidak sama dengan berat garam; angka ini tetap dalam mg natrium.`}`,
+      ? `Dua pembacaan visual memberi angka berbeda. ${
+          review.visionReview?.differences
+            .filter((d) => d.field === "sugarGrams")
+            .map((d) => `Pertama ${d.first}; ulang ${d.second}.`)
+            .join(" ") || "Nilai akhir belum dipilih."
+        } Foto ulang baris gula untuk memastikan.`
+      : decision.displaySugar === null
+        ? "Gula belum terkonfirmasi dari foto. Pembacaan vision tidak diganti dengan angka OCR atau data merek."
+        : `Label ini menulis ${decimal(decision.displaySugar)} g gula per ${decision.amountBasis}. ${decision.meaning || ""} ${decision.portionNote}`,
+    profile: `Acuan profil saat scan: ${decimal(health.dailySugarLimitGrams)} g gula dan ${decimal(health.dailySodiumLimitMg)} mg natrium sehari. Per sajian, angka label setara ${decision.sugarPercent === null ? "gula belum diketahui" : `${decision.sugarPercent}% acuan gula`} dan ${decision.sodiumPercent === null ? "natrium belum diketahui" : `${decision.sodiumPercent}% acuan natrium`}. Ini bukan sisa jatah hari ini: Nara tidak tahu seluruh konsumsi Anda. Gula total pada label belum memisahkan gula alami, tambahan dan gula bebas.`,
+    sodium:
+      decision.displaySodium === null
+        ? "Natrium belum terkonfirmasi dari foto; tidak diartikan sebagai nol."
+        : `Natrium yang tercantum ${decimal(decision.displaySodium)} mg per ${decision.amountBasis}. Natrium adalah komponen garam; angka ini bukan berat garam. ${decision.portionNote}`,
     portion:
       review.servingsPerContainer === null
         ? `Takaran yang terbaca: ${basis}. Jumlah sajian per kemasan belum pasti, jadi Nara belum dapat menghitung total satu botol atau bungkus. Foto bagian takaran saji dan sajian per kemasan.`
@@ -40,7 +51,7 @@ export function naraFacts(
     allergy: decision.allergyMatches.length
       ? `${decision.action} ${decision.title} Bacaan otomatis tetap perlu dicocokkan dengan kemasan.`
       : "Belum ada kecocokan alergi yang terdeteksi oleh pencocokan teks sistem. Ini bukan bukti bebas alergen: komposisi lengkap, peringatan alergen dan risiko kontaminasi silang belum tentu terbaca. Periksa kemasan jika Anda memiliki alergi.",
-    decision: `${decision.title} ${decision.action} Ini bantuan mempertimbangkan pembelian, bukan diagnosis atau jaminan aman untuk kondisi medis.`,
+    decision: `${decision.title} ${decision.meaning || ""} ${decision.action} Ini bantuan mempertimbangkan pembelian, bukan diagnosis atau jaminan aman untuk kondisi medis.`,
     sources:
       "Buka bagian Sumber produk di hasil ini untuk melihat tautan, tanggal pemeriksaan, dan batas kecocokan. Merek yang cocok belum membuktikan varian atau formulasi sama. Nara memakai angka foto yang tersimpan; penelusuran internet tidak otomatis menggantinya atau memastikan harga dan stok.",
     limits:
@@ -62,6 +73,7 @@ export function directNaraTopics(question: string): Topic[] {
     )
   )
     return ["portion"];
+  if (/batas|persen|%|acuan|harian|jatah|sehari/.test(q)) return ["profile"];
   if (/gula|manis|sugar/.test(q)) return ["sugar"];
   if (/natrium|garam|asin|sodium/.test(q)) return ["sodium"];
   if (/kalori|energi/.test(q)) return ["energy"];
@@ -83,6 +95,15 @@ export async function askNara(
   question: string,
   previousTopics: Topic[] = [],
 ): Promise<NaraAnswer> {
+  if (photoDecision(review, health).needsVision)
+    return naraAnswerSchema.parse({
+      mode: "LIMITED",
+      topics: ["limits"],
+      paragraphs: [
+        "Hasil ini masih berasal dari OCR lama. Scan ulang dengan vision sebelum memakai angka ini untuk keputusan pembelian.",
+      ],
+      productName: photoDisplayName(review),
+    });
   const facts = naraFacts(review, health);
   const part = /setengah\s+(botol|kemasan|bungkus)/i.test(question)
     ? 0.5

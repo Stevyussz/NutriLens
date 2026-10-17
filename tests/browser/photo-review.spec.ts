@@ -21,6 +21,7 @@ test("photo opens a decision immediately without compulsory nutrition entry; opt
       brand: "Golda",
       category: "MINUMAN_KEMASAN",
       servingText: "200 ml",
+      servingsPerContainerText: "1 Sajian Per Kemasan",
       basis: "PER_SERVING",
       basisText: "JUMLAH PER SAJIAN",
       nutritionText: {
@@ -44,7 +45,7 @@ test("photo opens a decision immediately without compulsory nutrition entry; opt
     .getByRole("button", { name: "Baca foto label", exact: true })
     .click();
   await expect(page.locator("#photo-decision-title")).toHaveText(
-    "Bandingkan dengan yang lebih rendah gula.",
+    "Kalau dihabiskan: 19 g gula.",
   );
   await expect(page.locator(".photo-result .quick-numbers")).toContainText(
     "19 g",
@@ -52,9 +53,17 @@ test("photo opens a decision immediately without compulsory nutrition entry; opt
   await expect(page.locator(".photo-result .quick-numbers")).toContainText(
     "80 mg",
   );
-  await expect(page.locator(".photo-result .quick-numbers")).toContainText(
-    "38%",
+  await expect(page.locator(".photo-result .quick-action")).toContainText(
+    "9,5 g gula",
   );
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await expect(page.locator(".photo-choice-title")).toHaveCSS("font-size", "14px");
+    await expect(page.locator(".photo-result .quick-action")).toHaveCSS("font-size", "15px");
+    await expect(page.locator(".photo-result .quick-action")).toHaveCSS("font-weight", "450");
+  }
+  await page.locator(".photo-profile-context summary").click();
+  await expect(page.locator(".photo-profile-context")).toContainText("38%");
   await expect(page.locator(".photo-correction")).toHaveCount(0);
   await expect(
     page.getByRole("checkbox", { name: /Saya sudah mencocokkan/ }),

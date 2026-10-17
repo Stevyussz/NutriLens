@@ -62,7 +62,29 @@ export const photoReviewSchema = z
     rawText: z.string().max(30000).default(""),
     providerNotice: z.string().nullable().optional(),
     reviewRequired: z.literal(true),
-    readingVersion: z.literal(2).optional(),
+    readingVersion: z.union([z.literal(2), z.literal(3)]).optional(),
+    visionReview: z
+      .object({
+        status: z.enum(["INITIAL", "RECHECKED", "CONFLICT", "UNAVAILABLE"]),
+        notice: z.string().max(500),
+        differences: z
+          .array(
+            z.object({
+              field: z.enum([
+                "caloriesKcal",
+                "sugarGrams",
+                "proteinGrams",
+                "sodiumMg",
+                "saturatedFatGrams",
+                "fiberGrams",
+              ]),
+              first: z.string().max(100).nullable(),
+              second: z.string().max(100).nullable(),
+            }),
+          )
+          .max(6),
+      })
+      .optional(),
     name: z.string().max(250),
     brand: z.string().max(150),
     category: categorySchema,
@@ -236,7 +258,7 @@ export function normalizePhotoTranscription(
     );
   return photoReviewSchema.parse({
     reviewRequired: true,
-    readingVersion: 2,
+    readingVersion: 3,
     name: evidence.productName,
     brand: evidence.brand,
     category: evidence.category,
