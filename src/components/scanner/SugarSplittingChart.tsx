@@ -36,24 +36,24 @@ export function SugarSplittingChart({ analysis }: { analysis: Analysis }) {
             margin={{ top: 12, right: 20, bottom: 8, left: 0 }}
             accessibilityLayer
           >
-            <CartesianGrid stroke="#c7bcad" horizontal={false} />
+            <CartesianGrid stroke="#ddced8" horizontal={false} />
             <XAxis
               type="number"
-              tick={{ fill: "#54554f", fontSize: 12 }}
+              tick={{ fill: "#705c6b", fontSize: 12 }}
               unit="%"
             />
             <YAxis
               type="category"
               dataKey="name"
               width={100}
-              tick={{ fill: "#484850", fontSize: 12 }}
+              tick={{ fill: "#705c6b", fontSize: 12 }}
             />
             <Tooltip
-              cursor={{ fill: "#e9e4dc" }}
+              cursor={{ fill: "#f2e5ee" }}
               contentStyle={{
-                background: "#fff9f0",
-                borderColor: "#8d887f",
-                color: "#303432",
+                background: "#fffefd",
+                borderColor: "#bca5b4",
+                color: "#352331",
               }}
               formatter={(value) => [
                 `${decimal(Number(value))}%`,
@@ -63,7 +63,7 @@ export function SugarSplittingChart({ analysis }: { analysis: Analysis }) {
             <Bar
               isAnimationActive={false}
               dataKey="posisi"
-              fill="#a16207"
+              fill="#8e426a"
               maxBarSize={36}
               radius={[0, 4, 4, 0]}
             />

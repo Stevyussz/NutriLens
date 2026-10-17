@@ -126,12 +126,8 @@ export function ProfileEditor({
                 </p>
                 {profile.data.role === "GUEST" && (
                   <div className="account-invitation">
-                    <p className="font-semibold mb-2">
-                      Simpan profil untuk kunjungan berikutnya.
-                    </p>
                     <p className="muted text-sm">
-                      Buat akun agar batas, alergi dan anggaran ini tetap
-                      tersedia saat Anda masuk lagi.
+                      Ingin memakai profil ini di kunjungan berikutnya?
                     </p>
                     <Link
                       className="button button-secondary"
@@ -173,8 +169,8 @@ export function ProfileEditor({
                       )}
                     </fieldset>
                   </details>
-                  <div className="grid gap-4">
-                    <label className="field">
+                  <div className="profile-fields">
+                    <label className="field profile-allergies">
                       Alergi, pisahkan dengan koma
                       <input
                         name="allergies"

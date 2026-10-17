@@ -22,7 +22,7 @@ test("mobile account upgrade preserves profile, login returns to the intended pa
   );
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

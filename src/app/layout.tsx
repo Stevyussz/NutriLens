@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Providers } from "@/components/providers";
 import "./globals.css";
+import "./application.css";
+import "./landing.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,

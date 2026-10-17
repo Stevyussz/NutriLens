@@ -10,7 +10,6 @@ export default async function Scanner({
   return (
     <>
       <header className="page-header scanner-page-header">
-        <p className="eyebrow mb-0">Ruang pemeriksaan</p>
         <h1>Mulai dari satu foto.</h1>
         <p className="muted">
           Baca komposisi, periksa angka, lalu sesuaikan dengan kebutuhan Anda.

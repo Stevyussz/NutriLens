@@ -368,12 +368,22 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
         tabIndex={-1}
         hidden={workspace !== "entry"}
       >
-        <p className="eyebrow">Baca label dari foto</p>
-        <h2>
-          {review && mode === "label"
-            ? "Periksa hasil bacaan."
-            : "Arahkan ke labelnya."}
-        </h2>
+        {mode !== "photo" && (
+          <h2>
+            {review && mode === "label"
+              ? "Periksa hasil bacaan."
+              : "Arahkan ke labelnya."}
+          </h2>
+        )}
+        <ol className="scan-steps" aria-label="Tahapan pemeriksaan">
+          <li aria-current={mode === "photo" ? "step" : undefined}>
+            Foto label
+          </li>
+          <li aria-current={mode !== "photo" ? "step" : undefined}>
+            Periksa bacaan
+          </li>
+          <li>Ringkasan</li>
+        </ol>
         <div className="tab-switch" aria-label="Cara memasukkan label">
           {[
             {
@@ -682,23 +692,42 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
             hidden={mode !== "photo"}
             disabled={mode !== "photo" || busy}
           >
-            <LiveCamera
-              active={mode === "photo" && workspace === "entry" && !busy}
-              files={photos}
-              onCapture={(file) => {
-                setPhotos((current) => [...current, file].slice(0, 2));
-                setPhotoError("");
-              }}
-              onRemove={(index) => {
-                setPhotos((current) => current.filter((_, i) => i !== index));
-                setPhotoError("");
-                if (photoInput.current) photoInput.current.value = "";
-              }}
-              onGallery={() => {
-                setGalleryOpen(true);
-                photoInput.current?.click();
-              }}
-            />
+            <div className="camera-workspace">
+              <LiveCamera
+                active={mode === "photo" && workspace === "entry" && !busy}
+                files={photos}
+                onCapture={(file) => {
+                  setPhotos((current) => [...current, file].slice(0, 2));
+                  setPhotoError("");
+                }}
+                onRemove={(index) => {
+                  setPhotos((current) => current.filter((_, i) => i !== index));
+                  setPhotoError("");
+                  if (photoInput.current) photoInput.current.value = "";
+                }}
+                onGallery={() => {
+                  setGalleryOpen(true);
+                  photoInput.current?.click();
+                }}
+              />
+              <aside className="capture-guide" aria-label="Panduan foto label">
+                <h3>Dua bagian, satu produk.</h3>
+                <ol>
+                  <li>
+                    <strong>Komposisi</strong>
+                    <p>Masukkan seluruh daftar bahan sesuai urutannya.</p>
+                  </li>
+                  <li>
+                    <strong>Tabel gizi</strong>
+                    <p>Sertakan angka, satuan, dan ukuran sajian.</p>
+                  </li>
+                </ol>
+                <p className="capture-guide-note">
+                  Terpisah di kemasan? Ambil dua foto. Anda bisa memeriksa hasil
+                  bacanya sebelum dianalisis.
+                </p>
+              </aside>
+            </div>
             <details
               className="gallery-picker"
               open={galleryOpen}
@@ -757,6 +786,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           )}
           <Button
             className={`mt-6 ${mode === "photo" && photos.length > 0 ? "camera-submit-ready" : ""}`}
+            hidden={mode === "photo" && photos.length === 0 && !busy}
             type="submit"
             disabled={busy || (mode === "photo" && photos.length === 0)}
           >
@@ -834,13 +864,13 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           hidden={workspace !== "result"}
         >
           <section className="result-header">
-            <p className={`status status-${result.aiVerdict.medicalStatus}`}>
-              {profileStatusLabels[result.aiVerdict.medicalStatus]}
-            </p>
             <div className="result-heading-row">
               <h1 ref={resultHeading} tabIndex={-1}>
                 {result.extractedProductData.name}
               </h1>
+              <p className={`status status-${result.aiVerdict.medicalStatus}`}>
+                {profileStatusLabels[result.aiVerdict.medicalStatus]}
+              </p>
             </div>
             {!scan.data && history.data && (
               <p className="history-restored">
@@ -1059,7 +1089,6 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
             {scan.error.message}
           </p>
         )}
-        <p className="eyebrow">Belajar dari contoh</p>
         <h2>Coba contoh analisis</h2>
         <p className="muted text-sm">
           Pilih contoh untuk melihat cara kerja pemeriksaan. Resep dan gizi

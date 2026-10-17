@@ -5,7 +5,7 @@ test("source status exposes origin and collection dates without claiming live AI
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

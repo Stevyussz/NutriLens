@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
-test("warm theme, public flow, all examples, ingredient dialog, dictionary, profile and session end", async ({
+test("Indeks Belanja identity, public flow, all examples, ingredient dialog, dictionary, profile and session end", async ({
   page,
   context,
 }) => {
@@ -15,10 +15,10 @@ test("warm theme, public flow, all examples, ingredient dialog, dictionary, prof
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundImage),
-  ).toContain("gradient");
-  await expect(page.locator(".hero .label-example")).toHaveCount(0);
-  const example = await page.locator(".label-example").boundingBox();
-  const hero = await page.locator(".hero").boundingBox();
+  ).toBe("none");
+  await expect(page.locator(".landing-hero .landing-example")).toHaveCount(0);
+  const example = await page.locator(".ingredient-index").boundingBox();
+  const hero = await page.locator(".landing-hero").boundingBox();
   expect(example?.y).toBeGreaterThanOrEqual(
     (hero?.y ?? 0) + (hero?.height ?? 0),
   );
@@ -27,7 +27,7 @@ test("warm theme, public flow, all examples, ingredient dialog, dictionary, prof
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(242, 239, 232)");
+  ).toBe("rgb(246, 232, 237)");
   await page.getByRole("button", { name: "Data & privasi" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
@@ -35,7 +35,7 @@ test("warm theme, public flow, all examples, ingredient dialog, dictionary, prof
   await expect(page.getByText(/juri|judge/i)).toHaveCount(0);
   await page.screenshot({ path: "artifacts/home-desktop.png", fullPage: true });
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .nth(1)
     .click();
   await page.waitForURL("**/scanner");
@@ -91,7 +91,9 @@ test("warm theme, public flow, all examples, ingredient dialog, dictionary, prof
       page.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
   }
-  await page.getByRole("button", { name: "Scan label", exact: true }).click();
+  await page
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
+    .click();
   await page.getByRole("button", { name: "Teks label", exact: true }).click();
   await page
     .getByLabel("Salin nama, komposisi dan seluruh informasi gizi")
@@ -201,7 +203,7 @@ test("warm theme, public flow, all examples, ingredient dialog, dictionary, prof
   await page.waitForURL("/");
   expect(errors).toEqual([]);
 });
-test("mobile layout, keyboard focus, warm dialogs and session revocation", async ({
+test("mobile layout, keyboard focus, rose dialogs and session revocation", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -211,7 +213,7 @@ test("mobile layout, keyboard focus, warm dialogs and session revocation", async
     await page
       .locator("body")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(242, 239, 232)");
+  ).toBe("rgb(246, 232, 237)");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -223,7 +225,7 @@ test("mobile layout, keyboard focus, warm dialogs and session revocation", async
   ).toBeFocused();
   await page.screenshot({ path: "artifacts/home-mobile.png", fullPage: true });
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -247,7 +249,7 @@ test("mobile layout, keyboard focus, warm dialogs and session revocation", async
     await page
       .getByRole("dialog")
       .evaluate((el) => getComputedStyle(el).backgroundColor),
-  ).toBe("rgb(255, 253, 248)");
+  ).toBe("rgb(255, 254, 253)");
   await page.getByRole("button", { name: "Tutup rincian" }).click();
   await page.screenshot({
     path: "artifacts/scanner-mobile.png",

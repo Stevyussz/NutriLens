@@ -10,4 +10,6 @@ node_modules
 artifacts
 test-results
 playwright-report
+.impeccable
+assets/plates
 *.tsbuildinfo

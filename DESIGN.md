@@ -1,58 +1,256 @@
-# Current direction: Label studio — 16 October 2026
-
-The owner explicitly grants freedom to use dark or light surfaces and asks for a substantial visual upgrade with shorter authenticated pages. This supersedes all historical light-only restrictions below. The latest owner correction also excludes blue and navy throughout the product. Live camera is the default photo surface with explicit permission, rear-camera preference, two captures, retake/remove, safe cancellation and gallery fallback. Camera tracks stop on method/workspace changes, hidden tabs, processing and unmount; frames remain local until submission. Scan from a photo is the flagship entry point; manual text entry is a secondary correction/fallback path.
-
-Design Read: a focused food-label workspace for everyday Indonesian consumers. ENERGY 3 / RHYTHM 3 / MOTION 1. Warm charcoal navigation (#2c2825), warm paper (#fffdf8), vermilion actions (#a83e28), and a cream printed-label illustration connect the product to actual packaging. One action accent; semantic warning/error colors retain their existing labelled meaning. Manrope variable is self-hosted with its OFL licence. Headers use a tight, confident hierarchy; body and inputs stay legible; numerical comparisons retain tabular figures. Barcode strokes and ruled ingredient rows are the identity motif. No invented product photo, confidence score, or outcome is used as decoration.
-
-The public page introduces photo reading with an asymmetric oat hero with a serif italic accent and an explicitly illustrative composition label. Authenticated desktop uses a persistent navigation rail; mobile uses a compact header and safe-area bottom navigation. The scan workspace switches between input, optional examples and the last completed result without stacking them. Results lead with a deterministic short decision, sugar/sodium relative to the stored profile and next steps, then expose ingredients, sugar and alternatives separately. AI detail and provenance expand on request. Price is optional; missing prices do not become invented zeroes or savings. History is the fourth peer destination, retaining up to 100 private snapshots without photos and using the original profile when reopened. Profile preferences and device access are peers within the profile. Dictionary results are expandable rows with smaller pages; source status is available on demand. Manual correction splits identity/composition from nutritional quantities and opens the invalid section when validation fails. Drafts and selected files remain mounted in page memory.
-
-Research: the Appllama MCP is unavailable. Official Yuka and Cronometer product flows informed scan-first entry and overview-before-detail hierarchy; no 20-screen catalogue study or native simulator/FPS certification is claimed. Validation uses real web-browser flows, mobile/desktop screenshots and recordings. Source provenance and mandatory OCR review remain intact.
-
-Photo inspection refinement: existing photos open in a focus-trapped dialog so users can compare small print without opening another browser tab. The bounded oat image area can scroll when enlarged; the document itself must not overflow. Closing restores focus to the selected photo. Opening a captured photo stops the live camera to avoid an unnecessary camera session while reading. Thumbnail labels describe inspection, while a separate remove control preserves an explicit destructive action. Gallery selection appends only within the two-photo limit and keeps existing captures on validation errors. History uses one labelled name-search field and explicit submit/reset actions because retrieving a saved label is its primary repeat-use task; an unsuccessful search is distinct from having no history. Palette, self-hosted type, ENERGY 3 / RHYTHM 3 / MOTION 1 and navigation destinations remain as defined above.
-
-QA flow correction: result tabs follow the URL on Back/Forward and history reload so navigation shows the requested information. A new scan returns to its own summary and drops an obsolete history identifier. A failed photo read receives focus and scrolls into view so a mobile user can see the failure and retry with the retained photo; this is task feedback rather than decorative motion. Palette, layout and navigation destinations are unchanged.
-
+---
+name: BongkarLabel — Indeks Belanja
+description: An Indonesian food-label index in mulberry, pale rose and citron.
+colors:
+  mulberry: "#571838"
+  navigation: "#491d36"
+  primary-hover: "#75334f"
+  rose-canvas: "#f5edf2"
+  rose-public: "#f6e8ed"
+  rose-soft: "#f2e5ee"
+  reading-white: "#fffefd"
+  inverse-white: "#fff8fc"
+  ink: "#352331"
+  muted: "#705c6b"
+  line: "#ddced8"
+  field-line: "#bca5b4"
+  focus: "#8e426a"
+  citron: "#eff28f"
+  citron-public: "#e9e98f"
+  camera-dark: "#381428"
+  safe-ink: "#216048"
+  safe-surface: "#e9f3ed"
+  caution-ink: "#775616"
+  caution-surface: "#fbf1d7"
+  danger-ink: "#9b2441"
+  danger-surface: "#fbe7ed"
+  notice-ink: "#625725"
+  notice-surface: "#f5f2dc"
+typography:
+  display:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "clamp(64px, 7.25vw, 96px)"
+    fontWeight: 750
+    lineHeight: 0.99
+    letterSpacing: "-0.035em"
+  headline:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "34px"
+    fontWeight: 700
+    lineHeight: 1.14
+    letterSpacing: "-0.03em"
+  title:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "23px"
+    fontWeight: 650
+    lineHeight: 1.25
+    letterSpacing: "-0.03em"
+  body:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.55
+  label:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "14px"
+    fontWeight: 600
+    lineHeight: 1.35
+  nutrient:
+    fontFamily: "Work Sans, sans-serif"
+    fontSize: "30px"
+    fontWeight: 650
+    letterSpacing: "-0.03em"
+rounded:
+  tab: "8px"
+  control: "10px"
+  camera: "12px"
+  panel: "14px"
+  dialog: "16px"
+spacing:
+  tight: "4px"
+  inline: "8px"
+  compact: "12px"
+  regular: "16px"
+  group: "20px"
+  panel: "24px"
+  workspace: "28px"
+components:
+  button-primary:
+    backgroundColor: "{colors.mulberry}"
+    textColor: "#fffafd"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "11px 18px"
+  button-primary-hover:
+    backgroundColor: "{colors.primary-hover}"
+  button-secondary:
+    backgroundColor: "{colors.reading-white}"
+    textColor: "{colors.mulberry}"
+    rounded: "{rounded.control}"
+    padding: "11px 18px"
+  button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.mulberry}"
+    rounded: "{rounded.control}"
+    padding: "11px 18px"
+  button-danger:
+    backgroundColor: "#fff0f3"
+    textColor: "#9d213e"
+    rounded: "{rounded.control}"
+    padding: "11px 18px"
+  button-camera:
+    backgroundColor: "{colors.citron}"
+    textColor: "{colors.navigation}"
+    rounded: "{rounded.control}"
+    padding: "11px 24px"
+  field:
+    backgroundColor: "{colors.reading-white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "10px 12px"
+  navigation-active:
+    backgroundColor: "{colors.citron}"
+    textColor: "{colors.navigation}"
+    rounded: "{rounded.tab}"
+    padding: "10px 13px"
+  suggestion-chip:
+    backgroundColor: "{colors.rose-soft}"
+    textColor: "{colors.mulberry}"
+    rounded: "{rounded.tab}"
+    padding: "11px 18px"
+  reading-panel:
+    backgroundColor: "{colors.reading-white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "24px"
+  quick-verdict:
+    backgroundColor: "{colors.reading-white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "24px"
 ---
 
-Historical directions, superseded where they conflict with the current direction:
+# Design System: BongkarLabel — Indeks Belanja
 
-# BongkarLabel
+## Overview
 
-Latest scanner/data revision: a mineral-blue page base (#e4ebed) with a bounded blue/sand/apricot gradient replaces the dominant peach foundation. Warm reading panels and terracotta actions preserve contrast and continuity. Scanner methods are three equal choices, with descriptions on larger screens. All three fieldsets remain mounted; inactive methods are hidden and disabled, so drafts and selected files survive switches without hidden required inputs blocking submission. Drafts stay in page memory only. On phones, results precede examples in both visual and DOM order; explicit anchors return to input or examples. The duplicate lower empty state is removed. A compact live profile summary exposes the limits used by analysis. Optional conditions are disclosed on demand in the profile.
+**Creative North Star: "Indeks Belanja"**
 
-The dictionary exposes live coverage counts in a native disclosure, alongside snapshot price coverage and source links. DATA_COVERAGE.md records the audit and known gaps. Reference-label totals exclude manual scans and illustrative cases. Taxonomy breadth is not presented as complete chemical, clinical, regulatory, local-product or retail-price coverage.
+An approachable index for reading Indonesian food labels: confident mulberry fields, pale rose canvases, clear white reading surfaces and citron cues. Aligned rows and restrained rules connect the public ingredient index with the application’s nutrient comparisons. Rounded controls keep the working interface familiar.
 
-## Current revision — 16 October 2026
+The public introduction uses a larger voice; the application settles into compact, readable text and short groups of information. Work Sans provides continuity across both. Product language remains Indonesian. Blue and navy are excluded by the owner’s confirmed identity direction.
 
-This section supersedes the palette and auth composition below. The owner rejected the previous beige treatment as well as sage dominance. Terracotta (#9e3924) now identifies actions; peach welcomes, mineral blue separates navigation/supporting information, and warm off-white supports prolonged reading. A bounded blue-to-sand-to-peach page gradient ends in solid peach rather than repeating a fixed viewport background. Green remains a labelled semantic result state. ENERGY 2 / RHYTHM 2 / MOTION 1 remain unchanged.
+**Key Characteristics:**
+- Mulberry orientation with rose and white reading layers.
+- Citron for prominent scan actions and selected controls.
+- One self-hosted variable font with tightly spaced headings.
+- Aligned ingredient and nutrient rows with quiet dividers.
+- Flat reading surfaces and restrained state motion.
 
-Desktop authentication pairs a peach process panel with a quieter form. Phones and tablets show the form first, without the tall marketing introduction. Login/register are real linked routes. Account creation from scanner/dictionary replaces the auth page with optional profile setup; save and skip both return to the intended destination using replace navigation. Creating an account explicitly to retain an existing profile returns directly to that profile. Login returns directly to its intended destination. Guest access remains optional and preserves its chosen destination. Profile setup never assumes medical conditions and does not request session audit data.
+## Colors
 
-Scanner errors appear beside input. A completed result receives keyboard focus and scrolls into view, with an explicit link back to input. Three peer destinations retain the mobile bottom navigation. Gradients are explicitly owner-requested and identify introductory surfaces; dense reading panels remain quieter. Controls use 8 px corners, panels 16 px, input text 16 px on phones. No new imagery is generated. Appllama MCP remains unavailable; no catalogue study or native simulator performance is claimed.
+The palette combines berry-dark orientation with pale pink reading space and a yellow-green cue for action and selection. Frontmatter owns canonical values; the source also contains local inverse and hover variants.
 
-Earlier records below describe superseded iterations.
+### Primary
+- **Mulberry:** application primary buttons, selected text, links and the public opening field.
+- **Navigation Mulberry:** desktop navigation, public reading headings and camera-action text.
+- **Primary Hover:** application primary-button hover feedback.
 
-Session direction from the owner overrides BLUEPRINTS.md: the entire website uses a light theme, without dark surfaces or a dark mode. A warm stone canvas, localized apricot and blue-gray gradients, ivory reading panels and linen example panels separate content by role. Green is reserved for actions, selection and relevant semantic states; it no longer washes every layer. Amber and rose communicate warning and avoidance states, with explicit text labels so meaning never depends on color.
+### Secondary
+- **Citron:** camera activation, shutter accents, current scan step and desktop selected navigation.
+- **Public Citron:** the slightly softer, larger public scan button; this variant belongs to that surface.
 
-Design Read: a public food-label reading companion for Indonesian consumers, with an approachable editorial hierarchy. ENERGY 2 / RHYTHM 2 / MOTION 1. Latest owner direction removes all judge/demo login positioning; checking a label starts directly with a private temporary session and no assumed medical conditions.
+### Neutral
+- **Rose Canvas / Rose Public:** application and public page backgrounds respectively.
+- **Rose Soft:** secondary controls, OCR confirmation, selected groups and supporting information.
+- **Reading White / Inverse White:** reading surfaces and text on dark fields.
+- **Ink / Muted:** primary reading and secondary explanation.
+- **Line / Field Line:** dividers and form boundaries.
+- **Focus:** visible focus on light working surfaces; the public opening uses citron.
+- **Camera Dark:** bounded live-camera and camera-idle surfaces.
 
-- Color: the latest owner correction rejects sage dominance and a uniform gradient treatment. Warm stone forms the page canvas; localized apricot and blue-gray gradients frame the opening area. Navigation is warm neutral, reading panels ivory, the scanner example sidebar linen, supporting notices blue-gray, and data strips pale clay. Green is limited to actions, selection and relevant status. Gradients do not cover every component. Keep strong neutral text contrast on every surface.
-- Layout: a centered, spacious hero carries one message and the primary action. A compact horizontal example below the hero explains unfamiliar ingredient names using wrapped ingredient tags; it no longer competes with the hero as a tall ledger. The scanner opens with a choice of entry method and sample analyses; the longer manual form appears only when requested. Results follow the consumer's questions: what is inside, what adds up, what fits my needs.
-- Typography: the system sans-serif stack keeps dense Indonesian label text familiar, legible and available offline. Tabular numerals support numerical comparisons.
-- Spacing: a four-pixel base separates fields, sections and analysis outputs without making every unit a floating card.
-- Shape: controls use 8 px corners, panels 16 px, ingredient tokens are compact rounded rectangles. No blanket pill styling.
-- Icons: Lucide is explicitly requested in the blueprint; use only ingredient, scan, navigation and security symbols relevant to their action.
-- Motion: a reduced-motion-aware scan indicator provides progress feedback; reading data remains stationary.
-- Theme: a fixed light theme is explicitly requested by the owner in this session. Dialogs, charts, inputs, empty/loading states and every dashboard page use the same colored surface tokens. No white-only foundation remains; dark surfaces are still excluded per the earlier owner constraint.
-- Imagery: no generated logos, photos or invented product artwork. BongkarLabel is a text wordmark.
-- Evidence: cases from the blueprint are labelled illustrative. Community catalogue records retain source links. Prices without retailer evidence are labelled estimates.
+### Semantic states
+Safe, caution and danger retain explicit labels alongside green, amber and rose treatments. The notice pairs a pale yellow surface with dark olive text. Semantic colors do not replace the identity palette.
 
-The blueprint explicitly requests inspiration from Linear/Vercel and Lucide. Apply its hierarchy and typography intent without reproducing another product's composition. Brand direction takes precedence over the skills' default styling suggestions.
+**The Reading Layers Rule.** Use pale rose for the page, white for bounded reading surfaces and thin rose-gray rules within them.
 
-## Account and mobile navigation revision — 16 October 2026
+## Typography
 
-Accounts are optional and serve general users. Registration upgrades an active guest in place, preserving their profile. Login and registration are dedicated routes with an explicit return link; completion replaces the route and registered sessions are guarded from re-entering these forms. Destinations are restricted to the three application pages. Guests retain direct access to analysis.
+**Display Font:** Work Sans, with sans-serif fallback.
+**Body Font:** Work Sans, with sans-serif fallback.
 
-On phones the same three peer destinations form a bottom navigation bar, with 62 px touch targets and safe-area padding. Content reserves room below; focused inputs use 16 px text. Auth pages focus on the form and omit the application tab bar. Passwords support password-manager completion and an explicit visibility control. Desktop retains top navigation. These are mobile web checks, not claims of native simulator performance. Appllama skill guidance was read; its MCP was unavailable, so no catalogue-screen research is claimed.
+The variable font is self-hosted at `/fonts/work-sans-variable.ttf`, with weights (100–900) and swap loading. Heavier headings establish hierarchy without introducing another family.
 
-The dictionary limits alias previews with an accessible expandable list; search suggestions execute real database queries and clear resets both query and input. Device summaries hide raw user-agent details until requested. Result anchors connect directly to composition, sugar sources and replacement options.
+### Hierarchy
+- **Display:** public headline uses the frontmatter role; at the public phone breakpoint it becomes `clamp(43px, 10vw, 64px)` with line-height (1.02). The intermediate breakpoint sets the headline to (72px). Public introductory copy uses `clamp(21px, 2.1vw, 32px)` and becomes (18px) on phones.
+- **Headline:** application task headings use the headline role, reducing to (29px) on narrow phones. Result headings use (28px); authentication headings use (32px), reducing to (28px).
+- **Title:** section headings use the title role. Dictionary/history headings use (20–21px). The public reading-section heading uses `clamp(30px, 2.8vw, 42px)`.
+- **Body:** working text uses the body role. Supporting copy typically uses (12–14px). Public explanation uses (15–17px) with line-height (1.5–1.6). Longer explanations have observed limits around (67–75ch).
+- **Label:** buttons use the label role; field and navigation weights use (550). Ordinary labels retain sentence case.
+- **Nutrient:** comparison values use the nutrient role and tabular figures; phone values reduce to (28px).
+
+**The One Family Rule.** Keep Work Sans across headings, controls and reading text; vary scale, weight and spacing within the family.
+
+## Layout
+
+Application content centers within a (1200px) maximum, using `min(1200px, calc(100% - 64px))` on desktop. Desktop navigation is a full-width horizontal band. Camera and practical guidance share a two-column workspace (1.85fr / 1fr, minimum guidance width 230px), separated by (28px). Frontmatter spacing records reused observed steps, not a rigid mathematical scale.
+
+At (1000px), navigation and workspace spacing tighten. At (800px), a compact top header and fixed four-item bottom navigation replace the desktop band; guidance is hidden and the camera becomes one column. Main content reserves bottom space for navigation and safe-area insets. At (520px), side margins become (16px), panels generally use (18px) padding and scanner entry uses (14px). The method row retains three compact controls. Profile fields become two columns, with the final field spanning the row.
+
+The public page uses an (88%) container capped at (1600px), becoming viewport width minus (40px) at (650px). Its ingredient index remains four aligned columns; three usage steps and the detail columns stack on phones. Public composition remains surface-specific rather than a template for every app page.
+
+## Elevation & Depth
+
+Reading panels are flat: white fill, a thin border and tonal separation provide depth. Nested panels and detailed result sections commonly shed enclosing borders and padding. Shadows identify floating task controls and modal interruption.
+
+### Shadow Vocabulary
+- **Ready-to-submit control:** `0 5px 18px #491d361a`, a small ambient lift for the floating camera submission action.
+- **Dialog:** `0 20px 70px #28111d40`, paired with a translucent mulberry overlay (`#28111dc4`).
+
+**The Flat Reading Rule.** Keep reading panels at rest without shadows; reserve elevation for floating controls and dialogs.
+
+## Shapes
+
+Soft rectangles provide the main silhouette: tabs and suggestions, controls, camera, panels and dialogs use their frontmatter corner roles. Thin straight dividers organize repeated rows. Step counters and the shutter are circular functional exceptions. Ingredient imagery sits inside aligned cells; the final public index is open and divided rather than enclosed as separate cards.
+
+## Components
+
+### Buttons
+Familiar, confident controls. Application primary, secondary, ghost and danger variants share control corners, (46px) minimum height and frontmatter padding. Primary buttons are mulberry; secondary buttons use white fill and a muted rose stroke; ghost controls are transparent. Secondary and ghost hover fill is (`#ead9e4`). Disabled buttons use opacity (0.48); enabled pressed buttons scale to (0.98).
+
+Camera activation uses citron on the dark camera field and a darker citron hover (`#dfe46d`). The public scan action is a larger surface-specific variant: (12px) corners, desktop (88px) minimum height and (32px) type, reducing to (60px) and (21px) on phones; hover fill is (`#f2f3aa`). Public secondary action is light outline on mulberry.
+
+### Chips
+Dictionary suggestions are rose-soft action buttons with mulberry text and tab corners. Selected scanner methods use citron and expose `aria-pressed`. Status treatments retain visible semantic wording instead of acting as filters.
+
+### Cards / Containers
+Reading panels and quick verdicts use white fill, thin line borders, panel corners and panel padding. Empty states use rose-soft fill. Dictionary entries are open ruled sections within one enclosing white list, rather than individual elevated cards.
+
+### Inputs / Fields
+White fields use muted rose strokes, control corners, (46px) minimum height and frontmatter padding. Labels sit above fields with a (7px) gap. Placeholders use muted rose (`#786271`). Application focus uses a (3px) focus outline offset by (3px); public controls on the opening field use citron offset by (5px). Errors use dark rose (`#a02041`) and visible text. Password controls share one field enclosure.
+
+### Navigation
+Desktop navigation combines a mulberry band, light labels and citron selection. Hover uses lighter mulberry (`#683a53`). Four destinations move to fixed bottom navigation at the application mobile breakpoint. Mobile selection uses rose-soft fill and mulberry text. Active destinations expose `aria-current`.
+
+### Quick verdict and nutrient rows
+A short heading, action and reason precede two aligned nutrient readings. Horizontal rules bound the row; a vertical rule separates its values. Figures are tabular, units stay visible and serving context accompanies the comparison. Reuse this hierarchy with actual analysis data.
+
+### Motion and overlays
+The public introduction enters over (240ms); a new quick verdict enters over (180ms), using `cubic-bezier(0.16, 1, 0.3, 1)` with only small travel. These animations run only when reduced motion is not requested. Dialogs use the shared white, rounded, elevated treatment and retain visible control focus.
+
+## Do's and Don'ts
+
+### Do:
+- Do use Work Sans and the established role hierarchy across public and application surfaces.
+- Do preserve the distinction between rose canvas, white reading panels and mulberry orientation.
+- Do pair semantic colors with visible status wording.
+- Do retain tabular figures and aligned dividers for nutrient comparisons.
+- Do preserve visible focus and reduced-motion behavior when extending controls.
+
+### Don't:
+- Don’t introduce blue or navy into this identity.
+- Don’t carry the discarded charcoal, vermilion and Manrope identity into new surfaces.
+- Don’t add a shadow to every reading panel or repeated row.
+- Don’t treat illustrative ingredient imagery or specimen data as a measured product result.
+
+<!-- Extraction evidence: src/app/globals.css; src/app/application.css; src/app/landing.css; src/components/navigation.tsx; src/components/scanner/quick-verdict.tsx; src/app/(public)/page.tsx; .impeccable/review/production/report.json. Authorized identity replacement and approved public revision are recorded in the surface contracts. -->

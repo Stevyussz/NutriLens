@@ -36,7 +36,6 @@ export async function AuthScreen({
         </header>
         <main id="main" className="auth-layout">
           <aside className="auth-intro" aria-label="Tentang akun Anda">
-            <p className="eyebrow">Label yang sama. Kebutuhan yang berbeda.</p>
             <h2>
               {registering
                 ? "Pilihan Anda, lebih personal."
@@ -99,11 +98,6 @@ export async function AuthScreen({
                 Daftar
               </Link>
             </nav>
-            <p className="eyebrow">
-              {registering
-                ? "Langkah 1 · Akun Anda"
-                : "Profil Anda sudah menunggu"}
-            </p>
             <h1 id="auth-title">
               {registering ? "Buat akun Anda." : "Selamat datang kembali."}
             </h1>

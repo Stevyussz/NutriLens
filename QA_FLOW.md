@@ -1,6 +1,10 @@
 # QA BongkarLabel
 
-Tanggal: 16 Oktober 2026. Target: aplikasi Docker di localhost:3001. Akun dan sesi QA dipisahkan dari akun pengguna. Gambar uji adalah fixture label terkontrol, bukan pembuktian akurasi semua kemasan.
+Tanggal: 17 Oktober 2026. Target: aplikasi Docker di localhost:3001. Akun dan sesi QA dipisahkan dari akun pengguna. Gambar uji adalah fixture label terkontrol, bukan pembuktian akurasi semua kemasan.
+
+## Identitas dan prioritas UI
+
+Identitas Indeks Belanja memakai mulberry, rose, citron dan Work Sans. Beranda mengarahkan ke scan tanpa akun; kamera menjadi metode utama. Galeri dan formulir lengkap tersedia sebagai jalur pendamping. Hasil menampilkan keputusan dan angka gizi ringkas sebelum detail. Ukuran layar yang diperiksa meliputi 320, 390, 768 dan 1440 px; beranda juga diperiksa pada 1280 dan 1600 px.
 
 ## Urutan perjalanan pengguna
 

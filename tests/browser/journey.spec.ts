@@ -70,7 +70,9 @@ test("input drafts survive method switches and mobile results precede examples",
   ).toBeLessThan(1500);
   await page.getByRole("link", { name: "Contoh lainnya", exact: true }).click();
   await expect(page.locator("#contoh-analisis")).toBeInViewport();
-  await page.getByRole("button", { name: "Scan label", exact: true }).click();
+  await page
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
+    .click();
   await expect(page.locator("#label-entry")).toBeInViewport();
   expect(
     await page.evaluate(

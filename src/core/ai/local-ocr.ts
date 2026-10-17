@@ -7,6 +7,7 @@ import { join } from "node:path";
 import {
   normalizePhotoTranscription,
   nutrientKeys,
+  photoFieldLabel,
   type PhotoReview,
   type PhotoTranscription,
 } from "./vision-contract";
@@ -171,7 +172,7 @@ export function crossCheckPhoto(
     ) {
       nutrition[key] = null;
       issues.push(
-        `${key}: dua pembaca belum sepakat; cocokkan angka langsung dengan foto.`,
+        `${photoFieldLabel(key)}: dua pembaca belum sepakat; cocokkan angka langsung dengan foto.`,
       );
     }
   }

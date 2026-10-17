@@ -4,12 +4,10 @@ test("all public entry points reuse the same private session without assumed con
   context,
 }) => {
   await page.goto("/");
-  await page
-    .getByRole("link", { name: "Lihat cara kerjanya", exact: true })
-    .click();
+  await page.getByRole("link", { name: "Cara kerjanya", exact: true }).click();
   await expect(page).toHaveURL(/#cara-baca$/);
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .last()
     .click();
   await page.waitForURL("**/scanner");
@@ -21,7 +19,7 @@ test("all public entry points reuse the same private session without assumed con
   expect((await profile.json()).healthProfile.conditions).toEqual([]);
   await page.getByRole("link", { name: "Bongkar Label", exact: true }).click();
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -53,7 +51,7 @@ test("data error states provide working retries and dictionary clears to an actu
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

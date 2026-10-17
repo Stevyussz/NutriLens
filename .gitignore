@@ -6,3 +6,9 @@ node_modules/
 test-results/
 playwright-report/
 artifacts/
+.impeccable/build/
+.impeccable/review/
+.impeccable/references/
+.impeccable/progress.md
+.impeccable/config.local.json
+/assets/

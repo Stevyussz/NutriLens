@@ -111,11 +111,11 @@ export function DictionaryExplorer() {
             {dictionary.data.entries.map((c) => (
               <details className="dictionary-entry" key={c.canonicalName}>
                 <summary>
+                  <h2 className="capitalize">{c.canonicalName}</h2>
                   <p className="muted text-sm mb-2">
                     {ingredientFunctionLabels[c.functionalCategory]}
                     {c.insOrECode ? ` · ${c.insOrECode}` : ""}
                   </p>
-                  <h2 className="capitalize">{c.canonicalName}</h2>
                 </summary>
                 <p>{c.plainExplanation}</p>
                 <IngredientAliases

@@ -58,17 +58,17 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
               margin={{ top: 20, bottom: 32, left: 0, right: 12 }}
               accessibilityLayer
             >
-              <CartesianGrid stroke="#c7bcad" />
+              <CartesianGrid stroke="#ddced8" />
               <XAxis
                 type="number"
                 dataKey="price"
                 name="Harga"
-                tick={{ fill: "#54554f", fontSize: 12 }}
+                tick={{ fill: "#705c6b", fontSize: 12 }}
                 tickFormatter={(v) => `${Number(v) / 1000}rb`}
                 label={{
                   value: "Harga / sajian (Rp, estimasi bila ditandai)",
                   position: "bottom",
-                  fill: "#54554f",
+                  fill: "#705c6b",
                   fontSize: 12,
                 }}
               />
@@ -78,14 +78,14 @@ export function ParetoSwapMatrix({ analysis }: { analysis: Analysis }) {
                 name="Skor"
                 domain={[0, 100]}
                 width={40}
-                tick={{ fill: "#54554f", fontSize: 12 }}
+                tick={{ fill: "#705c6b", fontSize: 12 }}
               />
               <Tooltip
                 cursor={{ strokeDasharray: "3 3" }}
                 contentStyle={{
-                  background: "#fff9f0",
-                  color: "#303432",
-                  borderColor: "#8d887f",
+                  background: "#fffefd",
+                  color: "#352331",
+                  borderColor: "#bca5b4",
                 }}
               />
               <Legend verticalAlign="top" />

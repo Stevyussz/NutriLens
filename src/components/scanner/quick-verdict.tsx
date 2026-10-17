@@ -23,8 +23,9 @@ export function QuickVerdict({
       id="hasil-ringkas"
       aria-labelledby="quick-title"
     >
-      <p className="eyebrow">Yang perlu Anda tahu</p>
       <h3 id="quick-title">{summary.title}</h3>
+      <p className="quick-action">{summary.action}</p>
+      <p className="quick-reason">{summary.reason}</p>
       <dl className="quick-numbers">
         <div>
           <dt>Gula / sajian</dt>
@@ -41,16 +42,11 @@ export function QuickVerdict({
           <p>{summary.sodiumPercent}% batas harian profil</p>
         </div>
       </dl>
-      <p className="quick-action">{summary.action}</p>
-      <p className="quick-reason">{summary.reason}</p>
       <p className="quick-serving">
         Untuk {decimal(p.servingSizeGrams)} g/ml per sajian. Satu kemasan bisa
         berisi beberapa sajian.
       </p>
       <div className="quick-recommendation">
-        {picks.length > 0 && (
-          <span className="eyebrow">Pilihan pembanding</span>
-        )}
         {picks.length ? (
           <>
             <p>Bandingkan dengan {picks.map((s) => s.name).join(" atau ")}.</p>

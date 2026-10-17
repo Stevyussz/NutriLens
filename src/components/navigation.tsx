@@ -25,9 +25,6 @@ export function Navigation({ isGuest = true }: { isGuest?: boolean }) {
           Bongkar<span>Label</span>
           <span className="wordmark-dot" />
         </Link>
-        <span className="hidden md:inline muted text-sm">
-          Baca komposisi. Putuskan sendiri.
-        </span>
         <div className="account-actions">
           <Link
             className="button button-ghost"

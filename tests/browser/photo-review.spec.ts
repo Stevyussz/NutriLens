@@ -6,7 +6,7 @@ test("photo transcription requires corrections and confirmation before analysis"
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -115,7 +115,7 @@ test("catalogue search provides real source labels without inventing a price", a
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

@@ -15,7 +15,6 @@ export default async function Welcome({
   return (
     <div className="onboarding-layout">
       <header className="page-header">
-        <p className="eyebrow">Akun siap · Langkah 2 dari 2</p>
         <h1>Sesuaikan dengan Anda.</h1>
         <p className="muted">
           Profil membantu menandai bahan dan membandingkan pilihan. Isi yang

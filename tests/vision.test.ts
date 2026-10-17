@@ -48,6 +48,8 @@ test("missing, censored, percentage and ambiguous OCR quantities stay null", () 
     );
     assert.equal(r.nutrition.sugarGrams, null);
     assert.ok(r.issues.length);
+    assert.ok(r.issues.some((issue) => issue.startsWith("Gula:")));
+    assert.ok(r.issues.every((issue) => !issue.includes("sugarGrams")));
   }
   const zero = normalizePhotoTranscription(
     {

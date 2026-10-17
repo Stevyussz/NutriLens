@@ -4,6 +4,27 @@ import { categorySchema, nutritionSchema } from "../db/collections";
 export const nutrientKeys = Object.keys(
   nutritionSchema.shape,
 ) as (keyof typeof nutritionSchema.shape)[];
+const fieldLabels: Record<string, string> = {
+  caloriesKcal: "Energi",
+  proteinGrams: "Protein",
+  sugarGrams: "Gula",
+  fiberGrams: "Serat",
+  saturatedFatGrams: "Lemak jenuh",
+  sodiumMg: "Natrium",
+  productName: "Nama produk",
+  brand: "Merek",
+  category: "Kategori produk",
+  servingText: "Ukuran sajian",
+  basis: "Dasar perhitungan gizi",
+  basisText: "Judul kolom gizi",
+  ingredientsText: "Komposisi",
+};
+export function photoFieldLabel(field: string): string {
+  return (
+    fieldLabels[field.replace(/^nutritionText\./, "")] ??
+    "bagian label yang belum terbaca"
+  );
+}
 export const photoTranscriptionSchema = z
   .object({
     productName: z.string().max(250),
@@ -170,7 +191,7 @@ export function normalizePhotoTranscription(
       }
       if (value === null)
         issues.push(
-          `${key}: angka atau satuannya belum pasti; lengkapi dari foto.`,
+          `${photoFieldLabel(key)}: angka atau satuannya belum pasti; lengkapi dari foto.`,
         );
       return [key, value];
     }),
@@ -182,7 +203,7 @@ export function normalizePhotoTranscription(
     );
   if (evidence.unreadableFields.length)
     issues.push(
-      `Bagian yang ditandai sulit dibaca: ${evidence.unreadableFields.join(", ")}.`,
+      `Bagian yang ditandai sulit dibaca: ${evidence.unreadableFields.map(photoFieldLabel).join(", ")}.`,
     );
   return photoReviewSchema.parse({
     reviewRequired: true,

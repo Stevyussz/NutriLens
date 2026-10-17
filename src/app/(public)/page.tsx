@@ -1,17 +1,12 @@
 import Link from "next/link";
-import {
-  ScanLine,
-  Layers3,
-  Scale,
-  ShieldCheck,
-  Check,
-  ArrowRight,
-} from "lucide-react";
+import Image from "next/image";
+import { Camera, FileText, FileCheck2, ScanLine } from "lucide-react";
 import { StartAnalysis } from "@/components/start-analysis";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { requireUser } from "@/core/security/session";
 import { HttpError } from "@/core/security/http";
+
 export default async function Home() {
   let registered = false;
   try {
@@ -20,208 +15,181 @@ export default async function Home() {
     if (!(error instanceof HttpError && error.status === 401)) throw error;
   }
   return (
-    <div className="shell">
-      <header className="public-header">
-        <Link href="/" className="wordmark">
-          Bongkar<span>Label</span>
-          <span className="wordmark-dot" />
-        </Link>
-        <nav className="public-nav" aria-label="Navigasi beranda">
-          <Link
-            className="public-account-link"
-            href={registered ? "/security-profile" : "/login"}
-          >
-            {registered ? "Profil saya" : "Masuk"}
+    <div className="landing-page">
+      <div className="landing-opening">
+        <header className="landing-header landing-width">
+          <Link href="/" className="wordmark">
+            BongkarLabel
           </Link>
-          <a href="#cara-baca" className="hidden md:inline-flex">
-            Cara membaca label
-          </a>
-          <StartAnalysis compact />
-        </nav>
-      </header>
-      <main id="main">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              <ScanLine size={18} aria-hidden />
-              Baca di balik kemasan
-            </p>
-            <h1>
+          <nav aria-label="Navigasi beranda">
+            <a href="#cara-baca">Cara membaca label</a>
+            <Link
+              href={registered ? "/security-profile" : "/login"}
+              className="landing-login"
+            >
+              {registered ? "Profil saya" : "Masuk"}
+            </Link>
+          </nav>
+        </header>
+        <main id="main">
+          <section
+            className="landing-hero landing-width"
+            aria-labelledby="home-title"
+          >
+            <h1 id="home-title">
               Foto labelnya.
               <br />
-              <span>Kenali isinya.</span>
+              Kenali isinya.
             </h1>
-            <p className="intro">
-              Foto komposisi dan tabel gizinya. Pahami nama lain gula, bahan
-              yang asing, dan pilihan yang lebih sesuai dengan kebutuhan Anda.
+            <p className="landing-intro">
+              Foto komposisi dan tabel gizinya. Periksa hasil baca,
+              <br className="landing-desktop-break" /> lalu lihat ringkasan
+              sesuai kebutuhan Anda.
             </p>
-            <div className="hero-actions">
-              <StartAnalysis />
-              <a className="button button-ghost" href="#cara-baca">
-                Lihat cara kerjanya
+            <div className="landing-actions">
+              <div className="landing-scan-action">
+                <ScanLine size={42} aria-hidden />
+                <StartAnalysis label="Mulai scan label" />
+              </div>
+              <a href="#cara-baca" className="landing-how-action">
+                Cara kerjanya
               </a>
             </div>
-            <p className="start-note">
-              <Check size={16} aria-hidden />
-              Langsung periksa, tanpa membuat akun.
-            </p>
-          </div>
-          <aside
-            className="hero-label-art"
-            aria-label="Ilustrasi pembacaan label"
+            <p className="landing-account-note">Tanpa membuat akun</p>
+          </section>
+          <section
+            className="landing-example"
+            aria-labelledby="label-example-title"
           >
-            <div className="label-art-caption">
-              <ScanLine size={18} aria-hidden /> Lihat lebih dekat
-            </div>
-            <div className="label-paper">
-              <span className="label-paper-kicker">CONTOH KOMPOSISI</span>
-              <h2>
-                Di balik
-                <br />
-                satu kemasan.
+            <div className="landing-width">
+              <h2 id="label-example-title">
+                Satu label. Beberapa nama untuk gula.
               </h2>
-              <div className="label-paper-rule" />
-              <div className="label-paper-row">
-                <span>01</span>
-                <strong>Gandum utuh</strong>
-                <span>Bahan utama</span>
-              </div>
-              <div className="label-paper-row sugar">
-                <span>02</span>
-                <strong>Gula</strong>
-                <span>Sumber gula</span>
-              </div>
-              <div className="label-paper-row sugar">
-                <span>03</span>
-                <strong>Dekstrosa</strong>
-                <span>Sumber gula</span>
-              </div>
-              <div className="label-paper-row sugar">
-                <span>04</span>
-                <strong>Madu</strong>
-                <span>Sumber gula</span>
-              </div>
-              <div className="label-paper-bottom">
-                <span>
-                  Nama berbeda.
-                  <br />
-                  <strong>Perannya berkaitan.</strong>
-                </span>
-                <div className="label-barcode" aria-hidden />
-              </div>
-              <p className="label-paper-note">
-                Ilustrasi cara membaca. Bukan hasil pindai produk riil.
+              <p className="ingredient-index-intro">
+                Gula, dekstrosa, dan madu sama-sama sumber gula. Banyaknya nama
+                bukan ukuran gram gula.
               </p>
+              <div className="ingredient-index">
+                {[
+                  ["/assets/plates/wheat.png", "Gandum utuh"],
+                  ["/assets/plates/sugar.png", "Gula"],
+                  ["/assets/plates/dextrose.png", "Dekstrosa"],
+                  ["/assets/plates/honey.png", "Madu"],
+                ].map(([id, label]) => (
+                  <div className="ingredient-index-item" key={id}>
+                    <Image
+                      src={id}
+                      alt=""
+                      width={230}
+                      height={110}
+                      sizes="(max-width: 520px) 22vw, (max-width: 900px) 18vw, 230px"
+                    />
+                    <strong>{label}</strong>
+                  </div>
+                ))}
+                <p className="ingredient-index-note">
+                  Contoh ilustratif,
+                  <br /> bukan hasil scan.
+                </p>
+              </div>
+              <section
+                id="cara-baca"
+                className="landing-steps"
+                aria-labelledby="steps-title"
+              >
+                <h2 id="steps-title">Dari foto, jadi lebih paham.</h2>
+                <ol>
+                  <li>
+                    <Camera aria-hidden />
+                    <div>
+                      <h3>1. Foto</h3>
+                      <p>
+                        Ambil foto komposisi dan tabel gizi pada kemasan produk.
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <FileText aria-hidden />
+                    <div>
+                      <h3>2. Periksa</h3>
+                      <p>
+                        Lihat hasil baca bahan dan informasi gizi dari label
+                        Anda.
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <FileCheck2 aria-hidden />
+                    <div>
+                      <h3>3. Pahami</h3>
+                      <p>
+                        Dapatkan ringkasan sesuai kebutuhan Anda sebelum
+                        membeli.
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+              </section>
             </div>
-            <p className="label-art-footnote">
-              Baca komposisi. Putuskan sendiri.
-            </p>
-          </aside>
-        </section>
-        <section
-          className="label-example"
-          aria-labelledby="label-example-title"
-        >
-          <div className="example-copy">
-            <p className="eyebrow">Mengenali sumber gula</p>
-            <h2 id="label-example-title">
-              Satu label.
-              <br />
-              Beberapa nama untuk gula.
-            </h2>
-            <p className="muted mb-0">
-              Nama berbeda bisa punya peran yang sama. Baca komposisinya
-              bersama, bukan satu per satu.
-            </p>
-          </div>
-          <div className="ingredient-example">
-            <p className="example-caption">
-              Contoh komposisi sereal ilustratif
-            </p>
-            <div
-              className="example-ingredients"
-              aria-label="Urutan bahan pada contoh"
+          </section>
+          <div className="landing-continuation">
+            <section
+              className="landing-details landing-width"
+              aria-labelledby="beyond-title"
             >
-              <span className="example-grain">Gandum utuh</span>
-              {["Sukrosa", "Sirup glukosa", "Dekstrosa", "Madu"].map((name) => (
-                <span key={name} className="example-sugar">
-                  {name}
-                </span>
-              ))}
-            </div>
-            <div className="example-conclusion">
-              <ArrowRight size={18} aria-hidden />
-              <p className="mb-0">Empat nama, sama-sama sumber gula.</p>
-            </div>
-            <p className="muted text-sm mb-0">
-              Ilustrasi, bukan label produk riil. Model posisi memberi estimasi,
-              bukan berat gula terukur.
-            </p>
-          </div>
-        </section>
-        <section id="cara-baca" className="section-divider explanation-grid">
-          <div>
-            <p className="eyebrow">Dari komposisi ke keputusan</p>
-            <h2>
-              Lebih paham.
-              <br />
-              Lebih punya pilihan.
-            </h2>
-            <p className="muted">
-              Bukan menilai makanan dari tampilan kemasannya. Mulai dari apa
-              yang benar-benar tertulis.
-            </p>
-          </div>
-          <div className="explanation-list">
-            <article>
-              <Layers3 aria-hidden />
-              <div>
-                <h3>Apa sebenarnya bahan ini?</h3>
-                <p className="muted mb-0">
-                  Cari nama lain gula, kode INS dan E-number. Kamus bahan
-                  memakai taksonomi Open Food Facts dengan tautan sumber, bukan
-                  tebakan dari namanya.
-                </p>
+              <h2 id="beyond-title">
+                Ringkas saat memilih.
+                <br />
+                Rinci saat diperlukan.
+              </h2>
+              <div className="landing-detail-list">
+                <details>
+                  <summary>Kenali bahan dan nama lainnya</summary>
+                  <p>
+                    Cari nama lain gula, kode INS dan E-number. Kamus bahan
+                    memakai taksonomi Open Food Facts dengan tautan sumber. Nama
+                    atau kode bahan saja bukan bukti bahwa bahan tersebut
+                    berbahaya.
+                  </p>
+                </details>
+                <details>
+                  <summary>Sesuaikan dengan kebutuhan Anda</summary>
+                  <p>
+                    Atur batas gula, natrium, alergi dan kondisi yang ingin Anda
+                    perhatikan. Profil dimulai tanpa asumsi kondisi medis. Hasil
+                    tersimpan di riwayat untuk dibaca kembali, dengan profil
+                    saat analisis dilakukan.
+                  </p>
+                </details>
+                <details>
+                  <summary>Bandingkan pilihan yang tersedia</summary>
+                  <p>
+                    Kandidat pembanding berasal dari kategori dan rasa yang
+                    mirip. Periksa gizi, ukuran sajian dan biayanya; harga yang
+                    belum terverifikasi ditandai sebagai estimasi. Data
+                    komunitas tetap perlu dicocokkan dengan label kemasan.
+                  </p>
+                </details>
               </div>
-            </article>
-            <article>
-              <ShieldCheck aria-hidden />
+            </section>
+            <section className="landing-final landing-width">
               <div>
-                <h3>Apakah sesuai dengan kebutuhan saya?</h3>
-                <p className="muted mb-0">
-                  Atur batas gula, natrium, alergi dan kondisi yang ingin Anda
-                  perhatikan. Profil dimulai tanpa asumsi kondisi medis.
-                </p>
+                <h2>
+                  Label yang ada di tangan Anda,
+                  <br />
+                  mulai dari situ.
+                </h2>
+                <p>Siapkan bagian komposisi dan tabel gizinya.</p>
               </div>
-            </article>
-            <article>
-              <Scale aria-hidden />
-              <div>
-                <h3>Ada pilihan yang lebih cocok?</h3>
-                <p className="muted mb-0">
-                  Bandingkan kandidat dari kategori dan rasa yang mirip, lalu
-                  periksa gizi, ukuran sajian dan biayanya. Estimasi harga
-                  selalu ditandai.
-                </p>
-              </div>
-            </article>
+              <StartAnalysis />
+            </section>
           </div>
-        </section>
-        <section className="reading-note">
-          <div>
-            <h2>Mulai dari makanan yang ada di tangan Anda.</h2>
-            <p className="muted mb-0">
-              Foto label kemasan atau coba contoh analisis untuk mengenal cara
-              kerjanya.
-            </p>
-          </div>
-          <StartAnalysis />
-        </section>
-      </main>
-      <footer className="public-footer">
+        </main>
+      </div>
+      <footer className="landing-footer landing-width">
         <div>
-          <p className="font-semibold mb-1">BongkarLabel</p>
-          <p className="mb-0">Baca komposisi, putuskan sendiri.</p>
+          <strong>BongkarLabel</strong>
+          <p>Baca komposisi. Putuskan sendiri.</p>
         </div>
         <Dialog>
           <DialogTrigger asChild>
@@ -238,12 +206,14 @@ export default async function Home() {
               perangkat berlaku maksimal 24 jam dan dapat diakhiri melalui
               Profil saya.
             </p>
-            <p className="mt-4">
-              Foto dan teks label dikirim ke Google Gemini ketika layanan
-              diaktifkan. Gambar asli tidak disimpan. Database menyimpan hasil
-              label, profil, hash input dan sesi; cache analisis berlaku 24 jam.
+            <p>
+              Foto dan teks label diproses oleh layanan pembacaan yang
+              terhubung. Jika AI diaktifkan, kiriman dapat diteruskan ke
+              penyedia yang dikonfigurasi melalui 9Router atau Gemini. Gambar
+              asli tidak disimpan dalam riwayat. Database menyimpan hasil label,
+              profil, hash input dan sesi; cache analisis berlaku 24 jam.
             </p>
-            <p className="mt-4 muted">
+            <p>
               Kamus dan katalog memakai data komunitas Open Food Facts dengan
               tautan sumber. Periksa kembali label fisik. Harga tanpa bukti toko
               merupakan estimasi. Analisis membantu membaca label dan bukan

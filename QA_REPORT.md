@@ -1,4 +1,8 @@
-# Hasil QA alur BongkarLabel
+# Hasil QA BongkarLabel
+
+Pembaruan 17 Oktober 2026: identitas Indeks Belanja selesai; 28 uji unit dan 17 uji browser final lulus. Lihat [laporan redesign UI/UX](QA_UI_REDESIGN.md) untuk cakupan visual, hasil review dan batas pengujian terbaru.
+
+## Arsip QA alur 16 Oktober 2026
 
 16 Oktober 2026, Asia/Jakarta. Target: aplikasi produksi Docker di localhost:3001, Chromium dengan viewport desktop dan mobile. Alur, langkah dan hasil yang diharapkan tercatat di [QA_FLOW.md](QA_FLOW.md).
 

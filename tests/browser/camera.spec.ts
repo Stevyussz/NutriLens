@@ -15,7 +15,7 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and en
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -166,7 +166,7 @@ test("gallery adds to captured selection and rejects excess or oversized files w
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");
@@ -208,7 +208,7 @@ test("denied camera permission has a useful gallery fallback", async ({
   });
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Scan label", exact: true })
+    .getByRole("button", { name: /^(?:Mulai )?[Ss]can label$/, exact: true })
     .first()
     .click();
   await page.waitForURL("**/scanner");

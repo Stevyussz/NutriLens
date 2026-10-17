@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-17T03:56:41.347633+00:00",
+  "title": "Design System: BongkarLabel — Indeks Belanja",
+  "extensions": {
+    "colorMeta": {
+      "mulberry": {
+        "role": "primary",
+        "displayName": "Mulberry",
+        "canonical": "#571838",
+        "tonalRamp": [
+          "oklch(15% 0.0992 352.77)",
+          "oklch(26% 0.0992 352.77)",
+          "oklch(38% 0.0992 352.77)",
+          "oklch(49% 0.0992 352.77)",
+          "oklch(61% 0.0992 352.77)",
+          "oklch(72% 0.0992 352.77)",
+          "oklch(84% 0.0992 352.77)",
+          "oklch(95% 0.0992 352.77)"
+        ]
+      },
+      "navigation": {
+        "role": "primary",
+        "displayName": "Navigation",
+        "canonical": "#491d36",
+        "tonalRamp": [
+          "oklch(15% 0.0751 347.27)",
+          "oklch(26% 0.0751 347.27)",
+          "oklch(38% 0.0751 347.27)",
+          "oklch(49% 0.0751 347.27)",
+          "oklch(61% 0.0751 347.27)",
+          "oklch(72% 0.0751 347.27)",
+          "oklch(84% 0.0751 347.27)",
+          "oklch(95% 0.0751 347.27)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "canonical": "#75334f",
+        "tonalRamp": [
+          "oklch(15% 0.0983 355.54)",
+          "oklch(26% 0.0983 355.54)",
+          "oklch(38% 0.0983 355.54)",
+          "oklch(49% 0.0983 355.54)",
+          "oklch(61% 0.0983 355.54)",
+          "oklch(72% 0.0983 355.54)",
+          "oklch(84% 0.0983 355.54)",
+          "oklch(95% 0.0983 355.54)"
+        ]
+      },
+      "rose-canvas": {
+        "role": "neutral",
+        "displayName": "Rose Canvas",
+        "canonical": "#f5edf2",
+        "tonalRamp": [
+          "oklch(15% 0.0108 339.34)",
+          "oklch(26% 0.0108 339.34)",
+          "oklch(38% 0.0108 339.34)",
+          "oklch(49% 0.0108 339.34)",
+          "oklch(61% 0.0108 339.34)",
+          "oklch(72% 0.0108 339.34)",
+          "oklch(84% 0.0108 339.34)",
+          "oklch(95% 0.0108 339.34)"
+        ]
+      },
+      "rose-public": {
+        "role": "neutral",
+        "displayName": "Rose Public",
+        "canonical": "#f6e8ed",
+        "tonalRamp": [
+          "oklch(15% 0.0165 353.64)",
+          "oklch(26% 0.0165 353.64)",
+          "oklch(38% 0.0165 353.64)",
+          "oklch(49% 0.0165 353.64)",
+          "oklch(61% 0.0165 353.64)",
+          "oklch(72% 0.0165 353.64)",
+          "oklch(84% 0.0165 353.64)",
+          "oklch(95% 0.0165 353.64)"
+        ]
+      },
+      "rose-soft": {
+        "role": "neutral",
+        "displayName": "Rose Soft",
+        "canonical": "#f2e5ee",
+        "tonalRamp": [
+          "oklch(15% 0.0184 336.56)",
+          "oklch(26% 0.0184 336.56)",
+          "oklch(38% 0.0184 336.56)",
+          "oklch(49% 0.0184 336.56)",
+          "oklch(61% 0.0184 336.56)",
+          "oklch(72% 0.0184 336.56)",
+          "oklch(84% 0.0184 336.56)",
+          "oklch(95% 0.0184 336.56)"
+        ]
+      },
+      "reading-white": {
+        "role": "neutral",
+        "displayName": "Reading White",
+        "canonical": "#fffefd",
+        "tonalRamp": [
+          "oklch(15% 0.0017 67.80)",
+          "oklch(26% 0.0017 67.80)",
+          "oklch(38% 0.0017 67.80)",
+          "oklch(49% 0.0017 67.80)",
+          "oklch(61% 0.0017 67.80)",
+          "oklch(72% 0.0017 67.80)",
+          "oklch(84% 0.0017 67.80)",
+          "oklch(95% 0.0017 67.80)"
+        ]
+      },
+      "inverse-white": {
+        "role": "neutral",
+        "displayName": "Inverse White",
+        "canonical": "#fff8fc",
+        "tonalRamp": [
+          "oklch(15% 0.0091 341.80)",
+          "oklch(26% 0.0091 341.80)",
+          "oklch(38% 0.0091 341.80)",
+          "oklch(49% 0.0091 341.80)",
+          "oklch(61% 0.0091 341.80)",
+          "oklch(72% 0.0091 341.80)",
+          "oklch(84% 0.0091 341.80)",
+          "oklch(95% 0.0091 341.80)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#352331",
+        "tonalRamp": [
+          "oklch(15% 0.0361 334.70)",
+          "oklch(26% 0.0361 334.70)",
+          "oklch(38% 0.0361 334.70)",
+          "oklch(49% 0.0361 334.70)",
+          "oklch(61% 0.0361 334.70)",
+          "oklch(72% 0.0361 334.70)",
+          "oklch(84% 0.0361 334.70)",
+          "oklch(95% 0.0361 334.70)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#705c6b",
+        "tonalRamp": [
+          "oklch(15% 0.0344 334.99)",
+          "oklch(26% 0.0344 334.99)",
+          "oklch(38% 0.0344 334.99)",
+          "oklch(49% 0.0344 334.99)",
+          "oklch(61% 0.0344 334.99)",
+          "oklch(72% 0.0344 334.99)",
+          "oklch(84% 0.0344 334.99)",
+          "oklch(95% 0.0344 334.99)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#ddced8",
+        "tonalRamp": [
+          "oklch(15% 0.0213 337.75)",
+          "oklch(26% 0.0213 337.75)",
+          "oklch(38% 0.0213 337.75)",
+          "oklch(49% 0.0213 337.75)",
+          "oklch(61% 0.0213 337.75)",
+          "oklch(72% 0.0213 337.75)",
+          "oklch(84% 0.0213 337.75)",
+          "oklch(95% 0.0213 337.75)"
+        ]
+      },
+      "field-line": {
+        "role": "neutral",
+        "displayName": "Field Line",
+        "canonical": "#bca5b4",
+        "tonalRamp": [
+          "oklch(15% 0.0337 338.80)",
+          "oklch(26% 0.0337 338.80)",
+          "oklch(38% 0.0337 338.80)",
+          "oklch(49% 0.0337 338.80)",
+          "oklch(61% 0.0337 338.80)",
+          "oklch(72% 0.0337 338.80)",
+          "oklch(84% 0.0337 338.80)",
+          "oklch(95% 0.0337 338.80)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus",
+        "canonical": "#8e426a",
+        "tonalRamp": [
+          "oklch(15% 0.1136 349.32)",
+          "oklch(26% 0.1136 349.32)",
+          "oklch(38% 0.1136 349.32)",
+          "oklch(49% 0.1136 349.32)",
+          "oklch(61% 0.1136 349.32)",
+          "oklch(72% 0.1136 349.32)",
+          "oklch(84% 0.1136 349.32)",
+          "oklch(95% 0.1136 349.32)"
+        ]
+      },
+      "citron": {
+        "role": "secondary",
+        "displayName": "Citron",
+        "canonical": "#eff28f",
+        "tonalRamp": [
+          "oklch(15% 0.1220 110.05)",
+          "oklch(26% 0.1220 110.05)",
+          "oklch(38% 0.1220 110.05)",
+          "oklch(49% 0.1220 110.05)",
+          "oklch(61% 0.1220 110.05)",
+          "oklch(72% 0.1220 110.05)",
+          "oklch(84% 0.1220 110.05)",
+          "oklch(95% 0.1220 110.05)"
+        ]
+      },
+      "citron-public": {
+        "role": "secondary",
+        "displayName": "Citron Public",
+        "canonical": "#e9e98f",
+        "tonalRamp": [
+          "oklch(15% 0.1123 108.43)",
+          "oklch(26% 0.1123 108.43)",
+          "oklch(38% 0.1123 108.43)",
+          "oklch(49% 0.1123 108.43)",
+          "oklch(61% 0.1123 108.43)",
+          "oklch(72% 0.1123 108.43)",
+          "oklch(84% 0.1123 108.43)",
+          "oklch(95% 0.1123 108.43)"
+        ]
+      },
+      "camera-dark": {
+        "role": "neutral",
+        "displayName": "Camera Dark",
+        "canonical": "#381428",
+        "tonalRamp": [
+          "oklch(15% 0.0637 348.10)",
+          "oklch(26% 0.0637 348.10)",
+          "oklch(38% 0.0637 348.10)",
+          "oklch(49% 0.0637 348.10)",
+          "oklch(61% 0.0637 348.10)",
+          "oklch(72% 0.0637 348.10)",
+          "oklch(84% 0.0637 348.10)",
+          "oklch(95% 0.0637 348.10)"
+        ]
+      },
+      "safe-ink": {
+        "role": "neutral",
+        "displayName": "Safe Ink",
+        "canonical": "#216048",
+        "tonalRamp": [
+          "oklch(15% 0.0760 164.65)",
+          "oklch(26% 0.0760 164.65)",
+          "oklch(38% 0.0760 164.65)",
+          "oklch(49% 0.0760 164.65)",
+          "oklch(61% 0.0760 164.65)",
+          "oklch(72% 0.0760 164.65)",
+          "oklch(84% 0.0760 164.65)",
+          "oklch(95% 0.0760 164.65)"
+        ]
+      },
+      "safe-surface": {
+        "role": "neutral",
+        "displayName": "Safe Surface",
+        "canonical": "#e9f3ed",
+        "tonalRamp": [
+          "oklch(15% 0.0132 159.91)",
+          "oklch(26% 0.0132 159.91)",
+          "oklch(38% 0.0132 159.91)",
+          "oklch(49% 0.0132 159.91)",
+          "oklch(61% 0.0132 159.91)",
+          "oklch(72% 0.0132 159.91)",
+          "oklch(84% 0.0132 159.91)",
+          "oklch(95% 0.0132 159.91)"
+        ]
+      },
+      "caution-ink": {
+        "role": "neutral",
+        "displayName": "Caution Ink",
+        "canonical": "#775616",
+        "tonalRamp": [
+          "oklch(15% 0.0888 79.40)",
+          "oklch(26% 0.0888 79.40)",
+          "oklch(38% 0.0888 79.40)",
+          "oklch(49% 0.0888 79.40)",
+          "oklch(61% 0.0888 79.40)",
+          "oklch(72% 0.0888 79.40)",
+          "oklch(84% 0.0888 79.40)",
+          "oklch(95% 0.0888 79.40)"
+        ]
+      },
+      "caution-surface": {
+        "role": "neutral",
+        "displayName": "Caution Surface",
+        "canonical": "#fbf1d7",
+        "tonalRamp": [
+          "oklch(15% 0.0357 89.44)",
+          "oklch(26% 0.0357 89.44)",
+          "oklch(38% 0.0357 89.44)",
+          "oklch(49% 0.0357 89.44)",
+          "oklch(61% 0.0357 89.44)",
+          "oklch(72% 0.0357 89.44)",
+          "oklch(84% 0.0357 89.44)",
+          "oklch(95% 0.0357 89.44)"
+        ]
+      },
+      "danger-ink": {
+        "role": "neutral",
+        "displayName": "Danger Ink",
+        "canonical": "#9b2441",
+        "tonalRamp": [
+          "oklch(15% 0.1545 11.93)",
+          "oklch(26% 0.1545 11.93)",
+          "oklch(38% 0.1545 11.93)",
+          "oklch(49% 0.1545 11.93)",
+          "oklch(61% 0.1545 11.93)",
+          "oklch(72% 0.1545 11.93)",
+          "oklch(84% 0.1545 11.93)",
+          "oklch(95% 0.1545 11.93)"
+        ]
+      },
+      "danger-surface": {
+        "role": "neutral",
+        "displayName": "Danger Surface",
+        "canonical": "#fbe7ed",
+        "tonalRamp": [
+          "oklch(15% 0.0231 357.35)",
+          "oklch(26% 0.0231 357.35)",
+          "oklch(38% 0.0231 357.35)",
+          "oklch(49% 0.0231 357.35)",
+          "oklch(61% 0.0231 357.35)",
+          "oklch(72% 0.0231 357.35)",
+          "oklch(84% 0.0231 357.35)",
+          "oklch(95% 0.0231 357.35)"
+        ]
+      },
+      "notice-ink": {
+        "role": "neutral",
+        "displayName": "Notice Ink",
+        "canonical": "#625725",
+        "tonalRamp": [
+          "oklch(15% 0.0705 97.05)",
+          "oklch(26% 0.0705 97.05)",
+          "oklch(38% 0.0705 97.05)",
+          "oklch(49% 0.0705 97.05)",
+          "oklch(61% 0.0705 97.05)",
+          "oklch(72% 0.0705 97.05)",
+          "oklch(84% 0.0705 97.05)",
+          "oklch(95% 0.0705 97.05)"
+        ]
+      },
+      "notice-surface": {
+        "role": "neutral",
+        "displayName": "Notice Surface",
+        "canonical": "#f5f2dc",
+        "tonalRamp": [
+          "oklch(15% 0.0291 100.58)",
+          "oklch(26% 0.0291 100.58)",
+          "oklch(38% 0.0291 100.58)",
+          "oklch(49% 0.0291 100.58)",
+          "oklch(61% 0.0291 100.58)",
+          "oklch(72% 0.0291 100.58)",
+          "oklch(84% 0.0291 100.58)",
+          "oklch(95% 0.0291 100.58)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Public hero headline; reductions remain surface-specific."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Application task heading."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Application section heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Working reading text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Application button text."
+      },
+      "nutrient": {
+        "displayName": "Nutrient",
+        "purpose": "Nutrient readings with tabular figures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-submit",
+        "value": "0 5px 18px #491d361a",
+        "purpose": "Floating camera submit action."
+      },
+      {
+        "name": "dialog",
+        "value": "0 20px 70px #28111d40",
+        "purpose": "Modal reading layer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "public-introduction",
+        "value": "240ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Public entry; only without reduced motion."
+      },
+      {
+        "name": "decision-arrives",
+        "value": "180ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Quick verdict entry; only without reduced motion."
+      },
+      {
+        "name": "button-pressed",
+        "value": "scale(0.98)",
+        "purpose": "Enabled button pressed feedback."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1000px"
+      },
+      {
+        "name": "application-mobile",
+        "value": "800px"
+      },
+      {
+        "name": "public-mobile",
+        "value": "650px"
+      },
+      {
+        "name": "application-phone",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary button from the application control family.",
+      "html": "<button class=\"ds-button ds-primary\" type=\"button\">Simpan profil</button>",
+      "css": ".ds-button{font:600 14px/1.35 \"Work Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border:1px solid transparent;border-radius:10px;cursor:pointer;text-align:center;}.ds-button:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-button:active:not(:disabled){transform:scale(.98)}.ds-button:disabled{opacity:.48;cursor:not-allowed}.ds-primary{background:var(--accent,#571838);color:#fffafd;border:0;}.ds-primary:hover:not(:disabled){background:#75334f;}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary button from the application control family.",
+      "html": "<button class=\"ds-button ds-secondary\" type=\"button\">Kembali</button>",
+      "css": ".ds-button{font:600 14px/1.35 \"Work Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border:1px solid transparent;border-radius:10px;cursor:pointer;text-align:center;}.ds-button:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-button:active:not(:disabled){transform:scale(.98)}.ds-button:disabled{opacity:.48;cursor:not-allowed}.ds-secondary{background:var(--surface,#fffefd);color:var(--accent,#571838);border-color:#baa1b1;}.ds-secondary:hover:not(:disabled){background:#ead9e4;}"
+    },
+    {
+      "name": "Ghost button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Ghost button from the application control family.",
+      "html": "<button class=\"ds-button ds-ghost\" type=\"button\">Lihat rincian</button>",
+      "css": ".ds-button{font:600 14px/1.35 \"Work Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border:1px solid transparent;border-radius:10px;cursor:pointer;text-align:center;}.ds-button:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-button:active:not(:disabled){transform:scale(.98)}.ds-button:disabled{opacity:.48;cursor:not-allowed}.ds-ghost{background:transparent;color:var(--accent,#571838);}.ds-ghost:hover:not(:disabled){background:#ead9e4;}"
+    },
+    {
+      "name": "Danger button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Danger button from the application control family.",
+      "html": "<button class=\"ds-button ds-danger\" type=\"button\">Hapus</button>",
+      "css": ".ds-button{font:600 14px/1.35 \"Work Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border:1px solid transparent;border-radius:10px;cursor:pointer;text-align:center;}.ds-button:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-button:active:not(:disabled){transform:scale(.98)}.ds-button:disabled{opacity:.48;cursor:not-allowed}.ds-danger{background:#fff0f3;color:#9d213e;border-color:#d597a5;}.ds-danger:hover:not(:disabled){background:#fff0f3;}"
+    },
+    {
+      "name": "Camera action",
+      "kind": "button",
+      "refersTo": "button-camera",
+      "description": "Camera action from the application control family.",
+      "html": "<button class=\"ds-button ds-camera\" type=\"button\">Aktifkan kamera</button>",
+      "css": ".ds-button{font:600 14px/1.35 \"Work Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border:1px solid transparent;border-radius:10px;cursor:pointer;text-align:center;}.ds-button:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-button:active:not(:disabled){transform:scale(.98)}.ds-button:disabled{opacity:.48;cursor:not-allowed}.ds-camera{background:var(--citron,#eff28f);color:#491d36;padding-inline:24px;}.ds-camera:hover:not(:disabled){background:#dfe46d;}"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labelled field with application focus treatment.",
+      "html": "<label class=\"ds-field\">Nama produk<input placeholder=\"Nama pada kemasan\" type=\"text\"></label>",
+      "css": ".ds-field{display:grid;gap:7px;color:var(--ink,#352331);font:550 14px/1.55 \"Work Sans\",sans-serif}.ds-field input{min-width:0;min-height:46px;padding:10px 12px;border:1px solid #bca5b4;border-radius:10px;background:var(--surface,#fffefd);color:var(--ink,#352331);font:400 15px/1.55 \"Work Sans\",sans-serif}.ds-field input::placeholder{color:#786271;opacity:1}.ds-field input:focus-visible{outline:3px solid #8e426a;outline-offset:3px}"
+    },
+    {
+      "name": "Application navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "Desktop orientation band with active and hover destinations.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigasi aplikasi\"><a href=\"#scan\" aria-current=\"page\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M4 7V4h3m10 0h3v3M4 17v3h3m10 0h3v-3M4 12h16\"/></svg>Scan label</a><a href=\"#dictionary\">Kamus bahan</a><a href=\"#history\">Riwayat</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:4px;background:#491d36;padding:12px;font-family:\"Work Sans\",sans-serif}.ds-nav a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 13px;border-radius:8px;color:#ead4e1;font-size:13px;font-weight:550;text-decoration:none}.ds-nav a:hover{background:#683a53;color:#fff8fc}.ds-nav a[aria-current=\"page\"]{background:var(--citron,#eff28f);color:#491d36}.ds-nav a:focus-visible{outline:3px solid #8e426a;outline-offset:3px}"
+    },
+    {
+      "name": "Dictionary suggestion",
+      "kind": "chip",
+      "refersTo": "suggestion-chip",
+      "description": "Compact ingredient lookup action.",
+      "html": "<button class=\"ds-suggestion\" type=\"button\">Maltodekstrin</button>",
+      "css": ".ds-suggestion{font:600 14px/1.35 \"Work Sans\",sans-serif;min-height:46px;padding:11px 18px;border:0;border-radius:8px;background:var(--surface-soft,#f2e5ee);color:var(--accent,#571838);cursor:pointer}.ds-suggestion:hover{background:var(--surface-soft,#f2e5ee)}.ds-suggestion:focus-visible{outline:3px solid #8e426a;outline-offset:3px}.ds-suggestion:active{transform:scale(.98)}"
+    },
+    {
+      "name": "Reading panel",
+      "kind": "card",
+      "refersTo": "reading-panel",
+      "description": "Flat white enclosure shared by working surfaces.",
+      "html": "<section class=\"ds-panel\"><h2>Periksa label</h2><p>Cocokkan hasil pembacaan dengan informasi pada kemasan.</p></section>",
+      "css": ".ds-panel{background:var(--surface,#fffefd);color:var(--ink,#352331);border:1px solid var(--line,#ddced8);border-radius:14px;padding:24px;box-shadow:none;font:400 15px/1.55 \"Work Sans\",sans-serif}.ds-panel h2{font-size:23px;font-weight:650;line-height:1.25;letter-spacing:-.03em;margin:0 0 12px}.ds-panel p{color:var(--muted,#705c6b);margin:0}"
+    },
+    {
+      "name": "Quick verdict",
+      "kind": "custom",
+      "refersTo": "quick-verdict",
+      "description": "Labelled specimen of the verdict hierarchy, not an actual analysis.",
+      "html": "<section class=\"ds-verdict\"><h3>Contoh tampilan hasil</h3><p class=\"ds-action\">Ringkasan keputusan tampil di sini.</p><p class=\"ds-reason\">Contoh tata letak; bukan hasil analisis produk.</p><dl class=\"ds-nutrients\"><div><dt>Gula / sajian</dt><dd>— <small>g</small></dd></div><div><dt>Natrium / sajian</dt><dd>— <small>mg</small></dd></div></dl><a href=\"#details\">Lihat rincian</a></section>",
+      "css": ".ds-verdict{background:var(--surface,#fffefd);color:var(--ink,#352331);border:1px solid var(--line,#ddced8);border-radius:14px;padding:24px;font:400 15px/1.55 \"Work Sans\",sans-serif}.ds-verdict h3{font-size:28px;line-height:1.2;font-weight:650;letter-spacing:-.03em;color:#491d36;margin:0 0 12px}.ds-action{font-size:16px;font-weight:650;color:#491d36;margin:0 0 6px}.ds-reason{font-size:14px;color:var(--muted,#705c6b);margin:0 0 20px}.ds-nutrients{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line,#ddced8);padding:16px 0;margin:0 0 12px}.ds-nutrients>div+div{border-left:1px solid var(--line,#ddced8);padding-left:24px}.ds-nutrients dt{font-size:13px;color:var(--muted,#705c6b)}.ds-nutrients dd{margin:0;font-size:30px;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.ds-verdict a{font-size:13px;color:var(--accent,#571838);text-underline-offset:4px}.ds-verdict a:hover{text-decoration-thickness:2px}.ds-verdict a:focus-visible{outline:3px solid #8e426a;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Indeks Belanja",
+    "overview": "An approachable index for reading Indonesian food labels: confident mulberry fields, pale rose canvases, clear white reading surfaces and citron cues. Aligned rows and restrained rules connect the public ingredient index with the application’s nutrient comparisons. Rounded controls keep the working interface familiar.\n\nThe public introduction uses a larger voice; the application settles into compact, readable text and short groups of information. Work Sans provides continuity across both. Product language remains Indonesian. Blue and navy are excluded by the owner’s confirmed identity direction.",
+    "keyCharacteristics": [
+      "Mulberry orientation with rose and white reading layers.",
+      "Citron for prominent scan actions and selected controls.",
+      "One self-hosted variable font with tightly spaced headings.",
+      "Aligned ingredient and nutrient rows with quiet dividers.",
+      "Flat reading surfaces and restrained state motion."
+    ],
+    "rules": [
+      {
+        "name": "The Reading Layers Rule",
+        "body": "Use pale rose for the page, white for bounded reading surfaces and thin rose-gray rules within them.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Keep Work Sans across headings, controls and reading text; vary scale, weight and spacing within the family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Reading Rule",
+        "body": "Keep reading panels at rest without shadows; reserve elevation for floating controls and dialogs.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Work Sans and the established role hierarchy across public and application surfaces.",
+      "Do preserve the distinction between rose canvas, white reading panels and mulberry orientation.",
+      "Do pair semantic colors with visible status wording.",
+      "Do retain tabular figures and aligned dividers for nutrient comparisons.",
+      "Do preserve visible focus and reduced-motion behavior when extending controls."
+    ],
+    "donts": [
+      "Don’t introduce blue or navy into this identity.",
+      "Don’t carry the discarded charcoal, vermilion and Manrope identity into new surfaces.",
+      "Don’t add a shadow to every reading panel or repeated row.",
+      "Don’t treat illustrative ingredient imagery or specimen data as a measured product result."
+    ]
+  }
+}
