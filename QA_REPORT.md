@@ -1,6 +1,6 @@
 # Hasil QA BongkarLabel
 
-Pembaruan 17 Oktober 2026: hasil foto kini langsung tampil, koreksi bersifat opsional, dan penelusuran sumber produk berjalan terpisah. Sebanyak 33 uji unit dan 18 uji browser lulus; setelah penyesuaian terakhir pembaca indeks produsen, tiga uji browser terdampak dan pengujian foto nyata produksi kembali lulus. Lihat [QA hasil foto dan sumber produk](QA_FAST_SCAN.md) untuk bukti dan batas pengujian terbaru. [Laporan redesign UI/UX](QA_UI_REDESIGN.md) dan arsip berikut mendokumentasikan tahap sebelumnya.
+Pembaruan 17 Oktober 2026: Nara menambahkan animasi baca dan pertanyaan lanjutan dari fakta label. Sebanyak 36 uji unit, 18 kasus browser sebelumnya, dan kasus Nara akhir lulus. Lihat [QA Nara](QA_NARA.md) untuk bukti, cakupan, dan batasnya. [QA hasil foto dan sumber produk](QA_FAST_SCAN.md), [laporan redesign UI/UX](QA_UI_REDESIGN.md), dan arsip berikut mencatat tahap sebelumnya.
 
 ## Arsip QA alur 16 Oktober 2026
 

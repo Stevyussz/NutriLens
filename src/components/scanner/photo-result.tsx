@@ -7,6 +7,7 @@ import type { HealthProfile } from "@/core/db/collections";
 import { photoDecision, photoDisplayName } from "@/core/photo-decision";
 import { requestApi } from "@/core/browser-api";
 import { decimal } from "@/core/utils";
+import { AskNara } from "./ask-nara";
 import { ProductResearchPanel } from "./product-research-panel";
 import { Button } from "../ui/button";
 const fields = [
@@ -338,6 +339,10 @@ export function PhotoResult({
             meragukan, foto ulang bagian tersebut atau koreksi hanya angka itu.
           </p>
         </details>
+        <AskNara
+          key={review.historyId || JSON.stringify(review.nutrition)}
+          historyId={review.historyId}
+        />
         <ProductResearchPanel review={review} />
         <p className="photo-history">
           {review.historyId ? (

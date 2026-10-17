@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-17T05:24:54.465566+00:00",
+  "generatedAt": "2026-10-17T06:00:57.784261+00:00",
   "title": "Design System: BongkarLabel — Indeks Belanja",
   "extensions": {
     "colorMeta": {
@@ -418,6 +418,16 @@
         "name": "button-pressed",
         "value": "scale(0.98)",
         "purpose": "Enabled button pressed feedback."
+      },
+      {
+        "name": "nara-reading-line",
+        "value": "nara-read 1.9s cubic-bezier(0.45, 0, 0.2, 1) infinite",
+        "purpose": "One line traverses 44px during an actual request. Pause offscreen or while the document is hidden. Reduced motion: no animation, static translateY(20px). Task text remains available."
+      },
+      {
+        "name": "nara-reading-line-compact",
+        "value": "nara-read-small 1.9s cubic-bezier(0.45, 0, 0.2, 1) infinite",
+        "purpose": "Compact pending-question mark traverses 30px. Same visibility pause behavior. Reduced motion: no animation, static translateY(14px)."
       }
     ],
     "breakpoints": [

@@ -1,11 +1,11 @@
 "use client";
 import { LiveCamera } from "./live-camera";
 import { PhotoInspector } from "./photo-inspector";
+import { NaraThinking } from "./nara-thinking";
 import { PhotoResult } from "./photo-result";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileText, Camera, ClipboardList, ScanLine } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { requestApi } from "@/core/browser-api";
 import { presetOutputSchema } from "@/core/api-schemas";
 import { QuickVerdict } from "./quick-verdict";
@@ -88,7 +88,6 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
     () => () => photoPreviews.forEach((url) => URL.revokeObjectURL(url)),
     [photoPreviews],
   );
-  const reducedMotion = useReducedMotion();
   const presets = useQuery({
     queryKey: ["presets"],
     queryFn: () => requestApi("/api/products/preset", presetOutputSchema),
@@ -806,6 +805,8 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                     ? "Analisis label yang sudah diperiksa"
                     : "Periksa label ini"}
           </Button>
+          {extraction.isPending && <NaraThinking />}
+          {scan.isPending && <NaraThinking task="analysis" />}
           {formError && (
             <p role="alert" className="error-text mt-3">
               {formError}
@@ -813,12 +814,6 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           )}
         </form>
         <CatalogueSearch onChoose={chooseCatalogue} />
-        {extraction.isPending && (
-          <p className="notice mt-4" role="status">
-            Membaca angka pada label dan menyiapkan ringkasan. Anda tidak perlu
-            mengisi ulang semua gizi.
-          </p>
-        )}
         {extraction.error && (
           <p
             ref={photoFailure}
@@ -828,22 +823,6 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           >
             {extraction.error.message}
           </p>
-        )}
-        {scan.isPending && (
-          <div className="notice mt-6 mb-0" role="status">
-            Memeriksa komposisi dan mencari pembanding. Hasil akan tampil di
-            bawah.
-            <div className="scan-progress">
-              <motion.div
-                animate={reducedMotion ? { x: 0 } : { x: ["-100%", "300%"] }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            </div>
-          </div>
         )}
         {scan.error && (
           <p className="error-text mt-4 mb-0" role="alert">

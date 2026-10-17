@@ -44,3 +44,7 @@ Fungsi dan alur yang ada: src/app dan src/components. Data dan batas cakupan: DA
 - Fakta, estimasi, nilai hilang dan keterbatasan sumber dibedakan secara terbuka.
 - Profil dan riwayat bersifat pribadi; akun tidak menjadi penghalang membaca label.
 - Tidak mengorbankan alur yang sudah berfungsi demi tampilan baru.
+
+### Nara: penjelasan lanjutan
+
+Nara adalah teman baca label BongkarLabel. Gerak garis pemindai menandai proses yang benar-benar berjalan, tanpa persentase atau tahapan rekaan. Di ringkasan foto, pengguna dapat membuka percakapan opsional, memilih pertanyaan cepat atau menulis pertanyaan hingga 500 karakter. Jawaban memakai hasil foto milik pengguna dan profil saat hasil disimpan. Fakta disusun server; AI dapat memilih konteks dari ID topik terbatas, tanpa menulis ulang angka, diagnosis atau klaim medis. Percakapan bersifat sementara di halaman, bukan riwayat chat permanen.
