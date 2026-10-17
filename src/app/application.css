@@ -1579,8 +1579,50 @@ body:has(.dashboard-main) .product-research {
   gap: 8px;
 }
 .nara-conversation {
-  margin-top: 22px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
 }
+.nara-transcript {
+  max-height: min(440px, 45svh);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  scroll-padding: 14px;
+  padding: 0 8px 0 2px;
+  outline-offset: 3px;
+}
+.nara-context {
+  margin-top: 14px;
+}
+.nara-context summary {
+  cursor: pointer;
+  min-height: 32px;
+  display: list-item;
+}
+.nara-context p {
+  margin: 8px 0 0;
+}
+.nara-transcript .nara-turn:first-child {
+  padding-top: 0;
+}
+.nara-transcript .nara-turn:last-child {
+  border: 0;
+  padding-bottom: 8px;
+}
+.nara-conversation .nara-suggestions {
+  margin: 14px 0;
+}
+.nara-conversation .nara-composer {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.nara-conversation .nara-composer textarea {
+  max-height: 140px;
+}
+
 .nara-context {
   font-size: 13px;
   line-height: 1.6;
@@ -1679,20 +1721,6 @@ body:has(.dashboard-main) .product-research {
   min-width: 46px;
   min-height: 46px;
 }
-.nara-close {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 18px;
-  min-height: 44px;
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
 .nara-question-error {
   color: var(--danger-ink, #9b2441);
 }
@@ -1709,8 +1737,13 @@ body:has(.dashboard-main) .product-research {
     font-size: 16px;
   }
   .nara-suggestions {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+  }
+  .nara-conversation {
+    padding: 14px;
+  }
+  .nara-suggestions button {
+    flex: 1 1 120px;
   }
   .nara-turn h3 {
     max-width: 95%;

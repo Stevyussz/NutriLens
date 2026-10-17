@@ -193,3 +193,92 @@ test("Golda label: missing local OCR rows do not erase explicit vision values; s
   assert.equal(conflict.nutrition.sugarGrams, null);
   assert.equal(conflict.nutrition.sodiumMg, 80);
 });
+
+test("corrupt Golda OCR cannot turn trailing 7 g into a conflict with 19 g", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const { reviewFromLocalText, crossCheckPhoto, reconcilePhotoReading } =
+    await import("../src/core/ai/local-ocr");
+  const sample = JSON.parse(
+    await readFile("tests/fixtures/golda-corrupt-local-ocr.json", "utf8"),
+  );
+  const review = normalizePhotoTranscription(sample.evidence, [
+    { width: 1020, height: 1282 },
+  ]);
+  assert.equal(review.nutrition.sugarGrams, 19);
+  assert.equal(
+    reviewFromLocalText(sample.rawText, review.images).nutrition.sugarGrams,
+    null,
+  );
+  const checked = crossCheckPhoto(review, sample.rawText);
+  assert.equal(checked.nutrition.sugarGrams, 19);
+  const { readingVersion, ...old } = review;
+  const legacy = {
+    ...old,
+    engine: "ROUTER_CROSSCHECKED" as const,
+    rawText: sample.rawText,
+    nutrition: { ...old.nutrition, sugarGrams: null },
+    issues: [
+      ...old.issues,
+      "Gula: dua pembaca belum sepakat; cocokkan angka langsung dengan foto.",
+    ],
+  };
+  assert.equal(reconcilePhotoReading(legacy).nutrition.sugarGrams, 19);
+  assert.equal(
+    reconcilePhotoReading({ ...legacy, userCorrected: true }).nutrition
+      .sugarGrams,
+    null,
+  );
+  const conflict = crossCheckPhoto(review, "Per sajian\nGula 29 g");
+  assert.equal(conflict.nutrition.sugarGrams, null);
+  for (const row of [
+    'Gula 199 "7 g',
+    "Gula angka 7 g",
+    "Gula 19 g 7 g",
+    "Gula 19 7g",
+  ]) {
+    assert.equal(
+      reviewFromLocalText("Per sajian\n" + row, review.images).nutrition
+        .sugarGrams,
+      null,
+    );
+    assert.equal(
+      crossCheckPhoto(review, "Per sajian\n" + row).nutrition.sugarGrams,
+      19,
+    );
+  }
+  assert.equal(
+    reviewFromLocalText("Per sajian\nGula: 19 g 4%", review.images).nutrition
+      .sugarGrams,
+    19,
+  );
+});
+
+test("auxiliary OCR has a shared deadline and releases capacity after abort", async () => {
+  const { mkdtemp, writeFile, rm } = await import("node:fs/promises");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { transcribeLocally } = await import("../src/core/ai/local-ocr");
+  const dir = await mkdtemp(join(tmpdir(), "ocr-budget-test-"));
+  const bin = join(dir, "slow-reader");
+  const old = process.env.TESSERACT_BIN;
+  try {
+    await writeFile(
+      bin,
+      `#!${process.execPath}\nsetTimeout(()=>console.log('Per sajian\\nGula 19 g'),1000);\n`,
+      { mode: 0o700 },
+    );
+    process.env.TESSERACT_BIN = bin;
+    await assert.rejects(
+      () => transcribeLocally([{ bytes: Buffer.from("test") }], 25),
+      /abort/i,
+    );
+    await assert.rejects(
+      () => transcribeLocally([{ bytes: Buffer.from("test") }], 25),
+      /abort/i,
+    );
+  } finally {
+    if (old === undefined) delete process.env.TESSERACT_BIN;
+    else process.env.TESSERACT_BIN = old;
+    await rm(dir, { recursive: true, force: true });
+  }
+});

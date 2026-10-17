@@ -100,12 +100,15 @@ let providerBlockedUntil = 0;
 export async function extractPhotoForReview(images: Uint8Array[]) {
   const prepared = await Promise.all(images.map(prepareLabelImage));
   const sizes = prepared.map(({ width, height }) => ({ width, height }));
-  const local = transcribeLocally(prepared).catch(() => null);
-  if (
+  const localOnly =
     process.env.PHOTO_OCR_ENGINE === "local" ||
     !aiAvailable() ||
-    Date.now() < providerBlockedUntil
-  ) {
+    Date.now() < providerBlockedUntil;
+  // The optional checker must not hold a ready vision result for two full OCR timeouts.
+  const local = transcribeLocally(prepared, localOnly ? 30000 : 8000).catch(
+    () => null,
+  );
+  if (localOnly) {
     const text = await local;
     if (!text)
       throw new HttpError(

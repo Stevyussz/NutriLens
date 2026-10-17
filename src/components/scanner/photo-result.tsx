@@ -93,7 +93,9 @@ export function PhotoResult({
                 <dd>{value("sugarGrams")}</dd>
                 <p>
                   {review.nutrition.sugarGrams === null
-                    ? "Foto ulang baris gula untuk memastikan."
+                    ? decision.sugarConflict
+                      ? "Dua bacaan memberikan angka berbeda."
+                      : "Foto ulang baris gula untuk memastikan."
                     : decision.sugarPercent === null
                       ? "Batas profil belum tersedia."
                       : `${decision.sugarPercent}% batas harian profil Anda`}
@@ -323,6 +325,10 @@ export function PhotoResult({
           {review.conversions.map((text, i) => (
             <p key={i}>{text}</p>
           ))}
+          <p>
+            Angka berikut adalah transkripsi awal. Ringkasan hanya memakai angka
+            yang lolos pemeriksaan satuan, porsi, dan konflik bacaan.
+          </p>
           <dl>
             {fields.map(([key, label]) => (
               <div key={key}>

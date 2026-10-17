@@ -48,3 +48,7 @@ Fungsi dan alur yang ada: src/app dan src/components. Data dan batas cakupan: DA
 ### Nara: penjelasan lanjutan
 
 Nara adalah teman baca label BongkarLabel. Gerak garis pemindai menandai proses yang benar-benar berjalan, tanpa persentase atau tahapan rekaan. Di ringkasan foto, pengguna dapat membuka percakapan opsional, memilih pertanyaan cepat atau menulis pertanyaan hingga 500 karakter. Jawaban memakai hasil foto milik pengguna dan profil saat hasil disimpan. Fakta disusun server; AI dapat memilih konteks dari ID topik terbatas, tanpa menulis ulang angka, diagnosis atau klaim medis. Percakapan bersifat sementara di halaman, bukan riwayat chat permanen.
+
+### Konsistensi bacaan dan percakapan
+
+Nilai ringkasan, riwayat dan jawaban Nara memakai kebijakan rekonsiliasi yang sama. OCR lokal yang rusak tidak boleh menggugurkan angka vision dengan cara mengambil angka lain dari ujung baris. Konflik angka eksplisit dijelaskan sebagai konflik. Percakapan Nara memiliki area gulir terbatas, dengan composer di luar area itu, saran lanjutan kontekstual dan penjelasan privasi yang dapat dibuka; pertanyaan porsi dijawab tanpa pengulangan paragraf gula.

@@ -71,3 +71,18 @@ test("Nara computes a requested half package from declared serving count", async
   assert.match(a.paragraphs[0], /9,5 g/);
   assert.match(a.paragraphs[0], /40 mg/);
 });
+
+test("Nara distinguishes an explicit reader conflict from an absent sugar row", () => {
+  const conflicted = {
+    ...review,
+    nutrition: { ...review.nutrition, sugarGrams: null },
+    issues: [
+      "Gula: dua pembaca belum sepakat; cocokkan angka langsung dengan foto.",
+    ],
+  };
+  assert.match(
+    naraFacts(conflicted, health).sugar,
+    /pemeriksaan kedua berbeda/,
+  );
+  assert.doesNotMatch(naraFacts(conflicted, health).sugar, /Gula totalnya 19/);
+});

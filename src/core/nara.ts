@@ -22,7 +22,9 @@ export function naraFacts(
   const decision = photoDecision(review, health);
   const basis = review.evidence.servingText || "ukuran sajian belum pasti";
   return {
-    sugar: `Gula totalnya ${amount(n.sugarGrams, "g")} per sajian (${basis}). ${n.sugarGrams === null ? "Foto ulang baris gula untuk memastikan, tanpa mengisi semua kolom." : `Itu sekitar ${decision.sugarPercent}% batas gula harian yang disetel di profil Anda. Angka label tidak memisahkan gula alami, tambahan, atau gula bebas; persentase ini adalah perbandingan dengan profil, bukan penilaian seluruh konsumsi hari ini.`}`,
+    sugar: decision.sugarConflict
+      ? `Transkripsi awal menulis gula ${review.evidence.nutritionText.sugarGrams || "dengan angka yang belum pasti"}, tetapi pemeriksaan kedua berbeda. Angka akhir belum dipilih. Buka bacaan asli atau foto ulang baris gula; data yang bertentangan tidak dianggap nol.`
+      : `Gula totalnya ${amount(n.sugarGrams, "g")} per sajian (${basis}). ${n.sugarGrams === null ? "Foto ulang baris gula untuk memastikan, tanpa mengisi semua kolom." : `Itu sekitar ${decision.sugarPercent}% batas gula harian yang disetel di profil Anda. Angka label tidak memisahkan gula alami, tambahan, atau gula bebas; persentase ini adalah perbandingan dengan profil, bukan penilaian seluruh konsumsi hari ini.`}`,
     sodium: `Natrium adalah komponen garam yang ditulis pada tabel gizi. Label ini menunjukkan ${amount(n.sodiumMg, "mg")} per sajian.${n.sodiumMg === null ? " Belum terbaca tidak berarti nol." : ` Ini sekitar ${decision.sodiumPercent}% batas natrium harian profil Anda. Natrium tidak sama dengan berat garam; angka ini tetap dalam mg natrium.`}`,
     portion:
       review.servingsPerContainer === null
@@ -59,8 +61,8 @@ export function directNaraTopics(question: string): Topic[] {
       q,
     )
   )
-    return ["portion", "sugar"];
-  if (/gula|manis|sugar/.test(q)) return ["sugar", "decision"];
+    return ["portion"];
+  if (/gula|manis|sugar/.test(q)) return ["sugar"];
   if (/natrium|garam|asin|sodium/.test(q)) return ["sodium"];
   if (/kalori|energi/.test(q)) return ["energy"];
   if (/lemak/.test(q)) return ["fat"];

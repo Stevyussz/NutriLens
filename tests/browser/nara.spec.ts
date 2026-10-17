@@ -108,7 +108,7 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
   await expect(page.locator("#photo-decision-title")).toBeVisible();
   await page.getByRole("button", { name: "Tanya Nara", exact: true }).click();
   await page
-    .getByRole("button", { name: "Kalau habis satu botol?", exact: true })
+    .getByRole("button", { name: "Kalau habis satu kemasan?", exact: true })
     .click();
   await expect(page.locator(".nara-answer").last()).toContainText("19 g");
   await expect(page.locator(".nara-answer").last()).toContainText("80 mg");
@@ -174,6 +174,9 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
     .fill("Natrium " + "a".repeat(492));
   await page.getByRole("button", { name: "Kirim pertanyaan ke Nara" }).click();
   await expect(page.locator(".nara-answer")).toHaveCount(3);
+  const transcript = page.getByRole("region", { name: "Percakapan Nara" });
+  expect((await transcript.boundingBox())!.height).toBeLessThanOrEqual(440);
+  await expect(page.getByLabel("Pertanyaan tentang label ini")).toBeVisible();
   await page.setViewportSize({ width: 320, height: 844 });
   expect(
     await page.evaluate(
@@ -187,7 +190,7 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
   });
   await page
     .getByRole("button", { name: "Tutup percakapan", exact: true })
-    .last()
+    .first()
     .click();
   await expect(
     page.getByRole("button", { name: "Tanya Nara", exact: true }),

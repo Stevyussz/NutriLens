@@ -1,3 +1,4 @@
+import { reconcilePhotoReading } from "@/core/ai/local-ocr";
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/core/db/client";
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
         "Bacaan foto tidak ditemukan. Buka hasil scan Anda kembali.",
       );
     const answer = await askNara(
-      photoReviewSchema.parse(row.photoResult),
+      reconcilePhotoReading(photoReviewSchema.parse(row.photoResult)),
       healthSchema.parse(row.healthProfile),
       input.question,
       input.previousTopics,

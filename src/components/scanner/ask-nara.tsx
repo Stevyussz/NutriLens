@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { ArrowUp, MessageCircle, X } from "lucide-react";
+import { ArrowUp, MessageCircle } from "lucide-react";
 import { requestApi } from "@/core/browser-api";
 import { naraAnswerSchema, type NaraAnswer } from "@/core/nara-schema";
 import { Button } from "../ui/button";
 import { NaraThinking } from "./nara-thinking";
 const suggestions = [
-  "Kalau habis satu botol?",
+  "Kalau habis satu kemasan?",
   "Jadi, mending beli atau ganti?",
   "Natrium itu apa?",
 ];
@@ -18,6 +18,8 @@ export function AskNara({ historyId }: { historyId?: string }) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [retryQuestion, setRetryQuestion] = useState("");
   const answerRef = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const transcript = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const ask = useMutation({
     mutationFn: (text: string) =>
@@ -37,8 +39,25 @@ export function AskNara({ historyId }: { historyId?: string }) {
     onError: (_error, text) => setRetryQuestion(text),
   });
   useEffect(() => {
-    if (turns.length) answerRef.current?.focus({ preventScroll: true });
+    if (turns.length) {
+      answerRef.current?.focus({ preventScroll: true });
+      answerRef.current?.scrollIntoView({
+        block: "nearest",
+        behavior: "instant",
+      });
+    }
   }, [turns]);
+  useEffect(() => {
+    if (open)
+      panel.current?.scrollIntoView({ block: "nearest", behavior: "instant" });
+  }, [open]);
+  useEffect(() => {
+    if ((ask.isPending || ask.error) && transcript.current)
+      transcript.current.scrollTop = transcript.current.scrollHeight;
+  }, [ask.isPending, ask.error]);
+  const choices = turns.length
+    ? ["Kalau setengah kemasan?", "Ada bahan pemicu alergi?"]
+    : suggestions;
   const submit = (text: string) => {
     const trimmed = text.trim();
     if (trimmed.length >= 3 && !ask.isPending) ask.mutate(trimmed);
@@ -47,11 +66,8 @@ export function AskNara({ historyId }: { historyId?: string }) {
     <section className="ask-nara" aria-labelledby="nara-title">
       <div className="nara-intro">
         <div>
-          <h2 id="nara-title">Masih penasaran? Tanya Nara.</h2>
-          <p>
-            Teman baca label Anda. Tanya soal porsi, gula, atau arti angka di
-            hasil ini.
-          </p>
+          <h2 id="nara-title">Lebih paham dengan Nara.</h2>
+          <p>Tanya soal porsi, gula, atau arti angka pada label ini.</p>
         </div>
         <Button
           ref={trigger}
@@ -72,55 +88,60 @@ export function AskNara({ historyId }: { historyId?: string }) {
         </p>
       )}
       {open && (
-        <div id="nara-conversation" className="nara-conversation">
-          <p className="nara-context">
-            Percakapan memakai hasil scan ini dan profil saat scan. Tidak
-            disimpan sebagai chat di aplikasi. Pertanyaan bebas dapat diproses
-            penyedia AI.
-          </p>
-          {turns.map((turn, i) => (
-            <article className="nara-turn" key={`${i}-${turn.question}`}>
-              <h3>{turn.question}</h3>
-              <div
-                ref={i === turns.length - 1 ? answerRef : undefined}
-                tabIndex={-1}
-                className="nara-answer"
-                aria-label="Jawaban Nara"
-              >
-                <strong>Nara</strong>
-                {turn.answer.paragraphs.map((p, j) => (
-                  <p key={j}>{p}</p>
-                ))}
-                <small>
-                  {turn.answer.mode === "AI_GUIDED"
-                    ? "Konteks dipilih AI · angka mengikuti bacaan tersimpan"
-                    : turn.answer.mode === "LIMITED"
-                      ? "Konteks belum cukup · coba pertanyaan lebih spesifik tentang label"
-                      : "Dari bacaan label dan aturan profil"}
-                </small>
-              </div>
-            </article>
-          ))}
-          {ask.isPending && (
-            <>
-              <p className="nara-pending-question">{ask.variables}</p>
-              <NaraThinking task="question" compact />
-            </>
-          )}
-          {ask.error && (
-            <div role="alert" className="nara-question-error">
-              <p>{ask.error.message} Pertanyaan Anda tetap tersedia.</p>
-              <Button
-                variant="ghost"
-                disabled={ask.isPending}
-                onClick={() => submit(retryQuestion)}
-              >
-                Coba lagi
-              </Button>
+        <div ref={panel} id="nara-conversation" className="nara-conversation">
+          {(turns.length > 0 || ask.isPending || ask.error) && (
+            <div
+              ref={transcript}
+              className="nara-transcript"
+              role="region"
+              aria-label="Percakapan Nara"
+              tabIndex={0}
+            >
+              {turns.map((turn, i) => (
+                <article className="nara-turn" key={`${i}-${turn.question}`}>
+                  <h3>{turn.question}</h3>
+                  <div
+                    ref={i === turns.length - 1 ? answerRef : undefined}
+                    tabIndex={-1}
+                    className="nara-answer"
+                    aria-label="Jawaban Nara"
+                  >
+                    <strong>Nara</strong>
+                    {turn.answer.paragraphs.map((p, j) => (
+                      <p key={j}>{p}</p>
+                    ))}
+                    <small>
+                      {turn.answer.mode === "AI_GUIDED"
+                        ? "Konteks dipilih AI · angka mengikuti bacaan tersimpan"
+                        : turn.answer.mode === "LIMITED"
+                          ? "Konteks belum cukup · coba pertanyaan lebih spesifik tentang label"
+                          : "Dari bacaan label dan aturan profil"}
+                    </small>
+                  </div>
+                </article>
+              ))}
+              {ask.isPending && (
+                <>
+                  <p className="nara-pending-question">{ask.variables}</p>
+                  <NaraThinking task="question" compact />
+                </>
+              )}
+              {ask.error && (
+                <div role="alert" className="nara-question-error">
+                  <p>{ask.error.message} Pertanyaan Anda tetap tersedia.</p>
+                  <Button
+                    variant="ghost"
+                    disabled={ask.isPending}
+                    onClick={() => submit(retryQuestion)}
+                  >
+                    Coba lagi
+                  </Button>
+                </div>
+              )}
             </div>
           )}
           <div className="nara-suggestions" aria-label="Ide pertanyaan">
-            {suggestions.map((q) => (
+            {choices.map((q) => (
               <button
                 key={q}
                 type="button"
@@ -163,16 +184,14 @@ export function AskNara({ historyId }: { historyId?: string }) {
               {question.length}/500 · Penjelasan label, bukan konsultasi medis.
             </span>
           </form>
-          <button
-            className="nara-close"
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              trigger.current?.focus();
-            }}
-          >
-            <X size={16} aria-hidden="true" /> Tutup percakapan
-          </button>
+          <details className="nara-context">
+            <summary>Tentang jawaban & privasi</summary>
+            <p>
+              Memakai bacaan label dan profil saat scan. Angka yang belum pasti
+              tidak ditebak. Percakapan tidak disimpan sebagai chat di aplikasi;
+              pertanyaan bebas dapat diproses penyedia AI.
+            </p>
+          </details>
         </div>
       )}
     </section>

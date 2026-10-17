@@ -1,3 +1,5 @@
+import { reconcilePhotoReading } from "@/core/ai/local-ocr";
+import { photoReviewSchema } from "@/core/ai/vision-contract";
 import { NextResponse } from "next/server";
 import { getDb } from "@/core/db/client";
 import { requireUser } from "@/core/security/session";
@@ -51,15 +53,18 @@ export async function GET(request: Request) {
           "result.extractedProductData.nutrition": 1,
           "result.extractedProductData.source.kind": 1,
           "result.aiVerdict.medicalStatus": 1,
-          "photoResult.name": 1,
-          "photoResult.brand": 1,
-          "photoResult.nutrition": 1,
+          photoResult: 1,
         },
       })
       .sort({ createdAt: -1, _id: -1 })
       .skip((page - 1) * 8)
       .limit(8)
       .toArray();
+    for (const row of rows)
+      if (row.photoResult)
+        row.photoResult = reconcilePhotoReading(
+          photoReviewSchema.parse(row.photoResult),
+        );
     return NextResponse.json(
       historyListSchema.parse({
         items: rows.map((r) => ({

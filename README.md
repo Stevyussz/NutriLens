@@ -190,3 +190,5 @@ Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang 
 ### Tanya Nara
 
 Hasil foto memiliki percakapan opsional tentang label yang sedang dibuka. Pertanyaan cepat dijawab dari fakta tersimpan; pertanyaan lain dapat memakai AI untuk memilih konteks dari kumpulan topik yang diizinkan. Server menyusun teks fakta dan perhitungan, sehingga keluaran model tidak mengubah angka atau membuat klaim gizi baru. Endpoint `POST /api/ask-nara` memerlukan sesi, origin yang diizinkan dan ID riwayat milik pengguna; ada batas 15 permintaan per menit per pengguna per proses. Pertanyaan tidak disimpan dalam database chat, tetapi pertanyaan bebas dan konteks fakta dapat dikirim ke penyedia AI yang dikonfigurasi. Percakapan hanya ada pada halaman, hingga enam jawaban terakhir.
+
+Bacaan foto versi 2 menolak angka OCR yang tidak langsung mengikuti label nutrien. Cross-check lama dihitung ulang dari bukti tersimpan ketika dibaca, melalui aturan yang sama pada riwayat dan Nara; koreksi pengguna dipertahankan. Rekonsiliasi saat baca tidak mengubah transkripsi asli atau memakai data produk internet sebagai pengganti angka foto.

@@ -1,5 +1,7 @@
 # QA Nara: gerak baca dan pertanyaan lanjutan
 
+Laporan tahap awal. Regresi bacaan pengguna dan penyempurnaan layout berikutnya dicatat di [QA konsistensi OCR](QA_OCR_CONSISTENCY.md).
+
 17 Oktober 2026, Asia/Jakarta. Perubahan memperluas scanner yang sudah ada, mempertahankan identitas Indeks Belanja dan hasil awal sebelum detail opsional.
 
 ## Perilaku

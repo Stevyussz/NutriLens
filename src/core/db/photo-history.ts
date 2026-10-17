@@ -1,3 +1,4 @@
+import { reconcilePhotoReading } from "../ai/local-ocr";
 import { createHash } from "node:crypto";
 import type { Db, ObjectId } from "mongodb";
 import { photoReviewSchema, type PhotoReview } from "../ai/vision-contract";
@@ -9,25 +10,25 @@ export async function savePhotoHistory(
   review: PhotoReview,
   health: HealthProfile,
 ) {
-  const { historyId: _id, ...facts } = photoReviewSchema.parse(review);
+  const { historyId: _id, ...facts } = photoReviewSchema.parse(
+    reconcilePhotoReading(review),
+  );
   const cacheKey =
     "photo:" +
     createHash("sha256")
       .update(JSON.stringify({ facts, health }))
       .digest("hex");
-  const row = await db
-    .collection("scan_history")
-    .findOneAndUpdate(
-      { userId, cacheKey },
-      {
-        $set: {
-          photoResult: facts,
-          healthProfile: healthSchema.parse(health),
-          createdAt: new Date(),
-        },
+  const row = await db.collection("scan_history").findOneAndUpdate(
+    { userId, cacheKey },
+    {
+      $set: {
+        photoResult: facts,
+        healthProfile: healthSchema.parse(health),
+        createdAt: new Date(),
       },
-      { upsert: true, returnDocument: "after", projection: { _id: 1 } },
-    );
+    },
+    { upsert: true, returnDocument: "after", projection: { _id: 1 } },
+  );
   const overflow = await db
     .collection("scan_history")
     .find({ userId }, { projection: { _id: 1 } })

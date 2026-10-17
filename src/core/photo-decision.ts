@@ -16,6 +16,11 @@ export function photoDecision(review: PhotoReview, health?: HealthProfile) {
   const allergyMatches = (health?.allergies ?? []).filter((a) =>
     ingredients.includes(a.toLowerCase()),
   );
+  const sugarConflict =
+    sugar === null &&
+    review.issues.some(
+      (i) => i.startsWith("Gula:") && i.includes("dua pembaca"),
+    );
   const title = allergyMatches.length
     ? "Pilih produk lain karena ada kecocokan alergi."
     : sugarPercent !== null && sugarPercent >= 25
@@ -23,7 +28,9 @@ export function photoDecision(review: PhotoReview, health?: HealthProfile) {
       : sodiumPercent !== null && sodiumPercent >= 25
         ? "Bandingkan dengan yang lebih rendah natrium."
         : sugar === null
-          ? "Gulanya belum bisa dipastikan."
+          ? sugarConflict
+            ? "Bacaan gula perlu dicocokkan."
+            : "Gulanya belum bisa dipastikan."
           : "Pertimbangkan porsi sebelum membeli.";
   const action = allergyMatches.length
     ? `Bahan yang cocok dengan profil: ${allergyMatches.join(", ")}.`
@@ -32,9 +39,18 @@ export function photoDecision(review: PhotoReview, health?: HealthProfile) {
       : sodiumPercent !== null && sodiumPercent >= 25
         ? `Satu sajian memakai sekitar ${sodiumPercent}% batas natrium di profil Anda. Cari label dengan angka natrium lebih kecil pada porsi yang sebanding.`
         : sugar === null
-          ? "Foto ulang baris gula agar angkanya dapat dibandingkan. Angka lain yang terbaca tetap bisa Anda lihat."
+          ? sugarConflict
+            ? "Angka gula dari dua pembaca berbeda. Lihat bacaan asli di bawah atau foto ulang baris gula; angka lain tetap tersedia."
+            : "Foto ulang baris gula agar angkanya dapat dibandingkan. Angka lain yang terbaca tetap bisa Anda lihat."
           : "Angka gula ini hanya satu bagian dari keputusan. Sesuaikan jumlah yang diminum dan konsumsi lain hari ini.";
-  return { title, action, sugarPercent, sodiumPercent, allergyMatches };
+  return {
+    title,
+    action,
+    sugarPercent,
+    sodiumPercent,
+    allergyMatches,
+    sugarConflict,
+  };
 }
 
 export function photoDisplayName(review: PhotoReview) {

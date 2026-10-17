@@ -1,8 +1,10 @@
+import { reconcilePhotoReading } from "@/core/ai/local-ocr";
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/core/db/client";
 import { requireUser } from "@/core/security/session";
 import { apiError, assertOrigin, HttpError } from "@/core/security/http";
+import { photoReviewSchema } from "@/core/ai/vision-contract";
 import { historyDetailSchema } from "@/core/history-schema";
 type Context = { params: Promise<{ id: string }> };
 function idFrom(value: string) {
@@ -27,7 +29,10 @@ export async function GET(_request: Request, context: Context) {
         healthProfile: row.healthProfile,
         result: row.result,
         ...(row.photoResult && {
-          photoResult: { ...row.photoResult, historyId: row._id.toHexString() },
+          photoResult: {
+            ...reconcilePhotoReading(photoReviewSchema.parse(row.photoResult)),
+            historyId: row._id.toHexString(),
+          },
         }),
       }),
       { headers: { "Cache-Control": "private, no-store" } },

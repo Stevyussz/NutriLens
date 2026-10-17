@@ -62,6 +62,7 @@ export const photoReviewSchema = z
     rawText: z.string().max(30000).default(""),
     providerNotice: z.string().nullable().optional(),
     reviewRequired: z.literal(true),
+    readingVersion: z.literal(2).optional(),
     name: z.string().max(250),
     brand: z.string().max(150),
     category: categorySchema,
@@ -235,6 +236,7 @@ export function normalizePhotoTranscription(
     );
   return photoReviewSchema.parse({
     reviewRequired: true,
+    readingVersion: 2,
     name: evidence.productName,
     brand: evidence.brand,
     category: evidence.category,

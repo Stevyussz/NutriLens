@@ -34,3 +34,7 @@ The next user instruction adds automatic product research. Run it after the init
 ## Refinement Nara
 
 Operate extension: Nara is the named label-reading assistant. The authored motion is an indeterminate scan-line over a small typographic label mark while extraction or analysis is pending. It stops offscreen/hidden and becomes a static reading mark under reduced motion. No timer-based invented progress. Optional inline conversation opens beneath the photo summary, never a blocking modal; three quick questions and a bounded free question connect to owned saved facts. Keep pending, retry, missing history, source uncertainty and medical limits legible, with the established mulberry/rose/citron identity.
+
+## Koreksi konsistensi dan percakapan
+
+User evidence outranks the previous ship verdict: readable 19 g was invalidated by a parser scavenging a trailing 7 g from corrupt local OCR. Keep final facts consistent across summary/history/Nara, distinguish actual disagreement from missing data, and preserve original evidence plus user corrections. Bound the opened Nara transcript to its own scroll region, keep the composer outside that region, shorten portion answers and move processing/privacy detail into a disclosure. Preserve the existing identity and optional opening.

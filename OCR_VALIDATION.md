@@ -45,3 +45,11 @@ Belum ada benchmark representatif kemasan nyata Indonesia dengan anotasi manusia
 Dua foto yang diberikan pengguna disertakan di tests/fixtures/golda-*-user.png sebagai bukti regresi, bukan materi promosi. Uji vision 9Router nyata dan pemeriksaan silang produksi berhasil membaca 180 kkal, gula 19 g, protein 2 g, natrium 80 mg dan lemak jenuh 5 g per 200 ml. Jumlah sajian per kemasan terbaca 1. Serat tidak tercantum dan tetap null. Foto komposisi belum tersedia sehingga sumber gula dan seluruh alergen tidak disimpulkan dari depan kemasan.
 
 OCR lokal pada foto ini menghasilkan beberapa baris rusak, termasuk 200m! dan Gula 199. Ketidakberhasilan mengenali jumlah bersatuan kini tidak menghapus angka vision yang valid. Konflik eksplisit 19 g versus 29 g tetap mengosongkan hanya gula dalam pengujian unit. Bukti satu produk ini tidak mengukur akurasi populasi atau semua kondisi kamera.
+
+## Regresi baris rusak 17 Oktober 2026
+
+Bacaan pengguna menunjukkan vision `19g`, tetapi OCR lokal `Gula 199 "7 g` diproses menjadi 7 g oleh pencarian angka di sembarang posisi. Parser kini mensyaratkan jumlah dan satuan tepat sesudah nama nutrien; angka liar, dua jumlah bersatuan dan teks sebelum jumlah tidak menjadi bukti pembanding. Konflik eksplisit seperti 19 g versus 29 g tetap menghasilkan nilai akhir null dengan pesan konflik, bukan pesan seolah baris tidak terbaca.
+
+Kebijakan bacaan versi 2 berlaku pada ekstraksi baru. Hasil cross-check lama tanpa penanda versi dihitung ulang dari transkripsi dan teks lokal yang sudah tersimpan saat dibaca melalui daftar/detail riwayat atau Nara. Ini tidak mengambil angka dari merek/katalog, mengubah foto sumber atau menimpa koreksi pengguna. Fixture `golda-corrupt-local-ocr.json` menyimpan bukti kegagalan nyata tanpa data akun.
+
+OCR pendamping vision dibatasi total 8 detik lintas foto, bukan 25 detik untuk setiap halaman. Abort menghentikan proses dan melepaskan slot; bukti halaman pertama yang selesai tidak dibuang jika halaman kedua gagal. Mode OCR lokal tanpa vision memiliki anggaran 30 detik. Batas ini tidak menjamin latensi total layanan AI.

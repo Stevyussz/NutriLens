@@ -24,6 +24,7 @@ const execute = promisify(execFile);
 let active = 0;
 export async function transcribeLocally(
   images: { bytes: Uint8Array }[],
+  timeoutMs = 8000,
 ): Promise<string> {
   if (active >= 2) throw Error("Local OCR busy");
   active++;
@@ -31,6 +32,7 @@ export async function transcribeLocally(
   try {
     directory = await mkdtemp(join(tmpdir(), "bongkar-ocr-"));
     const output: string[] = [];
+    const signal = AbortSignal.timeout(timeoutMs);
     for (let index = 0; index < images.length; index++) {
       const path = join(directory, `label-${index}.png`);
       await writeFile(path, images[index].bytes, { mode: 0o600 });
@@ -38,7 +40,7 @@ export async function transcribeLocally(
         const orientation = await execute(
           process.env.TESSERACT_BIN || "tesseract",
           [path, "stdout", "-l", "osd", "--psm", "0"],
-          { timeout: 10000, maxBuffer: 16000 },
+          { timeout: 1500, maxBuffer: 16000, signal },
         );
         const degrees = Number(
           orientation.stdout.match(/Rotate:\s*(90|180|270)\b/)?.[1] ?? 0,
@@ -52,12 +54,19 @@ export async function transcribeLocally(
       } catch {
         /* Sparse labels may not contain enough text for orientation detection. */
       }
-      const { stdout } = await execute(
-        process.env.TESSERACT_BIN || "tesseract",
-        [path, "stdout", "-l", "ind+eng", "--psm", "6"],
-        { timeout: 25000, maxBuffer: 128000, windowsHide: true },
-      );
-      output.push(stdout);
+      try {
+        const { stdout } = await execute(
+          process.env.TESSERACT_BIN || "tesseract",
+          [path, "stdout", "-l", "ind+eng", "--psm", "6"],
+          { timeout: timeoutMs, maxBuffer: 128000, windowsHide: true, signal },
+        );
+        output.push(stdout);
+      } catch (error) {
+        // Keep a completed first page when the optional second page exceeds
+        // the shared budget. Partial evidence still cannot contradict by absence.
+        if (!output.length) throw error;
+        break;
+      }
     }
     return output.join("\n\n").slice(0, 30000);
   } finally {
@@ -102,13 +111,19 @@ export function reviewFromLocalText(
         .filter(
           (line) => labels[key].test(line) && !/[<>≤≥]|[-−]\s*\d/.test(line),
         )
-        .flatMap((line) =>
-          [
-            ...line.matchAll(
-              /\d+(?:[.,]\d+)?\s*(?:kkal|kcal|kj|mg|gram|g)\b/gi,
-            ),
-          ].map((m) => m[0]),
-        );
+        .flatMap((line) => {
+          // A quantity must immediately follow its label. Never fish a later number
+          // out of a corrupt row such as `Gula 199 "7 g`.
+          const rest = line
+            .replace(labels[key], "")
+            .replace(/^\s*(?:total)?\s*:?\s*/i, "");
+          const match = rest.match(
+            /^(\d+(?:[.,]\d+)?\s*(?:kkal|kcal|kj|mg|gram|g))\b(.*)$/i,
+          );
+          if (!match || /\d/.test(match[2].replace(/\d+(?:[.,]\d+)?\s*%/g, "")))
+            return [];
+          return [match[1]];
+        });
       return [key, matches.length === 1 ? matches[0] : null];
     }),
   );
@@ -215,5 +230,33 @@ export function crossCheckPhoto(
         ? "ROUTER_CROSSCHECKED"
         : "GEMINI_CROSSCHECKED",
     rawText,
+  };
+}
+
+/** Re-evaluate old cross-checks from their original evidence, never a catalogue or product-name guess. */
+export function reconcilePhotoReading(review: PhotoReview): PhotoReview {
+  if (
+    review.readingVersion === 2 ||
+    review.userCorrected ||
+    !["ROUTER_CROSSCHECKED", "GEMINI_CROSSCHECKED"].includes(review.engine)
+  )
+    return review;
+  const fresh = normalizePhotoTranscription(review.evidence, review.images);
+  const checked = crossCheckPhoto(
+    {
+      ...fresh,
+      engine:
+        review.engine === "ROUTER_CROSSCHECKED" ? "ROUTER_VISION" : "GEMINI",
+    },
+    review.rawText,
+  );
+  return {
+    ...review,
+    nutrition: checked.nutrition,
+    servingSizeGrams: checked.servingSizeGrams,
+    servingsPerContainer: checked.servingsPerContainer,
+    issues: checked.issues,
+    conversions: checked.conversions,
+    readingVersion: 2,
   };
 }

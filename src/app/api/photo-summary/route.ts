@@ -1,3 +1,4 @@
+import { reconcilePhotoReading } from "@/core/ai/local-ocr";
 import { NextResponse } from "next/server";
 import { photoReviewSchema } from "@/core/ai/vision-contract";
 import { requireUser } from "@/core/security/session";
@@ -10,7 +11,9 @@ export async function POST(request: Request) {
     assertOrigin(request);
     const user = await requireUser();
     enforceRateLimit(`photo-summary:${user._id}`, 30);
-    const review = photoReviewSchema.parse(await readJson(request));
+    const review = reconcilePhotoReading(
+      photoReviewSchema.parse(await readJson(request)),
+    );
     const historyId = await savePhotoHistory(
       await getDb(),
       user._id,

@@ -1,6 +1,6 @@
 # Hasil QA BongkarLabel
 
-Pembaruan 17 Oktober 2026: Nara menambahkan animasi baca dan pertanyaan lanjutan dari fakta label. Sebanyak 36 uji unit, 18 kasus browser sebelumnya, dan kasus Nara akhir lulus. Lihat [QA Nara](QA_NARA.md) untuk bukti, cakupan, dan batasnya. [QA hasil foto dan sumber produk](QA_FAST_SCAN.md), [laporan redesign UI/UX](QA_UI_REDESIGN.md), dan arsip berikut mencatat tahap sebelumnya.
+Pembaruan 17 Oktober 2026: regresi gula yang hilang akibat OCR rusak diperbaiki, ringkasan/riwayat/Nara diselaraskan, dan layout percakapan dibatasi. Sebanyak 39 uji unit serta seluruh 20 uji browser produksi final lulus. Lihat [QA konsistensi OCR dan Nara](QA_OCR_CONSISTENCY.md). Laporan [Nara awal](QA_NARA.md), [hasil foto dan sumber produk](QA_FAST_SCAN.md), [redesign UI/UX](QA_UI_REDESIGN.md) dan arsip berikut mencatat tahap sebelumnya.
 
 ## Arsip QA alur 16 Oktober 2026
 
