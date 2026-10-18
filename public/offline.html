@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#491d36" />
+    <title>Koneksi terputus · BongkarLabel</title>
+    <style>
+      @font-face {
+        font-family: Work Sans;
+        src: url("/fonts/work-sans-variable.ttf") format("truetype");
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f5edf2;
+        color: #352331;
+        font-family: "Work Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.55;
+      }
+      header {
+        background: #491d36;
+        color: #fff8fc;
+        padding: 20px max(24px, env(safe-area-inset-left));
+        font-size: 23px;
+        font-weight: 750;
+        letter-spacing: -0.03em;
+      }
+      main {
+        max-width: 560px;
+        margin: clamp(48px, 12vh, 120px) auto;
+        padding: 0 24px 48px;
+      }
+      h1 {
+        font-size: 34px;
+        line-height: 1.16;
+        letter-spacing: -0.03em;
+        margin: 0 0 20px;
+      }
+      p {
+        margin: 0 0 28px;
+        color: #705c6b;
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 12px 20px;
+        background: #571838;
+        color: #fff8fc;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:hover {
+        background: #75334f;
+      }
+      a:focus-visible {
+        outline: 3px solid #8e426a;
+        outline-offset: 4px;
+      }
+      ::selection {
+        background: #eff28f;
+        color: #491d36;
+      }
+    </style>
+  </head>
+  <body>
+    <header>BongkarLabel</header>
+    <main>
+      <h1>Koneksi sedang terputus.</h1>
+      <p>
+        Scan label, riwayat, dan Nara membutuhkan internet. Sambungkan kembali,
+        lalu buka scanner untuk melanjutkan.
+      </p>
+      <a href="/scanner">Buka scanner</a>
+    </main>
+  </body>
+</html>

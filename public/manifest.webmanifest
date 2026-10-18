@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "BongkarLabel",
+  "short_name": "BongkarLabel",
+  "description": "Scan label pangan, pahami gula dan komposisinya bersama Nara.",
+  "lang": "id",
+  "start_url": "/scanner",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5edf2",
+  "theme_color": "#491d36",
+  "icons": [
+    { "src": "/icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

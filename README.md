@@ -203,3 +203,9 @@ Ringkasan menampilkan total satu kemasan bila jumlah sajiannya diketahui; jika t
 ### Automatic package-price estimates
 
 Photo results now fetch an independent package-price range. Public IDR observations are checked for variant, quantity, unit, proof and date; otherwise Nara may provide a clearly labelled AI estimate with no invented retailer citation. Price uncertainty does not overwrite nutrition or become a personal budget, savings claim or verified-price ranking. Source/model failures have a retry and never block the scan result. Nara price answers share the same estimator and explicitly identify their origin. See [QA_PRICE_ESTIMATE.md](QA_PRICE_ESTIMATE.md).
+
+### Pasang ke layar utama (PWA)
+
+BongkarLabel memiliki manifest, ikon biasa/maskable, ikon Apple, dan service worker produksi. Aplikasi yang dipasang membuka `/scanner` dalam mode mandiri. Android/Chrome: menu browser → **Instal aplikasi** atau **Tambahkan ke layar utama**. iPhone/Safari: **Bagikan → Tambahkan ke Layar Utama**. Nama/menu bergantung versi browser. Gunakan HTTPS pada domain publik; `localhost` dapat dipakai untuk pengujian lokal, sedangkan HTTP dari alamat IP LAN tidak memenuhi secure context untuk service worker.
+
+Scan, Nara, login dan riwayat membutuhkan internet. Service worker hanya menyimpan halaman offline, font dan ikon publik; halaman pribadi, respons API dan hasil AI tidak disimpan dalam Cache Storage. Pembaruan worker menunggu sesi lama ditutup agar kamera atau pengisian formulir tidak terputus. Saat mengubah aset offline, naikkan versi cache di `public/sw.js`.
