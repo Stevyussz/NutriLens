@@ -50,4 +50,12 @@ Reviewer akhir menilai kelima temuan material resolved dan memberi `disposition:
 
 Saat host dimulai ulang, proses, log sementara dan metadata Git di /tmp hilang. Bukti pengulangan kini berada di artifacts/nara-final. 9Router sempat mati lalu kembali aktif; uji nyata di atas dijalankan setelah koneksi pulih.
 
-Image aktif memuat seluruh lima perbaikan utama. Satu koreksi tambahan pada source NaraBrief memakai isFetching untuk mencegah indikator berpikir pada query OCR historis yang dinonaktifkan. Build ulang untuk koreksi tambahan tersebut dibatalkan ketika disk kembali penuh; koreksi indikator ini belum terpasang pada image aktif. Cache COPY dan npm milik build yang dihentikan dilepas secara terpilih (sekitar 805 MB), tanpa menghapus database atau image aktif. Dibutuhkan ruang tambahan sebelum menyelesaikan build ulang Docker. Jangan menyatakan build yang dibatalkan sebagai berhasil.
+Build ulang awal untuk koreksi indikator sempat dibatalkan ketika disk kembali penuh. Cache COPY dan npm milik build yang dihentikan dilepas secara terpilih (sekitar 805 MB), tanpa menghapus database atau image aktif. Setelah pengguna menyediakan tambahan ruang, build akhir berhasil dan aplikasi dipasang ulang. NaraBrief kini memakai isFetching untuk mencegah indikator berpikir pada query OCR historis yang dinonaktifkan; koreksi ini sudah terpasang pada image aktif.
+
+## Penyelesaian Docker
+
+Setelah ruang bebas menjadi 6,4 GB, build Docker selesai dengan exit 0 (`artifacts/nara-final/build-final.log`). Container app dipasang ulang dan berstatus healthy pada image `sha256:ccbb6b9a9aceea3d49024817a63be785dc0350cfa1249dcc0f83f6e8fd40e12f`. Bukti pemasangan: `artifacts/nara-final/deploy-final.log`.
+
+Pemeriksaan khusus OCR historis lulus: query AI yang dinonaktifkan tidak mengirim permintaan dan tidak menampilkan indikator berpikir; hasil tetap terbaca. Bukti: `artifacts/nara-final/ocr-idle.log`, capture `ocr-idle-390.png`. Respons riwayat dikontrol di browser, tanpa mengubah engine di database. Pemeriksaan sempat salah mengharuskan wrapper AI kosong tetap terlihat; asumsi pemeriksaan diperbaiki menjadi keberadaan wrapper dan ketiadaan indikator, tanpa perubahan kode aplikasi.
+
+Pengulangan dua kasus browser Nara pada image akhir juga lulus (`artifacts/nara-final/browser-final.log`), mencakup hasil ringkas di lebar 320/390/768/1440, percakapan, loading/error/retry, dan konsistensi laktosa. Ini melengkapi 63 tes regresi, pemeriksaan tipe, tujuh alur browser dan pengujian AI nyata yang sudah dicatat sebelumnya.
