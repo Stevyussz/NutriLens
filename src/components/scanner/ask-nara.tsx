@@ -111,11 +111,13 @@ export function AskNara({ historyId }: { historyId?: string }) {
                       <p key={j}>{p}</p>
                     ))}
                     <small>
-                      {turn.answer.mode === "AI_GUIDED"
-                        ? "Konteks dipilih AI · angka mengikuti bacaan tersimpan"
-                        : turn.answer.mode === "LIMITED"
-                          ? "Konteks belum cukup · coba pertanyaan lebih spesifik tentang label"
-                          : "Dari bacaan label dan aturan profil"}
+                      {turn.answer.mode === "PRICE_ESTIMATE"
+                        ? "Estimasi harga · angka gizi tetap mengikuti label"
+                        : turn.answer.mode === "AI_GUIDED"
+                          ? "Konteks dipilih AI · angka mengikuti bacaan tersimpan"
+                          : turn.answer.mode === "LIMITED"
+                            ? "Konteks belum cukup · coba pertanyaan lebih spesifik tentang label"
+                            : "Dari bacaan label dan aturan profil"}
                     </small>
                   </div>
                 </article>

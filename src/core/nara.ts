@@ -10,6 +10,8 @@ import {
   naraTopicSchema,
   type NaraAnswer,
 } from "./nara-schema";
+import type { PriceEstimate } from "./price-estimate-schema";
+import { priceAnswer } from "./price-estimate";
 type Topic = z.infer<typeof naraTopicSchema>;
 /** Every displayed answer comes from server-built facts. AI may select topics, never write nutrition or medical claims. */
 export function naraFacts(
@@ -83,7 +85,10 @@ export function directNaraTopics(question: string): Topic[] {
   add(/protein/, "protein");
   add(/serat/, "fiber");
   add(/komposisi|bahan|pengawet|pemanis/, "ingredients");
-  add(/sumber|internet|valid|asli|bpom|harga|stok|murah|hemat/, "sources");
+  add(
+    /sumber|internet|valid|asli|bpom|harga|stok|murah|hemat|biaya|rupiah/,
+    "sources",
+  );
   add(/beli|sehat|ganti|pilih|rekomendasi/, "decision");
   return [...new Set(topics)].slice(0, 3);
 }
@@ -95,6 +100,7 @@ export async function askNara(
   health: HealthProfile,
   question: string,
   previousTopics: Topic[] = [],
+  price?: PriceEstimate,
 ): Promise<NaraAnswer> {
   if (photoDecision(review, health).needsVision)
     return naraAnswerSchema.parse({
@@ -106,6 +112,7 @@ export async function askNara(
       productName: photoDisplayName(review),
     });
   const facts = naraFacts(review, health);
+  if (price) facts.sources = priceAnswer(price);
   const requestedPackages = question
     .toLowerCase()
     .match(/\b(\d+(?:[.,]\d+)?|dua|tiga)\s*(?:botol|kemasan|bungkus)\b/);
@@ -157,6 +164,7 @@ export async function askNara(
     mode = "LIMITED";
   }
   topics = [...new Set(topics)].slice(0, 3);
+  if (price && topics.includes("sources")) mode = "PRICE_ESTIMATE";
   return naraAnswerSchema.parse({
     mode,
     topics,

@@ -8,6 +8,7 @@ import { photoDecision, photoDisplayName } from "@/core/photo-decision";
 import { requestApi } from "@/core/browser-api";
 import { decimal } from "@/core/utils";
 import { AskNara } from "./ask-nara";
+import { PriceEstimate } from "./price-estimate";
 import { ProductResearchPanel } from "./product-research-panel";
 import { Button } from "../ui/button";
 const fields = [
@@ -378,6 +379,7 @@ export function PhotoResult({
             meragukan, foto ulang bagian tersebut atau koreksi hanya angka itu.
           </p>
         </details>
+        <PriceEstimate review={review} />
         <AskNara
           key={review.historyId || JSON.stringify(review.nutrition)}
           historyId={review.historyId}

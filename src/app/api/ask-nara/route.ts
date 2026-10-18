@@ -13,6 +13,7 @@ import {
 } from "@/core/security/http";
 import { enforceRateLimit } from "@/core/security/rate-limiter";
 import { naraRequestSchema } from "@/core/nara-schema";
+import { estimatePhotoPrice } from "@/core/price-estimate";
 import { askNara } from "@/core/nara";
 export const maxDuration = 30;
 export async function POST(request: Request) {
@@ -31,11 +32,18 @@ export async function POST(request: Request) {
         404,
         "Bacaan foto tidak ditemukan. Buka hasil scan Anda kembali.",
       );
+    const review = reconcilePhotoReading(
+      photoReviewSchema.parse(row.photoResult),
+    );
+    const price = /harga|murah|hemat|biaya|rupiah/i.test(input.question)
+      ? await estimatePhotoPrice(review)
+      : undefined;
     const answer = await askNara(
-      reconcilePhotoReading(photoReviewSchema.parse(row.photoResult)),
+      review,
       healthSchema.parse(row.healthProfile),
       input.question,
       input.previousTopics,
+      price,
     );
     return NextResponse.json(answer, {
       headers: { "Cache-Control": "private, no-store" },

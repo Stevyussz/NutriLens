@@ -42,3 +42,6 @@ User evidence outranks the previous ship verdict: readable 19 g was invalidated 
 ## Active refinement: vision and understandable purchase context
 
 User rejects OCR authority and vague threshold-driven purchase sentences. Preserve identity and camera-first flow. Vision reads photos; no automatic local OCR fallback. Headline states whole-package quantity only when count is known. Main readout uses the same package/serving basis for sugar and sodium. Show approximate sugar weight and concrete half-package quantity plus comparable product size. Move profile percentages and source/method detail into a disclosure. Distinguish total sugar from added/free sugar and preserve uncertainty. No new visual world or marketing assets.
+
+## Price estimate extension
+Operate refinement: a secondary, flat price section before Nara, no new palette/assets/motion. Quantity per known package, explicit AI-estimate vs dated public-observation evidence, native source disclosure, nonblocking loading, retry/error and unavailable states. Brand/variant/package uncertainty stays visible; price does not override nutrition. Scope of internet lookup is public IDR observations, not exhaustive merchant search.

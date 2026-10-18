@@ -1806,3 +1806,11 @@ body:has(.dashboard-main) .photo-result .quick-action {
 }
 .profile-reference .profile-fields { margin-top: 16px; }
 .profile-shopping-note { max-width: 65ch; margin-block: 20px 0; line-height: 1.65; }
+
+.price-estimate { padding-block: 24px; border-top: 1px solid var(--line); }
+.price-estimate h2 { margin-bottom: 14px; }
+.price-estimate-amount { font-size: 24px; font-weight: 650; line-height: 1.35; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.price-estimate-amount span { display: block; margin-top: 6px; font-size: 14px; font-weight: 450; color: var(--muted); }
+.price-estimate details { margin-top: 18px; }
+.price-estimate summary { min-height: 44px; align-content: center; cursor: pointer; font-size: 14px; font-weight: 600; }
+.price-estimate p { max-width: 65ch; }

@@ -9,7 +9,7 @@ RUN npm ci --no-audit --no-fund && npm cache clean --force
 FROM deps AS builder
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY . .
-RUN npm run build && rm -rf .next/cache
+RUN --mount=type=tmpfs,target=/app/.next/cache npm run build
 
 FROM deps AS seeder
 RUN mkdir -p /var/lib/bongkar-data && chown node:node /var/lib/bongkar-data
