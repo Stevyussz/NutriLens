@@ -6,7 +6,9 @@ import { photoReviewSchema, type PhotoReview } from "@/core/ai/vision-contract";
 import type { HealthProfile } from "@/core/db/collections";
 import { photoDecision, photoDisplayName } from "@/core/photo-decision";
 import { requestApi } from "@/core/browser-api";
+import { ingredientFunctionLabels } from "@/core/presentation";
 import { decimal } from "@/core/utils";
+import { NaraBrief } from "./nara-brief";
 import { AskNara } from "./ask-nara";
 import { PriceEstimate } from "./price-estimate";
 import { ProductResearchPanel } from "./product-research-panel";
@@ -86,9 +88,8 @@ export function PhotoResult({
             aria-labelledby="photo-decision-title"
           >
             <h2 id="photo-decision-title">{decision.title}</h2>
-            {decision.meaning && (
-              <p className="photo-meaning">{decision.meaning}</p>
-            )}
+            <p className="quick-action">{decision.action}</p>
+            <NaraBrief review={review} fallback={decision.takeaway} />
             <dl className="quick-numbers">
               <div>
                 <dt>Gula / {decision.amountBasis}</dt>
@@ -108,8 +109,26 @@ export function PhotoResult({
               </div>
             </dl>
             <p className="photo-pack">{decision.portionNote}</p>
-            <h3 className="photo-choice-title">Pilihan porsi</h3>
-            <p className="quick-action">{decision.action}</p>
+            <details className="photo-profile-context">
+              <summary>Gulanya berasal dari apa?</summary>
+              <p>{decision.ingredientInsights.summary}</p>
+              <p>{decision.ingredientInsights.accounting}</p>
+              {decision.ingredientInsights.sweeteners.length > 0 && (
+                <p>
+                  Pemanis yang dikenali:{" "}
+                  {decision.ingredientInsights.sweeteners.join(", ")}. Pemanis
+                  bukan otomatis gram gula; jenis dan jumlahnya tetap perlu
+                  dibedakan.
+                </p>
+              )}
+              <a
+                href="https://www.fda.gov/food/nutrition-facts-label/added-sugars-nutrition-facts-label"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Perbedaan gula total dan tambahan · FDA
+              </a>
+            </details>
             {!review.ingredientsText && (
               <p className="photo-result-limit">
                 Komposisi belum terlihat. Alergen dan asal gula belum dapat
@@ -118,6 +137,7 @@ export function PhotoResult({
             )}
             <details className="photo-profile-context">
               <summary>Dasar penjelasan & acuan profil</summary>
+              {decision.meaning && <p>{decision.meaning}</p>}
               <p>
                 Gula pada tabel adalah gula total. Label ini belum memisahkan
                 gula alami, gula tambahan, dan gula bebas.
@@ -191,9 +211,22 @@ export function PhotoResult({
               {review.ingredientsText ||
                 "Daftar komposisi belum ada pada foto. Tidak perlu menyalin semuanya untuk membaca ringkasan gula di atas."}
             </p>
+            {decision.ingredientInsights.recognized.length > 0 && (
+              <ul>
+                {decision.ingredientInsights.recognized.map((ingredient) => (
+                  <li key={ingredient.name}>
+                    {ingredient.name} ·{" "}
+                    {ingredient.name === "laktosa"
+                      ? "Gula susu · asal alami/tambahan belum dipastikan"
+                      : ingredientFunctionLabels[ingredient.category]}
+                  </li>
+                ))}
+              </ul>
+            )}
             <p>
-              Tanpa daftar lengkap, hasil ini belum memeriksa seluruh alergen
-              atau fungsi bahan.
+              Pemetaan nama bahan tidak memastikan jumlah atau risiko pada kadar
+              yang digunakan. Bahan yang belum dikenal kamus bisa terlewat; nama
+              kimia saja bukan bukti berbahaya.
             </p>
             <Button variant="secondary" onClick={onNew}>
               Tambahkan foto komposisi
@@ -217,11 +250,7 @@ export function PhotoResult({
               Angka gram gula berasal dari tabel gizi. Jumlah nama seperti gula,
               sirup, atau madu dalam komposisi bukan ukuran gram gula.
             </p>
-            <p>
-              {review.ingredientsText
-                ? "Daftar komposisi tersedia di tab Komposisi. Pemetaan sumber gula lebih rinci memerlukan analisis komposisi lengkap."
-                : "Foto komposisi diperlukan untuk mengetahui nama sumber gulanya."}
-            </p>
+            <p>{decision.ingredientInsights.summary}</p>
           </section>
         )}
         {detail === "swaps" && (

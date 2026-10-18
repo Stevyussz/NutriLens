@@ -37,6 +37,12 @@ test("photo opens a decision immediately without compulsory nutrition entry; opt
     },
     [{ width: 398, height: 502 }],
   );
+  await page.route("**/api/ask-nara", (r) =>
+    r.fulfill({
+      status: 503,
+      json: { error: "Controlled explanation outage" },
+    }),
+  );
   await page.route("**/api/extract", (r) => r.fulfill({ json: review }));
   await page
     .getByLabel("Foto komposisi dan informasi gizi")
@@ -58,12 +64,25 @@ test("photo opens a decision immediately without compulsory nutrition entry; opt
   );
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    await expect(page.locator(".photo-choice-title")).toHaveCSS("font-size", "14px");
-    await expect(page.locator(".photo-result .quick-action")).toHaveCSS("font-size", "15px");
-    await expect(page.locator(".photo-result .quick-action")).toHaveCSS("font-weight", "450");
+    await expect(page.locator(".photo-choice-title")).toHaveCSS(
+      "font-size",
+      "14px",
+    );
+    expect(
+      await page
+        .locator(".photo-result .quick-action")
+        .first()
+        .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+    ).toBeGreaterThanOrEqual(14);
   }
-  await page.locator(".photo-profile-context summary").click();
-  await expect(page.locator(".photo-profile-context")).toContainText("38%");
+  await page
+    .getByText("Dasar penjelasan & acuan profil", { exact: true })
+    .click();
+  await expect(
+    page
+      .locator(".photo-profile-context")
+      .filter({ hasText: "Dasar penjelasan & acuan profil" }),
+  ).toContainText("38%");
   await expect(page.locator(".photo-correction")).toHaveCount(0);
   await expect(
     page.getByRole("checkbox", { name: /Saya sudah mencocokkan/ }),

@@ -189,7 +189,9 @@ Compose menyertakan layanan `updater`: pembaruan setiap 24 jam, percobaan ulang 
 
 ### Tanya Nara
 
-Hasil foto memiliki percakapan opsional tentang label yang sedang dibuka. Pertanyaan cepat dijawab dari fakta tersimpan; pertanyaan lain dapat memakai AI untuk memilih konteks dari kumpulan topik yang diizinkan. Server menyusun teks fakta dan perhitungan, sehingga keluaran model tidak mengubah angka atau membuat klaim gizi baru. Endpoint `POST /api/ask-nara` memerlukan sesi, origin yang diizinkan dan ID riwayat milik pengguna; ada batas 15 permintaan per menit per pengguna per proses. Pertanyaan tidak disimpan dalam database chat, tetapi pertanyaan bebas dan konteks fakta dapat dikirim ke penyedia AI yang dikonfigurasi. Percakapan hanya ada pada halaman, hingga enam jawaban terakhir.
+Hasil foto mendapat penjelasan Nara otomatis yang tidak menahan angka gizi, disertai chat opsional untuk pertanyaan lanjutan. AI menyusun jawaban dari pertanyaan, fakta label, profil saat scan dan hingga enam percakapan terakhir; bukan hanya memilih paragraf topik. Angka dalam jawaban harus merujuk nilai yang dihitung server. Keluaran yang tidak lolos pemeriksaan atau kegagalan provider memakai fakta cadangan berlabel. Edukasi gizi dan kebiasaan makan diperbolehkan; diagnosis, resep dan jaminan keamanan medis tidak dibuat.
+
+Gula total tidak dijumlah ulang dengan nama gula dalam komposisi. Kamus mengenali sumber gula dan fungsi bahan langsung dari bacaan komposisi, tanpa mengubah urutan bahan menjadi gram terukur. Endpoint `POST /api/ask-nara` memerlukan sesi, origin yang diizinkan dan riwayat milik pengguna, dengan batas 15 permintaan per menit per pengguna per proses. Aplikasi tidak menyimpan database chat terpisah, tetapi pertanyaan, fakta dan enam percakapan terakhir dapat dikirim ke penyedia AI untuk konteks. Lihat [QA_NARA_CONTEXT.md](QA_NARA_CONTEXT.md) untuk bukti dan batas pengujian.
 
 
 ### Jalur foto vision versi 3

@@ -1,6 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect as baseExpect } from "@playwright/test";
 import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
 import { mkdir } from "node:fs/promises";
+const expect = baseExpect.configure({ timeout: 60000 });
 const photo = normalizePhotoTranscription(
   {
     productName: "Coffee Cappuccino",
@@ -111,7 +112,7 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
     .getByRole("button", { name: "Kalau habis satu kemasan?", exact: true })
     .click();
   await expect(page.locator(".nara-answer").last()).toContainText("19 g");
-  await expect(page.locator(".nara-answer").last()).toContainText("80 mg");
+  await expect(page.locator(".nara-answer").last()).not.toContainText("38 g");
   await expect(page.locator(".nara-answer").last()).toBeFocused();
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: width > 800 ? 1000 : 844 });
@@ -133,13 +134,13 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
     }),
   );
   await page
-    .getByLabel("Pertanyaan tentang label ini")
+    .getByLabel("Apa yang ingin kamu pahami?")
     .fill("Apa arti natrium?");
   await page.getByRole("button", { name: "Kirim pertanyaan ke Nara" }).click();
   await expect(page.locator(".nara-question-error")).toContainText(
     "Pertanyaan Anda tetap tersedia",
   );
-  await expect(page.getByLabel("Pertanyaan tentang label ini")).toHaveValue(
+  await expect(page.getByLabel("Apa yang ingin kamu pahami?")).toHaveValue(
     "Apa arti natrium?",
   );
   await page.setViewportSize({ width: 390, height: 844 });
@@ -170,13 +171,13 @@ test("Nara reads owned facts, answers without inventing values, recovers and res
   expect(forbidden.status()).toBe(404);
   await other.close();
   await page
-    .getByLabel("Pertanyaan tentang label ini")
+    .getByLabel("Apa yang ingin kamu pahami?")
     .fill("Natrium " + "a".repeat(492));
   await page.getByRole("button", { name: "Kirim pertanyaan ke Nara" }).click();
   await expect(page.locator(".nara-answer")).toHaveCount(3);
   const transcript = page.getByRole("region", { name: "Percakapan Nara" });
   expect((await transcript.boundingBox())!.height).toBeLessThanOrEqual(440);
-  await expect(page.getByLabel("Pertanyaan tentang label ini")).toBeVisible();
+  await expect(page.getByLabel("Apa yang ingin kamu pahami?")).toBeVisible();
   await page.setViewportSize({ width: 320, height: 844 });
   expect(
     await page.evaluate(

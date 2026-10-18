@@ -15,7 +15,7 @@ import { enforceRateLimit } from "@/core/security/rate-limiter";
 import { naraRequestSchema } from "@/core/nara-schema";
 import { estimatePhotoPrice } from "@/core/price-estimate";
 import { askNara } from "@/core/nara";
-export const maxDuration = 30;
+export const maxDuration = 90;
 export async function POST(request: Request) {
   try {
     assertOrigin(request);
@@ -44,6 +44,8 @@ export async function POST(request: Request) {
       input.question,
       input.previousTopics,
       price,
+      input.conversation,
+      input.purpose,
     );
     return NextResponse.json(answer, {
       headers: { "Cache-Control": "private, no-store" },

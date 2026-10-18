@@ -1,5 +1,6 @@
 import type { PhotoReview } from "./ai/vision-contract";
 import type { HealthProfile } from "./db/collections";
+import { photoIngredientInsights } from "./photo-ingredients";
 import { decimal } from "./utils";
 /** Facts and explicit choices, with no health score or arbitrary 'high sugar' threshold. */
 export function photoDecision(review: PhotoReview, health?: HealthProfile) {
@@ -98,7 +99,30 @@ export function photoDecision(review: PhotoReview, health?: HealthProfile) {
     count === null
       ? "Jumlah sajian per kemasan belum diketahui."
       : `${decimal(count)} sajian dalam satu kemasan${review.evidence.servingText ? ` · ${review.evidence.servingText} per sajian` : ""}.`;
+  const ingredientInsights = photoIngredientInsights(review);
+  const otherNutrition = [
+    n.saturatedFatGrams === null
+      ? null
+      : `${decimal(n.saturatedFatGrams * (count ?? 1))} g lemak jenuh`,
+    n.caloriesKcal === null
+      ? null
+      : `${decimal(n.caloriesKcal * (count ?? 1))} kkal`,
+  ].filter(Boolean);
+  const takeaway =
+    displaySugar === null || needsVision
+      ? null
+      : `Kalau ingin mengurangi gula, ${
+          displaySugar === 0
+            ? "cek juga pemanis dan komposisinya sebelum memilih."
+            : coffee
+              ? "kopi tanpa gula tambahan bisa jadi pilihan. Rasa kopi atau susu tidak berarti minumannya rendah gula."
+              : drink
+                ? "air putih bisa jadi pilihan untuk haus; minuman ini tetap menyumbang gula meskipun rasanya tidak terlalu manis."
+                : "lihat porsi yang benar-benar dimakan, bukan hanya ukuran sajian kecil pada tabel."
+        } ${otherNutrition.length ? `Per ${amountBasis} juga ada ${otherNutrition.join(" dan ")}. Gula bukan satu-satunya hal yang perlu dilihat.` : ""}`;
   return {
+    ingredientInsights,
+    takeaway,
     title,
     action,
     meaning,

@@ -27,6 +27,10 @@ export function AskNara({ historyId }: { historyId?: string }) {
         method: "POST",
         body: JSON.stringify({
           historyId,
+          conversation: turns.slice(-6).map((turn) => ({
+            question: turn.question,
+            answer: turn.answer.paragraphs.join("\n"),
+          })),
           question: text,
           previousTopics: turns.at(-1)?.answer.topics ?? [],
         }),
@@ -55,9 +59,11 @@ export function AskNara({ historyId }: { historyId?: string }) {
     if ((ask.isPending || ask.error) && transcript.current)
       transcript.current.scrollTop = transcript.current.scrollHeight;
   }, [ask.isPending, ask.error]);
-  const choices = turns.length
-    ? ["Kalau setengah kemasan?", "Ada bahan pemicu alergi?"]
-    : suggestions;
+  const choices = turns.at(-1)?.answer.followUps.length
+    ? turns.at(-1)!.answer.followUps
+    : turns.length
+      ? ["Kalau setengah kemasan?", "Ada bahan pemicu alergi?"]
+      : suggestions;
   const submit = (text: string) => {
     const trimmed = text.trim();
     if (trimmed.length >= 3 && !ask.isPending) ask.mutate(trimmed);
@@ -67,7 +73,10 @@ export function AskNara({ historyId }: { historyId?: string }) {
       <div className="nara-intro">
         <div>
           <h2 id="nara-title">Lebih paham dengan Nara.</h2>
-          <p>Tanya soal porsi, gula, atau arti angka pada label ini.</p>
+          <p>
+            Bahas pilihanmu, bongkar nama bahan, atau cari langkah kecil untuk
+            makan lebih baik.
+          </p>
         </div>
         <Button
           ref={trigger}
@@ -114,9 +123,9 @@ export function AskNara({ historyId }: { historyId?: string }) {
                       {turn.answer.mode === "PRICE_ESTIMATE"
                         ? "Estimasi harga · angka gizi tetap mengikuti label"
                         : turn.answer.mode === "AI_GUIDED"
-                          ? "Konteks dipilih AI · angka mengikuti bacaan tersimpan"
+                          ? "Penjelasan AI · angka dihitung dari label tersimpan"
                           : turn.answer.mode === "LIMITED"
-                            ? "Konteks belum cukup · coba pertanyaan lebih spesifik tentang label"
+                            ? "Jawaban cadangan · AI belum memberi penjelasan yang tervalidasi"
                             : "Dari bacaan label dan aturan profil"}
                     </small>
                   </div>
@@ -161,7 +170,7 @@ export function AskNara({ historyId }: { historyId?: string }) {
             }}
             className="nara-composer"
           >
-            <label htmlFor="nara-question">Pertanyaan tentang label ini</label>
+            <label htmlFor="nara-question">Apa yang ingin kamu pahami?</label>
             <div>
               <textarea
                 id="nara-question"
@@ -191,7 +200,8 @@ export function AskNara({ historyId }: { historyId?: string }) {
             <p>
               Memakai bacaan label dan profil saat scan. Angka yang belum pasti
               tidak ditebak. Percakapan tidak disimpan sebagai chat di aplikasi;
-              pertanyaan bebas dapat diproses penyedia AI.
+              pertanyaan dan enam percakapan terakhir dapat diproses penyedia AI
+              untuk memahami konteks.
             </p>
           </details>
         </div>
