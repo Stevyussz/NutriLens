@@ -453,6 +453,8 @@ body:has(:is(.dashboard-main, .auth-page, .system-state)) {
   & .camera-selections {
     flex-wrap: wrap;
   }
+  & .camera-selection-summary { margin-block: 16px 8px; font-size: 14px; }
+  & .camera-selection-summary p { margin: 4px 0 0; color: var(--muted); }
   & .camera-remove {
     background: #491d36;
     color: #fff8fc;

@@ -255,6 +255,22 @@ export function LiveCamera({
           {error}
         </p>
       )}
+      {files.length > 0 && (
+        <div
+          className="camera-selection-summary"
+          role="status"
+          aria-label="Pilihan foto"
+        >
+          <strong>
+            {files.length} dari {MAX_SCAN_PHOTOS} foto dipilih
+          </strong>
+          <p>
+            {files.length >= MAX_SCAN_PHOTOS
+              ? "Batas tercapai. Buang foto yang ingin diganti."
+              : "Bisa dibaca sekarang. Tambahkan sisi lain jika perlu."}
+          </p>
+        </div>
+      )}
       {previews.length > 0 && (
         <div className="camera-selections" aria-label="Foto yang akan dibaca">
           {previews.map((url, index) => (
@@ -286,10 +302,10 @@ export function LiveCamera({
         variant="ghost"
         className="camera-gallery"
         onClick={onGallery}
-        disabled={!active}
+        disabled={!active || files.length >= MAX_SCAN_PHOTOS}
       >
         <ImagePlus size={17} aria-hidden />
-        Pilih foto dari galeri
+        {files.length ? "Tambahkan foto dari galeri" : "Pilih foto dari galeri"}
       </Button>
     </div>
   );

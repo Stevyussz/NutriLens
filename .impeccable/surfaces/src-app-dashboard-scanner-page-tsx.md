@@ -53,3 +53,5 @@ Preserve the Operate identity and quick label/purchase context. Keep immediate l
 ## Multi-view photo scan
 
 One product can use 1–6 photos, up to 5 MB each, from camera and gallery together. Preserve existing camera-first controls and visual system. Counters, shutter limit, selection errors, API limit and saved evidence use the same shared limit. All views go to vision together; per-image decoding is sequential to bound peak memory. The thumbnail strip wraps on narrow screens so photos remain inspectable/removable. Extra views are optional; users can read a single photo immediately.
+
+Photo-selection refinement: show a compact live selection count for camera and gallery alike. Explain remaining capacity when a batch is refused; identify an invalid filename; never truncate a queued addition silently. Disable gallery additions at six with visible remove-to-replace guidance, re-enable after removal, retain all choices on extraction failure, and clear stale errors for a new scan. Existing typography/tokens/native controls remain the design authority.

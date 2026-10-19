@@ -1,13 +1,11 @@
 "use client";
-import {
-  MAX_SCAN_PHOTOS,
-  MAX_SCAN_PHOTO_BYTES,
-} from "@/core/scan-photo-limits";
+import { MAX_SCAN_PHOTOS } from "@/core/scan-photo-limits";
+import { photoSelectionReducer } from "@/core/photo-selection";
 import { LiveCamera } from "./live-camera";
 import { PhotoInspector } from "./photo-inspector";
 import { NaraThinking } from "./nara-thinking";
 import { PhotoResult } from "./photo-result";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useReducer, useRef, useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileText, Camera, ClipboardList, ScanLine } from "lucide-react";
 import { requestApi } from "@/core/browser-api";
@@ -70,9 +68,11 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   const [editorSection, setEditorSection] = useState<"identity" | "nutrition">(
     "identity",
   );
-  const [photos, setPhotos] = useState<File[]>([]);
+  const [{ files: photos, error: photoError }, updatePhotos] = useReducer(
+    photoSelectionReducer,
+    { files: [], error: "" },
+  );
   const [galleryOpen, setGalleryOpen] = useState(false);
-  const [photoError, setPhotoError] = useState("");
   const photoInput = useRef<HTMLInputElement>(null);
   const photoFailure = useRef<HTMLParagraphElement>(null);
   const selectedFiles = photos.map((file) => file.name);
@@ -171,22 +171,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
   function addGalleryPhotos(input: HTMLInputElement) {
     const incoming = Array.from(input.files ?? []);
     input.value = "";
-    if (!incoming.length) return;
-    const error =
-      photos.length + incoming.length > MAX_SCAN_PHOTOS
-        ? `Maksimal ${MAX_SCAN_PHOTOS} foto. Buang salah satu foto pilihan sebelum menambahkan foto lain.`
-        : incoming.some(
-              (file) =>
-                !["image/jpeg", "image/png", "image/webp"].includes(file.type),
-            )
-          ? "Gunakan foto JPEG, PNG, atau WEBP. Foto pilihan sebelumnya tetap tersimpan."
-          : incoming.some(
-                (file) => !file.size || file.size > MAX_SCAN_PHOTO_BYTES,
-              )
-            ? "Ukuran setiap foto harus lebih dari 0 dan maksimal 5 MB. Foto pilihan sebelumnya tetap tersimpan."
-            : "";
-    setPhotoError(error);
-    if (!error) setPhotos((current) => [...current, ...incoming]);
+    updatePhotos({ type: "add", files: incoming });
   }
   function chooseCatalogue(draft: CatalogueProduct) {
     const form = formRef.current;
@@ -708,14 +693,10 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                 active={mode === "photo" && workspace === "entry" && !busy}
                 files={photos}
                 onCapture={(file) => {
-                  setPhotos((current) =>
-                    [...current, file].slice(0, MAX_SCAN_PHOTOS),
-                  );
-                  setPhotoError("");
+                  updatePhotos({ type: "add", files: [file] });
                 }}
                 onRemove={(index) => {
-                  setPhotos((current) => current.filter((_, i) => i !== index));
-                  setPhotoError("");
+                  updatePhotos({ type: "remove", index });
                   if (photoInput.current) photoInput.current.value = "";
                 }}
                 onGallery={() => {
@@ -756,6 +737,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                   accept="image/jpeg,image/png,image/webp"
                   name="image"
                   multiple
+                  disabled={photos.length >= MAX_SCAN_PHOTOS}
                   onChange={(event) => addGalleryPhotos(event.currentTarget)}
                 />
                 {selectedFiles.length > 0 && (
@@ -864,7 +846,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
           onNew={() => {
             setWorkspace("entry");
             setMode("photo");
-            setPhotos([]);
+            updatePhotos({ type: "reset" });
             setPhotoPreviews([]);
             setReview(null);
             setFastReview(null);

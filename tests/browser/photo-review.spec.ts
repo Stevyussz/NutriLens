@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
+// Controlled network fixtures must not be bypassed by the app's service worker.
+test.use({ serviceWorkers: "block" });
 
 test("photo opens a decision immediately without compulsory nutrition entry; optional correction and private history work", async ({
   page,
