@@ -8,6 +8,13 @@ import {
   type PriceEstimate,
 } from "./price-estimate-schema";
 import { decimal, rupiah } from "./utils";
+export type PriceProduct = Pick<
+  PhotoReview,
+  "name" | "brand" | "category" | "servingSizeGrams" | "servingsPerContainer"
+> & {
+  evidence: Pick<PhotoReview["evidence"], "servingText">;
+  providerCode?: string;
+};
 
 let feed: { until: number; rows: unknown[] } | undefined;
 let pendingFeed: Promise<unknown[]> | undefined;
@@ -55,7 +62,7 @@ async function observedPrices(): Promise<unknown[]> {
     pendingFeed = undefined;
   }
 }
-export function pricePackage(review: PhotoReview) {
+export function pricePackage(review: PriceProduct) {
   const unit =
     review.evidence.servingText?.match(/\b(g|ml)\b/i)?.[1]?.toLowerCase() ??
     review.evidence.servingText?.match(/\d\s*(g|ml)$/i)?.[1]?.toLowerCase();
@@ -69,7 +76,7 @@ export function pricePackage(review: PhotoReview) {
 }
 /** Candidate-name/variant+package match only; never asserts a barcode from a photo. */
 export function matchingPriceObservations(
-  review: PhotoReview,
+  review: PriceProduct,
   rows: unknown[],
   today: string,
 ) {
@@ -99,6 +106,10 @@ export function matchingPriceObservations(
         : [];
     }),
   );
+  if (review.providerCode) {
+    codes.clear();
+    codes.add(review.providerCode);
+  }
   return normalizePriceObservations(rows, today)
     .filter(
       (p) =>
@@ -135,10 +146,15 @@ export function priceAnswer(price: PriceEstimate) {
   return `${price.mode === "AI_ESTIMATE" ? "Perkiraan Nara" : "Kisaran dari observasi harga"}: ${price.lowIdr === price.highIdr ? rupiah(price.lowIdr!) : `${rupiah(price.lowIdr!)}–${rupiah(price.highIdr!)}`} untuk ${price.packageText}. ${price.note}`;
 }
 export async function estimatePhotoPrice(
-  review: PhotoReview,
+  review: PriceProduct,
 ): Promise<PriceEstimate> {
   const pack = pricePackage(review);
-  const key = JSON.stringify([review.name, review.brand, pack?.text]);
+  const key = JSON.stringify([
+    review.name,
+    review.brand,
+    pack?.text,
+    review.providerCode ?? null,
+  ]);
   const hit = estimates.get(key);
   if (hit && hit.until > Date.now()) return hit.value;
   if (pending.has(key)) return pending.get(key)!;
@@ -181,7 +197,9 @@ export async function estimatePhotoPrice(
           priceIdr: p.priceIdr,
           location: p.location.slice(0, 500),
         })),
-        note: "Observasi komunitas untuk nama/varian dan ukuran serupa; barcode belum dicocokkan. Harga dapat berubah menurut toko, lokasi dan promo. Bukan harga termurah seluruh pasar.",
+        note: review.providerCode
+          ? "Observasi komunitas untuk barcode dan ukuran kemasan yang sesuai. Harga bergantung toko, lokasi dan promo; bukan jaminan stok atau harga termurah seluruh pasar."
+          : "Observasi komunitas untuk nama/varian dan ukuran serupa; barcode belum dicocokkan. Harga dapat berubah menurut toko, lokasi dan promo. Bukan harga termurah seluruh pasar.",
       });
     if (aiAvailable())
       try {

@@ -1,6 +1,7 @@
 import type { PhotoReview } from "./ai/vision-contract";
 import type { HealthProfile } from "./db/collections";
 import { photoIngredientInsights } from "./photo-ingredients";
+import { allergyConflict } from "./food-allergy-match";
 import { decimal } from "./utils";
 /** Facts and explicit choices, with no health score or arbitrary 'high sugar' threshold. */
 export function photoDecision(review: PhotoReview, health?: HealthProfile) {
@@ -25,7 +26,7 @@ export function photoDecision(review: PhotoReview, health?: HealthProfile) {
       : Math.round((n.sodiumMg / health.dailySodiumLimitMg) * 100);
   const ingredients = review.ingredientsText.toLowerCase();
   const allergyMatches = (health?.allergies ?? []).filter((a) =>
-    ingredients.includes(a.toLowerCase()),
+    allergyConflict(ingredients, [a]),
   );
   const needsVision = review.engine === "LOCAL_OCR" && !review.userCorrected;
   const sugarConflict =

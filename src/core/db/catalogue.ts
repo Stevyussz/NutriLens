@@ -35,8 +35,21 @@ export const catalogueSchema = z
     referenceEligible: z.boolean(),
     sourceUrl: z.string().url(),
     retrievedAt: z.string().datetime(),
+    normalizationVersion: z.literal(2).optional(),
+    packageQuantity: z.number().positive().max(100000).nullable().optional(),
+    packageUnit: z.enum(["g", "ml"]).nullable().optional(),
   })
-  .strict();
+  .strict()
+  .transform((record) => ({
+    ...record,
+    // The repository's v1 importer scaled every known value to a serving,
+    // but retained the original 100g/ml tag. Repair that tag once on read.
+    nutritionBasis:
+      record.normalizationVersion === undefined &&
+      record.nutritionBasis !== "UNKNOWN"
+        ? ("PER_SERVING" as const)
+        : record.nutritionBasis,
+  }));
 export type CatalogueProduct = z.infer<typeof catalogueSchema>;
 export const catalogueOutputSchema = z
   .object({

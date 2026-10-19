@@ -64,3 +64,9 @@ Profil konsumsi tidak meminta patokan harga. Field budget lama diterima opsional
 
 ## Estimasi harga otomatis
 Hasil foto menyediakan kisaran harga satu kemasan tanpa budget pribadi. Open Prices dibaca secara otomatis dengan observasi IDR, kecocokan nama/varian, ukuran/satuan kemasan dan umur sumber maksimal180hari; barcode foto belum dianggap terverifikasi. Bila belum ada kecocokan, model boleh memberi kisaran AI yang jelas belum terverifikasi toko, tanpa sumber rekaan. Estimasi tidak mengubah gizi, bukti toko, penghematan atau peringkat harga terverifikasi. Nara menjelaskan kisaran yang sama saat ditanya harga. Kegagalan sumber/model tidak menahan hasil scan; retry tersedia.
+
+## Active photo-result alternatives
+
+The camera-to-result flow now retrieves named lower-sugar comparisons from source-attributed Indonesian catalogue data, bounded live category lookup and the current user's own photo history. A photograph's per-serving nutrients are compared on an equal gram/ml amount, never by assuming g=ml or treating a small serving as an entire package. This photo-result shortlist orders by known nutrient trade-offs and lower sugar. It is separate from the legacy complete-analysis list ordered by recorded comparable retailer prices. AI price estimates are displayed separately and cannot become proof of the cheapest market option. No personal budget ceiling is introduced.
+
+Recommendation filtering uses the health-profile snapshot saved with that scan. Unknown ingredients/allergens/nutrients remain unknown. Candidate evidence is shared with Nara for explanations and follow-up questions. The summary links to one primary candidate, additional candidates and source/trade-off disclosures; short shopping lessons teach fair portion comparisons and the limits of front-of-pack sugar claims. No-match, incomplete evidence and source outages do not fabricate products, prices, nutrition or stock.

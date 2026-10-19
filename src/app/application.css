@@ -1814,3 +1814,25 @@ body:has(.dashboard-main) .photo-result .quick-action {
 .price-estimate details { margin-top: 18px; }
 .price-estimate summary { min-height: 44px; align-content: center; cursor: pointer; font-size: 14px; font-weight: 600; }
 .price-estimate p { max-width: 65ch; }
+
+/* Product comparisons reuse the flat reading surface and existing disclosures. */
+body:has(.dashboard-main) .alternatives-hint {
+  border-block: 1px solid var(--line);
+  padding: 14px 0;
+  margin: 16px 0;
+}
+body:has(.dashboard-main) .alternatives-hint p { margin: 0 0 4px; font-weight: 600; }
+body:has(.dashboard-main) .alternative-row { padding: 22px 0; border-block-end: 1px solid var(--line); overflow-wrap: anywhere; }
+body:has(.dashboard-main) .alternative-row h3 { font-size: 18px; margin: 0 0 4px; }
+body:has(.dashboard-main) .alternative-row > p { margin: 8px 0; }
+body:has(.dashboard-main) .alternative-numbers { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 16px 0; }
+body:has(.dashboard-main) .photo-result .alternative-numbers > div { display: block; min-width: 0; }
+@media (max-width: 360px) {
+  body:has(.dashboard-main) .alternative-numbers { grid-template-columns: 1fr; gap: 8px; }
+}
+body:has(.dashboard-main) .alternative-numbers dt { font-size: 14px; color: var(--muted); }
+body:has(.dashboard-main) .alternative-numbers dd { font-size: 18px; font-weight: 650; margin: 4px 0 0; }
+body:has(.dashboard-main) .alternative-numbers dd span { display: block; font-size: 14px; font-weight: 400; }
+body:has(.dashboard-main) .alternatives-panel details { margin: 18px 0; }
+body:has(.dashboard-main) .alternatives-panel summary { min-height: 44px; padding-block: 10px; cursor: pointer; font-weight: 600; }
+body:has(.dashboard-main) .shopping-lessons h3 { font-size: 18px; margin-bottom: 6px; }

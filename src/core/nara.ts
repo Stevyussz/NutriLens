@@ -12,6 +12,7 @@ import {
   type NaraAnswer,
 } from "./nara-schema";
 import type { PriceEstimate } from "./price-estimate-schema";
+import type { PhotoAlternatives } from "./photo-alternatives-schema";
 import { priceAnswer } from "./price-estimate";
 type Topic = z.infer<typeof naraTopicSchema>;
 /** Trusted numerical facts also serve as the provider-outage fallback. */
@@ -262,6 +263,8 @@ export async function askNara(
   price?: PriceEstimate,
   conversation: { question: string; answer: string }[] = [],
   purpose: "chat" | "brief" = "chat",
+  alternatives?: PhotoAlternatives,
+  alternativePrices: { id: string; price: PriceEstimate }[] = [],
 ): Promise<NaraAnswer> {
   if (photoDecision(review, health).needsVision)
     return naraAnswerSchema.parse({
@@ -279,6 +282,36 @@ export async function askNara(
     health,
     question,
   );
+  if (alternatives) {
+    facts.decision = `${alternatives.title} ${alternatives.action}`;
+    const first = alternatives.candidates[0];
+    if (first) {
+      facts.decision = `Untuk mengurangi gula sambil tetap memilih produk sejenis, bandingkan ${first.brand} ${first.name}: ${decimal(first.sugarGrams)} g gula, sedangkan produk ini ${decimal(first.originalSugarGrams)} g pada ukuran yang sama, ${decimal(first.comparisonSize)} ${first.unit}. ${first.tradeoffs.join(" ")} Cek ulang label kemasan dan buka Pilihan pengganti untuk sumber serta perkiraan harga; data ini tidak menjamin stok atau bahwa produk lebih sehat dalam semua hal.`;
+    }
+    for (const [i, candidate] of alternatives.candidates.entries()) {
+      const reference = `alternative_${["first", "second", "third"][i]}`;
+      const estimate = alternativePrices.find(
+        (p) => p.id === candidate.id,
+      )?.price;
+      if (estimate?.lowIdr !== null && estimate?.lowIdr !== undefined) {
+        numbers[`${reference}_price_low`] =
+          `Rp${estimate.lowIdr.toLocaleString("id-ID")} untuk ${estimate.packageText}`;
+        numbers[`${reference}_price_high`] =
+          `Rp${estimate.highIdr!.toLocaleString("id-ID")} untuk ${estimate.packageText}`;
+      }
+      numbers[`${reference}_name`] = `${candidate.brand} ${candidate.name}`;
+      numbers[`${reference}_sugar`] =
+        `${decimal(candidate.sugarGrams)} g gula pada ${decimal(candidate.comparisonSize)} ${candidate.unit}`;
+      numbers[`${reference}_reduction`] =
+        `${candidate.reductionPercent}% lebih sedikit gula pada ukuran yang sama`;
+    }
+  }
+  if (alternatives && alternativePrices.length) {
+    const first = alternatives.candidates[0];
+    const estimate = alternativePrices.find((p) => p.id === first?.id)?.price;
+    if (first && estimate)
+      facts.sources = `${first.brand} ${first.name}: ${priceAnswer(estimate)}`;
+  }
   if (requestedServings !== null) {
     facts.portion = `Untuk ${portionText}, porsinya ${decimal(requestedServings)} sajian berdasarkan label.${review.nutrition.sugarGrams === null ? " Gulanya belum bisa dihitung." : ` Gulanya ${decimal(requestedServings * review.nutrition.sugarGrams)} g.`}${review.nutrition.sodiumMg === null ? "" : ` Natriumnya ${decimal(requestedServings * review.nutrition.sodiumMg)} mg.`} Ini perhitungan dari bacaan tersimpan, dengan asumsi isi produk tercampur merata.`;
   }
@@ -323,6 +356,10 @@ DATA: ${JSON.stringify({
         priceEvidence: price,
         facts,
         ingredients: photoIngredientInsights(review),
+        alternativeEvidence: alternatives,
+        alternativePriceEvidence: alternativePrices,
+        alternativeRules:
+          "Only name supplied candidates as product alternatives. Explain lower sugar at the stated equal quantity, not universally healthier. Include material nutrient trade-offs or missing fields. NO_MATCH means do not invent a branded substitute; explain a practical type of choice and what to check. Prices of the current product are NOT prices of candidates. Catalogue sources do not prove store stock, current formulation or medical safety. User can open Pilihan pengganti to see sources and price estimates.",
         numberReferences: numbers,
         conditions: health.conditions,
         allergies: health.allergies,
@@ -401,7 +438,8 @@ DATA: ${JSON.stringify({
     mode = "LIMITED";
   }
   topics = [...new Set(topics)].slice(0, 3);
-  if (price && topics.includes("sources")) mode = "PRICE_ESTIMATE";
+  if ((price || alternativePrices.length) && topics.includes("sources"))
+    mode = "PRICE_ESTIMATE";
   return naraAnswerSchema.parse({
     mode,
     topics,

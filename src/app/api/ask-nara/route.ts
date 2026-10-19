@@ -15,7 +15,11 @@ import { enforceRateLimit } from "@/core/security/rate-limiter";
 import { naraRequestSchema } from "@/core/nara-schema";
 import { estimatePhotoPrice } from "@/core/price-estimate";
 import { askNara } from "@/core/nara";
-export const maxDuration = 90;
+import {
+  findPhotoAlternatives,
+  alternativePriceProduct,
+} from "@/core/photo-alternatives";
+export const maxDuration = 120;
 export async function POST(request: Request) {
   try {
     assertOrigin(request);
@@ -35,17 +39,49 @@ export async function POST(request: Request) {
     const review = reconcilePhotoReading(
       photoReviewSchema.parse(row.photoResult),
     );
-    const price = /harga|murah|hemat|biaya|rupiah/i.test(input.question)
-      ? await estimatePhotoPrice(review)
-      : undefined;
+    const health = healthSchema.parse(row.healthProfile);
+    const wantsAlternatives =
+      input.purpose === "chat" &&
+      /alternatif|pengganti|rekomend|produk lain|lebih baik|pilih|ganti|dibeli|beli/i.test(
+        [input.question, ...input.conversation.map((t) => t.question)].join(
+          " ",
+        ),
+      );
+    const wantsPrice = /harga|murah|hemat|biaya|rupiah/i.test(input.question);
+    const [price, context] = await Promise.all([
+      wantsPrice ? estimatePhotoPrice(review) : undefined,
+      wantsAlternatives
+        ? (async () => {
+            const alternatives = await findPhotoAlternatives(
+              await getDb(),
+              review,
+              health,
+              user._id,
+            );
+            const prices = wantsPrice
+              ? await Promise.all(
+                  alternatives.candidates.map(async (candidate) => ({
+                    id: candidate.id,
+                    price: await estimatePhotoPrice(
+                      alternativePriceProduct(candidate, review.category),
+                    ),
+                  })),
+                )
+              : [];
+            return { alternatives, prices };
+          })()
+        : undefined,
+    ]);
     const answer = await askNara(
       review,
-      healthSchema.parse(row.healthProfile),
+      health,
       input.question,
       input.previousTopics,
       price,
       input.conversation,
       input.purpose,
+      context?.alternatives,
+      context?.prices,
     );
     return NextResponse.json(answer, {
       headers: { "Cache-Control": "private, no-store" },

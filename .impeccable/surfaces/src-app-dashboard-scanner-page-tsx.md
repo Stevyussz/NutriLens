@@ -45,3 +45,7 @@ User rejects OCR authority and vague threshold-driven purchase sentences. Preser
 
 ## Price estimate extension
 Operate refinement: a secondary, flat price section before Nara, no new palette/assets/motion. Quantity per known package, explicit AI-estimate vs dated public-observation evidence, native source disclosure, nonblocking loading, retry/error and unavailable states. Brand/variant/package uncertainty stays visible; price does not override nutrition. Scope of internet lookup is public IDR observations, not exhaustive merchant search.
+
+## Active refinement: evidence-based purchase comparisons
+
+Preserve the Operate identity and quick label/purchase context. Keep immediate label facts and portion action independent of recommendation loading. An async concise hint opens the existing Pilihan pengganti tab. Show one named candidate first, comparison on the same quantity, qualified sugar reduction and honest price provenance. Additional choices, nutrient trade-offs, original source/date and shopping lessons use existing native disclosures. Own-photo candidates remain private to their owner. Filtering uses the scan's saved profile; catalogue normalization never invents missing data or package dimensions. Source outages and no-match are useful recoverable states, not fabricated alternatives. Preserve tokens, flat reading surfaces and mobile navigation.

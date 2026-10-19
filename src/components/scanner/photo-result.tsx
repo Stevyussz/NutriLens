@@ -12,6 +12,11 @@ import { NaraBrief } from "./nara-brief";
 import { AskNara } from "./ask-nara";
 import { PriceEstimate } from "./price-estimate";
 import { ProductResearchPanel } from "./product-research-panel";
+import {
+  usePhotoAlternatives,
+  AlternativesHint,
+  AlternativesPanel,
+} from "./photo-alternatives";
 import { Button } from "../ui/button";
 const fields = [
   ["sugarGrams", "Gula", "g"],
@@ -40,6 +45,7 @@ export function PhotoResult({
   onUpdate: (review: PhotoReview) => void;
 }) {
   const decision = photoDecision(review, health);
+  const alternatives = usePhotoAlternatives(review);
   const heading = useRef<HTMLHeadingElement>(null);
   const [editing, setEditing] = useState(false);
   useEffect(() => {
@@ -89,6 +95,10 @@ export function PhotoResult({
           >
             <h2 id="photo-decision-title">{decision.title}</h2>
             <p className="quick-action">{decision.action}</p>
+            <AlternativesHint
+              data={alternatives.data}
+              onOpen={() => onDetail("swaps")}
+            />
             <NaraBrief review={review} fallback={decision.takeaway} />
             <dl className="quick-numbers">
               <div>
@@ -254,20 +264,11 @@ export function PhotoResult({
           </section>
         )}
         {detail === "swaps" && (
-          <section className="photo-detail">
-            <h2>Kalau ingin pilihan lain</h2>
-            <p>
-              {review.category === "MINUMAN_KEMASAN" ||
-              /kopi|coffee|minuman|teh/i.test(review.name)
-                ? "Bandingkan dengan air putih atau minuman tanpa tambahan gula. Untuk kopi, cari pilihan tanpa gula lalu cek kembali labelnya."
-                : "Bandingkan produk sejenis dengan gula dan natrium lebih rendah pada porsi yang sama."}
-            </p>
-            <p>
-              Ini saran jenis pilihan, bukan klaim bahwa merek tertentu lebih
-              sehat. Harga dan kandungan produk lain belum dibandingkan.
-            </p>
-            <Button onClick={onNew}>Scan label pembanding</Button>
-          </section>
+          <AlternativesPanel
+            query={alternatives}
+            historyId={review.historyId}
+            onScan={onNew}
+          />
         )}
         {editing && (
           <form

@@ -209,3 +209,7 @@ Photo results now fetch an independent package-price range. Public IDR observati
 BongkarLabel memiliki manifest, ikon biasa/maskable, ikon Apple, dan service worker produksi. Aplikasi yang dipasang membuka `/scanner` dalam mode mandiri. Android/Chrome: menu browser → **Instal aplikasi** atau **Tambahkan ke layar utama**. iPhone/Safari: **Bagikan → Tambahkan ke Layar Utama**. Nama/menu bergantung versi browser. Gunakan HTTPS pada domain publik; `localhost` dapat dipakai untuk pengujian lokal, sedangkan HTTP dari alamat IP LAN tidak memenuhi secure context untuk service worker.
 
 Scan, Nara, login dan riwayat membutuhkan internet. Service worker hanya menyimpan halaman offline, font dan ikon publik; halaman pribadi, respons API dan hasil AI tidak disimpan dalam Cache Storage. Pembaruan worker menunggu sesi lama ditutup agar kamera atau pengisian formulir tidak terputus. Saat mengubah aset offline, naikkan versi cache di `public/sw.js`.
+
+### Pembanding hasil foto
+
+Tab Pilihan pengganti mencari produk sejenis dengan gula lebih sedikit pada volume/berat yang sama dari katalog Indonesia, sumber publik, atau foto pribadi. Hasil menyertakan pertukaran gizi, sumber/tanggal, harga bersumber atau estimasi AI yang dilabeli, serta bekal memilih makanan. Data kosong tidak menjadi nol; takaran saji tidak dianggap ukuran kemasan. Nara menggunakan daftar pembanding yang sama. Jika belum ada bukti yang memadai, aplikasi memberi langkah lanjut tanpa mengarang produk/harga. Lihat [QA_PHOTO_ALTERNATIVES.md](QA_PHOTO_ALTERNATIVES.md).
