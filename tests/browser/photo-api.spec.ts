@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import sharp from "sharp";
+import { priceReview } from "../fixtures/price-review";
 
 test("photo API checks auth, origin, actual image decoding and low-resolution input", async ({
   page,
@@ -52,6 +53,58 @@ test("photo API checks auth, origin, actual image decoding and low-resolution in
   })
     .png()
     .toBuffer();
+  async function uploadMany(images: Buffer[]) {
+    const boundary = "bongkar-six-photos-boundary";
+    const body = Buffer.concat([
+      ...images.flatMap((image, index) => [
+        Buffer.from(
+          `--${boundary}\r\nContent-Disposition: form-data; name="image"; filename="view-${index}.png"\r\nContent-Type: image/png\r\n\r\n`,
+        ),
+        image,
+        Buffer.from("\r\n"),
+      ]),
+      Buffer.from(`--${boundary}--\r\n`),
+    ]);
+    return page.request.post("/api/extract", {
+      headers: {
+        origin,
+        "content-type": `multipart/form-data; boundary=${boundary}`,
+      },
+      data: body,
+    });
+  }
+  const tooMany = await uploadMany(Array.from({ length: 7 }, () => valid));
+  expect(tooMany.status()).toBe(400);
+  expect((await tooMany.json()).error).toContain("1–6 foto");
+  // The sixth file must be validated too; no silent truncation at two or five.
+  const sixthTiny = await uploadMany([
+    ...Array.from({ length: 5 }, () => valid),
+    tiny,
+  ]);
+  expect(sixthTiny.status()).toBe(422);
+  expect((await sixthTiny.json()).error).toMatch(/terlalu kecil/);
+  const saved = await page.request.post("/api/photo-summary", {
+    headers: { origin },
+    data: {
+      ...priceReview,
+      images: Array.from({ length: 6 }, (_, i) => ({
+        width: 600 + i,
+        height: 600,
+      })),
+    },
+  });
+  expect(saved.ok()).toBe(true);
+  const { historyId } = await saved.json();
+  const history = await page.request.get(`/api/history/${historyId}`);
+  expect(history.ok()).toBe(true);
+  expect(
+    (await history.json()).photoResult.images.map(
+      (p: { width: number }) => p.width,
+    ),
+  ).toEqual([600, 601, 602, 603, 604, 605]);
+  await page.request.delete(`/api/history/${historyId}`, {
+    headers: { origin },
+  });
   const bypass = await page.request.post("/api/scan", {
     headers: { origin },
     multipart: {

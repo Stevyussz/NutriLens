@@ -35,7 +35,7 @@ MongoDB lokal default: `mongodb://localhost:27017`. Compose menggunakan URI inte
 
 ## Alur penggunaan
 
-1. Pilih **Scan label**, nyalakan kamera, lalu ambil satu atau dua foto komposisi dan tabel gizi. Galeri tersedia sebagai cadangan dan menambahkan foto tanpa mengganti pilihan yang ada. Jumlah, format, dan ukuran diperiksa sebelum pengiriman. Tekan **Periksa foto** untuk memperbesar tulisan tanpa keluar dari halaman. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, foto diperiksa, tab disembunyikan, atau foto mulai diproses.
+1. Pilih **Scan label**, nyalakan kamera, lalu ambil 1–6 foto bagian depan, komposisi, tabel gizi, atau sisi lain dari produk yang sama. Galeri tersedia sebagai cadangan dan menambahkan foto tanpa mengganti pilihan yang ada. Jumlah, format, dan ukuran diperiksa sebelum pengiriman. Tekan **Periksa foto** untuk memperbesar tulisan tanpa keluar dari halaman. Kamera memerlukan izin browser dan HTTPS atau localhost. Kamera dihentikan saat berganti metode/halaman, foto diperiksa, tab disembunyikan, atau foto mulai diproses.
 2. Pilih **Baca foto label**. Ringkasan awal langsung menunjukkan angka yang terbaca, konteks batas profil dan saran pertimbangan. Harga, serat atau komposisi yang tidak tercantum tidak menghalangi ringkasan dan tidak dianggap nol. Koreksi satu angka hanya bila perlu. Analisis komposisi lengkap tetap tersedia sebagai jalur lanjutan dengan konfirmasi.
 3. Pencarian sumber produk menyusul di belakang layar: katalog lokal, Open Food Facts langsung, dan indeks merek WINGS. AI memilih ID sumber dari kandidat yang tersedia; aturan merek, varian, porsi dan satuan tetap memeriksa kecocokan. Hasil penelusuran tidak menimpa angka foto atau menentukan barcode secara otomatis.
 4. Bagian teratas hasil menampilkan ringkasan singkat, kontribusi gula/natrium terhadap batas profil, dan langkah berikutnya. Tidak ada aturan terpicu bukan jaminan keamanan medis.
@@ -213,3 +213,5 @@ Scan, Nara, login dan riwayat membutuhkan internet. Service worker hanya menyimp
 ### Pembanding hasil foto
 
 Tab Pilihan pengganti mencari produk sejenis dengan gula lebih sedikit pada volume/berat yang sama dari katalog Indonesia, sumber publik, atau foto pribadi. Hasil menyertakan pertukaran gizi, sumber/tanggal, harga bersumber atau estimasi AI yang dilabeli, serta bekal memilih makanan. Data kosong tidak menjadi nol; takaran saji tidak dianggap ukuran kemasan. Nara menggunakan daftar pembanding yang sama. Jika belum ada bukti yang memadai, aplikasi memberi langkah lanjut tanpa mengarang produk/harga. Lihat [QA_PHOTO_ALTERNATIVES.md](QA_PHOTO_ALTERNATIVES.md).
+
+Scan foto mendukung hingga enam sisi dari satu produk, maksimal 5 MB per foto. Kamera dan galeri dapat digabung; seluruh foto yang dipilih ikut dibaca. Lihat [QA_MULTI_PHOTO.md](QA_MULTI_PHOTO.md) untuk batas dan bukti pengujian.

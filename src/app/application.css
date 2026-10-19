@@ -450,6 +450,9 @@ body:has(:is(.dashboard-main, .auth-page, .system-state)) {
   & .camera-selections > div {
     border-radius: 10px;
   }
+  & .camera-selections {
+    flex-wrap: wrap;
+  }
   & .camera-remove {
     background: #491d36;
     color: #fff8fc;

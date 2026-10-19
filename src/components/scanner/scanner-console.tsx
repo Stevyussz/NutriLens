@@ -1,4 +1,8 @@
 "use client";
+import {
+  MAX_SCAN_PHOTOS,
+  MAX_SCAN_PHOTO_BYTES,
+} from "@/core/scan-photo-limits";
 import { LiveCamera } from "./live-camera";
 import { PhotoInspector } from "./photo-inspector";
 import { NaraThinking } from "./nara-thinking";
@@ -169,14 +173,16 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
     input.value = "";
     if (!incoming.length) return;
     const error =
-      photos.length + incoming.length > 2
-        ? "Maksimal dua foto. Buang salah satu foto pilihan sebelum menambahkan foto lain."
+      photos.length + incoming.length > MAX_SCAN_PHOTOS
+        ? `Maksimal ${MAX_SCAN_PHOTOS} foto. Buang salah satu foto pilihan sebelum menambahkan foto lain.`
         : incoming.some(
               (file) =>
                 !["image/jpeg", "image/png", "image/webp"].includes(file.type),
             )
           ? "Gunakan foto JPEG, PNG, atau WEBP. Foto pilihan sebelumnya tetap tersimpan."
-          : incoming.some((file) => !file.size || file.size > 5 * 1024 * 1024)
+          : incoming.some(
+                (file) => !file.size || file.size > MAX_SCAN_PHOTO_BYTES,
+              )
             ? "Ukuran setiap foto harus lebih dari 0 dan maksimal 5 MB. Foto pilihan sebelumnya tetap tersimpan."
             : "";
     setPhotoError(error);
@@ -228,7 +234,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
         const files = photos;
         if (
           !files.length ||
-          files.length > 2 ||
+          files.length > MAX_SCAN_PHOTOS ||
           files.some((file) => !(file instanceof File) || !file.size)
         )
           throw new Error("Pilih foto label terlebih dahulu.");
@@ -702,7 +708,9 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                 active={mode === "photo" && workspace === "entry" && !busy}
                 files={photos}
                 onCapture={(file) => {
-                  setPhotos((current) => [...current, file].slice(0, 2));
+                  setPhotos((current) =>
+                    [...current, file].slice(0, MAX_SCAN_PHOTOS),
+                  );
                   setPhotoError("");
                 }}
                 onRemove={(index) => {
@@ -716,7 +724,7 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                 }}
               />
               <aside className="capture-guide" aria-label="Panduan foto label">
-                <h3>Dua bagian, satu produk.</h3>
+                <h3>Beberapa sisi, satu produk.</h3>
                 <ol>
                   <li>
                     <strong>Komposisi</strong>
@@ -728,8 +736,9 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                   </li>
                 </ol>
                 <p className="capture-guide-note">
-                  Terpisah di kemasan? Ambil dua foto. Anda bisa memeriksa hasil
-                  bacanya sebelum dianalisis.
+                  Tambahkan foto bagian depan, komposisi, tabel gizi, atau
+                  detail yang terpotong. Anda bisa memeriksa hasil bacanya
+                  sebelum dianalisis.
                 </p>
               </aside>
             </div>
@@ -756,9 +765,9 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
                   </span>
                 )}
                 <span className="muted">
-                  Pilih satu atau dua foto produk yang sama: komposisi dan gizi.
-                  JPEG, PNG, WEBP, maksimal 5 MB per foto. Hasilnya diperiksa
-                  dahulu sebelum analisis.
+                  Pilih 1–{MAX_SCAN_PHOTOS} foto produk yang sama: bagian depan,
+                  komposisi, dan gizi. JPEG, PNG, WEBP, maksimal 5 MB per foto.
+                  Hasilnya diperiksa dahulu sebelum analisis.
                 </span>
               </label>
             </details>

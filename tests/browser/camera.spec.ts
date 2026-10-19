@@ -1,8 +1,10 @@
+import { mkdir } from "node:fs/promises";
 import { test, expect } from "@playwright/test";
 import { normalizePhotoTranscription } from "../../src/core/ai/vision-contract";
-test.setTimeout(60000);
+test.setTimeout(120000);
 test.use({
   launchOptions: {
+    executablePath: process.env.PLAYWRIGHT_CHROME_PATH,
     args: [
       "--use-fake-ui-for-media-stream",
       "--use-fake-device-for-media-stream",
@@ -53,12 +55,32 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and op
   await expect(
     page.getByRole("button", { name: "Baca foto label", exact: true }),
   ).toBeInViewport();
-  await page
-    .getByRole("button", { name: "Ambil foto label", exact: true })
-    .click();
+  for (let count = 2; count <= 6; count++) {
+    await page
+      .getByRole("button", { name: "Ambil foto label", exact: true })
+      .click();
+    await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(
+      count,
+    );
+  }
   await expect(
     page.getByRole("button", { name: "Ambil foto label", exact: true }),
   ).toBeDisabled();
+  await mkdir(".impeccable/review/multi-photo", { recursive: true });
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: width > 800 ? 1000 : 844 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    await page.screenshot({
+      path: `.impeccable/review/multi-photo/camera-${width}.png`,
+      fullPage: true,
+    });
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({
     path: "artifacts/camera-live-mobile.png",
     fullPage: true,
@@ -115,8 +137,12 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and op
   await expect(
     page.getByRole("button", { name: "Nyalakan kamera", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(2);
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(6);
   await page.getByRole("button", { name: "Buang foto 2", exact: true }).click();
+  await page
+    .getByLabel("Foto komposisi dan informasi gizi")
+    .setInputFiles("tests/fixtures/per-serving.png");
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(6);
   const review = normalizePhotoTranscription(
     {
       productName: "Label kamera uji",
@@ -136,10 +162,18 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and op
       ingredientsText: "tepung gandum, gula, kakao",
       unreadableFields: [],
     },
-    [{ width: 1920, height: 1440 }],
+    Array.from({ length: 6 }, () => ({ width: 1920, height: 1440 })),
   );
   let jpeg = false;
+  let imageParts = 0;
   await page.route("**/api/extract", (route) => {
+    imageParts = (
+      route
+        .request()
+        .postDataBuffer()
+        ?.toString("latin1")
+        .match(/name="image";/g) ?? []
+    ).length;
     jpeg = Boolean(
       route
         .request()
@@ -153,6 +187,7 @@ test("live camera captures real JPEG frames, retains photos, stops tracks and op
     .click();
   await expect(page.locator("#photo-decision-title")).toBeVisible();
   expect(jpeg).toBe(true);
+  expect(imageParts).toBe(6);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -175,10 +210,29 @@ test("gallery adds to captured selection and rejects excess or oversized files w
     "tests/fixtures/per-serving.png",
     "tests/fixtures/per-100-comma.png",
   ]);
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(3);
+  await input.setInputFiles(
+    Array.from({ length: 4 }, () => "tests/fixtures/per-serving.png"),
+  );
   await expect(
-    page.getByRole("alert").filter({ hasText: "Maksimal dua foto" }),
+    page.getByRole("alert").filter({ hasText: "Maksimal 6 foto" }),
   ).toBeVisible();
-  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(3);
+  await mkdir(".impeccable/review/multi-photo", { recursive: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({
+    path: ".impeccable/review/multi-photo/gallery-limit-390.png",
+    fullPage: true,
+  });
+  await page
+    .getByRole("alert")
+    .filter({ hasText: "Maksimal 6 foto" })
+    .evaluate((el) =>
+      el.scrollIntoView({ block: "center", behavior: "instant" }),
+    );
+  await page.screenshot({
+    path: ".impeccable/review/multi-photo/gallery-limit-detail-390.png",
+  });
   await input.setInputFiles({
     name: "besar.jpg",
     mimeType: "image/jpeg",
@@ -187,9 +241,14 @@ test("gallery adds to captured selection and rejects excess or oversized files w
   await expect(
     page.getByRole("alert").filter({ hasText: "maksimal 5 MB" }),
   ).toBeVisible();
-  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(1);
-  await input.setInputFiles("tests/fixtures/per-100-comma.png");
-  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(2);
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(3);
+  await input.setInputFiles(
+    Array.from({ length: 3 }, () => "tests/fixtures/per-100-comma.png"),
+  );
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(6);
+  await page.getByRole("button", { name: "Buang foto 4", exact: true }).click();
+  await input.setInputFiles("tests/fixtures/per-serving.png");
+  await expect(page.getByRole("img", { name: /Foto pilihan/ })).toHaveCount(6);
   await expect(
     page.locator('.scanner-entry .error-text[role="alert"]'),
   ).toHaveCount(0);

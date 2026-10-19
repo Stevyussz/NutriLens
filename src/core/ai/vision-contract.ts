@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { categorySchema, nutritionSchema } from "../db/collections";
+import { MAX_SCAN_PHOTOS } from "../scan-photo-limits";
 
 export const nutrientKeys = Object.keys(
   nutritionSchema.shape,
@@ -115,7 +116,7 @@ export const photoReviewSchema = z
     images: z
       .array(z.object({ width: z.number(), height: z.number() }))
       .min(1)
-      .max(2),
+      .max(MAX_SCAN_PHOTOS),
     userCorrected: z.boolean().optional(),
     historyId: z
       .string()

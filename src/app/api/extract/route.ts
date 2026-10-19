@@ -10,6 +10,10 @@ import { enforceRateLimit } from "@/core/security/rate-limiter";
 import { extractPhotoForReview } from "@/core/ai/photo-extraction";
 import { getDb } from "@/core/db/client";
 import { savePhotoHistory } from "@/core/db/photo-history";
+import {
+  MAX_SCAN_PHOTOS,
+  MAX_SCAN_UPLOAD_BYTES,
+} from "@/core/scan-photo-limits";
 export const maxDuration = 120;
 
 export async function POST(request: Request) {
@@ -20,7 +24,7 @@ export async function POST(request: Request) {
     const type = request.headers.get("content-type") ?? "";
     if (!type.startsWith("multipart/form-data"))
       throw new HttpError(415, "Unggah foto sebagai form-data.");
-    const bytes = await readBytes(request, 10 * 1024 * 1024 + 65536);
+    const bytes = await readBytes(request, MAX_SCAN_UPLOAD_BYTES + 65536);
     const form = await new Request(request.url, {
       method: "POST",
       headers: { "content-type": type },
@@ -29,12 +33,12 @@ export async function POST(request: Request) {
     const files = form.getAll("image");
     if (
       files.length < 1 ||
-      files.length > 2 ||
+      files.length > MAX_SCAN_PHOTOS ||
       files.some((file) => !(file instanceof File))
     )
       throw new HttpError(
         400,
-        "Pilih satu atau dua foto dari produk yang sama: komposisi dan informasi gizi.",
+        `Pilih 1–${MAX_SCAN_PHOTOS} foto dari produk yang sama: depan kemasan, komposisi, dan informasi gizi.`,
       );
     try {
       const review = await extractPhotoForReview(

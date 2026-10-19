@@ -20,7 +20,7 @@ Kamera langsung adalah metode utama. Galeri menjadi cadangan, sedangkan teks dan
 
 ## Capabilities and Constraints
 
-- Satu atau dua foto komposisi dan tabel gizi dari produk yang sama.
+- Satu hingga enam foto bagian depan, komposisi, tabel gizi, dan detail lain dari produk yang sama; maksimal 5 MB per foto.
 - Analisis deterministik sumber gula dan profil tetap menjadi dasar; AI vision dan penjelasan menggunakan penyedia yang dikonfigurasi, saat ini 9Router.
 - Ringkasan hasil mendahului tab komposisi, sumber gula dan alternatif. Riwayat menyimpan hasil dan profil saat analisis, bukan foto.
 - Kamus dan katalog memakai data komunitas bersumber, dengan tanggal dan batas cakupan yang dapat diperiksa.

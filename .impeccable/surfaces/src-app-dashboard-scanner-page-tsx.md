@@ -49,3 +49,7 @@ Operate refinement: a secondary, flat price section before Nara, no new palette/
 ## Active refinement: evidence-based purchase comparisons
 
 Preserve the Operate identity and quick label/purchase context. Keep immediate label facts and portion action independent of recommendation loading. An async concise hint opens the existing Pilihan pengganti tab. Show one named candidate first, comparison on the same quantity, qualified sugar reduction and honest price provenance. Additional choices, nutrient trade-offs, original source/date and shopping lessons use existing native disclosures. Own-photo candidates remain private to their owner. Filtering uses the scan's saved profile; catalogue normalization never invents missing data or package dimensions. Source outages and no-match are useful recoverable states, not fabricated alternatives. Preserve tokens, flat reading surfaces and mobile navigation.
+
+## Multi-view photo scan
+
+One product can use 1–6 photos, up to 5 MB each, from camera and gallery together. Preserve existing camera-first controls and visual system. Counters, shutter limit, selection errors, API limit and saved evidence use the same shared limit. All views go to vision together; per-image decoding is sequential to bound peak memory. The thumbnail strip wraps on narrow screens so photos remain inspectable/removable. Extra views are optional; users can read a single photo immediately.

@@ -1,4 +1,8 @@
 "use client";
+import {
+  MAX_SCAN_PHOTOS,
+  MAX_SCAN_PHOTO_BYTES,
+} from "@/core/scan-photo-limits";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Camera, ScanLine, SwitchCamera, X, ImagePlus } from "lucide-react";
 import { Button } from "../ui/button";
@@ -120,7 +124,7 @@ export function LiveCamera({
       !element ||
       !element.videoWidth ||
       state !== "ready" ||
-      files.length >= 2 ||
+      files.length >= MAX_SCAN_PHOTOS ||
       capturing
     )
       return;
@@ -146,7 +150,7 @@ export function LiveCamera({
         ),
       );
       if (!activeRef.current || current !== ticket.current) return;
-      if (blob.size > 5 * 1024 * 1024) throw Error("Image too large");
+      if (blob.size > MAX_SCAN_PHOTO_BYTES) throw Error("Image too large");
       onCapture(
         new File([blob], `label-kamera-${Date.now()}.jpg`, {
           type: "image/jpeg",
@@ -176,7 +180,11 @@ export function LiveCamera({
           <>
             <div className="camera-live">
               <span />
-              Kamera aktif · foto {Math.min(files.length + 1, 2)} dari 2
+              Kamera aktif · foto {Math.min(
+                files.length + 1,
+                MAX_SCAN_PHOTOS,
+              )}{" "}
+              dari {MAX_SCAN_PHOTOS}
             </div>
             <div className="camera-guide" aria-hidden />
             <div className="camera-toolbar">
@@ -206,8 +214,8 @@ export function LiveCamera({
             <ScanLine size={42} strokeWidth={1.2} aria-hidden />
             <h3>Foto langsung dari kamera.</h3>
             <p>
-              Arahkan ke komposisi dan tabel gizi. Ambil dua foto jika letaknya
-              terpisah.
+              Foto bagian depan, komposisi, dan tabel gizi. Tambahkan sudut lain
+              jika ada teks yang terpotong.
             </p>
             <Button
               onClick={() => (state === "requesting" ? stop() : start())}
@@ -221,10 +229,10 @@ export function LiveCamera({
       {state === "ready" && (
         <div className="camera-capture-row">
           <p>
-            {files.length >= 2
-              ? "Dua foto siap dibaca."
+            {files.length >= MAX_SCAN_PHOTOS
+              ? `${MAX_SCAN_PHOTOS} foto siap dibaca. Buang satu jika ingin menggantinya.`
               : files.length
-                ? "Komposisi atau gizi belum masuk? Ambil satu foto lagi."
+                ? "Sudah lengkap? Baca sekarang, atau tambahkan sisi lainnya."
                 : "Pastikan tulisan label terlihat jelas."}
           </p>
           <button
@@ -232,12 +240,14 @@ export function LiveCamera({
             ref={shutter}
             className="camera-shutter"
             aria-label="Ambil foto label"
-            disabled={files.length >= 2 || capturing || !active}
+            disabled={files.length >= MAX_SCAN_PHOTOS || capturing || !active}
             onClick={capture}
           >
             <Camera size={25} aria-hidden />
           </button>
-          <span>{files.length}/2 foto</span>
+          <span>
+            {files.length}/{MAX_SCAN_PHOTOS} foto
+          </span>
         </div>
       )}
       {error && (

@@ -1,11 +1,12 @@
 import { HttpError } from "./http";
+import { MAX_SCAN_PHOTO_BYTES } from "../scan-photo-limits";
 /** Verifies signature, size and closing structure; image bytes remain untrusted, never executed.
  * @param bytes Uploaded bytes. O(1) signature and structure checks; size capped at 5 MiB.
  */
 export function validateImage(
   bytes: Uint8Array,
 ): "image/jpeg" | "image/png" | "image/webp" {
-  if (bytes.length < 24 || bytes.length > 5 * 1024 * 1024)
+  if (bytes.length < 24 || bytes.length > MAX_SCAN_PHOTO_BYTES)
     throw new HttpError(400, "Gambar harus berukuran 24 byte sampai 5 MB.");
   const b = Buffer.from(bytes);
   if (
