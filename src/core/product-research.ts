@@ -11,7 +11,7 @@ import {
   productResearchSchema,
   type ResearchSource,
 } from "./product-research-schema";
-import { enforceRateLimit } from "./security/rate-limiter";
+import { enforceRequestLimit } from "./security/shared-rate-limiter";
 const cache = new Map<string, { until: number; value: unknown; at: string }>();
 const pending = new Map<string, Promise<{ value: unknown; at: string }>>();
 /** Fixed public origins only. No user/AI supplied URLs, redirects or executable upstream scripts. */
@@ -27,7 +27,7 @@ async function sourceFetch(url: string, html = false) {
     )
       throw Error("Unsupported source");
     if (target.hostname === "world.openfoodfacts.org")
-      enforceRateLimit("research-off-global", 8);
+      await enforceRequestLimit("research-off-global", 8);
     const response = await fetch(url, {
       redirect: "error",
       headers: {

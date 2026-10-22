@@ -84,7 +84,7 @@ export function HistoryExplorer() {
           <p>
             {search
               ? `Tidak ada nama label yang cocok dengan “${search}”. Coba nama lain atau tampilkan semua riwayat.`
-              : "Hasil analisis yang selesai akan tersimpan di sini. Foto kemasan tidak disimpan."}
+              : "Hasil analisis yang selesai akan tersimpan di sini. Foto kemasan tidak ikut disimpan dalam riwayat."}
           </p>
           {!search && (
             <Link className="button button-primary" href="/scanner">

@@ -114,8 +114,13 @@ export function ScannerConsole({ historyId }: { historyId?: string }) {
       }),
   });
   const extraction = useMutation({
-    mutationFn: (body: FormData) =>
-      requestApi("/api/extract", photoReviewSchema, { method: "POST", body }),
+    mutationFn: async (body: FormData) => {
+      const { preparePhotoRequest } = await import("@/core/upload-scan-photos");
+      return requestApi("/api/extract", photoReviewSchema, {
+        method: "POST",
+        body: await preparePhotoRequest(body),
+      });
+    },
     onSuccess: (draft) => {
       const form = formRef.current;
       if (!form) return;

@@ -11,7 +11,7 @@ import {
   apiError,
   HttpError,
 } from "@/core/security/http";
-import { enforceRateLimit } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
 import { naraRequestSchema } from "@/core/nara-schema";
 import { estimatePhotoPrice } from "@/core/price-estimate";
 import { askNara } from "@/core/nara";
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   try {
     assertOrigin(request);
     const user = await requireUser();
-    enforceRateLimit(`nara:${user._id}`, 15);
+    await enforceRequestLimit(`nara:${user._id}`, 15);
     const input = naraRequestSchema.parse(await readJson(request));
     const row = await (
       await getDb()

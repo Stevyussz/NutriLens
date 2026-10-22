@@ -4,12 +4,13 @@ import { getDb } from "@/core/db/client";
 import { defaultHealth, type User } from "@/core/db/collections";
 import { createSession, requireUser } from "@/core/security/session";
 import { apiError, assertOrigin, HttpError } from "@/core/security/http";
-import { enforceRateLimit, requestIp } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
+import { requestIp } from "@/core/security/rate-limiter";
 import { randomBytes } from "node:crypto";
 export async function POST(request: Request) {
   try {
     assertOrigin(request);
-    enforceRateLimit(`guest:${requestIp(request)}`, 20);
+    await enforceRequestLimit(`guest:${requestIp(request)}`, 20);
     try {
       await requireUser();
       return NextResponse.json({ success: true, redirect: "/scanner" });

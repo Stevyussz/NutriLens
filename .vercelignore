@@ -1,0 +1,16 @@
+.git
+.vercel
+.agents
+.codex
+.aws
+.env
+.env.*
+node_modules
+.next
+artifacts
+test-results
+playwright-report
+.impeccable
+assets
+*.zip
+*.tsbuildinfo

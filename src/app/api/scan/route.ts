@@ -7,7 +7,7 @@ import { getDb } from "@/core/db/client";
 import { productSchema, type Product } from "@/core/db/collections";
 import { presetIds } from "@/core/db/presets";
 import { requireUser } from "@/core/security/session";
-import { enforceRateLimit } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
 import {
   assertOrigin,
   apiError,
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   try {
     assertOrigin(request);
     const user = await requireUser();
-    enforceRateLimit(`scan:${user._id}`, 15);
+    await enforceRequestLimit(`scan:${user._id}`, 15);
     const db = await getDb();
     let payload: string | Uint8Array;
     let product: Product | undefined;

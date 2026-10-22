@@ -9,7 +9,11 @@ export async function getDb(): Promise<Db> {
   if (!globalDb.mongoConnection) {
     globalDb.mongoConnection = new MongoClient(
       process.env.MONGODB_URI ?? "mongodb://localhost:27017",
-      { maxPoolSize: 20, serverSelectionTimeoutMS: 5000 },
+      {
+        maxPoolSize: process.env.VERCEL === "1" ? 5 : 20,
+        maxIdleTimeMS: 60000,
+        serverSelectionTimeoutMS: 5000,
+      },
     )
       .connect()
       .catch((error: unknown) => {

@@ -26,7 +26,7 @@ export function enforceRateLimit(
   windows.set(key, recent);
 }
 export function requestIp(request: Request): string {
-  return process.env.TRUST_PROXY === "true"
+  return process.env.TRUST_PROXY === "true" || process.env.VERCEL === "1"
     ? (request.headers
         .get("x-forwarded-for")
         ?.split(",")[0]

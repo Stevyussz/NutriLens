@@ -13,7 +13,8 @@ import {
   readJson,
   HttpError,
 } from "@/core/security/http";
-import { enforceRateLimit, requestIp } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
+import { requestIp } from "@/core/security/rate-limiter";
 const loginSchema = z
   .object({
     email: z
@@ -29,7 +30,7 @@ const dummyHash = hashPassword("account-does-not-exist");
 export async function POST(request: Request) {
   try {
     assertOrigin(request);
-    enforceRateLimit(`login:${requestIp(request)}`, 5);
+    await enforceRequestLimit(`login:${requestIp(request)}`, 5);
     const input = loginSchema.parse(await readJson(request));
     const db = await getDb();
     const user = await db

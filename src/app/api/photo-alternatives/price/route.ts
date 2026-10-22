@@ -8,7 +8,7 @@ import {
   apiError,
   HttpError,
 } from "@/core/security/http";
-import { enforceRateLimit } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
 import { ownedPhoto } from "@/core/owned-photo";
 import {
   findPhotoAlternatives,
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
   try {
     assertOrigin(request);
     const user = await requireUser();
-    enforceRateLimit(`alternative-price:${user._id}`, 12);
+    await enforceRequestLimit(`alternative-price:${user._id}`, 12);
     const input = inputSchema.parse(await readJson(request));
     const db = await getDb();
     const { review, health } = await ownedPhoto(db, user._id, input.historyId);

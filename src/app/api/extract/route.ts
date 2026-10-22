@@ -5,11 +5,13 @@ import {
   apiError,
   HttpError,
   readBytes,
+  readJson,
 } from "@/core/security/http";
-import { enforceRateLimit } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
 import { extractPhotoForReview } from "@/core/ai/photo-extraction";
 import { getDb } from "@/core/db/client";
 import { savePhotoHistory } from "@/core/db/photo-history";
+import { readUploadedPhotos, uploadPathsSchema } from "@/core/scan-uploads";
 import {
   MAX_SCAN_PHOTOS,
   MAX_SCAN_UPLOAD_BYTES,
@@ -20,34 +22,39 @@ export async function POST(request: Request) {
   try {
     assertOrigin(request);
     const user = await requireUser();
-    enforceRateLimit(`extract:${user._id}`, 8);
+    await enforceRequestLimit(`extract:${user._id}`, 8);
     const type = request.headers.get("content-type") ?? "";
-    if (!type.startsWith("multipart/form-data"))
-      throw new HttpError(415, "Unggah foto sebagai form-data.");
-    const bytes = await readBytes(request, MAX_SCAN_UPLOAD_BYTES + 65536);
-    const form = await new Request(request.url, {
-      method: "POST",
-      headers: { "content-type": type },
-      body: Buffer.from(bytes),
-    }).formData();
-    const files = form.getAll("image");
-    if (
-      files.length < 1 ||
-      files.length > MAX_SCAN_PHOTOS ||
-      files.some((file) => !(file instanceof File))
-    )
-      throw new HttpError(
-        400,
-        `Pilih 1–${MAX_SCAN_PHOTOS} foto dari produk yang sama: depan kemasan, komposisi, dan informasi gizi.`,
-      );
-    try {
-      const review = await extractPhotoForReview(
-        await Promise.all(
-          (files as File[]).map(
-            async (file) => new Uint8Array(await file.arrayBuffer()),
-          ),
+    let images: Uint8Array[];
+    if (type.startsWith("application/json")) {
+      const { uploads } = uploadPathsSchema.parse(await readJson(request));
+      images = await readUploadedPhotos(uploads, user._id.toHexString());
+    } else {
+      if (!type.startsWith("multipart/form-data"))
+        throw new HttpError(415, "Unggah foto sebagai form-data.");
+      const bytes = await readBytes(request, MAX_SCAN_UPLOAD_BYTES + 65536);
+      const form = await new Request(request.url, {
+        method: "POST",
+        headers: { "content-type": type },
+        body: Buffer.from(bytes),
+      }).formData();
+      const files = form.getAll("image");
+      if (
+        files.length < 1 ||
+        files.length > MAX_SCAN_PHOTOS ||
+        files.some((file) => !(file instanceof File))
+      )
+        throw new HttpError(
+          400,
+          `Pilih 1–${MAX_SCAN_PHOTOS} foto dari produk yang sama: depan kemasan, komposisi, dan informasi gizi.`,
+        );
+      images = await Promise.all(
+        (files as File[]).map(
+          async (file) => new Uint8Array(await file.arrayBuffer()),
         ),
       );
+    }
+    try {
+      const review = await extractPhotoForReview(images);
       const historyId = await savePhotoHistory(
         await getDb(),
         user._id,

@@ -14,12 +14,13 @@ import {
   HttpError,
   readJson,
 } from "@/core/security/http";
-import { enforceRateLimit, requestIp } from "@/core/security/rate-limiter";
+import { enforceRequestLimit } from "@/core/security/shared-rate-limiter";
+import { requestIp } from "@/core/security/rate-limiter";
 
 export async function POST(request: Request) {
   try {
     assertOrigin(request);
-    enforceRateLimit(`register:${requestIp(request)}`, 5);
+    await enforceRequestLimit(`register:${requestIp(request)}`, 5);
     const input = registrationSchema.parse(await readJson(request));
     let current: User | null = null;
     try {

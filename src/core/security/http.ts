@@ -4,8 +4,25 @@ import { HttpError } from "./errors";
 export { HttpError } from "./errors";
 /** Rejects cross-site state changes; forwarded hosts are never trusted implicitly. O(1). */
 export function assertOrigin(request: Request): void {
-  const allowed = (process.env.APP_ORIGIN ?? "http://localhost:3000")
-    .split(",")
+  const platformOrigins =
+    process.env.VERCEL === "1"
+      ? [
+          process.env.VERCEL_URL,
+          process.env.VERCEL_BRANCH_URL,
+          process.env.VERCEL_PROJECT_PRODUCTION_URL,
+        ]
+          .filter((host): host is string =>
+            Boolean(host && /^[a-z0-9.-]+$/i.test(host)),
+          )
+          .map((host) => `https://${host}`)
+      : [];
+  const allowed = [
+    ...platformOrigins,
+    ...(
+      process.env.APP_ORIGIN ??
+      (process.env.VERCEL === "1" ? "" : "http://localhost:3000")
+    ).split(","),
+  ]
     .map((entry) => {
       try {
         return new URL(entry.trim()).origin;

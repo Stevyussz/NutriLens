@@ -12,7 +12,7 @@ import { allergyConflict } from "./food-allergy-match";
 import { reconcilePhotoReading } from "./ai/vision-policy";
 import { candidateMatch } from "./product-research";
 import { decimal } from "./utils";
-import { enforceRateLimit } from "./security/rate-limiter";
+import { enforceRequestLimit } from "./security/shared-rate-limiter";
 const fold = (s: string) =>
   s
     .normalize("NFKD")
@@ -437,7 +437,7 @@ async function discover(tag: string): Promise<CatalogueProduct[]> {
   if (hit && hit.until > Date.now()) return hit.rows;
   if (pending.has(tag)) return pending.get(tag)!;
   const task = (async () => {
-    enforceRateLimit("alternatives-off-global", 6);
+    await enforceRequestLimit("alternatives-off-global", 6);
     const url = new URL("https://world.openfoodfacts.org/api/v2/search");
     url.search = new URLSearchParams({
       countries_tags_en: "indonesia",
